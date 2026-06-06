@@ -85,7 +85,6 @@ const ColumnToggle: React.FC<ColumnToggleProps> = ({
     <div className="column-control-panel">
       <div className="preset-row">
         <div className="preset-group">
-          <span className="preset-label">Role View:</span>
           <div className="segmented-control">
             <button
               className={`preset-btn ${activePreset === 'all' ? 'active' : ''}`}
@@ -97,20 +96,28 @@ const ColumnToggle: React.FC<ColumnToggleProps> = ({
               className={`preset-btn ${activePreset === 'lead' ? 'active' : ''}`}
               onClick={() => applyPreset('lead')}
             >
-              🕺 Lead (Man)
+              🕺 Lead
             </button>
             <button
               className={`preset-btn ${activePreset === 'follow' ? 'active' : ''}`}
               onClick={() => applyPreset('follow')}
             >
-              💃 Follow (Lady)
+              💃 Follow
             </button>
             {activePreset === 'custom' && (
               <span className="preset-badge">Customized</span>
             )}
           </div>
         </div>
-
+        <button
+          className={`customize-toggle-btn ${isOpen ? 'open' : ''}`}
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <span className="icon">⚙️</span>
+          <span className="btn-text-desktop">{isOpen ? 'Hide Column Settings' : 'Customize Columns'}</span>
+          <span className="btn-text-mobile">{isOpen ? 'Hide' : 'Columns'}</span>
+          <span className="arrow">{isOpen ? '▲' : '▼'}</span>
+        </button>
         <div className="preset-results-summary">
           <span className="results-count-text">
             Showing <strong>{filteredCount}</strong> figure{filteredCount === 1 ? '' : 's'}
@@ -121,16 +128,6 @@ const ColumnToggle: React.FC<ColumnToggleProps> = ({
             </button>
           )}
         </div>
-
-        <button
-          className={`customize-toggle-btn ${isOpen ? 'open' : ''}`}
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          <span className="icon">⚙️</span>
-          <span className="btn-text-desktop">{isOpen ? 'Hide Column Settings' : 'Customize Columns'}</span>
-          <span className="btn-text-mobile">{isOpen ? 'Hide' : 'Columns'}</span>
-          <span className="arrow">{isOpen ? '▲' : '▼'}</span>
-        </button>
       </div>
 
       {isOpen && (

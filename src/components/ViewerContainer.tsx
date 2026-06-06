@@ -22,9 +22,12 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
   const [searchFocused, setSearchFocused] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
-  // Sidebar collapse states
+  // Sidebar and Column Control states
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showColumnControl, setShowColumnControl] = useState(() => 
+    typeof window !== 'undefined' ? window.innerWidth > 900 : true
+  );
 
   // Initialize visible columns once data is loaded
   useEffect(() => {
@@ -154,7 +157,7 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
   }
 
   return (
-    <div className={`viewer-layout ${sidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
+    <div className={`viewer-layout ${sidebarCollapsed ? 'sidebar-collapsed' : ''} ${showColumnControl ? 'column-control-open' : 'column-control-closed'}`}>
       {/* Mobile Sidebar Overlay Backdrop */}
       {mobileMenuOpen && (
         <div 
@@ -220,6 +223,27 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
           </div>
 
           <div className="header-actions">
+            {(selectedDance || selectedFigure || searchTerm) && !showColumnControl && (
+              <button 
+                className="clear-filters-pill"
+                onClick={() => {
+                  setSelectedDance('');
+                  setSelectedFigure('');
+                  setSearchTerm('');
+                }}
+              >
+                Clear
+              </button>
+            )}
+
+            <button 
+              className={`header-column-toggle-btn ${showColumnControl ? 'active' : ''}`}
+              onClick={() => setShowColumnControl(!showColumnControl)}
+              title={showColumnControl ? "Hide Column Settings" : "Show Column Settings"}
+            >
+              ⚙️
+            </button>
+
             <div 
               className={`expandable-search-container ${searchFocused ? 'focused' : ''} ${searchTerm ? 'has-text' : ''}`}
               onClick={() => searchInputRef.current?.focus()}
@@ -254,19 +278,21 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
         </header>
         
         <div className="content-body">
-          <ColumnToggle 
-            columns={allColumns}
-            visibleColumns={visibleColumns}
-            setVisibleColumns={setVisibleColumns}
-            toggleColumn={toggleColumn}
-            filteredCount={filteredFigures.length}
-            hasFilters={!!(selectedDance || selectedFigure || searchTerm)}
-            onClearFilters={() => {
-              setSelectedDance('');
-              setSelectedFigure('');
-              setSearchTerm('');
-            }}
-          />
+          {showColumnControl && (
+            <ColumnToggle 
+              columns={allColumns}
+              visibleColumns={visibleColumns}
+              setVisibleColumns={setVisibleColumns}
+              toggleColumn={toggleColumn}
+              filteredCount={filteredFigures.length}
+              hasFilters={!!(selectedDance || selectedFigure || searchTerm)}
+              onClearFilters={() => {
+                setSelectedDance('');
+                setSelectedFigure('');
+                setSearchTerm('');
+              }}
+            />
+          )}
 
           <DanceTable 
             data={filteredFigures} 

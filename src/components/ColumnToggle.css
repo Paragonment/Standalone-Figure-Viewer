@@ -1,0 +1,266 @@
+.column-control-panel {
+  background: var(--container-bg);
+  padding: 16px 20px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all 0.3s ease;
+}
+
+/* Preset Row & Segmented Control */
+.preset-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.preset-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.preset-label {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.segmented-control {
+  display: flex;
+  background-color: var(--row-hover);
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  align-items: center;
+  gap: 2px;
+}
+
+.preset-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.preset-btn:hover {
+  color: var(--text-primary);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='dark'] .preset-btn:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.preset-btn.active {
+  background-color: var(--container-bg);
+  color: var(--accent-color);
+  box-shadow: var(--shadow);
+}
+
+.preset-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  background-color: var(--accent-light);
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Customize Toggle Button */
+.customize-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--container-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.customize-toggle-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--text-muted);
+  background-color: var(--row-hover);
+}
+
+.customize-toggle-btn.open {
+  background-color: var(--accent-light);
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.customize-toggle-btn .arrow {
+  font-size: 0.7rem;
+  margin-left: 4px;
+  transition: transform 0.2s;
+}
+
+/* Granular Checklist */
+.granular-columns-container {
+  padding-top: 16px;
+  border-top: 1px dashed var(--border-color);
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.column-group-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.column-group-card {
+  background-color: var(--row-zebra);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.column-group-card h5 {
+  margin: 0 0 4px 0;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 6px;
+}
+
+/* Specific Card Headings styling */
+.column-group-card.lead-card h5 {
+  color: var(--lead-color);
+}
+
+.column-group-card.follow-card h5 {
+  color: var(--follow-color);
+}
+
+.column-checkbox-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Custom Checkboxes */
+.column-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  user-select: none;
+  position: relative;
+}
+
+.column-checkbox-item input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox-custom {
+  position: relative;
+  height: 18px;
+  width: 18px;
+  background-color: var(--container-bg);
+  border: 1.5px solid var(--border-color);
+  border-radius: 5px;
+  transition: all 0.2s ease;
+}
+
+.column-checkbox-item:hover input ~ .checkbox-custom {
+  border-color: var(--text-muted);
+}
+
+.column-checkbox-item input:checked ~ .checkbox-custom {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+/* Color codes for Lead/Follow checkboxes */
+.lead-card .column-checkbox-item input:checked ~ .checkbox-custom {
+  background-color: var(--lead-color);
+  border-color: var(--lead-color);
+}
+
+.follow-card .column-checkbox-item input:checked ~ .checkbox-custom {
+  background-color: var(--follow-color);
+  border-color: var(--follow-color);
+}
+
+.checkbox-custom:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.column-checkbox-item input:checked ~ .checkbox-custom:after {
+  display: block;
+}
+
+.column-checkbox-item:hover {
+  color: var(--text-primary);
+}
+
+@media (max-width: 600px) {
+  .column-group-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .preset-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .customize-toggle-btn {
+    justify-content: center;
+  }
+}

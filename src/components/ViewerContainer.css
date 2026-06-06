@@ -1,0 +1,299 @@
+.viewer-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden; /* Prevent body overflow; interior scroll container handles it */
+  padding: 24px 32px;
+}
+
+/* ==========================================================================
+   1. BREADCRUMBS & HEADER
+   ========================================================================== */
+.viewer-header {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.title-area {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+/* Breadcrumbs style */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.breadcrumb-item {
+  transition: color 0.2s;
+}
+
+.breadcrumb-item.linkable {
+  cursor: pointer;
+}
+
+.breadcrumb-item.linkable:hover {
+  color: var(--accent-color);
+}
+
+.breadcrumb-item.active {
+  color: var(--text-primary);
+}
+
+.breadcrumb-separator {
+  color: var(--border-color);
+}
+
+/* Header Text styling */
+.viewer-header h1 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.viewer-header p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  max-width: 600px;
+  line-height: 1.4;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ==========================================================================
+   2. EXPANDABLE SEARCH BAR
+   ========================================================================== */
+.expandable-search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: var(--container-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 6px 14px;
+  width: 200px;
+  box-shadow: var(--shadow);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.expandable-search-container.focused {
+  width: 320px;
+  border-color: var(--accent-color);
+  box-shadow: var(--shadow-lg), 0 0 0 3px var(--accent-light);
+}
+
+.expandable-search-container.has-text {
+  width: 320px;
+}
+
+.search-icon {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  width: 100%;
+  padding: 0;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-clear-btn {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0;
+  margin-left: 6px;
+  line-height: 1;
+}
+
+.search-clear-btn:hover {
+  color: var(--text-primary);
+}
+
+.search-shortcut-hint {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  background-color: var(--row-hover);
+  border: 1px solid var(--border-color);
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 6px;
+}
+
+
+/* ==========================================================================
+   3. CONTENT BODY & RESULTS BAR
+   ========================================================================== */
+.content-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  gap: 16px;
+}
+
+.results-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 6px;
+  flex-shrink: 0;
+}
+
+.results-count-text {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.results-count-text strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.clear-filters-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  background-color: var(--container-bg);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: var(--shadow);
+}
+
+.clear-filters-btn:hover {
+  background-color: var(--row-hover);
+  color: var(--text-primary);
+  border-color: var(--text-muted);
+}
+
+
+/* ==========================================================================
+   4. LOADING SPINNER & ERROR STATES
+   ========================================================================== */
+.status-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--bg-color);
+  gap: 20px;
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--border-color);
+  border-top-color: var(--accent-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.status-message {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.status-container.error {
+  color: hsl(354, 70%, 54%);
+}
+
+.error-icon {
+  font-size: 3rem;
+}
+
+.status-container.error .status-message {
+  color: hsl(354, 70%, 50%);
+}
+
+
+/* ==========================================================================
+   5. RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 900px) {
+  .main-content {
+    padding: 16px;
+    height: auto;
+    overflow: visible;
+  }
+
+  .viewer-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding-bottom: 16px;
+  }
+
+  .expandable-search-container {
+    width: 100% !important;
+  }
+}

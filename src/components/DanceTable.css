@@ -1,0 +1,393 @@
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 10px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  background: var(--container-bg);
+  border: 1px solid var(--border-color);
+  max-height: calc(100vh - 280px); /* Constrain table height for interior scrolling */
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.dance-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.88rem;
+  text-align: left;
+}
+
+.dance-table th {
+  background-color: var(--header-bg);
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 14px 18px;
+  border-bottom: 2px solid var(--border-color);
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  transition: background-color 0.3s ease;
+}
+
+.dance-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  vertical-align: middle;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* ==========================================================================
+   1. PARENT FIGURE ROWS
+   ========================================================================== */
+.figure-parent-row {
+  cursor: pointer;
+}
+
+.figure-parent-row td {
+  background-color: var(--container-bg);
+}
+
+.figure-parent-row:hover td {
+  background-color: var(--row-hover);
+}
+
+/* Bind parent and child visually when expanded */
+.figure-parent-row.parent-expanded td {
+  background-color: var(--accent-light);
+  border-bottom-color: transparent;
+}
+
+.figure-name-cell strong {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+/* Toggle Arrow */
+.th-toggle-arrow, .td-toggle-arrow {
+  width: 44px;
+  min-width: 44px !important;
+  max-width: 44px !important;
+  text-align: center;
+}
+
+.toggle-arrow-icon {
+  display: inline-block;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s;
+}
+
+.figure-parent-row:hover .toggle-arrow-icon {
+  color: var(--accent-color);
+}
+
+.toggle-arrow-icon.rotated {
+  transform: rotate(90deg);
+  color: var(--accent-color);
+}
+
+/* Step count pill */
+.th-step-count, .td-step-count {
+  width: 90px;
+  min-width: 90px !important;
+  max-width: 90px !important;
+}
+
+.step-count-badge {
+  background-color: var(--border-color);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.parent-expanded .step-count-badge {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+/* Summary Truncation */
+.general-notes-summary-cell {
+  max-width: 300px;
+}
+
+.notes-text.truncate {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 400px;
+}
+
+
+/* ==========================================================================
+   2. CHILD EXPANDED DROPDOWN DETAILS
+   ========================================================================== */
+.figure-child-row td {
+  padding: 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.expanded-details-cell {
+  background-color: var(--row-zebra);
+}
+
+.dropdown-details-wrapper {
+  padding: 16px 20px 24px 44px; /* Align content with text after the toggle arrow */
+  border-left: 4px solid var(--accent-color);
+  animation: dropdownFadeIn 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-subtitle {
+  margin: 0 0 12px 0;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Inner Nested Steps Table */
+.nested-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--container-bg);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.nested-steps-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.84rem;
+}
+
+.nested-steps-table th {
+  background-color: var(--row-hover);
+  color: var(--text-secondary);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+  position: static; /* No sticky needed inside local dropdown */
+}
+
+.nested-steps-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  background-color: var(--container-bg);
+  min-width: 120px;
+  max-width: 250px;
+}
+
+.nested-steps-table tr:last-child td {
+  border-bottom: none;
+}
+
+.nested-steps-table tr:nth-child(even) td {
+  background-color: var(--row-zebra);
+}
+
+.nested-steps-table tr:hover td {
+  background-color: var(--row-hover);
+}
+
+
+/* ==========================================================================
+   3. CELL ELEMENTS (BADGES / PILLS)
+   ========================================================================== */
+.step-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--accent-light);
+  color: var(--accent-color);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.8rem;
+  border: 1px solid rgba(79, 70, 229, 0.15);
+}
+
+.dance-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--row-hover);
+  border: 1px solid var(--border-color);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.dance-badge-icon {
+  font-size: 0.95rem;
+}
+
+.cbm-pill {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.cbm-pill.active {
+  background-color: var(--lead-light);
+  color: var(--lead-color);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.cbm-pill.inactive {
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+}
+
+.footwork-pill {
+  display: inline-block;
+  background-color: var(--accent-light);
+  color: var(--accent-color);
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.78rem;
+  border: 1px solid rgba(79, 70, 229, 0.12);
+  font-family: monospace;
+}
+
+.sway-pill {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+.sway-left {
+  background-color: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  border: 1px solid rgba(59, 130, 246, 0.15);
+}
+
+.sway-right {
+  background-color: var(--follow-light);
+  color: var(--follow-color);
+  border: 1px solid rgba(236, 72, 153, 0.15);
+}
+
+.sway-straight {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.15);
+}
+
+.sway-none {
+  color: var(--text-muted);
+}
+
+.cell-empty {
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.notes-text {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  display: block;
+}
+
+/* ==========================================================================
+   4. NO RESULTS & SCREEN ADAPTATION
+   ========================================================================== */
+.no-results {
+  text-align: center;
+  padding: 60px 40px;
+  background: var(--container-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  margin-top: 20px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.no-results-icon {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.no-results h3 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.no-results p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  max-width: 350px;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .dropdown-details-wrapper {
+    padding: 12px;
+    border-left-width: 3px;
+  }
+}

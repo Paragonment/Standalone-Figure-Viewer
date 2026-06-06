@@ -1,0 +1,94 @@
+:root {
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Light Theme Palette */
+  --bg-color: hsl(210, 40%, 98%);
+  --container-bg: hsl(0, 0%, 100%);
+  --sidebar-bg: hsl(215, 20%, 95%);
+  --rail-bg: hsl(215, 20%, 90%);
+  --text-primary: hsl(222, 47%, 11%);
+  --text-secondary: hsl(215, 16%, 42%);
+  --text-muted: hsl(215, 16%, 60%);
+  --border-color: hsl(214, 32%, 91%);
+  --accent-color: hsl(243, 75%, 59%);
+  --accent-hover: hsl(243, 75%, 52%);
+  --accent-light: rgba(79, 70, 229, 0.1);
+  --row-hover: hsl(210, 40%, 96%);
+  --row-zebra: hsl(210, 40%, 99%);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+  --header-bg: hsl(210, 40%, 96%);
+  --input-bg: hsl(0, 0%, 100%);
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.4);
+
+  /* Functional Colors */
+  --lead-color: hsl(142, 71%, 45%);
+  --lead-light: rgba(16, 185, 129, 0.1);
+  --follow-color: hsl(325, 78%, 49%);
+  --follow-light: rgba(236, 72, 153, 0.1);
+}
+
+[data-theme='dark'] {
+  /* Dark Theme Palette */
+  --bg-color: hsl(222, 47%, 4%);
+  --container-bg: hsl(222, 47%, 8%);
+  --sidebar-bg: hsl(222, 47%, 6%);
+  --rail-bg: hsl(222, 47%, 3%);
+  --text-primary: hsl(210, 40%, 98%);
+  --text-secondary: hsl(215, 20%, 78%);
+  --text-muted: hsl(215, 16%, 50%);
+  --border-color: hsl(217, 32%, 14%);
+  --accent-color: hsl(245, 90%, 66%);
+  --accent-hover: hsl(245, 90%, 72%);
+  --accent-light: rgba(99, 102, 241, 0.15);
+  --row-hover: hsl(217, 32%, 12%);
+  --row-zebra: hsl(217, 32%, 10%);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.7), 0 4px 6px -2px rgba(0, 0, 0, 0.5);
+  --header-bg: hsl(222, 47%, 10%);
+  --input-bg: hsl(222, 47%, 11%);
+  --glass-bg: rgba(15, 23, 42, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.05);
+
+  --lead-color: hsl(142, 70%, 50%);
+  --lead-light: rgba(16, 185, 129, 0.15);
+  --follow-color: hsl(325, 78%, 55%);
+  --follow-light: rgba(236, 72, 153, 0.15);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow: hidden; /* App is a fixed height layout like Discord */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}

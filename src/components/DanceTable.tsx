@@ -8,6 +8,25 @@ interface DanceTableProps {
   selectedFigure?: string;
 }
 
+const getShortenedHeader = (header: string) => {
+  return header
+    .replace('Man Feet Positions', 'Feet')
+    .replace('Lady Feet Positions', 'Feet')
+    .replace('Man Alignment', 'Align')
+    .replace('Lady Alignment', 'Align')
+    .replace('Man Amount of Turn', 'Turn')
+    .replace('Lady Amount of Turn', 'Turn')
+    .replace('Man Rise and Fall', 'Rise/Fall')
+    .replace('Lady Rise and Fall', 'Rise/Fall')
+    .replace('Man Footwork', 'Footwork')
+    .replace('Lady Footwork', 'Footwork')
+    .replace('Man CBM', 'CBM')
+    .replace('Lady CBM', 'CBM')
+    .replace('Man Sway', 'Sway')
+    .replace('Lady Sway', 'Sway')
+    .replace('General Notes', 'Notes');
+};
+
 const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedFigure }) => {
   const [expandedFigures, setExpandedFigures] = useState<Set<string>>(new Set());
 
@@ -192,21 +211,36 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
                           <table className="nested-steps-table">
                             <thead>
                               <tr>
-                                {innerHeaders.map((header) => (
-                                  <th key={header} className={header === 'Step' ? 'th-step' : ''}>
-                                    {header}
-                                  </th>
-                                ))}
+                                {innerHeaders.map((header) => {
+                                  let className = '';
+                                  if (header === 'Step') className = 'th-step';
+                                  else if (header.startsWith('Man ')) className = 'th-lead';
+                                  else if (header.startsWith('Lady ')) className = 'th-follow';
+                                  
+                                  return (
+                                    <th key={header} className={className}>
+                                      <span className="header-text-desktop">{header}</span>
+                                      <span className="header-text-mobile">{getShortenedHeader(header)}</span>
+                                    </th>
+                                  );
+                                })}
                               </tr>
                             </thead>
                             <tbody>
                               {fig.steps.map((step, idx) => (
                                 <tr key={idx}>
-                                  {innerHeaders.map((header) => (
-                                    <td key={header} className={header === 'Step' ? 'td-step' : ''}>
-                                      {renderCell(header, step[header])}
-                                    </td>
-                                  ))}
+                                  {innerHeaders.map((header) => {
+                                    let className = '';
+                                    if (header === 'Step') className = 'td-step';
+                                    else if (header.startsWith('Man ')) className = 'td-lead';
+                                    else if (header.startsWith('Lady ')) className = 'td-follow';
+                                    
+                                    return (
+                                      <td key={header} className={className}>
+                                        {renderCell(header, step[header])}
+                                      </td>
+                                    );
+                                  })}
                                 </tr>
                               ))}
                             </tbody>

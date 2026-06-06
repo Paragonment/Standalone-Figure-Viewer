@@ -6,6 +6,9 @@ interface ColumnToggleProps {
   visibleColumns: string[];
   setVisibleColumns: (cols: string[]) => void;
   toggleColumn: (column: string) => void;
+  filteredCount: number;
+  hasFilters: boolean;
+  onClearFilters: () => void;
 }
 
 const COMMON_COLUMNS = ['Dance', 'Figure Name', 'Step', 'General Notes'];
@@ -32,7 +35,10 @@ const ColumnToggle: React.FC<ColumnToggleProps> = ({
   columns,
   visibleColumns,
   setVisibleColumns,
-  toggleColumn
+  toggleColumn,
+  filteredCount,
+  hasFilters,
+  onClearFilters
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -105,12 +111,24 @@ const ColumnToggle: React.FC<ColumnToggleProps> = ({
           </div>
         </div>
 
+        <div className="preset-results-summary">
+          <span className="results-count-text">
+            Showing <strong>{filteredCount}</strong> figure{filteredCount === 1 ? '' : 's'}
+          </span>
+          {hasFilters && (
+            <button className="clear-filters-btn inline-clear" onClick={onClearFilters}>
+              Clear
+            </button>
+          )}
+        </div>
+
         <button
           className={`customize-toggle-btn ${isOpen ? 'open' : ''}`}
           onClick={() => setIsOpen(!isOpen)}
         >
           <span className="icon">⚙️</span>
-          <span>{isOpen ? 'Hide Column Settings' : 'Customize Columns'}</span>
+          <span className="btn-text-desktop">{isOpen ? 'Hide Column Settings' : 'Customize Columns'}</span>
+          <span className="btn-text-mobile">{isOpen ? 'Hide' : 'Columns'}</span>
           <span className="arrow">{isOpen ? '▲' : '▼'}</span>
         </button>
       </div>

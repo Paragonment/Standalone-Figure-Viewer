@@ -22,6 +22,10 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
   const [searchFocused, setSearchFocused] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
+  // Sidebar collapse states
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   // Initialize visible columns once data is loaded
   useEffect(() => {
     if (data.length > 0 && visibleColumns.length === 0) {
@@ -150,7 +154,15 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
   }
 
   return (
-    <div className="viewer-layout">
+    <div className={`viewer-layout ${sidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
+      {/* Mobile Sidebar Overlay Backdrop */}
+      {mobileMenuOpen && (
+        <div 
+          className="mobile-sidebar-backdrop" 
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
+
       <Sidebar 
         dances={dances}
         selectedDance={selectedDance}
@@ -160,12 +172,23 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
         setSelectedFigure={setSelectedFigure}
         theme={theme}
         toggleTheme={toggleTheme}
+        collapsed={sidebarCollapsed}
+        setCollapsed={setSidebarCollapsed}
+        mobileOpen={mobileMenuOpen}
+        setMobileOpen={setMobileMenuOpen}
       />
       
       <main className="main-content">
         <header className="viewer-header">
           <div className="title-area">
             <nav className="breadcrumbs" aria-label="Breadcrumb">
+              <button 
+                className="mobile-menu-toggle-btn"
+                onClick={() => setMobileMenuOpen(true)}
+                aria-label="Open navigation menu"
+              >
+                ☰
+              </button>
               <span className="breadcrumb-item linkable" onClick={() => { setSelectedDance(''); setSelectedFigure(''); }}>
                 Dances
               </span>
@@ -197,7 +220,10 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
           </div>
 
           <div className="header-actions">
-            <div className={`expandable-search-container ${searchFocused ? 'focused' : ''} ${searchTerm ? 'has-text' : ''}`}>
+            <div 
+              className={`expandable-search-container ${searchFocused ? 'focused' : ''} ${searchTerm ? 'has-text' : ''}`}
+              onClick={() => searchInputRef.current?.focus()}
+            >
               <span className="search-icon">🔍</span>
               <input
                 ref={searchInputRef}
@@ -210,7 +236,15 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
                 onBlur={() => setSearchFocused(false)}
               />
               {searchTerm && (
-                <button className="search-clear-btn" onClick={() => setSearchTerm('')}>×</button>
+                <button 
+                  className="search-clear-btn" 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSearchTerm('');
+                  }}
+                >
+                  ×
+                </button>
               )}
               {!searchFocused && !searchTerm && (
                 <span className="search-shortcut-hint">/</span>
@@ -225,25 +259,14 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
             visibleColumns={visibleColumns}
             setVisibleColumns={setVisibleColumns}
             toggleColumn={toggleColumn}
+            filteredCount={filteredFigures.length}
+            hasFilters={!!(selectedDance || selectedFigure || searchTerm)}
+            onClearFilters={() => {
+              setSelectedDance('');
+              setSelectedFigure('');
+              setSearchTerm('');
+            }}
           />
-
-          <div className="results-summary">
-            <span className="results-count-text">
-              Showing <strong>{filteredFigures.length}</strong> figure{filteredFigures.length === 1 ? '' : 's'}
-            </span>
-            {(selectedDance || selectedFigure || searchTerm) && (
-              <button 
-                className="clear-filters-btn"
-                onClick={() => {
-                  setSelectedDance('');
-                  setSelectedFigure('');
-                  setSearchTerm('');
-                }}
-              >
-                Clear Filters
-              </button>
-            )}
-          </div>
 
           <DanceTable 
             data={filteredFigures} 

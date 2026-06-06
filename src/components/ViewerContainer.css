@@ -15,6 +15,7 @@
   height: 100%;
   overflow: hidden; /* Prevent body overflow; interior scroll container handles it */
   padding: 24px 32px;
+  position: relative;
 }
 
 /* ==========================================================================
@@ -35,6 +36,7 @@
   flex-direction: column;
   gap: 6px;
   flex: 1;
+  padding-right: 240px;
 }
 
 /* Breadcrumbs style */
@@ -91,6 +93,10 @@
 }
 
 .header-actions {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  z-index: 50;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -277,23 +283,133 @@
 
 
 /* ==========================================================================
-   5. RESPONSIVE MEDIA QUERIES
+   5. MOBILE MENU & BACKDROP
+   ========================================================================== */
+.mobile-sidebar-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.mobile-menu-toggle-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 0;
+  margin-right: 12px;
+  line-height: 1;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.mobile-menu-toggle-btn:hover {
+  background-color: var(--row-hover);
+}
+
+
+/* ==========================================================================
+   6. RESPONSIVE MEDIA QUERIES
    ========================================================================== */
 @media (max-width: 900px) {
+  .mobile-menu-toggle-btn {
+    display: inline-flex;
+  }
+
   .main-content {
-    padding: 16px;
-    height: auto;
-    overflow: visible;
+    padding: 12px;
+    height: 100%;
+    overflow: hidden;
   }
 
   .viewer-header {
     flex-direction: column;
     align-items: stretch;
-    gap: 16px;
-    padding-bottom: 16px;
+    gap: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+  }
+
+  .title-area {
+    padding-right: 48px; /* Give room for the circular search button */
+  }
+
+  .title-area h1,
+  .title-area p {
+    display: none; /* Hide headings on mobile to maximize vertical space */
+  }
+
+  .header-actions {
+    top: 10px;
+    right: 12px;
+    z-index: 100;
   }
 
   .expandable-search-container {
-    width: 100% !important;
+    width: 38px !important;
+    height: 38px;
+    padding: 0 !important;
+    justify-content: center;
+    border-radius: 50% !important;
+    overflow: hidden;
+    border-color: var(--border-color);
+  }
+  
+  .expandable-search-container .search-input {
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: width 0.3s ease, opacity 0.2s ease;
+  }
+  
+  .expandable-search-container .search-icon {
+    margin-right: 0 !important;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  .expandable-search-container .search-shortcut-hint {
+    display: none !important;
+  }
+  
+  .expandable-search-container.focused,
+  .expandable-search-container.has-text {
+    width: 200px !important;
+    border-radius: 20px !important;
+    padding: 6px 12px !important;
+    justify-content: flex-start;
+    background-color: var(--container-bg);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .expandable-search-container.focused .search-input,
+  .expandable-search-container.has-text .search-input {
+    width: 100%;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .expandable-search-container.focused .search-icon,
+  .expandable-search-container.has-text .search-icon {
+    margin-right: 8px !important;
+  }
+
+  .table-container {
+    max-height: calc(100vh - 215px); /* Increased from 365px now that headings are hidden! */
   }
 }

@@ -7,7 +7,12 @@
   border-right: 1px solid var(--border-color);
   user-select: none;
   z-index: 100;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease, width 0.3s cubic-bezier(0.4, 0, 0.2, 1), min-width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-container.collapsed {
+  width: 68px;
+  min-width: 68px;
 }
 
 /* ==========================================================================
@@ -161,6 +166,26 @@
   flex-direction: column;
   height: 100%;
   overflow: hidden;
+  transition: opacity 0.2s ease, width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-container.collapsed .sidebar-explorer {
+  opacity: 0;
+  width: 0;
+  min-width: 0;
+  pointer-events: none;
+  border: none;
+  padding: 0;
+}
+
+.mobile-close-btn {
+  display: none;
+}
+
+.explorer-actions-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .explorer-header {
@@ -394,41 +419,89 @@
 /* Responsive adjustment */
 @media (max-width: 900px) {
   .sidebar-container {
-    width: 100%;
-    height: auto;
-    flex-direction: column;
-    border-right: none;
-    border-bottom: 1px solid var(--border-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    min-width: 300px;
+    height: 100vh;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+    flex-direction: row;
+    border-right: 1px solid var(--border-color);
+    box-shadow: none;
   }
 
+  .sidebar-container.mobile-open {
+    transform: translateX(0);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Ensure the explorer is always visible inside the mobile drawer, ignoring collapsed state */
+  .sidebar-container.collapsed .sidebar-explorer,
+  .sidebar-explorer {
+    opacity: 1 !important;
+    width: 232px !important;
+    min-width: 232px !important;
+    pointer-events: auto !important;
+  }
+
+  /* Keep rail vertical on mobile inside drawer */
   .sidebar-rail {
-    width: 100%;
-    height: 56px;
-    flex-direction: row;
-    padding: 0 16px;
-    justify-content: flex-start;
+    width: 68px;
+    height: 100%;
+    flex-direction: column;
+    padding: 16px 0;
+    justify-content: space-between;
+    border-right: 1px solid var(--border-color);
   }
 
   .rail-top, .rail-middle, .rail-bottom {
-    flex-direction: row;
-    width: auto;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
   }
 
   .rail-divider {
-    width: 2px;
-    height: 24px;
-    margin: 0 10px;
+    width: 32px;
+    height: 2px;
+    margin: 6px 0;
   }
 
-  .rail-btn.active::before {
+  /* Hide the desktop collapse button on mobile */
+  .sidebar-rail .collapse-toggle-btn {
     display: none;
   }
 
-  .sidebar-explorer {
-    max-height: 300px;
+  .rail-btn.active::before {
+    display: block;
+    left: -12px;
+    top: 12px;
+    width: 4px;
+    height: 20px;
   }
 
-  .figures-list {
-    max-height: 150px;
+  /* Show close button on mobile, hide on desktop */
+  .mobile-close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 8px;
+    transition: color 0.2s;
+  }
+
+  .mobile-close-btn:hover {
+    color: var(--text-primary);
+  }
+
+  .explorer-header h2 {
+    font-size: 1.15rem;
   }
 }

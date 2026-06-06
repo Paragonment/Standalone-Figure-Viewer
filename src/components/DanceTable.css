@@ -215,6 +215,31 @@
   max-width: 250px;
 }
 
+/* Sticky Step Column for horizontal scrolling */
+.th-step, .td-step {
+  position: sticky;
+  left: 0;
+  z-index: 5;
+  background-color: var(--container-bg);
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+  width: 60px;
+  min-width: 60px !important;
+  max-width: 60px !important;
+  text-align: center;
+}
+
+.nested-steps-table th.th-step {
+  background-color: var(--row-hover);
+}
+
+.nested-steps-table tr:nth-child(even) td.td-step {
+  background-color: var(--row-zebra);
+}
+
+.nested-steps-table tr:hover td.td-step {
+  background-color: var(--row-hover);
+}
+
 .nested-steps-table tr:last-child td {
   border-bottom: none;
 }
@@ -385,9 +410,83 @@
   line-height: 1.5;
 }
 
+/* Lead / Follow Column Color Tinting */
+.th-lead {
+  border-bottom: 2px solid var(--lead-color) !important;
+  color: var(--lead-color) !important;
+}
+
+.td-lead {
+  background-color: var(--lead-light) !important;
+}
+
+.nested-steps-table tr:nth-child(even) td.td-lead {
+  background-color: rgba(16, 185, 129, 0.05) !important;
+}
+
+.th-follow {
+  border-bottom: 2px solid var(--follow-color) !important;
+  color: var(--follow-color) !important;
+}
+
+.td-follow {
+  background-color: var(--follow-light) !important;
+}
+
+.nested-steps-table tr:nth-child(even) td.td-follow {
+  background-color: rgba(236, 72, 153, 0.05) !important;
+}
+
+.header-text-mobile {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .dropdown-details-wrapper {
-    padding: 12px;
+    padding: 12px 12px 16px 12px;
     border-left-width: 3px;
+  }
+
+  .header-text-desktop {
+    display: none;
+  }
+
+  .header-text-mobile {
+    display: inline;
+  }
+
+  .dance-table {
+    font-size: 0.8rem;
+  }
+
+  .dance-table th, .dance-table td {
+    padding: 10px 12px;
+  }
+
+  .nested-steps-table {
+    font-size: 0.78rem;
+  }
+
+  .nested-steps-table th, .nested-steps-table td {
+    padding: 8px 10px;
+    min-width: 80px;
+    max-width: 180px;
+  }
+
+  .th-step, .td-step {
+    width: 44px;
+    min-width: 44px !important;
+    max-width: 44px !important;
+  }
+
+  .step-badge {
+    width: 20px;
+    height: 20px;
+    font-size: 0.75rem;
+  }
+
+  .footwork-pill, .sway-pill, .cbm-pill {
+    font-size: 0.7rem;
+    padding: 2px 4px;
   }
 }

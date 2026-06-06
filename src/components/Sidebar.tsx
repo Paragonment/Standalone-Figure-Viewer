@@ -10,6 +10,10 @@ interface SidebarProps {
   setSelectedFigure: (figure: string) => void;
   theme: 'light' | 'dark';
   toggleTheme: () => void;
+  collapsed: boolean;
+  setCollapsed: (collapsed: boolean) => void;
+  mobileOpen: boolean;
+  setMobileOpen: (open: boolean) => void;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({
@@ -21,6 +25,10 @@ const Sidebar: React.FC<SidebarProps> = ({
   setSelectedFigure,
   theme,
   toggleTheme,
+  collapsed,
+  setCollapsed,
+  mobileOpen,
+  setMobileOpen,
 }) => {
   const [standardExpanded, setStandardExpanded] = useState(true);
   const [figuresExpanded, setFiguresExpanded] = useState(true);
@@ -44,11 +52,11 @@ const Sidebar: React.FC<SidebarProps> = ({
   };
 
   return (
-    <aside className="sidebar-container">
+    <aside className={`sidebar-container ${collapsed ? 'collapsed' : ''} ${mobileOpen ? 'mobile-open' : ''}`}>
       {/* Pane 1: Sidebar Rail */}
       <div className="sidebar-rail">
         <div className="rail-top">
-          <div className="logo-badge" title="RoutineBuilder Logo">
+          <div className="logo-badge" title="RoutineBuilder Logo" onClick={() => setCollapsed(!collapsed)}>
             <span className="logo-icon">💃</span>
           </div>
         </div>
@@ -56,7 +64,12 @@ const Sidebar: React.FC<SidebarProps> = ({
         <div className="rail-middle">
           <button 
             className={`rail-btn ${selectedDance === '' ? 'active' : ''}`} 
-            onClick={() => { setSelectedDance(''); setSelectedFigure(''); setFigureSearch(''); }}
+            onClick={() => { 
+              setSelectedDance(''); 
+              setSelectedFigure(''); 
+              setFigureSearch(''); 
+              if (collapsed) setCollapsed(false);
+            }}
             title="All Dances"
           >
             <span className="rail-btn-icon">🌐</span>
@@ -69,7 +82,12 @@ const Sidebar: React.FC<SidebarProps> = ({
             <button
               key={dance}
               className={`rail-btn ${selectedDance === dance ? 'active' : ''}`}
-              onClick={() => { setSelectedDance(dance); setSelectedFigure(''); setFigureSearch(''); }}
+              onClick={() => { 
+                setSelectedDance(dance); 
+                setSelectedFigure(''); 
+                setFigureSearch(''); 
+                if (collapsed) setCollapsed(false);
+              }}
               title={dance}
             >
               <span className="rail-btn-initial">{dance[0]}</span>
@@ -79,7 +97,17 @@ const Sidebar: React.FC<SidebarProps> = ({
         </div>
 
         <div className="rail-bottom">
+          <button
+            className="rail-btn collapse-toggle-btn"
+            onClick={() => setCollapsed(!collapsed)}
+            title={collapsed ? 'Expand Sidebar' : 'Collapse Sidebar'}
+          >
+            <span className="rail-btn-icon">{collapsed ? '▶' : '◀'}</span>
+            <span className="rail-tooltip">{collapsed ? 'Expand Sidebar' : 'Collapse Sidebar'}</span>
+          </button>
+          
           <div className="rail-divider" />
+
           <button 
             className="rail-btn theme-btn" 
             onClick={toggleTheme}
@@ -95,14 +123,23 @@ const Sidebar: React.FC<SidebarProps> = ({
       <div className="sidebar-explorer">
         <div className="explorer-header">
           <h2>Explorer</h2>
-          {selectedDance && (
+          <div className="explorer-actions-wrapper">
+            {selectedDance && (
+              <button 
+                className="explorer-reset-btn"
+                onClick={() => { setSelectedDance(''); setSelectedFigure(''); setFigureSearch(''); }}
+              >
+                Clear
+              </button>
+            )}
             <button 
-              className="explorer-reset-btn"
-              onClick={() => { setSelectedDance(''); setSelectedFigure(''); setFigureSearch(''); }}
+              className="mobile-close-btn"
+              onClick={() => setMobileOpen(false)}
+              aria-label="Close navigation panel"
             >
-              Clear
+              ✕
             </button>
-          )}
+          </div>
         </div>
 
         <div className="explorer-content">
@@ -119,7 +156,12 @@ const Sidebar: React.FC<SidebarProps> = ({
               <ul className="explorer-list">
                 <li
                   className={`explorer-item ${selectedDance === '' ? 'active' : ''}`}
-                  onClick={() => { setSelectedDance(''); setSelectedFigure(''); setFigureSearch(''); }}
+                  onClick={() => { 
+                    setSelectedDance(''); 
+                    setSelectedFigure(''); 
+                    setFigureSearch(''); 
+                    setMobileOpen(false); // Close drawer on selection on mobile
+                  }}
                 >
                   <span className="item-icon">🌐</span>
                   <span className="item-name">All Standard</span>
@@ -128,7 +170,12 @@ const Sidebar: React.FC<SidebarProps> = ({
                   <li
                     key={dance}
                     className={`explorer-item ${selectedDance === dance ? 'active' : ''}`}
-                    onClick={() => { setSelectedDance(dance); setSelectedFigure(''); setFigureSearch(''); }}
+                    onClick={() => { 
+                      setSelectedDance(dance); 
+                      setSelectedFigure(''); 
+                      setFigureSearch(''); 
+                      setMobileOpen(false); // Close drawer on selection on mobile
+                    }}
                   >
                     <span className="item-icon">{getDanceEmoji(dance)}</span>
                     <span className="item-name">{dance}</span>
@@ -175,7 +222,10 @@ const Sidebar: React.FC<SidebarProps> = ({
                   <ul className="explorer-list figures-list">
                     <li
                       className={`explorer-item ${selectedFigure === '' ? 'active' : ''}`}
-                      onClick={() => setSelectedFigure('')}
+                      onClick={() => { 
+                        setSelectedFigure('');
+                        setMobileOpen(false); // Close drawer on selection on mobile
+                      }}
                     >
                       <span className="item-icon">📄</span>
                       <span className="item-name">All Figures</span>
@@ -184,7 +234,10 @@ const Sidebar: React.FC<SidebarProps> = ({
                       <li
                         key={figure}
                         className={`explorer-item ${selectedFigure === figure ? 'active' : ''}`}
-                        onClick={() => setSelectedFigure(figure)}
+                        onClick={() => { 
+                          setSelectedFigure(figure);
+                          setMobileOpen(false); // Close drawer on selection on mobile
+                        }}
                         title={figure}
                       >
                         <span className="item-icon">🩰</span>
@@ -210,3 +263,5 @@ const Sidebar: React.FC<SidebarProps> = ({
 };
 
 export default Sidebar;
+
+

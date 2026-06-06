@@ -13,10 +13,14 @@
 /* Preset Row & Segmented Control */
 .preset-row {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 16px;
+}
+
+.btn-text-mobile {
+  display: none;
 }
 
 .preset-group {
@@ -83,6 +87,43 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
+
+.preset-results-summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.results-count-text {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.results-count-text strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.clear-filters-btn.inline-clear {
+  background: none;
+  border: 1px solid var(--border-color);
+  background-color: var(--container-bg);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: var(--shadow);
+}
+
+.clear-filters-btn.inline-clear:hover {
+  background-color: var(--row-hover);
+  color: var(--text-primary);
+  border-color: var(--text-muted);
+}
+
 
 /* Customize Toggle Button */
 .customize-toggle-btn {
@@ -256,11 +297,33 @@
   }
   
   .preset-row {
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .preset-label {
+    display: none; /* Hide label on very small screens to save space */
+  }
+
+  .btn-text-desktop {
+    display: none;
+  }
+
+  .btn-text-mobile {
+    display: inline;
   }
   
   .customize-toggle-btn {
     justify-content: center;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .preset-btn {
+    padding: 6px 10px;
+    font-size: 0.8rem;
   }
 }

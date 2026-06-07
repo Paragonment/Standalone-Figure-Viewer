@@ -1,511 +1,511 @@
 Dance,Figure Name,Step,Man Feet Positions,Man Alignment,Man Amount of Turn,Man Rise and Fall,Man Footwork,Man CBM,Man Sway,Lady Feet Positions,Lady Alignment,Lady Amount of Turn,Lady Rise and Fall,Lady Footwork,Lady CBM,Lady Sway,General Notes
 Quickstep,Quarter Turn to R,1,RF fwd,Facing DW,Com to turn R 1/8 between 1-2,Com to rise e/o 1,HT,true,S,LF back,Backing DW,Com to turn R 1/4 between 1-2 Body turns less,Com to rise e/o 1 NFR,TH,true,S,Note. If commenced facing LOD turn 1/4 between 1-2 and 1/8 between 2-3.
-Quickstep,Quarter Turn to R,2,LF to side,Backing centre,1/8 between 2-3,Cont to rise on 2 and 3,T,false,R,RF to side,Pointing DC,Nil,Cont to rise on 2 and 3,T,false,L
-Quickstep,Quarter Turn to R,3,RF closes to LF,Backing DC,Nil,Up. Lower e/o 4,T,false,R,LF closes to RF,Facing DC,Slight body turn,Nil,T,false,L
-Quickstep,Quarter Turn to R,4,LF to side and slightly back,Backing DC,Nil,,TH,false,S,RF diag fwd,Facing DC,Nil,Up. Lower e/o 4,TH,false,S
+Quickstep,Quarter Turn to R,2,LF to side,Backing centre,1/8 between 2-3,Cont to rise on 2 and 3,T,false,R,RF to side,Pointing DC,Nil,Cont to rise on 2 and 3,T,false,L,
+Quickstep,Quarter Turn to R,3,RF closes to LF,Backing DC,Nil,Up. Lower e/o 4,T,false,R,LF closes to RF,Facing DC,Slight body turn,Nil,T,false,L,
+Quickstep,Quarter Turn to R,4,LF to side and slightly back,Backing DC,Nil,,TH,false,S,RF diag fwd,Facing DC,Nil,Up. Lower e/o 4,TH,false,S,
 Quickstep,Natural Turn,1,RF fwd,Facing DW,Com to turn R 1/4 between 1-2,Rise e/o 1,HT,true,S,LF back,Backing DW,Com to turn R 3/8 between 1-2 Body turns less,Rise e/o 1 NFR,TH,true,S,Note. The Heel Pull may be underturned to end facing new LOD.
-Quickstep,Natural Turn,2,LF to side,Backing DC,1/8 between 2-3,Up,T,false,R,RF to side,Pointing to LOD,Body completes turn,Up,T,false,L
-Quickstep,Natural Turn,3,RF closes to LF,Backing LOD,Nil,Up. Lower e/o 3,TH,false,R,LF closes to RF,Facing LOD,Nil,Up. Lower e/o 3,TH,false,L
-Quickstep,Natural Turn,4,LF back,Backing LOD,Com to turn R 3/8 between 4-5,,TH,true,S,RF fwd,Facing LOD,Com to turn R 1/4 between 4-5,,HT,true,S
-Quickstep,Natural Turn,5,RF to side small step (Heel Pull),Facing DW of new LOD,,,H IE whole foot,false,S,LF to side,Backing new LOD,,TH,false,S
-Quickstep,Natural Turn,6,LF fwd,Facing DW,,,H,true,S,RF back,Backing DW,1/8 between 5-6,,T,true,S
+Quickstep,Natural Turn,2,LF to side,Backing DC,1/8 between 2-3,Up,T,false,R,RF to side,Pointing to LOD,Body completes turn,Up,T,false,L,
+Quickstep,Natural Turn,3,RF closes to LF,Backing LOD,Nil,Up. Lower e/o 3,TH,false,R,LF closes to RF,Facing LOD,Nil,Up. Lower e/o 3,TH,false,L,
+Quickstep,Natural Turn,4,LF back,Backing LOD,Com to turn R 3/8 between 4-5,,TH,true,S,RF fwd,Facing LOD,Com to turn R 1/4 between 4-5,,HT,true,S,
+Quickstep,Natural Turn,5,RF to side small step (Heel Pull),Facing DW of new LOD,,,H IE whole foot,false,S,LF to side,Backing new LOD,,,TH,false,S,
+Quickstep,Natural Turn,6,LF fwd,Facing DW,,,H,true,S,RF back,Backing DW,1/8 between 5-6,,T,true,S,
 Quickstep,Natural Pivot Turn,1,RF fwd,Facing DW,Com to turn R 1/4 between 1-2,Rise e/o 1,HT,true,S,LF back,Backing DW,Com to turn R 3/8 between 1-2 Body turns less,Rise e/o 1 NFR,TH,true,S,Note. 1/2 is the maximum turn on a pivot. Footwork: Although step 4 is THT the Heel is in contact with the floor.
-Quickstep,Natural Pivot Turn,2,LF to side,Backing DC,1/8 between 2-3,Up,T,false,R,RF to side,Pointing to LOD,Body completes turn,Up,T,false,L
-Quickstep,Natural Pivot Turn,3,RF closes to LF,Backing LOD,Nil,Up. Lower e/o 3,TH,false,R,LF closes to RF,Facing LOD,Nil,Up. Lower e/o 3,TH,false,L
-Quickstep,Natural Pivot Turn,4,LF back (RF held in CBMP),Down LOD toe turned in,Up to 1/2 to R on 4 (Pivot),,THT,true,S,RF fwd,Facing LOD,Up to 1/2 to R on 4 (Pivoting action),,HTH,true,S
+Quickstep,Natural Pivot Turn,2,LF to side,Backing DC,1/8 between 2-3,Up,T,false,R,RF to side,Pointing to LOD,Body completes turn,Up,T,false,L,
+Quickstep,Natural Pivot Turn,3,RF closes to LF,Backing LOD,Nil,Up. Lower e/o 3,TH,false,R,LF closes to RF,Facing LOD,Nil,Up. Lower e/o 3,TH,false,L,
+Quickstep,Natural Pivot Turn,4,LF back (RF held in CBMP),Down LOD toe turned in,Up to 1/2 to R on 4 (Pivot),,THT,true,S,RF fwd,Facing LOD,Up to 1/2 to R on 4 (Pivoting action),,HTH,true,S,
 Quickstep,Progressive Chasse,1,RF back,Backing DC,Com to turn L 1/4 between 1-2,Com to rise e/o 1 NFR,TH,true,Nil,LF fwd,Facing DC,Com to turn L 1/8 between 1-2,Com to rise e/o 1,HT,true,Nil,Note. If commenced backing LOD turns between 1-2 (Body turns less).
-Quickstep,Progressive Chasse,2,LF to side,Pointing DW,Body turns less,Cont to rise on 2 and 3,T,false,Nil,RF to side,Backing wall,1/8 between 2-3 Body turns less,Cont to rise on 2 and 3,T,false,Nil
-Quickstep,Progressive Chasse,3,RF closes to LF,Facing DW,Slight body turn,Up. Lower e/o 4,T,false,Nil,LF closes to RF,Backing DW,Nil,Up. Lower e/o 4,T,false,Nil
-Quickstep,Progressive Chasse,4,LF to side and slightly fwd,Facing DW,Nil,,TH,false,Nil,RF to side and slightly back,Backing DW,Nil,,TH,false,Nil
-Quickstep,Progressive Chasse,5,RF fwd in CBMP OP,Facing DW,Nil,,H,true,Nil,LF back in CBMP,Backing DW,Nil,,T,true,Nil
-Quickstep,Chasse Reverse Turn,1,LF fwd,Facing DC,Com to turn L 1/4 between 1-2,Rise e/o 1,HT,true,L,RF back,Backing DC,Com to turn L 3/8 between 1-2 Body turns less,Rise e/o 1 NFR,TH,true,R
-Quickstep,Chasse Reverse Turn,2,RF to side,Backing DW,1/8 between 2-3,Up,T,false,L,LF to side,Pointing to LOD,Body completes turn,Up,T,false,R
-Quickstep,Chasse Reverse Turn,3,LF closes to RF,Backing LOD,Nil,Up. Lower e/o 3,TH,false,L,RF closes to LF,Facing LOD,Nil,Up. Lower e/o 3,TH,false,R
-Quickstep,Forward Lock,1,RF fwd in CBMP OP,Facing DW,Nil,Com to rise e/o 1,HT,true,Nil,LF back in CBMP,Backing DW,Nil,Rise e/o 1 NFR,TH,true,Nil
-Quickstep,Forward Lock,2,LF diag fwd,Facing DW,Nil,Cont to rise on 2 and 3,T,false,Nil,RF diag back,Backing DW,Nil,Up,T,false,Nil
-Quickstep,Forward Lock,3,RF crosses behind LF,Facing DW,Nil,Up. Lower e/o 4,T,false,Nil,LF closes to RF,Backing DW,Nil,Up. Lower e/o 3,T,false,Nil
-Quickstep,Forward Lock,4,LF diag fwd,Facing DW,Nil,,TH,false,Nil,LF back in CBMP,Backing DW,Nil,,TH,false,Nil
-Quickstep,Forward Lock,5,RF fwd in CBMP OP,Facing DW,Nil,,H,true,Nil,RF back,Backing DW,Nil,,T,true,Nil
+Quickstep,Progressive Chasse,2,LF to side,Pointing DW,Body turns less,Cont to rise on 2 and 3,T,false,Nil,RF to side,Backing wall,1/8 between 2-3 Body turns less,Cont to rise on 2 and 3,T,false,Nil,
+Quickstep,Progressive Chasse,3,RF closes to LF,Facing DW,Slight body turn,Up. Lower e/o 4,T,false,Nil,LF closes to RF,Backing DW,Nil,Up. Lower e/o 4,T,false,Nil,
+Quickstep,Progressive Chasse,4,LF to side and slightly fwd,Facing DW,Nil,,TH,false,Nil,RF to side and slightly back,Backing DW,Nil,,TH,false,Nil,
+Quickstep,Progressive Chasse,5,RF fwd in CBMP OP,Facing DW,Nil,,H,true,Nil,LF back in CBMP,Backing DW,Nil,,T,true,Nil,
+Quickstep,Chasse Reverse Turn,1,LF fwd,Facing DC,Com to turn L 1/4 between 1-2,Rise e/o 1,HT,true,L,RF back,Backing DC,Com to turn L 3/8 between 1-2 Body turns less,Rise e/o 1 NFR,TH,true,R,
+Quickstep,Chasse Reverse Turn,2,RF to side,Backing DW,1/8 between 2-3,Up,T,false,L,LF to side,Pointing to LOD,Body completes turn,Up,T,false,R,
+Quickstep,Chasse Reverse Turn,3,LF closes to RF,Backing LOD,Nil,Up. Lower e/o 3,TH,false,L,RF closes to LF,Facing LOD,Nil,Up. Lower e/o 3,TH,false,R,
+Quickstep,Forward Lock,1,RF fwd in CBMP OP,Facing DW,Nil,Com to rise e/o 1,HT,true,Nil,LF back in CBMP,Backing DW,Nil,Rise e/o 1 NFR,TH,true,Nil,
+Quickstep,Forward Lock,2,LF diag fwd,Facing DW,Nil,Cont to rise on 2 and 3,T,false,Nil,RF diag back,Backing DW,Nil,Up,T,false,Nil,
+Quickstep,Forward Lock,3,RF crosses behind LF,Facing DW,Nil,Up. Lower e/o 4,T,false,Nil,LF closes to RF,Backing DW,Nil,Up. Lower e/o 3,T,false,Nil,
+Quickstep,Forward Lock,4,LF diag fwd,Facing DW,Nil,,TH,false,Nil,LF back in CBMP,Backing DW,Nil,,TH,false,Nil,
+Quickstep,Forward Lock,5,RF fwd in CBMP OP,Facing DW,Nil,,H,true,Nil,RF back,Backing DW,Nil,,T,true,Nil,
 Quickstep,Back Lock,1,LF back in CBMP,Backing DW,Nil,Com to rise e/o 1 NFR,TH,true,Nil,RF fwd in CBMP OP,Facing DW,Nil,Com to rise e/o 1,HT,true,Nil,Note. The Man (but not Lady) may use Foot Rise on step 1.
-Quickstep,Back Lock,2,RF back,Backing DW,Nil,Cont to rise on 2 and 3,T,false,Nil,LF diag fwd,Facing DW,Nil,Cont to rise on 2 and 3,T,false,Nil
-Quickstep,Back Lock,3,LF crosses in front of RF,Backing DW,Nil,Up. Lower e/o 4,T,false,Nil,RF crosses behind LF,Facing DW,Nil,Up. Lower e/o 4,T,false,Nil
-Quickstep,Back Lock,4,RF diag back,Backing DW,Nil,,TH,false,Nil,LF diag fwd,Facing DW,Nil,,TH,false,Nil
-Quickstep,Back Lock,5,LF back in CBMP,Backing DW,Nil,,T,true,Nil,RF fwd in CBMP OP,Facing DW,Nil,,H,true,Nil
+Quickstep,Back Lock,2,RF back,Backing DW,Nil,Cont to rise on 2 and 3,T,false,Nil,LF diag fwd,Facing DW,Nil,Cont to rise on 2 and 3,T,false,Nil,
+Quickstep,Back Lock,3,LF crosses in front of RF,Backing DW,Nil,Up. Lower e/o 4,T,false,Nil,RF crosses behind LF,Facing DW,Nil,Up. Lower e/o 4,T,false,Nil,
+Quickstep,Back Lock,4,RF diag back,Backing DW,Nil,,TH,false,Nil,LF diag fwd,Facing DW,Nil,,TH,false,Nil,
+Quickstep,Back Lock,5,LF back in CBMP,Backing DW,Nil,,T,true,Nil,RF fwd in CBMP OP,Facing DW,Nil,,H,true,Nil,
 Quickstep,Tipple Chasse to Right (At Corner),1,LF back,Backing LOD,Com to turn R 1/4 between 1-2,Com to rise e/o 1 NFR,TH,true,Nil,RF fwd in CBMP OP,Facing DW,Com to turn R 1/4 between 1-2,Com to rise e/o 1,HT,true,Nil,Note. Less turn may be made on step 4 to end facing new LOD.
-Quickstep,Tipple Chasse to Right (At Corner),2,RF to side,Facing new LOD,Nil,Cont to rise on 2 and 3,T,false,Nil,LF to side,Backing DC,1/8 between 2-3,Cont to rise on 2 and 3,T,false,Nil
-Quickstep,Tipple Chasse to Right (At Corner),3,LF closes to RF,Facing LOD,Nil,Up,T,false,Nil,RF closes to LF,Backing LOD,Nil,Up,T,false,Nil
-Quickstep,Tipple Chasse to Right (At Corner),4,RF to side and slightly fwd,Facing DW,1/8 between 3-4,Up,T,false,Nil,LF to side and slightly back,Backing DW,1/8 between 3-4,Up,T,false,Nil
-Quickstep,Tipple Chasse to Right (At Corner),5,LF diag fwd L side leading,Facing DW,Nil,Up,T,false,Nil,RF back R side leading,Backing DW,Nil,Up,T,false,Nil
-Quickstep,Tipple Chasse to Right (At Corner),6,RF crosses behind LF,Facing DW,Nil,Up,T,false,Nil,LF crosses in front of RF,Backing DW,Nil,Up,T,false,Nil
-Quickstep,Tipple Chasse to Right (At Corner),7,LF diag fwd preparing step OP,Facing DW,Nil,Up. Lower e/o 7,TH,false,Nil,RF diag back,Backing DW,Nil,Up. Lower e/o 7,TH,false,Nil
-Quickstep,Tipple Chasse to Right (At Corner),8,RF fwd in CBMP OP,Facing DW,Nil,,H,true,Nil,LF back in CBMP,Backing DW,Nil,,T,true,Nil
+Quickstep,Tipple Chasse to Right (At Corner),2,RF to side,Facing new LOD,Nil,Cont to rise on 2 and 3,T,false,Nil,LF to side,Backing DC,1/8 between 2-3,Cont to rise on 2 and 3,T,false,Nil,
+Quickstep,Tipple Chasse to Right (At Corner),3,LF closes to RF,Facing LOD,Nil,Up,T,false,Nil,RF closes to LF,Backing LOD,Nil,Up,T,false,Nil,
+Quickstep,Tipple Chasse to Right (At Corner),4,RF to side and slightly fwd,Facing DW,1/8 between 3-4,Up,T,false,Nil,LF to side and slightly back,Backing DW,1/8 between 3-4,Up,T,false,Nil,
+Quickstep,Tipple Chasse to Right (At Corner),5,LF diag fwd L side leading,Facing DW,Nil,Up,T,false,Nil,RF back R side leading,Backing DW,Nil,Up,T,false,Nil,
+Quickstep,Tipple Chasse to Right (At Corner),6,RF crosses behind LF,Facing DW,Nil,Up,T,false,Nil,LF crosses in front of RF,Backing DW,Nil,Up,T,false,Nil,
+Quickstep,Tipple Chasse to Right (At Corner),7,LF diag fwd preparing step OP,Facing DW,Nil,Up. Lower e/o 7,TH,false,Nil,RF diag back,Backing DW,Nil,Up. Lower e/o 7,TH,false,Nil,
+Quickstep,Tipple Chasse to Right (At Corner),8,RF fwd in CBMP OP,Facing DW,Nil,,H,true,Nil,LF back in CBMP,Backing DW,Nil,,T,true,Nil,
 Quickstep,Running Finish,1,LF back in CBMP,Backing DW,Com to turn R 3/8 between 1-2 Body turns less,Rise e/o 1,T,true,L,RF fwd in CBMP OP,Facing DW,Com to turn R 3/8 between 1-2 Body turns less,Rise e/o 1,HT,true,R,Note. Man may turn 1/4 between 1-2 to use facing alignment.
-Quickstep,Running Finish,2,RF to side and slightly fwd,Pointing to LOD,Body turn to R,Up,T,false,L,LF to side,Backing DW,Body completes turn,Up,T,false,R
-Quickstep,Running Finish,3,LF fwd preparing step OP L side leading,Facing LOD,Nil,Up. Lower e/o 3,TH,false,S,LF closes to RF,Backing LOD,Nil,Up. Lower e/o 3,TH,false,S
-Quickstep,Running Finish,4,RF fwd in CBMP OP,Facing LOD,Nil,,H,true,S,RF diag back,Facing LOD,Nil,,T,true,S
+Quickstep,Running Finish,2,RF to side and slightly fwd,Pointing to LOD,Body turn to R,Up,T,false,L,LF to side,Backing DW,Body completes turn,Up,T,false,R,
+Quickstep,Running Finish,3,LF fwd preparing step OP L side leading,Facing LOD,Nil,Up. Lower e/o 3,TH,false,S,LF closes to RF,Backing LOD,Nil,Up. Lower e/o 3,TH,false,S,
+Quickstep,Running Finish,4,RF fwd in CBMP OP,Facing LOD,Nil,,H,true,S,RF diag back,Facing LOD,Nil,,T,true,S,
 Quickstep,Natural Turn and Back Lock,1,RF fwd,Facing DW,Com to turn R 1/4 between 1-2,Rise e/o 1,HT,true,R,LF back,Backing DW,Com to turn R 3/8 between 1-2 Body turns less,Rise e/o 1 NFR,TH,true,L,Note. On step 7 the R side retains its position from step 5.
-Quickstep,Natural Turn and Back Lock,2,LF to side,Backing DC,1/8 between 2-3,Up,T,false,R,RF to side,Pointing to LOD,Body completes turn,Up,T,false,L
-Quickstep,Natural Turn and Back Lock,3,RF closes to LF,Backing LOD,Nil,Up. Lower e/o 3,TH,false,R,LF closes to RF,Facing LOD,Nil,Up. Lower e/o 3,TH,false,L
-Quickstep,Natural Turn and Back Lock,4,LF back,Backing LOD,Nil,Com to rise e/o 4 NFR,TH,true,S,RF fwd,Facing LOD,Nil,Com to rise e/o 4,HT,true,S
-Quickstep,Natural Turn and Back Lock,5,RF back R side leading,Backing LOD,Nil,Cont to rise on 5 and 6,T,false,S,LF fwd L side leading,Facing LOD,Nil,Cont to rise on 5 and 6,T,false,S
-Quickstep,Natural Turn and Back Lock,6,LF crosses in front of RF,Backing LOD,Nil,Up,T,false,S,RF crosses behind LF,Facing LOD,Nil,Up,T,false,S
-Quickstep,Natural Turn and Back Lock,7,RF diag back,Backing LOD,Nil,Up. Lower e/o 7,TH,false,S,LF diag fwd preparing step OP,Facing LOD,Nil,Up. Lower e/o 7,TH,false,S
-Quickstep,Natural Turn and Back Lock,8,LF back in CBMP,Backing LOD,Nil,,T,true,S,RF fwd in CBMP OP,Facing LOD,Nil,,H,true,S
+Quickstep,Natural Turn and Back Lock,2,LF to side,Backing DC,1/8 between 2-3,Up,T,false,R,RF to side,Pointing to LOD,Body completes turn,Up,T,false,L,
+Quickstep,Natural Turn and Back Lock,3,RF closes to LF,Backing LOD,Nil,Up. Lower e/o 3,TH,false,R,LF closes to RF,Facing LOD,Nil,Up. Lower e/o 3,TH,false,L,
+Quickstep,Natural Turn and Back Lock,4,LF back,Backing LOD,Nil,Com to rise e/o 4 NFR,TH,true,S,RF fwd,Facing LOD,Nil,Com to rise e/o 4,HT,true,S,
+Quickstep,Natural Turn and Back Lock,5,RF back R side leading,Backing LOD,Nil,Cont to rise on 5 and 6,T,false,S,LF fwd L side leading,Facing LOD,Nil,Cont to rise on 5 and 6,T,false,S,
+Quickstep,Natural Turn and Back Lock,6,LF crosses in front of RF,Backing LOD,Nil,Up,T,false,S,RF crosses behind LF,Facing LOD,Nil,Up,T,false,S,
+Quickstep,Natural Turn and Back Lock,7,RF diag back,Backing LOD,Nil,Up. Lower e/o 7,TH,false,S,LF diag fwd preparing step OP,Facing LOD,Nil,Up. Lower e/o 7,TH,false,S,
+Quickstep,Natural Turn and Back Lock,8,LF back in CBMP,Backing LOD,Nil,,T,true,S,RF fwd in CBMP OP,Facing LOD,Nil,,H,true,S,
 Quickstep,Quick Open Reverse,1,LF fwd,Facing LOD,Com to turn L 3/8 between 1-2,Rise e/o 1,HT,true,L,RF back,Backing LOD,Com to turn L 1/2 between 1-2 Body turns less,Rise e/o 1 NFR,TH,true,R,Note. If commenced DC turn 1/4 between 1-2.
-Quickstep,Quick Open Reverse,2,RF to side,Backing DW,1/8 between 2-3,Up,T,false,L,LF to side and slightly fwd,Pointing to LOD,Slight body turn,Up,T,false,R
-Quickstep,Quick Open Reverse,3,LF back in CBMP,Backing LOD,Nil,Up. Lower e/o 3,TH,false,S,RF fwd in CBMP OP,Facing LOD,Nil,Up. Lower e/o 3,TH,false,S
-Quickstep,Quick Open Reverse,4,RF back,Backing LOD,Nil,,T,true,S,LF fwd,Facing LOD,Nil,,H,true,S
+Quickstep,Quick Open Reverse,2,RF to side,Backing DW,1/8 between 2-3,Up,T,false,L,LF to side and slightly fwd,Pointing to LOD,Slight body turn,Up,T,false,R,
+Quickstep,Quick Open Reverse,3,LF back in CBMP,Backing LOD,Nil,Up. Lower e/o 3,TH,false,S,RF fwd in CBMP OP,Facing LOD,Nil,Up. Lower e/o 3,TH,false,S,
+Quickstep,Quick Open Reverse,4,RF back,Backing LOD,Nil,,T,true,S,LF fwd,Facing LOD,Nil,,H,true,S,
 Quickstep,Fishtail,1,RF fwd in CBMP OP,Facing DC,Com to turn R 1/8 between 1-2,Rise e/o 1,HT,true,R,LF back in CBMP,Backing DC,Com to turn R 1/8 between 1-2,Rise e/o 1,T,true,L,Note. Step 3 is just outside partner's LF.
-Quickstep,Fishtail,2,LF crosses behind RF,Facing LOD,1/8 between 2-3,Up,T,false,S,RF crosses in front of LF,Backing LOD,1/8 between 2-3,Up,T,false,S
-Quickstep,Fishtail,3,RF fwd and slightly to side (small step),Facing DW,Nil,Up,T,false,S,LF back and slightly to side (small step),Backing DW,Nil,Up,T,false,S
-Quickstep,Fishtail,4,LF diag fwd L side leading,Facing DW,Nil,Up,T,false,S,RF diag back R side leading,Backing DW,Nil,Up,T,false,S
-Quickstep,Fishtail,5,RF crosses behind LF,Facing DW,Nil,Up,T,false,S,LF crosses in front of RF,Backing DW,Nil,Up,T,false,S
-Quickstep,Fishtail,6,LF diag fwd,Facing DW,Nil,Up. Lower e/o 6,TH,false,S,RF diag back,Backing DW,Nil,Up. Lower e/o 6,TH,false,S
-Quickstep,Fishtail,7,RF fwd in CBMP OP,Facing DW,Nil,,H,true,S,LF back in CBMP,Backing DW,Nil,,T,true,S
+Quickstep,Fishtail,2,LF crosses behind RF,Facing LOD,1/8 between 2-3,Up,T,false,S,RF crosses in front of LF,Backing LOD,1/8 between 2-3,Up,T,false,S,
+Quickstep,Fishtail,3,RF fwd and slightly to side (small step),Facing DW,Nil,Up,T,false,S,LF back and slightly to side (small step),Backing DW,Nil,Up,T,false,S,
+Quickstep,Fishtail,4,LF diag fwd L side leading,Facing DW,Nil,Up,T,false,S,RF diag back R side leading,Backing DW,Nil,Up,T,false,S,
+Quickstep,Fishtail,5,RF crosses behind LF,Facing DW,Nil,Up,T,false,S,LF crosses in front of RF,Backing DW,Nil,Up,T,false,S,
+Quickstep,Fishtail,6,LF diag fwd,Facing DW,Nil,Up. Lower e/o 6,TH,false,S,RF diag back,Backing DW,Nil,Up. Lower e/o 6,TH,false,S,
+Quickstep,Fishtail,7,RF fwd in CBMP OP,Facing DW,Nil,,H,true,S,LF back in CBMP,Backing DW,Nil,,T,true,S,
 Quickstep,Running Right Turn,1,RF fwd,Facing DW,Com to turn R 1/4 between 1-2,Rise e/o 1,HT,true,R,LF back,Backing DW,Com to turn R 3/8 between 1-2 Body turns less,Rise e/o 1 NFR,TH,true,L,Note. SQQ timing may be used on steps 5-7.
-Quickstep,Running Right Turn,2,LF to side RF closes to LF,Backing DC,1/8 between 2-3,Up. Lower e/o 3,T,false,R,RF to side LF closes to RF,Pointing to LOD Facing LOD,Body completes turn,Up. Lower e/o 3,T,false,L
-Quickstep,Running Right Turn,4,LF back,Backing LOD,1/2 to R on 4 (Pivot),,THT,true,S,RF fwd,Facing LOD,1/2 to R on 4 (Pivoting action),,HTH,true,S
-Quickstep,Running Right Turn,5,RF fwd in CBMP,Down LOD toe turned in,Cont to turn. 3/8 between 5-6,Rise e/o 5,HT,true,R,LF back,Backing LOD,Cont to turn 1/2 between 5-6,Rise slightly e/o 5 NFR,TH,true,L
-Quickstep,Running Right Turn,6,LF to side,Facing LOD,1/8 between 6-7,Up,T,false,R,RF closes to LF (Heel Turn),Facing LOD,Commence to turn R,Cont to rise on 6,HT,false,L
-Quickstep,Running Right Turn,7,RF back R side leading,Backing DC,Cont to turn. 1/4 between 8-9,Up. Lower e/o 7,TH,false,S,LF fwd preparing step OP L side leading,Facing LOD,,Up. Lower e/o 7,TH,false,S
-Quickstep,Running Right Turn,8,LF back in CBMP,Backing LOD,Nil,Rise e/o 8,T,true,L,RF fwd in CBMP OP,Facing LOD,Nil,Rise e/o 8,HT,true,R
-Quickstep,Running Right Turn,9,RF to side and slightly fwd,Backing LOD,14 between 8-9,Up,T,false,L,LF to side,Backing DC of new LOD,1/8 between 8-9,Up,T,false,R
-Quickstep,Running Right Turn,10,LF fwd preparing step OP L side leading,Facing new LOD,Nil,Up. Lower e/o 10,TH,false,S,RF back R side leading,Backing new LOD,1/8 between 9-10,Up. Lower e/o 10,TH,false,S
-Quickstep,Running Right Turn,11,RF fwd in CBMP OP,Facing LOD,Nil,,H,true,S,LF back in CBMP,Backing LOD,Nil,,T,true,S
-Quickstep,Four Quick Run,1,RF back,Backing LOD,Com to turn L 3/8 between 1-2,Rise e/o 1,THT,true,Nil,LF fwd,Facing LOD,Com to turn L 1/4 between 1-2,Rise e/o 1,HT,true,Nil
-Quickstep,Four Quick Run,2,LF to side and slightly fwd,Pointing DW,Body turns less,Up,T,false,Nil,RF to side,Backing wall,1/8 between 2-3 Body turns less,Up,T,false,Nil
-Quickstep,Four Quick Run,3,RF fwd in CBMP OP,Facing DW,Slight body turn to L,Up,T,false,Nil,LF back in CBMP,Backing DW,Nil,Up,T,false,Nil
-Quickstep,Four Quick Run,4,LF diag fwd,Facing DW,Nil,Up,T,false,Nil,RF diag back,Backing DW,Nil,Up,T,false,Nil
-Quickstep,Four Quick Run,5,RF crosses behind LF,Facing DW,Nil,Up,T,false,Nil,LF crosses in front of RF,Backing DW,Nil,Up,T,false,Nil
-Quickstep,Four Quick Run,6,LF diag fwd,Facing DW,Nil,Up. Lower e/o 6,TH,false,Nil,RF diag back,Backing DW,Nil,Up. Lower e/o 6,TH,false,Nil
-Quickstep,Four Quick Run,7,RF fwd in CBMP OP,Facing DW,Nil,,H,true,Nil,LF back in CBMP,Backing DW,Nil,,T,true,Nil
+Quickstep,Running Right Turn,2,LF to side,Backing DC,1/8 between 2-3,Up,T,false,R,RF to side,Pointing to LOD,Body completes turn,Up,T,false,L,
+Quickstep,Running Right Turn,3,RF closes to LF,Backing LOD,Nil,Up. Lower e/o 3,TH,false,R,LF closes to RF,Facing LOD,Nil,Up. Lower e/o 3,TH,false,L,
+Quickstep,Running Right Turn,4,LF back,Backing LOD,1/2 to R on 4 (Pivot),,THT,true,S,RF fwd,Facing LOD,1/2 to R on 4 (Pivoting action),,HTH,true,S,
+Quickstep,Running Right Turn,5,RF fwd in CBMP,Down LOD toe turned in,Cont to turn. 3/8 between 5-6,Rise e/o 5,HT,true,R,LF back,Backing LOD,Cont to turn 1/2 between 5-6,Rise slightly e/o 5 NFR,TH,true,L,
+Quickstep,Running Right Turn,6,LF to side,Facing LOD,1/8 between 6-7,Up,T,false,R,RF closes to LF (Heel Turn),Facing LOD,Commence to turn R,Cont to rise on 6,HT,false,L,
+Quickstep,Running Right Turn,7,RF back R side leading,Backing DC,Cont to turn. 1/4 between 8-9,Up. Lower e/o 7,TH,false,S,LF fwd preparing step OP L side leading,Facing LOD,,Up. Lower e/o 7,TH,false,S,
+Quickstep,Running Right Turn,8,LF back in CBMP,Backing LOD,Nil,Rise e/o 8,T,true,L,RF fwd in CBMP OP,Facing LOD,Nil,Rise e/o 8,HT,true,R,
+Quickstep,Running Right Turn,9,RF to side and slightly fwd,Backing LOD,14 between 8-9,Up,T,false,L,LF to side,Backing DC of new LOD,1/8 between 8-9,Up,T,false,R,
+Quickstep,Running Right Turn,10,LF fwd preparing step OP L side leading,Facing new LOD,Nil,Up. Lower e/o 10,TH,false,S,RF back R side leading,Backing new LOD,1/8 between 9-10,Up. Lower e/o 10,TH,false,S,
+Quickstep,Running Right Turn,11,RF fwd in CBMP OP,Facing LOD,Nil,,H,true,S,LF back in CBMP,Backing LOD,Nil,,T,true,S,
+Quickstep,Four Quick Run,1,RF back,Backing LOD,Com to turn L 3/8 between 1-2,Rise e/o 1,THT,true,Nil,LF fwd,Facing LOD,Com to turn L 1/4 between 1-2,Rise e/o 1,HT,true,Nil,
+Quickstep,Four Quick Run,2,LF to side and slightly fwd,Pointing DW,Body turns less,Up,T,false,Nil,RF to side,Backing wall,1/8 between 2-3 Body turns less,Up,T,false,Nil,
+Quickstep,Four Quick Run,3,RF fwd in CBMP OP,Facing DW,Slight body turn to L,Up,T,false,Nil,LF back in CBMP,Backing DW,Nil,Up,T,false,Nil,
+Quickstep,Four Quick Run,4,LF diag fwd,Facing DW,Nil,Up,T,false,Nil,RF diag back,Backing DW,Nil,Up,T,false,Nil,
+Quickstep,Four Quick Run,5,RF crosses behind LF,Facing DW,Nil,Up,T,false,Nil,LF crosses in front of RF,Backing DW,Nil,Up,T,false,Nil,
+Quickstep,Four Quick Run,6,LF diag fwd,Facing DW,Nil,Up. Lower e/o 6,TH,false,Nil,RF diag back,Backing DW,Nil,Up. Lower e/o 6,TH,false,Nil,
+Quickstep,Four Quick Run,7,RF fwd in CBMP OP,Facing DW,Nil,,H,true,Nil,LF back in CBMP,Backing DW,Nil,,T,true,Nil,
 Quickstep,V6,1,LF back,Backing DC,Nil,Com to rise e/o 1 NFR,TH,true,Nil,RF fwd,Facing DC,Nil,Rise e/o preceding step. Up,HT,true,Nil,Note. Man may use foot rise on step 1.
-Quickstep,V6,2,RF back R side leading,Backing DC,Nil,Cont to rise on 2 and 3,T,false,Nil,LF fwd L side leading,Facing DC,Nil,Cont to rise on 2 and 3,T,false,Nil
-Quickstep,V6,3,LF crosses in front of RF,Backing DC,Nil,Up. Lower e/o 4,T,false,Nil,RF crosses behind,Facing DC,Nil,Up. Lower e/o 4,T,false,Nil
-Quickstep,V6,4,RF back,Backing DC,Nil,Com to rise e/o 5 NFR,TH,true,Nil,RF fwd,Facing DC,Nil,Com to rise e/o 5,HT,true,Nil
-Quickstep,V6,5,LF back in CBMP,Backing DC,Nil,Cont to rise on 6,TH,false,Nil,LF fwd preparing step OP,Facing DC,Nil,Up,HT,false,Nil
-Quickstep,V6,6,RF back,Backing DC,Com to turn L 1/4 between 6-7 Body turns less,Up. Lower e/o 7,T,true,Nil,RF fwd in CBMP OP,Facing DC,Com to turn L 1/4 between 6-7 Body turns less,Cont to rise on 6,T,false,Nil
-Quickstep,V6,7,LF to side and slightly fwd,Pointing DW,,,TH,false,Nil,LF fwd,Backing DW,,Up. Lower e/o 7,TH,false,Nil
-Quickstep,V6,8,RF fwd in CBMP OP,Facing DW,,,H,true,Nil,RF to side and backing slightly back,Backing DW,,Nil,T,true,Nil
+Quickstep,V6,2,RF back R side leading,Backing DC,Nil,Cont to rise on 2 and 3,T,false,Nil,LF fwd L side leading,Facing DC,Nil,Cont to rise on 2 and 3,T,false,Nil,
+Quickstep,V6,3,LF crosses in front of RF,Backing DC,Nil,Up. Lower e/o 4,T,false,Nil,RF crosses behind,Facing DC,Nil,Up. Lower e/o 4,T,false,Nil,
+Quickstep,V6,4,RF back,Backing DC,Nil,Com to rise e/o 5 NFR,TH,true,Nil,RF fwd,Facing DC,Nil,Com to rise e/o 5,HT,true,Nil,
+Quickstep,V6,5,LF back in CBMP,Backing DC,Nil,Cont to rise on 6,TH,false,Nil,LF fwd preparing step OP,Facing DC,Nil,Up,HT,false,Nil,
+Quickstep,V6,6,RF back,Backing DC,Com to turn L 1/4 between 6-7 Body turns less,Up. Lower e/o 7,T,true,Nil,RF fwd in CBMP OP,Facing DC,Com to turn L 1/4 between 6-7 Body turns less,Cont to rise on 6,T,false,Nil,
+Quickstep,V6,7,LF to side and slightly fwd,Pointing DW,,,TH,false,Nil,LF fwd,Backing DW,,Up. Lower e/o 7,TH,false,Nil,
+Quickstep,V6,8,RF fwd in CBMP OP,Facing DW,,,H,true,Nil,RF to side and backing slightly back,Backing DW,,Nil,T,true,Nil,
 Quickstep,Cross Swivel,1,LF fwd,Facing DW,Com to turn L 1/4 between 1-2,Nil,H,true,L,RF back,Backing DW,Com to turn L 1/4 between 1-2,Nil,TH,true,R,Note. Heel of RF step 1 does not lower until turn completed.
-Quickstep,Cross Swivel,2,RF closes (or nearly closes) to LF slightly back without weight,Facing DC,Nil,Nil,Pressure T LF foot flat IE T RF,false,L,LF closes to RF slightly fwd without weight,Backing DC,Nil,Nil,H then IE of T,false,R
-Quickstep,Cross Swivel,3,RF fwd in CBMP OP,Facing DC,Nil,Nil,H,true,S,LF back in CBMP,Backing DC,Nil,Nil,T,true,S
+Quickstep,Cross Swivel,2,RF closes (or nearly closes) to LF slightly back without weight,Facing DC,Nil,Nil,Pressure T LF foot flat IE T RF,false,L,LF closes to RF slightly fwd without weight,Backing DC,Nil,Nil,H then IE of T,false,R,
+Quickstep,Cross Swivel,3,RF fwd in CBMP OP,Facing DC,Nil,Nil,H,true,S,LF back in CBMP,Backing DC,Nil,Nil,T,true,S,
 Quickstep,Six Quick Run,1,RF back,Backing DC,Com to turn L 1/4 between 1-2 Body turns less,Rise e/o preceding step. NFR Up,T,true,Nil,LF fwd,Facing DC,Com to turn L 1/4 between 1-2 Body turns less,Rise e/o preceding step. Up,T,true,Nil,Note. Lady completes turn with feet between 1-2.
-Quickstep,Six Quick Run,2,LF to side and slightly fwd,Pointing DW,,Up,T,false,Nil,RF to side and slightly back,Backing DW,,Up,T,false,Nil
-Quickstep,Six Quick Run,3,RF fwd in CBMP OP,Facing DW,,Up,T,false,Nil,LF back in CBMP,Backing DW,,Up,T,false,Nil
-Quickstep,Six Quick Run,4,LF diag fwd,Facing DW,,Up,T,false,Nil,RF diag back,Backing DW,,Up,T,false,Nil
-Quickstep,Six Quick Run,5,RF crosses behind LF,Facing DW,,Up,T,false,Nil,LF crosses in front of RF,Backing DW,,Up,T,false,Nil
-Quickstep,Six Quick Run,6,LF diag fwd,Facing DW,,Up. Lower e/o 6,TH,false,Nil,RF diag back,Backing DW,,Up. Lower e/o 6,TH,false,Nil
-Quickstep,Six Quick Run,7,RF fwd in CBMP OP,Facing DW,,,,,LF back in CBMP,Backing DW
+Quickstep,Six Quick Run,2,LF to side and slightly fwd,Pointing DW,,Up,T,false,Nil,RF to side and slightly back,Backing DW,,Up,T,false,Nil,
+Quickstep,Six Quick Run,3,RF fwd in CBMP OP,Facing DW,,Up,T,false,Nil,LF back in CBMP,Backing DW,,Up,T,false,Nil,
+Quickstep,Six Quick Run,4,LF diag fwd,Facing DW,,Up,T,false,Nil,RF diag back,Backing DW,,Up,T,false,Nil,
+Quickstep,Six Quick Run,5,RF crosses behind LF,Facing DW,,Up,T,false,Nil,LF crosses in front of RF,Backing DW,,Up,T,false,Nil,
+Quickstep,Six Quick Run,6,LF diag fwd,Facing DW,,Up. Lower e/o 6,TH,false,Nil,RF diag back,Backing DW,,Up. Lower e/o 6,TH,false,Nil,
+Quickstep,Six Quick Run,7,RF fwd in CBMP OP,Facing DW,Nil,,H,true,Nil,LF back in CBMP,Backing DW,Nil,,T,true,Nil,
 Quickstep,Rumba Cross,1,LF fwd long step,Facing LOD,Slight turn to R at end of step 1/4 to R between 1-2,Rise e/o 1,HT,false,R,RF back long step,Backing LOD,Slight turn to R at end of step 1/4 between 1-2,Rise e/o 1,T,false,L,Note. The Rumba Cross may be danced twice.
-Quickstep,Rumba Cross,2,RF crosses behind LF,Facing wall,1/4 between 2-3 Cont turn 1/2 on 3,Up,T,false,S,LF crosses in front of RF,Backing wall,1/4 between 2-3 Cont turn 1/2 on 3 (Pivot),Up,T,false,S
-Quickstep,Rumba Cross,3,LF to side and slightly back. End RF fwd in CBMP,Backing LOD End facing LOD,,Up. Lower e/o 3,THT,false,S,RF fwd between partner's feet. End LF back,Facing LOD End backing LOD,,Up. Lower e/o 3,TH,false,S
+Quickstep,Rumba Cross,2,RF crosses behind LF,Facing wall,1/4 between 2-3 Cont turn 1/2 on 3,Up,T,false,S,LF crosses in front of RF,Backing wall,1/4 between 2-3 Cont turn 1/2 on 3 (Pivot),Up,T,false,S,
+Quickstep,Rumba Cross,3,LF to side and slightly back. End RF fwd in CBMP,Backing LOD End facing LOD,,Up. Lower e/o 3,THT,false,S,RF fwd between partner's feet. End LF back,Facing LOD End backing LOD,,Up. Lower e/o 3,TH,false,S,
 Quickstep,Tipsy to Right,1,RF to side (small step),According to preceding,Nil or up to 3/8 to R or L,Slight rise on 1 and 2,T,false,L,LF to side (small step),According to preceding,Nil or up to 3/8 or L,Slight rise on 1 and 2,T,false,R,"Note. Precede with a step forward on RF, OP in CBMP."
-Quickstep,Tipsy to Right,2,Move LF halfway towards RF,,Lower e/o 2,T,false,L,Move RF halfway towards LF,,Lower e/o 2,T,false,R
-Quickstep,Tipsy to Right,3,RF to side (small step),,Down with sharp flexing of knees,IE T and IE T LF,false,S,LF to side (small step),,Down with sharp flexing of knees,IE T and IE T RF,false,S
+Quickstep,Tipsy to Right,2,Move LF halfway towards RF,,,Lower e/o 2,T,false,L,Move RF halfway towards LF,,,Lower e/o 2,T,false,R,
+Quickstep,Tipsy to Right,3,RF to side (small step),,,Down with sharp flexing of knees,IE T and IE T LF,false,S,LF to side (small step),,,Down with sharp flexing of knees,IE T and IE T RF,false,S,
 Quickstep,Tipsy to Left,1,LF to side small step,According to preceding,Nil or up to 3/8 to R,Slight rise on 1 and 2,T,false,R,RF to side small step,According to preceding,Nil or up to 3/8 to R,Slight rise on 1 and 2,T,false,L,Note. If danced after forward step LF any turn made will be to L.
-Quickstep,Tipsy to Left,2,Move RF halfway towards LF,,Lower e/o 2,T,false,R,Move LF halfway towards RF,,Lower e/o 2,T,false,L
-Quickstep,Tipsy to Left,3,LF to side small step,,Down with sharp flexing of knees,IE T and IE T LF,false,S,RF to side small step,,Down with sharp flexing of knees,IE T and IE T RF,false,S
+Quickstep,Tipsy to Left,2,Move RF halfway towards LF,,,Lower e/o 2,T,false,R,Move LF halfway towards RF,,,Lower e/o 2,T,false,L,
+Quickstep,Tipsy to Left,3,LF to side small step,,,Down with sharp flexing of knees,IE T and IE T LF,false,S,RF to side small step,,,Down with sharp flexing of knees,IE T and IE T RF,false,S,
 Quickstep,Hover Corte,1,RF back,Backing LOD,Com to turn L,Com to rise e/o 1 NFR,TH,true,S,LF fwd,Facing LOD,Com to turn L,Com to rise e/o 1,HT,true,S,Note. If commenced backing DC either 1/4 or 3/8 turn could be made.
-Quickstep,Hover Corte,2,LF to side and slightly fwd,Pointing DW,3/8 between 1-2 Body turns less,Cont to rise on 2,T,false,R,RF to side LF brushes towards RF,Facing centre end facing DC against LO,1/4 between 1-2 Cont to turn 1/8 on 2,Cont to rise on 2,T,false,L
-Quickstep,Hover Corte,3,Transfer weight to RF side and slightly back,Backing DC against LOD,Cont turn body on 2,Up. Lower e/o 3,TH,false,S,LF diag fwd,Facing DC against LOD,Nil,Up. Lower e/o 3,TH,false,S
-Quickstep,Hover Corte,4,LF back in CBMP,Backing DC against LOD,Nil,,T,true,S,RF fwd in CBMP OP,Facing DC against LOD,Nil,,H,true,S
-Tango,Open Finish,1,LF to side and slightly fwd,Between wall and DW,Slightly less turn to L,H,false,Nil,RF to side and slightly back,Backing between wall and DW,Slightly less turn to L,IE of BH,false,Nil,Note. Step 1 forward from Open Finish not in CBMP.
-Tango,Open Finish,2,RF fwd in CBMP OP,Pointing between wall and DW,,IE of foot,true,Nil,LF back in CBMP,Between wall and DW,,B (will become BH),true,Nil
+Quickstep,Hover Corte,2,LF to side and slightly fwd,Pointing DW,3/8 between 1-2 Body turns less,Cont to rise on 2,T,false,R,RF to side LF brushes towards RF,Facing centre end facing DC against LO,1/4 between 1-2 Cont to turn 1/8 on 2,Cont to rise on 2,T,false,L,
+Quickstep,Hover Corte,3,Transfer weight to RF side and slightly back,Backing DC against LOD,Cont turn body on 2,Up. Lower e/o 3,TH,false,S,LF diag fwd,Facing DC against LOD,Nil,Up. Lower e/o 3,TH,false,S,
+Quickstep,Hover Corte,4,LF back in CBMP,Backing DC against LOD,Nil,,T,true,S,RF fwd in CBMP OP,Facing DC against LOD,Nil,,H,true,S,
+Tango,Open Finish,1,LF to side and slightly fwd,Pointing between wall and DW,Slightly less turn to L,,IE of foot,false,Nil,RF to side and slightly back,Backing between wall and DW,Slightly less turn to L,,IE of BH,false,Nil,Note. Step 1 forward from Open Finish not in CBMP.
+Tango,Open Finish,2,RF fwd in CBMP OP,Between wall and DW,,,H,true,Nil,LF back in CBMP,Between wall and DW,,,B (will become BH),true,Nil,
 Tango,Progressive Side Step,1,LF fwd in CBMP,According to previous,slight turn to L possible,,H,true,Nil,RF back in CBMP,According to previous,slight turn to L possible,,BH,false,Nil,"Note. Slight turn to L can be made, in which case slight CBM on 1 and 3."
-Tango,Progressive Side Step,2,RF to side and slightly back,,,IE of foot,false,Nil,LF to side and slightly fwd,,,IE of BH,false,Nil
-Tango,Progressive Side Step,3,LF fwd in CBMP,,slight turn to L possible,,H,true,Nil,RF back in CBMP,,slight turn to L possible,,B,false,Nil
+Tango,Progressive Side Step,2,RF to side and slightly back,,,,IE of foot,false,Nil,LF to side and slightly fwd,,,,IE of BH,false,Nil,
+Tango,Progressive Side Step,3,LF fwd in CBMP,,slight turn to L possible,,H,true,Nil,RF back in CBMP,,slight turn to L possible,,B,false,Nil,
 Tango,Progressive Link,1,LF fwd in CBMP,DW,Nil,,H,false,Nil,RF back in CBMP,DW,Nil,,BH,false,Nil,Note. As 2nd step taken R side should move slightly back. Lady turn on ball of RF step 1 before heel lowers.
-Tango,Progressive Link,2,RF to side and slightly back in PP,Facing DW,Nil,,IE of foot and IE of B of LF,false,Nil,LF to side and slightly back in PP,Facing DC,Nil,,IE of BH and IE of B of RF,false,Nil
+Tango,Progressive Link,2,RF to side and slightly back in PP,Facing DW,Nil,,IE of foot and IE of B of LF,false,Nil,LF to side and slightly back in PP,Facing DC,Nil,,IE of BH and IE of B of RF,false,Nil,
 Tango,Closed Promenade,1,LF to side in PP,Along LOD pointing DW,Nil,,H,false,Nil,RF to side in PP,Along LOD pointing DC,Nil,,H,false,Nil,Note. Man may turn square to Lady on step 3 to end Backing DC.
-Tango,Closed Promenade,2,RF fwd and across in PP and CBMP,Along LOD pointing DW,Nil,,H,false,Nil,LF fwd and across in PP and CBMP,Along LOD pointing DC,Nil,,H,true,Nil
-Tango,Closed Promenade,3,LF to side and slightly fwd,Pointing DW,1/4 to L between 2-3,,IE of foot,false,Nil,RF to side and slightly back,Backing DW,1/4 to L between 2-3,,IE of BH,false,Nil
-Tango,Closed Promenade,4,RF closes to LF slightly back,Facing DW,Nil,,Whole foot,false,Nil,LF closes to RF slightly fwd,Backing DW,Nil,,Whole foot,false,Nil
-Tango,Rock Turn,1,RF fwd,DW,1/4 to R between 1-3,,H,true,Nil,RF back in CBMP,DC,3/4 to L,,BH,true,Nil
-Tango,Rock Turn,2,LF to side and slightly back,Backing centre,,,IE of BH,false,Nil,LF to side and slightly fwd,Pointing down LOD,1/4 to L between 1-3,,Whole foot,false,Nil
-Tango,Rock Turn,3,Transfer weight forward to RF R side leading,DW against LOD,,,IE of BH,false,Nil,RF fwd in CBMP OP,Down LOD,,,H,false,Nil
-Tango,Rock Turn,4,LF back small step L side leading,DC,1/4 to L between 4-6,,IE of BH,false,Nil,LF fwd,Down LOD,,,H,true,Nil
-Tango,Rock Turn,5,RF back in CBMP,To centre,,,BH,true,Nil,RF to side and slightly back,Backing DW,,,IE of BH,false,Nil
-Tango,Rock Turn,6,LF to side and slightly fwd,Pointing DW,,,IE of foot,false,Nil,LF closes to RF slightly fwd,Backing DW,,,Whole foot,false,Nil
-Tango,Rock Turn,7,RF closes to LF slightly back,Facing DW,,,Whole foot,false,Nil
-Tango,Open Reverse Turn Lady Outside,1,LF fwd in CBMP,DC,3/4 to L,,H,true,Nil,LF back,DW,3/4 to L,,BH,true,Nil
-Tango,Open Reverse Turn Lady Outside,2,RF to side,Backing DW,,,BH,false,Nil,RF fwd and slightly rightwards,Facing centre,,,H,false,Nil
-Tango,Open Reverse Turn Lady Outside,3,LF back in CBMP,Down LOD,,,BH,false,Nil,LF back and slightly leftwards,DW against LOD,,,IE of BH,false,Nil
-Tango,Open Reverse Turn Lady Outside,4,RF back,Down LOD,,,BH,true,Nil,RF fwd small step R side leading,DC,,,H,true,Nil
-Tango,Open Reverse Turn Lady Outside,5,LF to side and slightly fwd,Pointing DW,,,IE of foot,false,Nil,LF fwd in CBMP,To centre,,,H,false,Nil
-Tango,Open Reverse Turn Lady Outside,6,RF closes to LF slightly back,Facing DW,,,Whole foot,false,Nil,RF to side and slightly back,Backing DW,,,IE of BH,false,Nil
-Tango,Open Reverse Turn Lady Outside,7,,,,,,LF closes to RF slightly fwd,Backing DW,,,Whole foot,false,Nil
-Tango,Back Corte,1,LF back L side leading,Down new LOD,1/4 to L between 2-3,,IE of BH,false,Nil,RF fwd R side leading,Down new LOD,1/4 to L between 2-3,,H,false,Nil
-Tango,Back Corte,2,RF back in CBMP,DC,,,BH,true,Nil,LF fwd in CBMP,DC,,,H,true,Nil
-Tango,Back Corte,3,LF to side and slightly fwd,Pointing DW,,,IE of foot,false,Nil,RF to side and slightly back,Backing DW,,,IE of BH,false,Nil
-Tango,Back Corte,4,RF closes to LF slightly back,Facing DW,,,Whole foot,false,Nil,LF closes to RF slightly fwd,Backing DW,,,Whole foot,false,Nil
-Tango,Open Reverse Turn Lady in Line,1,LF fwd in CBMP,DC,3/4 to L,,H,true,Nil,RF back in CBMP,DC,3/4 to L,,BH,true,Nil
-Tango,Open Reverse Turn Lady in Line,2,RF to side and slightly back,Backing LOD,,,BH,false,Nil,L Heel closes to R Heel,Toe pointing down LOD,,,Whole foot,false,Nil
-Tango,Open Reverse Turn Lady in Line,3,LF back L side leading,Down LOD,,,IE of BH,false,Nil,RF fwd R side leading,Down LOD,,,H,false,Nil
-Tango,Open Reverse Turn Lady in Line,4,RF back in CBMP,DC,,,BH,true,Nil,LF fwd in CBMP,DC,,,H,true,Nil
-Tango,Open Reverse Turn Lady in Line,5,LF to side and slightly fwd,Pointing DW,,,IE of foot,false,Nil,RF to side and slightly back,Backing DW,,,IE of BH,false,Nil
-Tango,Open Reverse Turn Lady in Line,6,RF closes to LF slightly back,Facing DW,,,Whole foot,false,Nil,LF closes to RF slightly fwd,Backing DW,,,Whole foot,false,Nil
+Tango,Closed Promenade,2,RF fwd and across in PP and CBMP,Along LOD pointing DW,Nil,,H,false,Nil,LF fwd and across in PP and CBMP,Along LOD pointing DC,Nil,,H,true,Nil,
+Tango,Closed Promenade,3,LF to side and slightly fwd,Pointing DW,1/4 to L between 2-3,,IE of foot,false,Nil,RF to side and slightly back,Backing DW,1/4 to L between 2-3,,IE of BH,false,Nil,
+Tango,Closed Promenade,4,RF closes to LF slightly back,Facing DW,Nil,,Whole foot,false,Nil,LF closes to RF slightly fwd,Backing DW,Nil,,Whole foot,false,Nil,
+Tango,Rock Turn,1,RF fwd,DW,1/4 to R between 1-3,,H,true,Nil,LF back,DW,1/4 to R between 1-3,,BH,true,Nil,
+Tango,Rock Turn,2,LF to side and slightly back,Backing centre,,,IE of BH,false,Nil,RF fwd and slightly rightwards,Facing centre,,,H,false,Nil,
+Tango,Rock Turn,3,Transfer weight forward to RF R side leading,DW against LOD,,,IE of BH,false,Nil,LF back and slightly leftwards L side leading,DW against the LOD,,,IE of BH,false,Nil,
+Tango,Rock Turn,4,LF back small step L side leading,DC,1/4 to L between 4-6,,IE of BH,false,Nil,RF fwd small step R side leading,DC,1/4 to L between 4-6,,H,true,Nil,
+Tango,Rock Turn,5,RF back in CBMP,To centre,,,BH,true,Nil,LF fwd in CBMP,To centre,,,H,true,Nil,
+Tango,Rock Turn,6,LF to side and slightly fwd,Pointing DW,,,IE of foot,false,Nil,RF to side and slightly back,Backing DW,,,IE of BH,false,Nil,
+Tango,Rock Turn,7,RF closes to LF slightly back,Facing DW,,,Whole foot,false,Nil,LF closes to RF slightly fwd,Backing DW,,,Whole foot,false,Nil,
+Tango,Open Reverse Turn Lady Outside,1,LF fwd in CBMP,DC,3/4 to L,,H,true,Nil,RF back in CBMP,DC,3/4 to L,,BH,true,Nil,
+Tango,Open Reverse Turn Lady Outside,2,RF to side,Backing DW,,,BH,false,Nil,LF to side and slightly fwd,Pointing down LOD,,,Whole foot,false,Nil,
+Tango,Open Reverse Turn Lady Outside,3,LF back in CBMP,Down LOD,,,BH,false,Nil,RF fwd in CBMP OP,Down LOD,,,H,false,Nil,
+Tango,Open Reverse Turn Lady Outside,4,RF back,Down LOD,,,BH,true,Nil,LF fwd,Down LOD,,,H,true,Nil,
+Tango,Open Reverse Turn Lady Outside,5,LF to side and slightly fwd,Pointing DW,,,IE of foot,false,Nil,RF to side and slightly back,Backing DW,,,IE of BH,false,Nil,
+Tango,Open Reverse Turn Lady Outside,6,RF closes to LF slightly back,Facing DW,,,Whole foot,false,Nil,LF closes to RF slightly fwd,Backing DW,,,Whole foot,false,Nil,
+Tango,Back Corte,1,LF back L side leading,Down new LOD,1/4 to L between 2-3,,IE of BH,false,Nil,RF fwd R side leading,Down new LOD,1/4 to L between 2-3,,H,false,Nil,
+Tango,Back Corte,2,RF back in CBMP,DC,,,BH,true,Nil,LF fwd in CBMP,DC,,,H,true,Nil,
+Tango,Back Corte,3,LF to side and slightly fwd,Pointing DW,,,IE of foot,false,Nil,RF to side and slightly back,Backing DW,,,IE of BH,false,Nil,
+Tango,Back Corte,4,RF closes to LF slightly back,Facing DW,,,Whole foot,false,Nil,LF closes to RF slightly fwd,Backing DW,,,Whole foot,false,Nil,
+Tango,Open Reverse Turn Lady in Line,1,LF fwd in CBMP,DC,3/4 to L,,H,true,Nil,RF back in CBMP,DC,3/4 to L,,BH,true,Nil,
+Tango,Open Reverse Turn Lady in Line,2,RF to side and slightly back,Backing LOD,,,BH,false,Nil,L Heel closes to R Heel,Toe pointing down LOD,,,Whole foot,false,Nil,
+Tango,Open Reverse Turn Lady in Line,3,LF back L side leading,Down LOD,,,IE of BH,false,Nil,RF fwd R side leading,Down LOD,,,H,false,Nil,
+Tango,Open Reverse Turn Lady in Line,4,RF back in CBMP,DC,,,BH,true,Nil,LF fwd in CBMP,DC,,,H,true,Nil,
+Tango,Open Reverse Turn Lady in Line,5,LF to side and slightly fwd,Pointing DW,,,IE of foot,false,Nil,RF to side and slightly back,Backing DW,,,IE of BH,false,Nil,
+Tango,Open Reverse Turn Lady in Line,6,RF closes to LF slightly back,Facing DW,,,Whole foot,false,Nil,LF closes to RF slightly fwd,Backing DW,,,Whole foot,false,Nil,
 Tango,Progressive Side Step Reverse Turn,1,LF fwd in CBMP,DC,3/4 to L,,H,true,Nil,RF back in CBMP,DC,3/4 to L,,BH,true,Nil,"Note. After steps 1-4, endings can be Back Corte or Rocks + Back Corte."
-Tango,Progressive Side Step Reverse Turn,2,RF to side and slightly back,Facing DC against LOD,,,IE of foot,false,Nil,LF to side and slightly fwd,Backing DC against LOD,,,IE of foot,false,Nil
-Tango,Progressive Side Step Reverse Turn,3,LF fwd in CBMP,Almost against LOD,,,H,true,Nil,RF back in CBMP,Almost against LOD,,,BH,true,Nil
-Tango,Progressive Side Step Reverse Turn,4,RF fwd R side leading,Against LOD,,,H,false,Nil,LF back L side leading,Against LOD,,,IE of BH,false,Nil
-Tango,Progressive Side Step Reverse Turn,5,Transfer weight back to LF L side leading,Down LOD,,,IE of BH,false,Nil,Transfer weight fwd to RF R side leading,Down LOD,,,H,false,Nil
-Tango,Progressive Side Step Reverse Turn,6,Transfer weight fwd to RF R side leading,Against LOD,,,H,false,Nil,Transfer weight back to LF L side leading,Against LOD,,,IE of BH,false,Nil
-Tango,Progressive Side Step Reverse Turn,7,LF back small step L side leading,Down LOD,,,IE of BH,false,Nil,RF fwd small step R side leading,Down LOD,,,H,false,Nil
-Tango,Progressive Side Step Reverse Turn,8,RF back in CBMP,DC,,,BH,true,Nil,LF fwd in CBMP,DC,,,H,true,Nil
-Tango,Progressive Side Step Reverse Turn,9,LF to side and slightly fwd,Pointing DW,,,IE of foot,false,Nil,RF to side and slightly back,Backing DW,,,IE of BH,false,Nil
-Tango,Progressive Side Step Reverse Turn,10,RF closes to LF slightly back,Facing DW,,,Whole foot,false,Nil,LF closes to RF slightly fwd,Backing DW,,,Whole foot,false,Nil
-Tango,Open Promenade,1,LF to side in PP,Along LOD pointing DW,Nil,,H,false,Nil,RF to side in PP,Along LOD pointing DC,Nil,,H,false,Nil
-Tango,Open Promenade,2,RF fwd and across in PP and CBMP,Along LOD pointing DW,,,H,false,Nil,LF fwd and across in PP and CBMP,Along LOD pointing DC,,,H,true,Nil
-Tango,Open Promenade,3,LF to side and slightly fwd,Pointing between wall and DW,Slight turn to R between 2-3,,IE of foot,false,Nil,RF to side and slightly back,Backing between wall and DW,Just under 1/4 to L between 2-3,,IE of BH,false,Nil
-Tango,Open Promenade,4,RF fwd in CBMP OP,Between wall and DW,,,H,false,Nil,LF back in CBMP,Between wall and DW,,,B,false,Nil
+Tango,Progressive Side Step Reverse Turn,2,RF to side and slightly back,Facing DC against LOD,,,IE of foot,false,Nil,LF to side and slightly fwd,Backing DC against LOD,,,IE of foot,false,Nil,
+Tango,Progressive Side Step Reverse Turn,3,LF fwd in CBMP,Almost against LOD,,,H,true,Nil,RF back in CBMP,Almost against LOD,,,BH,true,Nil,
+Tango,Progressive Side Step Reverse Turn,4,RF fwd R side leading,Against LOD,,,H,false,Nil,LF back L side leading,Against LOD,,,IE of BH,false,Nil,
+Tango,Progressive Side Step Reverse Turn,5,Transfer weight back to LF L side leading,Down LOD,,,IE of BH,false,Nil,Transfer weight fwd to RF R side leading,Down LOD,,,H,false,Nil,
+Tango,Progressive Side Step Reverse Turn,6,Transfer weight fwd to RF R side leading,Against LOD,,,H,false,Nil,Transfer weight back to LF L side leading,Against LOD,,,IE of BH,false,Nil,
+Tango,Progressive Side Step Reverse Turn,7,LF back small step L side leading,Down LOD,,,IE of BH,false,Nil,RF fwd small step R side leading,Down LOD,,,H,false,Nil,
+Tango,Progressive Side Step Reverse Turn,8,RF back in CBMP,DC,,,BH,true,Nil,LF fwd in CBMP,DC,,,H,true,Nil,
+Tango,Progressive Side Step Reverse Turn,9,LF to side and slightly fwd,Pointing DW,,,IE of foot,false,Nil,RF to side and slightly back,Backing DW,,,IE of BH,false,Nil,
+Tango,Progressive Side Step Reverse Turn,10,RF closes to LF slightly back,Facing DW,,,Whole foot,false,Nil,LF closes to RF slightly fwd,Backing DW,,,Whole foot,false,Nil,
+Tango,Open Promenade,1,LF to side in PP,Along LOD pointing DW,Nil,,H,false,Nil,RF to side in PP,Along LOD pointing DC,Nil,,H,false,Nil,
+Tango,Open Promenade,2,RF fwd and across in PP and CBMP,Along LOD pointing DW,,,H,false,Nil,LF fwd and across in PP and CBMP,Along LOD pointing DC,,,H,true,Nil,
+Tango,Open Promenade,3,LF to side and slightly fwd,Pointing between wall and DW,Slight turn to R between 2-3,,IE of foot,false,Nil,RF to side and slightly back,Backing between wall and DW,Just under 1/4 to L between 2-3,,IE of BH,false,Nil,
+Tango,Open Promenade,4,RF fwd in CBMP OP,Between wall and DW,,,H,false,Nil,LF back in CBMP,Between wall and DW,,,B,false,Nil,
 Tango,Rock Back on RF,1,RF back in CBMP,Down LOD,Nil,,BH,false,Nil,LF fwd in CBMP,Down LOD,Nil,,H,false,Nil,Note. Rocks may be danced down LOD or DC.
-Tango,Rock Back on RF,2,Transfer weight fwd to LF in CBMP,Against LOD,Nil,,H,false,Nil,Transfer weight back to RF in CBMP,Against LOD,Nil,,BH,false,Nil
-Tango,Rock Back on RF,3,RF back small step in CBMP,Down LOD,Nil,,BH,false,Nil,LF fwd small step in CBMP,Down LOD,Nil,,H,false,Nil
+Tango,Rock Back on RF,2,Transfer weight fwd to LF in CBMP,Against LOD,Nil,,H,false,Nil,Transfer weight back to RF in CBMP,Against LOD,Nil,,BH,false,Nil,
+Tango,Rock Back on RF,3,RF back small step in CBMP,Down LOD,Nil,,BH,false,Nil,LF fwd small step in CBMP,Down LOD,Nil,,H,false,Nil,
 Tango,Natural Twist Turn,1,LF to side in PP,Along LOD Pointing DW,Complete turn to R,,H,false,Nil,RF to side in PP,Along LOD Pointing DC,Complete turn to R,,H,false,Nil,Note. 7/8 to R could end facing LOD; 3/4 to R ends facing DC.
-Tango,Natural Twist Turn,2,RF fwd and across in PP and CBMP,Along LOD Pointing DW,,,H,true,Nil,LF fwd and across in PP and CBMP,Pointing down LOD,,,H,false,Nil
-Tango,Natural Twist Turn,3,LF to side,Backing DC,,,BH,false,Nil,RF fwd between partner's feet,Down LOD,,,H,true,Nil
-Tango,Natural Twist Turn,4,RF crosses behind LF,Backing LOD,,,B,false,Nil,LF fwd preparing step OP L side leading,Down LOD pointing DW,,,H,false,Nil
-Tango,Natural Twist Turn,5,Com to twist to R allowing feet uncross,Towards alignment of 6,,,Com B RF," H LF",,RF fwd in CBMP OP,To wall,,,HB,true,Nil
-Tango,Natural Twist Turn,6,Feet almost closed weight on RF in PP,Facing DW,,,Whole RF," IE B LF",,LF to side small step in PP,Facing DC,,,BH & IE B RF
+Tango,Natural Twist Turn,2,RF fwd and across in PP and CBMP,Along LOD Pointing DW,,,H,true,Nil,LF fwd and across in PP and CBMP,Pointing down LOD,,,H,false,Nil,
+Tango,Natural Twist Turn,3,LF to side,Backing DC,,,BH,false,Nil,RF fwd between partner's feet,Down LOD,,,H,true,Nil,
+Tango,Natural Twist Turn,4,RF crosses behind LF,Backing LOD,,,B,false,Nil,LF fwd preparing step OP L side leading,Down LOD pointing DW,,,H,false,Nil,
+Tango,Natural Twist Turn,5,Com to twist to R allowing feet to uncross,Towards the alignment of 6,,,"Com on B of RF, H of LF",false,Nil,"RF fwd in CBMP, OP",To wall,,,HB,true,Nil,
+Tango,Natural Twist Turn,6,Feet almost closed weight on RF in PP,Facing DW,,,"End of whole of RF, IE of B of LF",false,Nil,LF to side small step in PP,Facing DC,,,"BH & IE of B of RF",false,Nil,
 Tango,Natural Promenade Turn,1,LF to side in PP,Along LOD pointing DW,1/4 to R,,H,false,Nil,RF to side in PP,Along LOD pointing DC,3/4 to R,,H,false,Nil,Note. Step 4 omitted if followed by Rock Turn.
-Tango,Natural Promenade Turn,2,RF fwd in PP and CBMP,DW,,,H,true,Nil,LF fwd and across in PP and CBMP,Pointing down LOD,,,H,false,Nil
-Tango,Natural Promenade Turn,3,LF to side and slightly back,Backing LOD,,,BHB,false,Nil,RF fwd between partner's feet,Down LOD,,,H,true,Nil
-Tango,Natural Promenade Turn,4,RF fwd in CBMP. LF side no weight PP,DW of new LOD End DW,,,H then IE B LF,true,Nil,LF to side and slightly back. RF side no weight PP,Backing DW of new LOD End DC,,,BH then IE B RF,false,Nil
+Tango,Natural Promenade Turn,2,RF fwd in PP and CBMP,DW,,,H,true,Nil,LF fwd and across in PP and CBMP,Pointing down LOD,,,H,false,Nil,
+Tango,Natural Promenade Turn,3,LF to side and slightly back,Backing LOD,,,BHB,false,Nil,RF fwd between partner's feet,Down LOD,,,H,true,Nil,
+Tango,Natural Promenade Turn,4,RF fwd in CBMP. LF side no weight PP,DW of new LOD End DW,,,H then IE B LF,true,Nil,LF to side and slightly back. RF side no weight PP,Backing DW of new LOD End DC,,,BH then IE B RF,false,Nil,
 Tango,Promenade Link,1,LF to side in PP,Along LOD pointing DW,1/8 to R,,H,false,Nil,RF to side in PP,Along LOD pointing DC,1/8 to L,,H,false,Nil,Note. Reverse Promenade Link if turned to L.
-Tango,Promenade Link,2,RF fwd and across in PP and CBMP,Along LOD pointing DW,,,HB (Foot flat),true,Nil,LF fwd and across in PP and CBMP,Along LOD pointing DC,,,HB (Foot flat),true,Nil
-Tango,Promenade Link,3,LF placed to side small step no weight,Facing wall,,,IE of B,false,Nil,RF placed to side small step no weight,Backing wall,,,IE of B,true,Nil
+Tango,Promenade Link,2,RF fwd and across in PP and CBMP,Along LOD pointing DW,,,HB (Foot flat),true,Nil,LF fwd and across in PP and CBMP,Along LOD pointing DC,,,HB (Foot flat),true,Nil,
+Tango,Promenade Link,3,LF placed to side small step no weight,Facing wall,,,IE of B,false,Nil,RF placed to side small step no weight,Backing wall,,,IE of B,true,Nil,
 Tango,Four Step,1,LF fwd in CBMP,To wall,1/8 to L between 1-2,,H,true,Nil,RF back in CBMP,To wall,1/8 to L between 1-2,,BH,true,Nil,Note. If commenced facing DW first step will be DW.
-Tango,Four Step,2,RF to side and slightly back,Backing DC against LOD,,,BH,false,Nil,LF to side and slightly fwd,Pointing DC against LOD,,,Whole foot,false,Nil
-Tango,Four Step,3,LF back in CBMP,DC against LOD,,,BH,false,Nil,RF fwd in CBMP OP,DC against LOD,,,BH,true,Nil
-Tango,Four Step,4,RF closes to LF slightly back in PP,Facing DW,,,BH,false,Nil,LF closes to RF slightly back in PP,Facing DC,,,BH,false,Nil
-Tango,Back Open Promenade,1,LF to side in PP,Along LOD pointing DW,1/2 to R between 2-3 Body turn L on 4,,H,false,Nil,RF to side in PP,Along LOD pointing DC,1/4 to R between 3-4,,H,false,Nil
-Tango,Back Open Promenade,2,RF fwd and across in PP and CBMP,Along LOD pointing DW,,,H,true,Nil,LF fwd and across in PP and CBMP,Along LOD pointing DC,,,H,false,Nil
-Tango,Back Open Promenade,3,LF to side and slightly back,Backing DC,,,BH,false,Nil,RF to side and slightly fwd,Pointing DC,,,HB (Foot flat),false,Nil
-Tango,Back Open Promenade,4,RF back,DC,,,BH,false,Nil,LF fwd,DC,,,BH,false,Nil
+Tango,Four Step,2,RF to side and slightly back,Backing DC against LOD,,,BH,false,Nil,LF to side and slightly fwd,Pointing DC against LOD,,,Whole foot,false,Nil,
+Tango,Four Step,3,LF back in CBMP,DC against LOD,,,BH,false,Nil,RF fwd in CBMP OP,DC against LOD,,,BH,true,Nil,
+Tango,Four Step,4,RF closes to LF slightly back in PP,Facing DW,,,BH,false,Nil,LF closes to RF slightly back in PP,Facing DC,,,BH,false,Nil,
+Tango,Back Open Promenade,1,LF to side in PP,Along LOD pointing DW,1/2 to R between 2-3 Body turn L on 4,,H,false,Nil,RF to side in PP,Along LOD pointing DC,1/4 to R between 3-4,,H,false,Nil,
+Tango,Back Open Promenade,2,RF fwd and across in PP and CBMP,Along LOD pointing DW,,,H,true,Nil,LF fwd and across in PP and CBMP,Along LOD pointing DC,,,H,false,Nil,
+Tango,Back Open Promenade,3,LF to side and slightly back,Backing DC,,,BH,false,Nil,RF to side and slightly fwd,Pointing DC,,,HB (Foot flat),false,Nil,
+Tango,Back Open Promenade,4,RF back,DC,,,BH,false,Nil,LF fwd,DC,,,BH,false,Nil,
 Tango,Outside Swivel Method 1,1,LF back in CBMP RF cross front no weight End PP,Between C and DC against LOD Toe in. End face wall,under 1/8 R on 1 1/8 L 1-2,,H BH pressure RF,true,Nil,RF fwd in CBMP OP LF closes back no weight End PP,Between C and DC against LOD. End Facing LOD,under 1/8 R on 1 1/8 L 1-2,,HB (Foot flat) IE B LF,true,Nil,"Note. Most advanced dancers do not cross RF in front on step 1, but leave it forward."
-Tango,Outside Swivel Method 1,2,RF fwd and across in PP and CBMP,Pointing DW,,,B of,false,Nil,LF fwd and across in PP and CBMP,DW Pointing down LOD,,,HB (Foot flat),false,Nil
-Tango,Outside Swivel Method 1,3,LF placed to side small step no weight,Facing DW,,,IE of B,false,Nil,RF placed to side small step no weight,Backing DW,,,IE of B,false,Nil
+Tango,Outside Swivel Method 1,2,RF fwd and across in PP and CBMP,Pointing DW,,,B of,false,Nil,LF fwd and across in PP and CBMP,DW Pointing down LOD,,,HB (Foot flat),false,Nil,
+Tango,Outside Swivel Method 1,3,LF placed to side small step no weight,Facing DW,,,IE of B,false,Nil,RF placed to side small step no weight,Backing DW,,,IE of B,false,Nil,
 Tango,Oversway,1,LF fwd in CBMP,DC,Almost 3/4 to L 1-3,,H,true,Nil,RF back in CBMP,DC,5/8 to L 1-3,,BH,true,Nil,Note. Body turns more on step 4. Footwork step 3 IE of B indicates heel lowers late.
-Tango,Oversway,2,RF to side and slightly back,Backing LOD,,,BH,false,Nil,L heel closes to R heel,L toe pointing down LOD,,,Whole foot BH,false,Nil
-Tango,Oversway,3,LF back and sideways,Down then along LOD," L toe W and DW",,,IE of B,false,Nil,RF fwd and sideways,Down then along LOD. End backing wall,,,Whole foot BH,false,Nil
-Tango,Oversway,4,Position held. L knee flexes,R toe pointing DW against LOD,,,H (LF) IE B RF,false,Nil,Position held. R knee flexes,L toe pointing DC against LOD,,,IE of B of LF,false,Nil
+Tango,Oversway,2,RF to side and slightly back,Backing LOD,,,BH,false,Nil,L heel closes to R heel,L toe pointing down LOD,,,Whole foot BH,false,Nil,
+Tango,Oversway,3,LF back and sideways,Down then along LOD," L toe W and DW",,IE of B,false,Nil,RF fwd and sideways,Down then along LOD. End backing wall,,,BH,false,Nil,
+Tango,Oversway,4,Position held. L knee flexes,R toe pointing DW against LOD,,,H (LF) IE B RF,false,Nil,Position held. R knee flexes,L toe pointing DC against LOD,,,IE of B of LF,false,Nil,
 Tango,Basic Reverse Turn,1,LF fwd in CBMP,DC,3/4 to L,,H,true,Nil,RF back in CBMP,DC,3/4 to L,,BH,true,Nil,Note. Timing can be QQSQQS or QQ&QQS.
-Tango,Basic Reverse Turn,2,RF to side and slightly back,Backing LOD,,,BH,false,Nil,LF to side and slightly fwd,Pointing down LOD,,,Whole foot,false,Nil
-Tango,Basic Reverse Turn,3,LF crosses in front of RF,Backing LOD,,,Whole foot,false,Nil,RF closes to LF slightly back,Facing LOD,,,Whole foot,false,Nil
-Tango,Basic Reverse Turn,4,RF back,Down LOD,,,BH,true,Nil,LF forward,Down LOD,,,H,true,Nil
-Tango,Basic Reverse Turn,5,LF to side and slightly fwd,Pointing DW,,,IE of foot,false,Nil,RF to side and slightly back,Backing DW,,,IE of BH,false,Nil
-Tango,Basic Reverse Turn,6,RF closes to LF slightly back,Facing DW,,,Whole foot,false,Nil,LF closes to RF slightly fwd,Backing DW,,,Whole foot,false,Nil
+Tango,Basic Reverse Turn,2,RF to side and slightly back,Backing LOD,,,BH,false,Nil,LF to side and slightly fwd,Pointing down LOD,,,Whole foot,false,Nil,
+Tango,Basic Reverse Turn,3,LF crosses in front of RF,Backing LOD,,,Whole foot,false,Nil,RF closes to LF slightly back,Facing LOD,,,Whole foot,false,Nil,
+Tango,Basic Reverse Turn,4,RF back,Down LOD,,,BH,true,Nil,LF forward,Down LOD,,,H,true,Nil,
+Tango,Basic Reverse Turn,5,LF to side and slightly fwd,Pointing DW,,,IE of foot,false,Nil,RF to side and slightly back,Backing DW,,,IE of BH,false,Nil,
+Tango,Basic Reverse Turn,6,RF closes to LF slightly back,Facing DW,,,Whole foot,false,Nil,LF closes to RF slightly fwd,Backing DW,,,Whole foot,false,Nil,
 Tango,The Chase,1,LF to side in PP,Along LOD pointing DW,3/4 R between 2-6,,H,false,Nil,RF to side in PP,Along LOD pointing DC,7/8 or 3/4 L,,H,false,Nil,Note. A sharp body turn to R is used on step 4.
-Tango,The Chase,2,RF fwd and across in PP and CBMP,Along LOD pointing DW,,,H,true,Nil,LF fwd and across in PP and CBMP,Along LOD pointing DC,,,H,true,Nil
-Tango,The Chase,3,LF to side and slightly fwd,Facing wall,,,IE of BH,false,Nil,RF to side and slightly back,Backing wall,,,IE of BH,false,Nil
-Tango,The Chase,4,RF fwd in CBMP OP,Almost against LOD,,,BH,true,Nil,LF back in CBMP,Almost against LOD,,,BH,true,Nil
-Tango,The Chase,5,LF back in CBMP,Almost DW,,,BH,true,Nil,RF fwd in CBMP OP,Almost DW,,,H,true,Nil
-Tango,The Chase,6,RF to side," small step in PP",Facing DC,,,BH IE B LF,false,Nil,LF to side. RF side no weight PP,Backing DC. End facing DC against LOD,,,BH IE B RF,false,Nil
+Tango,The Chase,2,RF fwd and across in PP and CBMP,Along LOD pointing DW,,,H,true,Nil,LF fwd and across in PP and CBMP,Along LOD pointing DC,,,H,true,Nil,
+Tango,The Chase,3,LF to side and slightly fwd,Facing wall,,,IE of BH,false,Nil,RF to side and slightly back,Backing wall,,,IE of BH,false,Nil,
+Tango,The Chase,4,RF fwd in CBMP OP,Almost against LOD,,,BH,true,Nil,LF back in CBMP,Almost against LOD,,,BH,true,Nil,
+Tango,The Chase,5,LF back in CBMP,Almost DW,,,BH,true,Nil,RF fwd in CBMP OP,Almost DW,,,H,true,Nil,
+Tango,The Chase,6,"RF to side, small step in PP",Facing DC,,,"BH and IE of B of LF",false,Nil,"LF to side. RF placed to side without weight in PP",Backing DC. End facing DC against LOD,,,"BH, and IE of B of RF",false,Nil,
 Tango,Five Step,1,LF fwd in CBMP,DW,1/4 to L between 1-2,,H,true,Nil,RF back in CBMP,DW,1/4 to L between 1-2,,BH,true,Nil,Note. Heel of RF (Man) and LF (Lady) does not lower until Lady has completed turn on 5.
-Tango,Five Step,2,RF to side and slightly back,Backing DW against LOD,,,BH,false,Nil,LF to side and slightly fwd,Pointing DW against LOD,,,Whole foot,false,Nil
-Tango,Five Step,3,LF back in CBMP,DW against LOD,,,BH,false,Nil,RF fwd in CBMP OP,DW against LOD,,,H,false,Nil
-Tango,Five Step,4,RF back and slightly rightwards,DW against LOD,,,B,false,Nil,LF fwd and slightly leftwards,DW against LOD,,,B,false,Nil
-Tango,Five Step,5,LF placed to side without weight in PP,Facing DW of new LOD,Body turns R on 5,,H RF IE B LF,false,Nil,RF placed to side without weight in PP,Facing DC of new LOD,1/4 to R on 5,,H LF IE B RF,false,Nil
+Tango,Five Step,2,RF to side and slightly back,Backing DW against LOD,,,BH,false,Nil,LF to side and slightly fwd,Pointing DW against LOD,,,Whole foot,false,Nil,
+Tango,Five Step,3,LF back in CBMP,DW against LOD,,,BH,false,Nil,RF fwd in CBMP OP,DW against LOD,,,H,false,Nil,
+Tango,Five Step,4,RF back and slightly rightwards,DW against LOD,,,B,false,Nil,LF fwd and slightly leftwards,DW against LOD,,,B,false,Nil,
+Tango,Five Step,5,LF placed to side without weight in PP,Facing DW of new LOD,Body turns R on 5,,H RF IE B LF,false,Nil,RF placed to side without weight in PP,Facing DC of new LOD,1/4 to R on 5,,H LF IE B RF,false,Nil,
 Tango,Contra Check,1,LF fwd in CBMP slightly flexing knees,DW pointing almost LOD,Body turn to L,,B (Flat),true,Nil,RF back in CBMP slightly flexing knees,DW feet backing almost LOD,Body turn to L,,B,true,Nil,Note. Body turns R on 2. End facing DW/DC.
-Tango,Contra Check,2,Transfer weight back to RF,DC against LOD,Body turn to R,,BH,false,Nil,Transfer weight fwd to LF,DC against LOD,Body turn to R,,BH,false,Nil
-Tango,Contra Check,3,LF placed to side no weight PP,Facing DW,1/4 to R between 2-3,,IE of B LF,false,Nil,RF placed to side without weight in PP,Facing DC,1/4 to R between 2-3,,B LF flat IE B RF,false,Nil
+Tango,Contra Check,2,Transfer weight back to RF,DC against LOD,Body turn to R,,BH,false,Nil,Transfer weight fwd to LF,DC against LOD,Body turn to R,,BH,false,Nil,
+Tango,Contra Check,3,LF placed to side no weight PP,Facing DW,1/4 to R between 2-3,,IE of B LF,false,Nil,RF placed to side without weight in PP,Facing DC,1/4 to R between 2-3,,B LF flat IE B RF,false,Nil,
 Quickstep,Heel Pivot Quarter Turn to Left,1,RF back,Backing DC,Com to turn L,Slight rise 1-3 NFR,TH,true,S,LF fwd,Facing DC,Com to turn L,Rise e/o 1,HT,true,S,Note. 3/8 turn may be made on this figure.
-Quickstep,Heel Pivot Quarter Turn to Left,2,LF closes towards RF,Towards alignment of 3,Cont turn on R heel,,H,false,R,RF to side,Backing wall,1/8 between 1-2,Up,T,false,L
-Quickstep,Heel Pivot Quarter Turn to Left,3,LF closes to RF slightly fwd no weight,Facing DW,1/4 between 1-3,,H(RF) pressure T LF,false,R,LF closes to RF,Backing DW,1/8 between 2-3,Up. Lower e/o 3,TH,false,L
-Quickstep,Heel Pivot Quarter Turn to Left,4,LF fwd,Facing DW,,,H,true,S,RF back,Backing DW,Nil,,T,true,S
+Quickstep,Heel Pivot Quarter Turn to Left,2,LF closes towards RF,Towards alignment of 3,Cont turn on R heel,,H,false,R,RF to side,Backing wall,1/8 between 1-2,Up,T,false,L,
+Quickstep,Heel Pivot Quarter Turn to Left,3,LF closes to RF slightly fwd no weight,Facing DW,1/4 between 1-3,,H(RF) pressure T LF,false,R,LF closes to RF,Backing DW,1/8 between 2-3,Up. Lower e/o 3,TH,false,L,
+Quickstep,Heel Pivot Quarter Turn to Left,4,LF fwd,Facing DW,,,H,true,S,RF back,Backing DW,Nil,,T,true,S,
 Quickstep,Zig-Zag Back Lock and Running Finish,1,LF fwd,Facing LOD,Com to turn L,,HT,true,S,RF back,Backing LOD,Com to turn L 3/8 between 1-2,Rise e/o 1,TH,true,S,Note. No R side lead needed on 4 and 6 as body already in correct position.
-Quickstep,Zig-Zag Back Lock and Running Finish,2,RF to side,Backing wall,1/4 between 1-2,,TH,false,S,LF closes to RF (Heel Turn),Facing DW,Body turns less,Up,H,false,S
-Quickstep,Zig-Zag Back Lock and Running Finish,3,LF back in CBMP,Backing DW,1/8 between 2-3,Com to rise e/o 3,TH,true,S,RF fwd in CBMP OP,Facing DW,Nil,Com to rise e/o 3,HT,true,S
-Quickstep,Zig-Zag Back Lock and Running Finish,4,RF back,Backing DW,Body turns less,NFR Cont rise 4-5,T,false,S,LF diag fwd,Facing DW,Nil,Cont rise 4-5,T,false,S
-Quickstep,Zig-Zag Back Lock and Running Finish,5,LF crosses in front of RF,Backing DW,,Nil,T,false,S,RF crosses behind LF,Facing DW,Nil,,T,false,S
-Quickstep,Zig-Zag Back Lock and Running Finish,6,RF diag back,Backing DW,,Up. Lower e/o 6,TH,false,S,LF diag fwd,Facing DW,Nil,Up. Lower e/o 6,TH,false,S
-Quickstep,Zig-Zag Back Lock and Running Finish,7,LF back in CBMP,Backing DW,,Rise e/o 7,T,true,S,RF fwd in CBMP OP,Facing DW,Com turn R,Rise e/o 7,HT,true,S
-Quickstep,Zig-Zag Back Lock and Running Finish,8,RF to side and slightly fwd,Pointing to LOD,Com turn R 3/8 between 7-8,Up,T,false,S,LF to side,Backing DC,1/4 between 7-8,Up,T,false,S
-Quickstep,Zig-Zag Back Lock and Running Finish,9,LF fwd preparing step OP,Facing LOD,Body turns less,Up. Lower e/o 9,TH,false,L,RF back R side leading,Backing LOD,1/8 between 8-9,Up. Lower e/o 9,TH,false,R
-Quickstep,Zig-Zag Back Lock and Running Finish,10,RF fwd in CBMP OP,Facing LOD,Body turn to R,,H,true,L,LF back in CBMP,Backing LOD,Nil,,T,true,R
-Quickstep,Cross Chasse,1,LF fwd,Facing DW,Nil,Rise e/o 1,TH,true,L,RF back,Backing DW,Nil,Rise e/o 1 NFR,TH,true,R
-Quickstep,Cross Chasse,2,RF to side,Facing DW,Nil,Up,T,false,L,LF to side,Backing DW,Nil,Up,T,false,R
-Quickstep,Cross Chasse,3,LF closes to RF,Facing DW,Nil,Up. Lower e/o 3,TH,false,L,RF closes to LF,Backing DW,Nil,Up. Lower e/o 3,TH,false,R
-Quickstep,Cross Chasse,4,RF fwd in CBMP OP,Facing DW,Nil,,H,true,S,LF back in CBMP,Backing DW,Nil,,T,true,S
+Quickstep,Zig-Zag Back Lock and Running Finish,2,RF to side,Backing wall,1/4 between 1-2,,TH,false,S,LF closes to RF (Heel Turn),Facing DW,Body turns less,Up,H,false,S,
+Quickstep,Zig-Zag Back Lock and Running Finish,3,LF back in CBMP,Backing DW,1/8 between 2-3,Com to rise e/o 3,TH,true,S,RF fwd in CBMP OP,Facing DW,Nil,Com to rise e/o 3,HT,true,S,
+Quickstep,Zig-Zag Back Lock and Running Finish,4,RF back,Backing DW,Body turns less,NFR Cont rise 4-5,T,false,S,LF diag fwd,Facing DW,Nil,Cont rise 4-5,T,false,S,
+Quickstep,Zig-Zag Back Lock and Running Finish,5,LF crosses in front of RF,Backing DW,,Nil,T,false,S,RF crosses behind LF,Facing DW,Nil,,T,false,S,
+Quickstep,Zig-Zag Back Lock and Running Finish,6,RF diag back,Backing DW,,Up. Lower e/o 6,TH,false,S,LF diag fwd,Facing DW,Nil,Up. Lower e/o 6,TH,false,S,
+Quickstep,Zig-Zag Back Lock and Running Finish,7,LF back in CBMP,Backing DW,,Rise e/o 7,T,true,S,RF fwd in CBMP OP,Facing DW,Com turn R,Rise e/o 7,HT,true,S,
+Quickstep,Zig-Zag Back Lock and Running Finish,8,RF to side and slightly fwd,Pointing to LOD,Com turn R 3/8 between 7-8,Up,T,false,S,LF to side,Backing DC,1/4 between 7-8,Up,T,false,S,
+Quickstep,Zig-Zag Back Lock and Running Finish,9,LF fwd preparing step OP,Facing LOD,Body turns less,Up. Lower e/o 9,TH,false,L,RF back R side leading,Backing LOD,1/8 between 8-9,Up. Lower e/o 9,TH,false,R,
+Quickstep,Zig-Zag Back Lock and Running Finish,10,RF fwd in CBMP OP,Facing LOD,Body turn to R,,H,true,L,LF back in CBMP,Backing LOD,Nil,,T,true,R,
+Quickstep,Cross Chasse,1,LF fwd,Facing DW,Nil,Rise e/o 1,TH,true,L,RF back,Backing DW,Nil,Rise e/o 1 NFR,TH,true,R,
+Quickstep,Cross Chasse,2,RF to side,Facing DW,Nil,Up,T,false,L,LF to side,Backing DW,Nil,Up,T,false,R,
+Quickstep,Cross Chasse,3,LF closes to RF,Facing DW,Nil,Up. Lower e/o 3,TH,false,L,RF closes to LF,Backing DW,Nil,Up. Lower e/o 3,TH,false,R,
+Quickstep,Cross Chasse,4,RF fwd in CBMP OP,Facing DW,Nil,,H,true,S,LF back in CBMP,Backing DW,Nil,,T,true,S,
 Quickstep,Change of Direction,1,LF fwd,Facing DW,Com to turn L,,H,true,S,RF back,Backing DW,Com to turn L,,TH,true,S,Note. Up to 1/2 turn may be made when the figure is danced at a corner.
-Quickstep,Change of Direction,2,RF diag fwd R side leading,DW R toe pointing LOD,1/4 between 1-3,,IE of TH,false,S,LF diag back L side leading,Backing DW,1/4 between 1-3,,T IE of TH,false,S
-Quickstep,Change of Direction,3,LF closes to RF slightly fwd no weight,Facing DC,Nil,,IE of T (LF),false,L,RF closes to LF slightly back no weight,Backing DC,Nil,,IE of T (RF),false,R
-Quickstep,Change of Direction,4,LF fwd in CBMP,Facing DC,Nil,,H,true,S,RF back in CBMP,Backing DC,Nil,,T,true,S
+Quickstep,Change of Direction,2,RF diag fwd R side leading,DW R toe pointing LOD,1/4 between 1-3,,IE of TH,false,S,LF diag back L side leading,Backing DW,1/4 between 1-3,,T IE of TH,false,S,
+Quickstep,Change of Direction,3,LF closes to RF slightly fwd no weight,Facing DC,Nil,,IE of T (LF),false,L,RF closes to LF slightly back no weight,Backing DC,Nil,,IE of T (RF),false,R,
+Quickstep,Change of Direction,4,LF fwd in CBMP,Facing DC,Nil,,H,true,S,RF back in CBMP,Backing DC,Nil,,T,true,S,
 Waltz,Drag Hesitation,1,LF fwd,Facing LOD,Com to turn L 1/4 between 1-2,Rise e/o 2,HT,true,Nil,RF back,Backing LOD,Com to turn L Just over 1/2 between 1-2,Rise e/o 2,TH,true,Nil,Note. Lady gets slight foot swivel between 2-3.
-Waltz,Drag Hesitation,2,RF to side,Backing wall,1/8 between 2-3,Up,T,false,Nil,LF to side,Pointing between W and DW,Just under 1/8 between 2-3,Up,T,false,Nil
-Waltz,Drag Hesitation,3,LF closes to RF without weight,Backing DW,Nil,Up. Lower e/o 3,T both feet then TH RF,false,Nil,RF closes to LF without weight,Facing DW,Nil,Up. Lower e/o 3,T both feet then TH LF,false,Nil
+Waltz,Drag Hesitation,2,RF to side,Backing wall,1/8 between 2-3,Up,T,false,Nil,LF to side,Pointing between W and DW,Just under 1/8 between 2-3,Up,T,false,Nil,
+Waltz,Drag Hesitation,3,LF closes to RF without weight,Backing DW,Nil,Up. Lower e/o 3,T both feet then TH RF,false,Nil,RF closes to LF without weight,Facing DW,Nil,Up. Lower e/o 3,T both feet then TH LF,false,Nil,
 Waltz,The Fallaway Whisk,1,LF back,Backing LOD,Com to turn R 3/8 between 1-2,Com to rise e/o 1 NFR,TH,true,S,RF fwd,Facing LOD,Com to turn R 3/8 between 1-2,Com to rise e/o 1,HT,true,S,Note. Some Men prefer Footwork of T on step 2. Both are correct.
-Waltz,The Fallaway Whisk,2,RF to side and slightly back,Pointing DC,Body turns less,Cont to rise on 2,TH,false,S,LF to side,Backing DC,Nil,Cont to rise on 2,TH,false,S
-Waltz,The Fallaway Whisk,3,LF crosses loosely behind RF in Fallaway,Facing DC,Body cont to turn R,Lower on 3,TH,false,R,RF crosses loosely behind LF in Fallaway,Facing DC against LOD,1/4 between 2-3 Body cont turn,Lower on 3,TH,false,L
+Waltz,The Fallaway Whisk,2,RF to side and slightly back,Pointing DC,Body turns less,Cont to rise on 2,TH,false,S,LF to side,Backing DC,Nil,Cont to rise on 2,TH,false,S,
+Waltz,The Fallaway Whisk,3,LF crosses loosely behind RF in Fallaway,Facing DC,Body cont to turn R,Lower on 3,TH,false,R,RF crosses loosely behind LF in Fallaway,Facing DC against LOD,1/4 between 2-3 Body cont turn,Lower on 3,TH,false,L,
 Foxtrot,Feather Step,1,RF fwd,Facing LOD,Nil,Rise e/o 1,HT,true,S,LF back,Backing LOD,Nil,Rise e/o 1 NFR,TH,true,S,Note. The Feather Step may also be danced DW or DC. Lady: It is important to release the toe of the front foot from the floor as it commences to move back towards the supporting foot.
-Foxtrot,Feather Step,2,LF fwd preparing to step OP L side leading,Facing LOD,Nil,Up,T,false,R,RF back R side leading,Backing LOD,Nil,Up. NFR,TH,false,L
-Foxtrot,Feather Step,3,RF fwd in CBMP OP,Facing LOD,Nil,Up. Lower e/o 3,TH,false,R,LF back in CBMP,Backing LOD,Nil,NFR Lower e/o 3,TH,false,L
-Foxtrot,Feather Step,4,LF fwd,Facing LOD,Nil,,H,true,S,RF back,Backing LOD,Nil,,T,true,S
+Foxtrot,Feather Step,2,LF fwd preparing to step OP L side leading,Facing LOD,Nil,Up,T,false,R,RF back R side leading,Backing LOD,Nil,Up. NFR,TH,false,L,
+Foxtrot,Feather Step,3,RF fwd in CBMP OP,Facing LOD,Nil,Up. Lower e/o 3,TH,false,R,LF back in CBMP,Backing LOD,Nil,NFR Lower e/o 3,TH,false,L,
+Foxtrot,Feather Step,4,LF fwd,Facing LOD,Nil,,H,true,S,RF back,Backing LOD,Nil,,T,true,S,
 Foxtrot,Three Step,1,RF fwd,Facing LOD,Nil,Rise e/o 1,HT,false,L,LF back,Backing LOD,Nil,Rise e/o 1 NFR,TH,false,R,"Note. The Three Step may also be danced DW. A slight R side lead is used on steps 1 and 2 (Man), and a slight L side lead for Lady."
-Foxtrot,Three Step,2,LF fwd,Facing LOD,Nil,Up. Lower e/o 2,TH,false,L,RF back,Backing LOD,Nil,Up NFR Lower e/o 2,TH,false,R
-Foxtrot,Three Step,3,RF fwd,Facing LOD,Nil,,H,true,S,LF back,Backing LOD,Nil,,T,true,S
+Foxtrot,Three Step,2,LF fwd,Facing LOD,Nil,Up. Lower e/o 2,TH,false,L,RF back,Backing LOD,Nil,Up NFR Lower e/o 2,TH,false,R,
+Foxtrot,Three Step,3,RF fwd,Facing LOD,Nil,,H,true,S,LF back,Backing LOD,Nil,,T,true,S,
 Foxtrot,Natural Turn,1,RF fwd,Facing LOD,Com to turn R 3/8 between 1-2,Rise e/o 1,HT,true,S,LF back,Backing LOD,Com to turn R,Rise slightly e/o 1 NFR,TH,true,S,"Note. Alignment. When commenced DW, 1/4 will be made between 1-2 and 1/8 between 2-3. At corner, turn 1/4 between 4-5 to face new LOD."
-Foxtrot,Natural Turn,2,LF to side,Backing DC,1/4 between 2-3,Up,T,false,R,RF closes to LF (Heel Turn),Facing LOD,1/2 between 1-2,Cont to rise on 2,HT,false,L
-Foxtrot,Natural Turn,3,RF back,Backing LOD,Com to turn R,Up. Lower e/o 3,TH,false,R,LF fwd,Facing LOD,Com to turn R,Up. Lower e/o 3,TH,false,L
-Foxtrot,Natural Turn,4,LF back,Backing LOD,3/8 between 4-5,,TH,true,S,RF fwd,Facing LOD,Com to turn R,,HT,true,S
-Foxtrot,Natural Turn,5,RF to side small step (Heel Pull),Facing DC,Body turn to L,,H IE whole foot then IE of LF,false,L,LF to side,Backing DC,3/8 between 4-5,,TH then IE of T of RF,false,R
-Foxtrot,Natural Turn,6,LF fwd,Facing DC,Nil,,H,true,S,RF back having brushed to LF,Backing DC,Body turn to L,,T,true,R
+Foxtrot,Natural Turn,2,LF to side,Backing DC,1/4 between 2-3,Up,T,false,R,RF closes to LF (Heel Turn),Facing LOD,1/2 between 1-2,Cont to rise on 2,HT,false,L,
+Foxtrot,Natural Turn,3,RF back,Backing LOD,Com to turn R,Up. Lower e/o 3,TH,false,R,LF fwd,Facing LOD,Com to turn R,Up. Lower e/o 3,TH,false,L,
+Foxtrot,Natural Turn,4,LF back,Backing LOD,3/8 between 4-5,,TH,true,S,RF fwd,Facing LOD,Com to turn R,,HT,true,S,
+Foxtrot,Natural Turn,5,RF to side small step (Heel Pull),Facing DC,Body turn to L,,H IE whole foot then IE of LF,false,L,LF to side,Backing DC,3/8 between 4-5,,TH then IE of T of RF,false,R,
+Foxtrot,Natural Turn,6,LF fwd,Facing DC,Nil,,H,true,S,RF back having brushed to LF,Backing DC,Body turn to L,,T,true,R,
 Foxtrot,Reverse Turn (incorporating Feather Finish),1,LF fwd,Facing DC,Com to turn L,Rise e/o 1,HT,true,S,RF back,Backing DC,Com to turn L,Rise slightly e/o 1 NFR,TH,true,S,"Note. Feather Finish (steps 4-7) may be commenced in other alignments. When RF moves back for step 7, the Heel must be in contact with the floor."
-Foxtrot,Reverse Turn (incorporating Feather Finish),2,RF to side,Backing DW,1/4 between 1-2,Up,T,false,L,LF closes to RF (Heel Turn),Facing LOD,3/8 between 1-2,Cont to rise on 2,HT,false,R
-Foxtrot,Reverse Turn (incorporating Feather Finish),3,LF back,Backing LOD,1/8 between 2-3,Up. Lower e/o 3,TH,false,L,RF fwd,Facing LOD,Nil,Up. Lower e/o 3,TH,false,R
-Foxtrot,Reverse Turn (incorporating Feather Finish),4,RF back,Backing LOD,Com to turn L 3/8 between 4-5 Body turns less,Rise e/o 4,THT,true,S,LF fwd,Facing LOD,Com to turn L,Rise e/o 4,HT,true,S
-Foxtrot,Reverse Turn (incorporating Feather Finish),5,LF to side and slightly fwd,Pointing DW,,Up,T,false,R,RF to side,Backing wall,1/4 between 4-5,Up,TH,false,L
-Foxtrot,Reverse Turn (incorporating Feather Finish),6,RF fwd in CBMP OP,Facing DW,,Up. Lower e/o 6,TH,false,R,LF back in CBMP,Backing DW,1/8 between 5-6 Body turns less,Up. NFR Lower e/o 6,TH,false,L
-Foxtrot,Reverse Turn (incorporating Feather Finish),7,LF fwd,Facing DW,,,,,H,true,S,RF back,Backing DW,,,,,T,true,S
-Foxtrot,Closed Impetus and Feather Finish,1,LF back,Backing LOD,Com to turn R 3/8 between 1-2,Rise e/o 2,TH,true,S,RF fwd,Facing LOD,Com to turn R,,HT,true,S
-Foxtrot,Closed Impetus and Feather Finish,2,RF closes to LF (Heel Turn),Facing DC,1/4 between 2-3,Up. Lower e/o 3,HT,false,L,LF to side,Backing DC,3/8 between 1-2,Rise e/o 2,T,false,R
-Foxtrot,Closed Impetus and Feather Finish,3,LF to side and slightly back,Backing DC against the LOD,Com to turn L 1/4 between 4-5 Body turns less,Rise e/o 4,TH,false,S,RF diag fwd having brushed to LF,Facing DC against the LOD,1/4 between 2-3,Up. Lower e/o 3,TH,false,S
-Foxtrot,Closed Impetus and Feather Finish,4,RF back,Backing DC against the LOD,,Up,THT,true,S,LF fwd,Facing DC against the LOD,Com to turn L,Rise e/o 4,HT,true,S
-Foxtrot,Closed Impetus and Feather Finish,5,LF to side and slightly fwd,Pointing DC,,Up. Lower e/o 6,T,false,R,RF to side,Backing LOD,1/8 between 4-5,Up,TH,false,L
-Foxtrot,Closed Impetus and Feather Finish,6,RF fwd in CBMP OP,Facing DC,,,TH,false,R,LF back in CBMP,Backing DC,1/8 between 5-6 Body turns less,Up. NFR Lower e/o 6,TH,false,L
-Foxtrot,Closed Impetus and Feather Finish,7,LF fwd,Facing DC,,,H,true,S,RF back,Backing DC,,,,,T,true,S
+Foxtrot,Reverse Turn (incorporating Feather Finish),2,RF to side,Backing DW,1/4 between 1-2,Up,T,false,L,LF closes to RF (Heel Turn),Facing LOD,3/8 between 1-2,Cont to rise on 2,HT,false,R,
+Foxtrot,Reverse Turn (incorporating Feather Finish),3,LF back,Backing LOD,1/8 between 2-3,Up. Lower e/o 3,TH,false,L,RF fwd,Facing LOD,Nil,Up. Lower e/o 3,TH,false,R,
+Foxtrot,Reverse Turn (incorporating Feather Finish),4,RF back,Backing LOD,Com to turn L 3/8 between 4-5 Body turns less,Rise e/o 4,THT,true,S,LF fwd,Facing LOD,Com to turn L,Rise e/o 4,HT,true,S,
+Foxtrot,Reverse Turn (incorporating Feather Finish),5,LF to side and slightly fwd,Pointing DW,,Up,T,false,R,RF to side,Backing wall,1/4 between 4-5,Up,TH,false,L,
+Foxtrot,Reverse Turn (incorporating Feather Finish),6,RF fwd in CBMP OP,Facing DW,,Up. Lower e/o 6,TH,false,R,LF back in CBMP,Backing DW,1/8 between 5-6 Body turns less,Up. NFR Lower e/o 6,TH,false,L,
+Foxtrot,Reverse Turn (incorporating Feather Finish),7,LF fwd,Facing DW,Nil,,H,true,S,RF back,Backing DW,Nil,,T,true,S,
+Foxtrot,Closed Impetus and Feather Finish,1,LF back,Backing LOD,Com to turn R 3/8 between 1-2,Rise e/o 2,TH,true,S,RF fwd,Facing LOD,Com to turn R,,HT,true,S,
+Foxtrot,Closed Impetus and Feather Finish,2,RF closes to LF (Heel Turn),Facing DC,1/4 between 2-3,Up. Lower e/o 3,HT,false,L,LF to side,Backing DC,3/8 between 1-2,Rise e/o 2,T,false,R,
+Foxtrot,Closed Impetus and Feather Finish,3,LF to side and slightly back,Backing DC against the LOD,Com to turn L 1/4 between 4-5 Body turns less,Rise e/o 4,TH,false,S,RF diag fwd having brushed to LF,Facing DC against the LOD,1/4 between 2-3,Up. Lower e/o 3,TH,false,S,
+Foxtrot,Closed Impetus and Feather Finish,4,RF back,Backing DC against the LOD,,Up,THT,true,S,LF fwd,Facing DC against the LOD,Com to turn L,Rise e/o 4,HT,true,S,
+Foxtrot,Closed Impetus and Feather Finish,5,LF to side and slightly fwd,Pointing DC,,Up. Lower e/o 6,T,false,R,RF to side,Backing LOD,1/8 between 4-5,Up,TH,false,L,
+Foxtrot,Closed Impetus and Feather Finish,6,RF fwd in CBMP OP,Facing DC,,,TH,false,R,LF back in CBMP,Backing DC,1/8 between 5-6 Body turns less,Up. NFR Lower e/o 6,TH,false,L,
+Foxtrot,Closed Impetus and Feather Finish,7,LF fwd,Facing DC,Nil,,H,true,S,RF back,Backing DC,Nil,,T,true,S,
 Foxtrot,Natural Weave,1,RF fwd,Facing LOD,Com to turn R Just under 3/8 between 1-2,Rise e/o 1,HT,true,S,LF back,Backing LOD,Com to turn R,Rise slightly e/o 1 NFR,TH,true,S,Note. Continuance of turn between steps 2-3 is important. Footwork of TH may be used on step 4.
-Foxtrot,Natural Weave,2,LF to side,Backing almost DC,Slight turn to R between 2-3,Up,T,false,R,RF closes to LF (Heel Turn),Facing DC,3/8 between 1-2,Cont to rise on 2,HT,false,L
-Foxtrot,Natural Weave,3,RF back R side leading,Backing DC,Nil,Up,T,false,S,LF fwd preparing to step OP L side leading,Facing DC,Nil,Up,T,false,S
-Foxtrot,Natural Weave,4,LF back in CBMP,Backing DC,Com to turn L,Up,T,false,L,RF fwd in CBMP OP,Facing DC,Nil,Up,T,false,R
-Foxtrot,Natural Weave,5,RF back,Backing DC,1/4 between 5-6 Body turns less,Up,T,true,S,LF fwd,Facing DC,Com to turn L,Up,T,true,S
-Foxtrot,Natural Weave,6,LF to side and slightly fwd,Pointing DW,Nil,Up,T,false,R,RF to side,Backing wall,1/8 between 5-6,Up,TH,false,L
-Foxtrot,Natural Weave,7,RF fwd in CBMP OP,Facing DW,Nil,Up. Lower e/o 7,TH,false,R,LF back in CBMP,Backing DW,1/8 between 6-7 Body turns less,Up. NFR Lower e/o 7,TH,false,L
-Foxtrot,Natural Weave,8,LF fwd,Facing DW,Nil,,H,true,S,RF back,Backing DW,Nil,,T,true,S
+Foxtrot,Natural Weave,2,LF to side,Backing almost DC,Slight turn to R between 2-3,Up,T,false,R,RF closes to LF (Heel Turn),Facing DC,3/8 between 1-2,Cont to rise on 2,HT,false,L,
+Foxtrot,Natural Weave,3,RF back R side leading,Backing DC,Nil,Up,T,false,S,LF fwd preparing to step OP L side leading,Facing DC,Nil,Up,T,false,S,
+Foxtrot,Natural Weave,4,LF back in CBMP,Backing DC,Com to turn L,Up,T,false,L,RF fwd in CBMP OP,Facing DC,Nil,Up,T,false,R,
+Foxtrot,Natural Weave,5,RF back,Backing DC,1/4 between 5-6 Body turns less,Up,T,true,S,LF fwd,Facing DC,Com to turn L,Up,T,true,S,
+Foxtrot,Natural Weave,6,LF to side and slightly fwd,Pointing DW,Nil,Up,T,false,R,RF to side,Backing wall,1/8 between 5-6,Up,TH,false,L,
+Foxtrot,Natural Weave,7,RF fwd in CBMP OP,Facing DW,Nil,Up. Lower e/o 7,TH,false,R,LF back in CBMP,Backing DW,1/8 between 6-7 Body turns less,Up. NFR Lower e/o 7,TH,false,L,
+Foxtrot,Natural Weave,8,LF fwd,Facing DW,Nil,,H,true,S,RF back,Backing DW,Nil,,T,true,S,
 Foxtrot,Change of Direction,1,LF fwd,Facing DW,Com to turn L 1/4 between 1-2,Nil,H,true,S,RF back,Backing DW,Com to turn L,Nil,TH,true,S,"Note. At corner, 3/8 or 1/2 turn may be made."
-Foxtrot,Change of Direction,2,RF diag fwd R side leading and close LF to RF slightly fwd without weight,DW R Toe pointing LOD End facing DC,Nil,Nil,IE of TH then IE of T of LF,false,L,LF diag back L side leading and close RF to LF slightly back without weight,Backing DW End backing DC,1/4 between 1-2,Nil,T IE of TH then IE of T of RF,false,R
-Foxtrot,Change of Direction,3,LF fwd in CBMP,Facing DC,Nil,Nil,H,true,S,RF back in CBMP,Backing DC,Nil,Nil,T,true,S
+Foxtrot,Change of Direction,2,RF diag fwd R side leading and close LF to RF slightly fwd without weight,DW R Toe pointing LOD End facing DC,Nil,Nil,IE of TH then IE of T of LF,false,L,LF diag back L side leading and close RF to LF slightly back without weight,Backing DW End backing DC,1/4 between 1-2,Nil,T IE of TH then IE of T of RF,false,R,
+Foxtrot,Change of Direction,3,LF fwd in CBMP,Facing DC,Nil,Nil,H,true,S,RF back in CBMP,Backing DC,Nil,Nil,T,true,S,
 Foxtrot,Basic Weave,1,LF fwd,Facing DC against LOD,Com to turn L,Rise e/o 1,HT,true,S,RF back,Backing DC against LOD,Com to turn L 1/4 between 1-2 Body turns less.,Rise e/o 1 NFR,TH,true,S,Note. On step 3 the footwork of TH may be used. Lady may use ball to whole foot on preceding step.
-Foxtrot,Basic Weave,2,RF to side,Backing LOD,1/8 between 1-2,Up,T,false,L,LF to side,Pointing DC,Nil,Up,T,false,R
-Foxtrot,Basic Weave,3,LF back in CBMP,Backing DC,1/8 between 2-3,Up,T,false,L,RF fwd in CBMP OP,Facing DC,Body turns less,Up,T,false,R
-Foxtrot,Basic Weave,4,RF back,Backing DC,Com to turn L,Up,T,true,S,LF fwd,Facing DC,Com to turn L 1/8 between 4-5,Up,T,true,S
-Foxtrot,Basic Weave,5,LF to side and slightly fwd,Pointing DW,1/4 between 4-5 Body turns less,Up,T,false,R,RF to side,Backing wall,1/8 between 5-6 Body turns less,Up,TH,false,L
-Foxtrot,Basic Weave,6,RF fwd in CBMP OP,Facing DW,Nil,Up. Lower e/o 6,TH,false,R,LF back in CBMP,Backing DW,1/8 between 5-6 Body turns less,Up NFR Lower e/o 6,TH,false,L
-Foxtrot,Basic Weave,7,LF fwd,Facing DW,Nil,,H,true,S,RF back,Backing DW,Nil,,T,true,S
-Foxtrot,Closed Telemark,1,LF fwd,Facing DC,Com to turn L,Rise e/o 1,HT,true,S,RF back,Backing DC,Com to turn L,Rise slightly e/o 1 NFR,TH,true,S
-Foxtrot,Closed Telemark,2,RF to side,Backing wall,1/4 between 1-2,Up,T,false,L,LF closes to RF (Heel Turn),Facing DW,Nil,Cont to rise on 2,HT,false,R
-Foxtrot,Closed Telemark,3,LF diag fwd,Facing DW,Nil,Up. Lower e/o 3,TH,false,S,RF back,Backing DW,Nil,Up. Lower e/o 3,TH,false,S
-Foxtrot,Closed Telemark,4,RF fwd in CBMP OP,Facing DW,Nil,,H,true,S,LF back in CBMP,Backing DW,Nil,,T,true,S
+Foxtrot,Basic Weave,2,RF to side,Backing LOD,1/8 between 1-2,Up,T,false,L,LF to side,Pointing DC,Nil,Up,T,false,R,
+Foxtrot,Basic Weave,3,LF back in CBMP,Backing DC,1/8 between 2-3,Up,T,false,L,RF fwd in CBMP OP,Facing DC,Body turns less,Up,T,false,R,
+Foxtrot,Basic Weave,4,RF back,Backing DC,Com to turn L,Up,T,true,S,LF fwd,Facing DC,Com to turn L 1/8 between 4-5,Up,T,true,S,
+Foxtrot,Basic Weave,5,LF to side and slightly fwd,Pointing DW,1/4 between 4-5 Body turns less,Up,T,false,R,RF to side,Backing wall,1/8 between 5-6 Body turns less,Up,TH,false,L,
+Foxtrot,Basic Weave,6,RF fwd in CBMP OP,Facing DW,Nil,Up. Lower e/o 6,TH,false,R,LF back in CBMP,Backing DW,1/8 between 5-6 Body turns less,Up NFR Lower e/o 6,TH,false,L,
+Foxtrot,Basic Weave,7,LF fwd,Facing DW,Nil,,H,true,S,RF back,Backing DW,Nil,,T,true,S,
+Foxtrot,Closed Telemark,1,LF fwd,Facing DC,Com to turn L,Rise e/o 1,HT,true,S,RF back,Backing DC,Com to turn L,Rise slightly e/o 1 NFR,TH,true,S,
+Foxtrot,Closed Telemark,2,RF to side,Backing wall,1/4 between 1-2,Up,T,false,L,LF closes to RF (Heel Turn),Facing DW,Nil,Cont to rise on 2,HT,false,R,
+Foxtrot,Closed Telemark,3,LF diag fwd,Facing DW,Nil,Up. Lower e/o 3,TH,false,S,RF back,Backing DW,Nil,Up. Lower e/o 3,TH,false,S,
+Foxtrot,Closed Telemark,4,RF fwd in CBMP OP,Facing DW,Nil,,H,true,S,LF back in CBMP,Backing DW,Nil,,T,true,S,
 Foxtrot,Open Telemark and Feather Ending,1,LF fwd,Facing DC,Com to turn L,Rise e/o 1,HT,true,S,RF back,Backing DC,Com to turn L,Rise slightly e/o 1 NFR,TH,true,S,Note. Weave from PP or Natural Weave from PP may follow 1-3 Open Telemark.
-Foxtrot,Open Telemark and Feather Ending,2,RF to side,Backing DW,1/4 between 1-2,Up,T,false,L,LF closes to RF (Heel Turn),Facing LOD,3/8 between 1-2,Cont to rise on 2,HT,false,R
-Foxtrot,Open Telemark and Feather Ending,3,LF to side and slightly fwd in PP,Pointing DW Body facing wall,1/2 between 2-3 Body turns less,Up. Lower e/o 3,TH,false,S,RF diag. fwd in PP,Pointing to LOD,Slight body turn on L,Up. Lower e/o 3,TH,false,S
-Foxtrot,Open Telemark and Feather Ending,4,RF fwd in PP and CBMP,Pointing DW Body facing wall,Nil,Rise e/o 4,HT,true,S,LF fwd and across in PP and CBMP,Pointing to LOD (Moving DW),Com to turn L,Rise e/o 4,HT,true,S
-Foxtrot,Open Telemark and Feather Ending,5,LF diag fwd preparing to step OP,Facing DW,Nil,Up,T,false,R,RF to side and slightly back,Backing wall,1/4 between 4-5,Up,TH,false,L
-Foxtrot,Open Telemark and Feather Ending,6,RF fwd in CBMP OP,Facing DW,Nil,Up. Lower e/o 6,TH,false,R,LF back in CBMP,Backing DW,1/8 between 5-6 Body turns less,Up. NFR Lower e/o 6,TH,false,L
-Foxtrot,Open Telemark and Feather Ending,7,LF fwd,Facing DW,Nil,,H,true,S,RF back,Backing DW,Nil,,T,true,S
+Foxtrot,Open Telemark and Feather Ending,2,RF to side,Backing DW,1/4 between 1-2,Up,T,false,L,LF closes to RF (Heel Turn),Facing LOD,3/8 between 1-2,Cont to rise on 2,HT,false,R,
+Foxtrot,Open Telemark and Feather Ending,3,LF to side and slightly fwd in PP,Pointing DW Body facing wall,1/2 between 2-3 Body turns less,Up. Lower e/o 3,TH,false,S,RF diag. fwd in PP,Pointing to LOD,Slight body turn on L,Up. Lower e/o 3,TH,false,S,
+Foxtrot,Open Telemark and Feather Ending,4,RF fwd in PP and CBMP,Pointing DW Body facing wall,Nil,Rise e/o 4,HT,true,S,LF fwd and across in PP and CBMP,Pointing to LOD (Moving DW),Com to turn L,Rise e/o 4,HT,true,S,
+Foxtrot,Open Telemark and Feather Ending,5,LF diag fwd preparing to step OP,Facing DW,Nil,Up,T,false,R,RF to side and slightly back,Backing wall,1/4 between 4-5,Up,TH,false,L,
+Foxtrot,Open Telemark and Feather Ending,6,RF fwd in CBMP OP,Facing DW,Nil,Up. Lower e/o 6,TH,false,R,LF back in CBMP,Backing DW,1/8 between 5-6 Body turns less,Up. NFR Lower e/o 6,TH,false,L,
+Foxtrot,Open Telemark and Feather Ending,7,LF fwd,Facing DW,Nil,,H,true,S,RF back,Backing DW,Nil,,T,true,S,
 Foxtrot,Top Spin,1,LF back in CBMP,Backing against LOD,1/8 to L between preceding step and 1,Up,T,true,S,RF fwd in CBMP OP,Facing against LOD,1/8 to L between preceding step and 1,Up,T,true,S,Note. Footwork of TH may be used on step 1 (Man).
-Foxtrot,Top Spin,2,RF back,Backing DW against LOD,1/s between 1-2,Up,T,false,S,LF fwd,Facing DW against LOD,1/s between 1-2,Up,T,false,S
-Foxtrot,Top Spin,3,LF to side and slightly fwd,Pointing DC of new LOD,1/4 between 2-3 Body turns less,Up,T,false,R,RF to side,Backing new LOD,1/8 between 2-3,Up,TH,false,L
-Foxtrot,Top Spin,4,RF fwd in CBMP OP,Facing DC,Nil,Up. Lower e/o 4,TH,false,R,LF back in CBMP,Backing DC,1/8 between 3-4 Body turns less,Up. NFR Lower e/o 4,TH,false,L
-Foxtrot,Top Spin,5,LF fwd,Facing DC,Nil,,H,true,S,RF back,Backing DC,Nil,,T,true,S
+Foxtrot,Top Spin,2,RF back,Backing DW against LOD,1/s between 1-2,Up,T,false,S,LF fwd,Facing DW against LOD,1/s between 1-2,Up,T,false,S,
+Foxtrot,Top Spin,3,LF to side and slightly fwd,Pointing DC of new LOD,1/4 between 2-3 Body turns less,Up,T,false,R,RF to side,Backing new LOD,1/8 between 2-3,Up,TH,false,L,
+Foxtrot,Top Spin,4,RF fwd in CBMP OP,Facing DC,Nil,Up. Lower e/o 4,TH,false,R,LF back in CBMP,Backing DC,1/8 between 3-4 Body turns less,Up. NFR Lower e/o 4,TH,false,L,
+Foxtrot,Top Spin,5,LF fwd,Facing DC,Nil,,H,true,S,RF back,Backing DC,Nil,,T,true,S,
 Foxtrot,Hover Feather,1,LF diag fwd preparing step OP L side leading,Facing DC,Nil,Rise e/o preceding Heel Pull. Up,T,false,L,RF diag back R side leading,Backing DC,Nil,Rise e/o Brush step Up,TH,false,R,Note. Taken after a Heel Pull. Body overturns slightly to R on Heel Pull.
-Foxtrot,Hover Feather,2,RF fwd in CBMP OP,Facing DC,Nil,Up. Lower e/o 2,TH,false,S,LF back in CBMP,Backing DC,Nil,Up. NFR Lower e/o 2,TH,false,S
-Foxtrot,Hover Feather,3,LF fwd,Facing DC,Nil,,H,true,S,RF back,Backing DC,Nil,,T,true,S
+Foxtrot,Hover Feather,2,RF fwd in CBMP OP,Facing DC,Nil,Up. Lower e/o 2,TH,false,S,LF back in CBMP,Backing DC,Nil,Up. NFR Lower e/o 2,TH,false,S,
+Foxtrot,Hover Feather,3,LF fwd,Facing DC,Nil,,H,true,S,RF back,Backing DC,Nil,,T,true,S,
 Foxtrot,Hover Telemark,1,LF fwd,Facing DW,Com to turn L 1/8 between 1-2,Com to rise e/o 1,HT,true,S,RF back,Backing DW,Com to turn L,Com to rise e/o 1 NFR,TH,true,S,Note. Note unusual type of rise.
-Foxtrot,Hover Telemark,2,RF to side LF brushes towards RF,Facing LOD,Vs between 2-3 Body turns less,Cont to rise on 2,T (RF) then IE of T of LF,false,S,LF to side RF brushes towards LF,Backing LOD,1/8 between 1-2 1/8 between 2-3 Body turns less,Cont to rise on 2,T (LF) then IE of T of RF,false,S
-Foxtrot,Hover Telemark,3,LF to side and slightly fwd,Pointing DC,Nil,Up. Lower e/o 3,TH,false,S,RF to side and slightly back,Backing DC,Nil,Up. Lower e/o 3,TH,false,S
-Foxtrot,Hover Telemark,4,RF fwd in CBMP OP,Facing DC,Nil,,H,true,S,LF back in CBMP,Backing DC,Nil,,T,true,S
+Foxtrot,Hover Telemark,2,RF to side LF brushes towards RF,Facing LOD,Vs between 2-3 Body turns less,Cont to rise on 2,T (RF) then IE of T of LF,false,S,LF to side RF brushes towards LF,Backing LOD,1/8 between 1-2 1/8 between 2-3 Body turns less,Cont to rise on 2,T (LF) then IE of T of RF,false,S,
+Foxtrot,Hover Telemark,3,LF to side and slightly fwd,Pointing DC,Nil,Up. Lower e/o 3,TH,false,S,RF to side and slightly back,Backing DC,Nil,Up. Lower e/o 3,TH,false,S,
+Foxtrot,Hover Telemark,4,RF fwd in CBMP OP,Facing DC,Nil,,H,true,S,LF back in CBMP,Backing DC,Nil,,T,true,S,
 Foxtrot,Natural Telemark,1,RF fwd,Facing DW,Com to turn R 1/4 between 1-2,Rise e/o 1,HT,true,S,LF back,Backing DW,Com to turn R,Rise slightly e/o 1 NFR,TH,true,S,"Note. When underturned, Lady will always turn 3/8 between 1-2."
-Foxtrot,Natural Telemark,2,LF to side,Backing DC,1/2 between 2-3,Up,T,false,R,RF closes to LF (Heel turn),Facing LOD,3/8 between 1-2,Cont to rise on 2,HT,false,L
-Foxtrot,Natural Telemark,3,RF side (small step),Facing DC,Nil,Up,T,false,S,LF to side RF brushes towards LF,Backing DC,3/8 between 2-3,Up,TH,false,S
-Foxtrot,Natural Telemark,4,LF diag fwd preparing step OP L side leading,Facing DC,Nil,Up,T,false,S,RF diag back R side leading,Backing DC,Nil,Up,TH,false,S
-Foxtrot,Natural Telemark,5,RF fwd in CBMP OP,Facing DC,Nil,Up. Lower e/o 5,TH,false,S,LF back in CBMP,Backing DC,Nil,Up NFR. Lower e/o 5,TH,false,S
-Foxtrot,Natural Telemark,6,LF fwd,Facing DC,Nil,,H,true,S,RF back,Backing DC,Nil,,T,true,S
+Foxtrot,Natural Telemark,2,LF to side,Backing DC,1/2 between 2-3,Up,T,false,R,RF closes to LF (Heel turn),Facing LOD,3/8 between 1-2,Cont to rise on 2,HT,false,L,
+Foxtrot,Natural Telemark,3,RF side (small step),Facing DC,Nil,Up,T,false,S,LF to side RF brushes towards LF,Backing DC,3/8 between 2-3,Up,TH,false,S,
+Foxtrot,Natural Telemark,4,LF diag fwd preparing step OP L side leading,Facing DC,Nil,Up,T,false,S,RF diag back R side leading,Backing DC,Nil,Up,TH,false,S,
+Foxtrot,Natural Telemark,5,RF fwd in CBMP OP,Facing DC,Nil,Up. Lower e/o 5,TH,false,S,LF back in CBMP,Backing DC,Nil,Up NFR. Lower e/o 5,TH,false,S,
+Foxtrot,Natural Telemark,6,LF fwd,Facing DC,Nil,,H,true,S,RF back,Backing DC,Nil,,T,true,S,
 Foxtrot,Hover Cross,1,RF fwd,Facing DW,Com to turn R 1/4 between 1-2,Rise e/o 1,HT,true,S,LF back,Backing DW,Com to turn R,Rise slightly e/o 1 NFR,TH,true,S,"Note. Slight lowering may be used on step 4, but L heel should not touch floor. Lady may turn head to R on steps 4-5."
-Foxtrot,Hover Cross,2,LF to side,Backing DC,1/2 between 2-3 Body turns less,Up,T,false,R,RF closes to LF (Heel Turn),Facing LOD,3/8 between 1-2,Cont to rise on 2,HT,false,L
-Foxtrot,Hover Cross,3,RF to side,Pointing DW of new LOD,Slight body turn to R,Up,T,false,S,LF to side,Backing new LOD,1/4 between 2-3,Up,T,false,S
-Foxtrot,Hover Cross,4,LF fwd in CBMP OP on L side,Facing DW of new LOD,Com to turn L,Up,T,false,S,RF back in CBMP,Backing DW of new LOD,1/8 between 3-4 Body turns less,Up,T,false,S
-Foxtrot,Hover Cross,5,Transfer weight back to RF in CBMP,Backing DC against LOD,1/4 between 5-6 Body turns less,Up,T,true,S,Transfer weight fwd to LF in CBMP OP on L side,Facing DC against LOD,Com to turn L,Up,T,true,S
-Foxtrot,Hover Cross,6,LF to side and slightly fwd,Pointing DC,Nil,Up,T,false,R,RF to side,Backing LOD,1/s between 5-6,Up,TH,false,L
-Foxtrot,Hover Cross,7,RF fwd in CBMP OP,Facing DC,Nil,Up. Lower e/o 7,TH,false,R,LF back in CBMP,Backing DC,1/8 between 6-7 Body turns less,Up. NFR Lower e/o 7,TH,false,L
-Foxtrot,Hover Cross,8,LF fwd,Facing DC,Nil,,H,true,S,RF back,Backing DC,Nil,,T,true,S
+Foxtrot,Hover Cross,2,LF to side,Backing DC,1/2 between 2-3 Body turns less,Up,T,false,R,RF closes to LF (Heel Turn),Facing LOD,3/8 between 1-2,Cont to rise on 2,HT,false,L,
+Foxtrot,Hover Cross,3,RF to side,Pointing DW of new LOD,Slight body turn to R,Up,T,false,S,LF to side,Backing new LOD,1/4 between 2-3,Up,T,false,S,
+Foxtrot,Hover Cross,4,LF fwd in CBMP OP on L side,Facing DW of new LOD,Com to turn L,Up,T,false,S,RF back in CBMP,Backing DW of new LOD,1/8 between 3-4 Body turns less,Up,T,false,S,
+Foxtrot,Hover Cross,5,Transfer weight back to RF in CBMP,Backing DC against LOD,1/4 between 5-6 Body turns less,Up,T,true,S,Transfer weight fwd to LF in CBMP OP on L side,Facing DC against LOD,Com to turn L,Up,T,true,S,
+Foxtrot,Hover Cross,6,LF to side and slightly fwd,Pointing DC,Nil,Up,T,false,R,RF to side,Backing LOD,1/s between 5-6,Up,TH,false,L,
+Foxtrot,Hover Cross,7,RF fwd in CBMP OP,Facing DC,Nil,Up. Lower e/o 7,TH,false,R,LF back in CBMP,Backing DC,1/8 between 6-7 Body turns less,Up. NFR Lower e/o 7,TH,false,L,
+Foxtrot,Hover Cross,8,LF fwd,Facing DC,Nil,,H,true,S,RF back,Backing DC,Nil,,T,true,S,
 Foxtrot,Open Telemark Natural Turn to Outside Swivel and Feather Ending,1,LF fwd,Facing DC,Com to turn L 1/4 between 1-2,Rise e/o 1,HT,true,S,RF back,Backing DC,Com to turn L,Rise slightly at e/o 1 NFR,TH,true,S,"Note. Step 7 Man RF cross front, Heel or Toe may touch floor. Weave from PP could follow step 7."
-Foxtrot,Open Telemark Natural Turn to Outside Swivel and Feather Ending,2,RF to side,Backing DW,1/4 between 2-3,Up,T,false,L,LF closes to RF (Heel Turn),Facing DW,1/4 between 1-2,Cont to rise on 2,HT,false,R
-Foxtrot,Open Telemark Natural Turn to Outside Swivel and Feather Ending,3,LF sideways in PP,Facing DW against LOD,Com to turn R 1/8 between 4-5,Up. Lower e/o 3,TH,false,S,RF diag fwd in PP,Facing DW,Nil,Up. Lower e/o 3,TH,false,S
-Foxtrot,Open Telemark Natural Turn to Outside Swivel and Feather Ending,4,RF fwd and across in PP and CBMP,Facing DW against LOD (Moving wall),1/8 between 5-6,Rise e/o 4,HT,true,S,LF fwd and across in PP and CBMP,Facing DW (Moving wall),Nil,Rise e/o 4,HT,true,S
-Foxtrot,Open Telemark Natural Turn to Outside Swivel and Feather Ending,5,LF to side,Backing LOD,1/2 to R on 7,Up,T,false,R,RF fwd,Facing DW,Nil,Up,TH,false,L
-Foxtrot,Open Telemark Natural Turn to Outside Swivel and Feather Ending,6,RF back R side leading,Backing DW,Com to turn L 1/8 between 8-9,Up. Lower e/o 6,TH,false,R,LF fwd preparing step OP L side leading,Facing DW,Nil,Up. Lower e/o 6,TH,false,L
-Foxtrot,Open Telemark Natural Turn to Outside Swivel and Feather Ending,7,LF back in CBMP RF crosses front no weight End PP,DW Toe turned in,1/8 between 9-10 Body turns less,Rise e/o 8,TH pressure T,true,S,RF fwd in CBMP OP LF closes slightly back no weight End PP,Facing DW End facing DC against LOD,1/2 to R on 7,Rise e/o 8,HTH pressure T,true,S
-Foxtrot,Open Telemark Natural Turn to Outside Swivel and Feather Ending,8,RF fwd and across in PP and CBMP,Facing DC (Moving centre),Nil,Up,HT,true,S,LF fwd and across in PP and CBMP,Facing DC against LOD (Moving centre),Com to turn L,Up,HT,true,S
-Foxtrot,Open Telemark Natural Turn to Outside Swivel and Feather Ending,9,LF diag fwd,Facing DC,Nil,Up,T,false,R,RF to side and slightly back,Backing LOD,1/8 between 8-9,Up,TH,false,L
-Foxtrot,Open Telemark Natural Turn to Outside Swivel and Feather Ending,10,preparing step OP L side leading RF fwd in CBMP OP,Facing DC,Nil,Up. Lower e/o 10,TH,false,R,LF back in CBMP,Backing DC,1/8 between 9-10 Body turns less,Up. NFR Lower e/o 10,TH,false,L
-Foxtrot,Open Telemark Natural Turn to Outside Swivel and Feather Ending,11,LF fwd,Facing DC,Nil,,H,true,S,RF back,Backing DC,Nil,,T,true,S
+Foxtrot,Open Telemark Natural Turn to Outside Swivel and Feather Ending,2,RF to side,Backing DW,1/4 between 2-3,Up,T,false,L,LF closes to RF (Heel Turn),Facing DW,1/4 between 1-2,Cont to rise on 2,HT,false,R,
+Foxtrot,Open Telemark Natural Turn to Outside Swivel and Feather Ending,3,LF sideways in PP,Facing DW against LOD,Com to turn R 1/8 between 4-5,Up. Lower e/o 3,TH,false,S,RF diag fwd in PP,Facing DW,Nil,Up. Lower e/o 3,TH,false,S,
+Foxtrot,Open Telemark Natural Turn to Outside Swivel and Feather Ending,4,RF fwd and across in PP and CBMP,Facing DW against LOD (Moving wall),1/8 between 5-6,Rise e/o 4,HT,true,S,LF fwd and across in PP and CBMP,Facing DW (Moving wall),Nil,Rise e/o 4,HT,true,S,
+Foxtrot,Open Telemark Natural Turn to Outside Swivel and Feather Ending,5,LF to side,Backing LOD,1/2 to R on 7,Up,T,false,R,RF fwd,Facing DW,Nil,Up,TH,false,L,
+Foxtrot,Open Telemark Natural Turn to Outside Swivel and Feather Ending,6,RF back R side leading,Backing DW,Com to turn L 1/8 between 8-9,Up. Lower e/o 6,TH,false,R,LF fwd preparing step OP L side leading,Facing DW,Nil,Up. Lower e/o 6,TH,false,L,
+Foxtrot,Open Telemark Natural Turn to Outside Swivel and Feather Ending,7,LF back in CBMP RF crosses front no weight End PP,DW Toe turned in,1/8 between 9-10 Body turns less,Rise e/o 8,TH pressure T,true,S,RF fwd in CBMP OP LF closes slightly back no weight End PP,Facing DW End facing DC against LOD,1/2 to R on 7,Rise e/o 8,HTH pressure T,true,S,
+Foxtrot,Open Telemark Natural Turn to Outside Swivel and Feather Ending,8,RF fwd and across in PP and CBMP,Facing DC (Moving centre),Nil,Up,HT,true,S,LF fwd and across in PP and CBMP,Facing DC against LOD (Moving centre),Com to turn L,Up,HT,true,S,
+Foxtrot,Open Telemark Natural Turn to Outside Swivel and Feather Ending,9,LF diag fwd,Facing DC,Nil,Up,T,false,R,RF to side and slightly back,Backing LOD,1/8 between 8-9,Up,TH,false,L,
+Foxtrot,Open Telemark Natural Turn to Outside Swivel and Feather Ending,10,preparing step OP L side leading RF fwd in CBMP OP,Facing DC,Nil,Up. Lower e/o 10,TH,false,R,LF back in CBMP,Backing DC,1/8 between 9-10 Body turns less,Up. NFR Lower e/o 10,TH,false,L,
+Foxtrot,Open Telemark Natural Turn to Outside Swivel and Feather Ending,11,LF fwd,Facing DC,Nil,,H,true,S,RF back,Backing DC,Nil,,T,true,S,
 Foxtrot,Weave from PP,1,RF fwd in PP and CBMP,Pointing DC Body facing LOD,Com to turn L 1/4 between 2-3,Rise e/o 1,HT,false,Nil,LF fwd and across in PP and CBMP,Pointing to centre (Moving DC),Com to turn L 3/8 between 1-2,Rise e/o 1,HT,false,Nil,"Note. On step 4 the footwork of TH may be used. Rise on 5 will then be ""Up NFR""."
-Foxtrot,Weave from PP,2,LF fwd,Facing DC,1/8 between 3-4,Up,T,true,Nil,RF to side and slightly back,Backing DC,3/8 between 2-3 Body turns less,Up,T,false,Nil
-Foxtrot,Weave from PP,3,RF to side and slightly back,Backing DW,Com to turn L 3/8 between 5-6 Body turns less,Up,T,false,Nil,LF to side and slightly fwd,Pointing to LOD,Com to turn L,Up,T,false,Nil
-Foxtrot,Weave from PP,4,LF back in CBMP,Backing LOD,,Up,T,false,Nil,RF fwd in CBMP OP,Facing LOD,1/4 between 5-6,Up,T,false,Nil
-Foxtrot,Weave from PP,5,RF back,Backing LOD,,Up,T,true,Nil,LF fwd,Facing LOD,1/8 between 6-7 Body turns less,Up,T,true,Nil
-Foxtrot,Weave from PP,6,LF to side and slightly fwd,Pointing DW,,Up,T,false,R,RF to side,Backing wall,Nil,Up,TH,false,L
-Foxtrot,Weave from PP,7,RF fwd in CBMP OP,Facing DW,,Up. Lower e/o 7,TH,false,R,LF back in CBMP,Backing DW,Nil,Up. NFR Lower elo 7,TH,false,L
-Foxtrot,Weave from PP,8,LF fwd,Facing DW,,,,,H,true,S,RF back,Backing DW,Nil,,,,T,true,S
+Foxtrot,Weave from PP,2,LF fwd,Facing DC,1/8 between 3-4,Up,T,true,Nil,RF to side and slightly back,Backing DC,3/8 between 2-3 Body turns less,Up,T,false,Nil,
+Foxtrot,Weave from PP,3,RF to side and slightly back,Backing DW,Com to turn L 3/8 between 5-6 Body turns less,Up,T,false,Nil,LF to side and slightly fwd,Pointing to LOD,Com to turn L,Up,T,false,Nil,
+Foxtrot,Weave from PP,4,LF back in CBMP,Backing LOD,,Up,T,false,Nil,RF fwd in CBMP OP,Facing LOD,1/4 between 5-6,Up,T,false,Nil,
+Foxtrot,Weave from PP,5,RF back,Backing LOD,,Up,T,true,Nil,LF fwd,Facing LOD,1/8 between 6-7 Body turns less,Up,T,true,Nil,
+Foxtrot,Weave from PP,6,LF to side and slightly fwd,Pointing DW,,Up,T,false,R,RF to side,Backing wall,Nil,Up,TH,false,L,
+Foxtrot,Weave from PP,7,RF fwd in CBMP OP,Facing DW,,Up. Lower e/o 7,TH,false,R,LF back in CBMP,Backing DW,Nil,Up. NFR Lower elo 7,TH,false,L,
+Foxtrot,Weave from PP,8,LF fwd,Facing DW,Nil,,H,true,S,RF back,Backing DW,Nil,,T,true,S,
 Foxtrot,Reverse Wave,1,LF fwd,Facing LOD,Com to turn L 1/4 between 1-2,Rise e/o 1,HT,true,L,RF back,Backing LOD,Com to turn L 3/8 between 1-2,Rise slightly e/o 1 NFR,TH,true,R,"Note. Although rise is taken from T of LF step 5, when RF moves back for step 6, Heel must be in contact with floor."
-Foxtrot,Reverse Wave,2,RF to side,Backing wall,1/8 between 2-3,Up. Lower e/o 3,T,false,L,LF closes to RF (Heel Turn),Facing DW,Nil,Cont to rise on 2,HT,false,R
-Foxtrot,Reverse Wave,3,LF back,Backing DW,Com to turn L 1/8 between 4-6,Up,TH,false,S,RF fwd,Facing DW,Com to turn L 1/8 between 4-6,Up. Lower e/o 3,TH,false,S
-Foxtrot,Reverse Wave,4,RF back,Backing DW,,Rise e/o 5,TH,true,R,LF fwd,Facing DW,Nil,Rise e/o 5,H,true,L
-Foxtrot,Reverse Wave,5,LF back,Curving towards LOD,,Up. Lower e/o 6,T,false,R,RF fwd,Curving towards LOD,Com to turn R 3/8 between 7-8 Body turn to L,Nil,HT,false,L
-Foxtrot,Reverse Wave,6,RF back,Backing LOD,,,,,TH,false,S,LF fwd,Facing LOD,,Up. Lower e/o 6,TH,false,S
-Foxtrot,Reverse Wave,7,LF back,Backing LOD,Com turn R 3/8 between 7-8 Body turn to L,,,,TH,true,S,RF fwd,Facing LOD,,Nil,HT,true,S
-Foxtrot,Reverse Wave,8,RF to side small step (Heel Pull),Facing DC,,,,H IE whole foot then IE of LF,false,L,LF to side,Backing DC,,Nil,TH then IE of T,false,R
-Foxtrot,Reverse Wave,9,LF fwd,Facing DC,,,,H,true,S,RF back having brushed to LF,Backing DC,,Nil,T,true,S
+Foxtrot,Reverse Wave,2,RF to side,Backing wall,1/8 between 2-3,Up. Lower e/o 3,T,false,L,LF closes to RF (Heel Turn),Facing DW,Nil,Cont to rise on 2,HT,false,R,
+Foxtrot,Reverse Wave,3,LF back,Backing DW,Com to turn L 1/8 between 4-6,Up,TH,false,S,RF fwd,Facing DW,Com to turn L 1/8 between 4-6,Up. Lower e/o 3,TH,false,S,
+Foxtrot,Reverse Wave,4,RF back,Backing DW,,Rise e/o 5,TH,true,R,LF fwd,Facing DW,Nil,Rise e/o 5,H,true,L,
+Foxtrot,Reverse Wave,5,LF back,Curving towards LOD,,Up. Lower e/o 6,T,false,R,RF fwd,Curving towards LOD,Com to turn R 3/8 between 7-8 Body turn to L,Nil,HT,false,L,
+Foxtrot,Reverse Wave,6,RF back,Backing LOD,,,TH,false,S,LF fwd,Facing LOD,,Up. Lower e/o 6,TH,false,S,
+Foxtrot,Reverse Wave,7,LF back,Backing LOD,"Com turn R 3/8 between 7-8 Body turn to L",,TH,true,S,RF fwd,Facing LOD,Nil,,HT,true,S,
+Foxtrot,Reverse Wave,8,RF to side small step (Heel Pull),Facing DC,,,"H, IE of foot, whole foot, then IE of LF",false,L,LF to side,Backing DC,,,"TH then IE of T",false,R,
+Foxtrot,Reverse Wave,9,LF fwd,Facing DC,,,H,true,S,RF back having brushed to LF,Backing DC,,,T,true,S,
 Foxtrot,Natural Twist Turn,1,RF fwd,Facing LOD,Com to turn R 3/8 between 1-2,Nil,HT,true,R,LF back,Backing LOD,Com to turn R 1/2 between 1-2,Nil,TH,true,L,Note. There is no upward swing (rise) on the first 3 steps. Note the overturn of Body on 5.
-Foxtrot,Natural Twist Turn,2,LF to side,Backing DC,1/8 between 2-3,Nil,TH,false,R,RF closes to LF (Heel Turn),Facing LOD,1/8 between 2-4 1/4 between 4-5,Nil,HT,false,L
-Foxtrot,Natural Twist Turn,3,RF crosses behind LF slightly back,Backing LOD,3/8 on 4-5 Body turns more,Nil,T,false,S,LF fwd preparing step OP L side leading,Facing almost DW,Body turns more,Nil,T,false,S
-Foxtrot,Natural Twist Turn,4,Twist on both feet,Facing DC,Nil,Nil,Twist on T of RF and H of LF,false,S,RF fwd in CBMP OP,Facing DW,Nil,Nil,T,true,R
-Foxtrot,Natural Twist Turn,5,End as Heel Pull,Facing DC,Nil,Rise on 5,T (RF) with pressure IE of T of LF,false,L,LF to side,Backing DC,Nil,Rise on 5,T and IE of T of RF,false,R
-Foxtrot,Natural Twist Turn,6,Hover Feather,Facing DC,Nil,,T,false,S,RF brushes to LF,Backing DC,Nil,,TH,false,S
-Foxtrot,Natural Twist Turn,7,Hover Feather,Facing DC,Nil,,TH,false,S,Hover Feather,Backing DC,Nil,,TH,false,S
-Foxtrot,Natural Twist Turn,8,Hover Feather,Facing DC,Nil,,H,true,S,Hover Feather,Backing DC,Nil,,T,true,S
+Foxtrot,Natural Twist Turn,2,LF to side,Backing DC,1/8 between 2-3,Nil,TH,false,R,RF closes to LF (Heel Turn),Facing LOD,1/8 between 2-4 1/4 between 4-5,Nil,HT,false,L,
+Foxtrot,Natural Twist Turn,3,RF crosses behind LF slightly back,Backing LOD,3/8 on 4-5 Body turns more,Nil,T,false,S,LF fwd preparing step OP L side leading,Facing almost DW,Body turns more,Nil,T,false,S,
+Foxtrot,Natural Twist Turn,4,Twist on both feet,Facing DC,Nil,Nil,Twist on T of RF and H of LF,false,S,RF fwd in CBMP OP,Facing DW,Nil,Nil,T,true,R,
+Foxtrot,Natural Twist Turn,5,End as Heel Pull,Facing DC,Nil,Rise on 5,T (RF) with pressure IE of T of LF,false,L,LF to side,Backing DC,Nil,Rise on 5,T and IE of T of RF,false,R,
+Foxtrot,Natural Twist Turn,6,Hover Feather,Facing DC,Nil,,T,false,S,RF brushes to LF,Backing DC,Nil,,TH,false,S,
+Foxtrot,Natural Twist Turn,7,Hover Feather,Facing DC,Nil,,TH,false,S,Hover Feather,Backing DC,Nil,,TH,false,S,
+Foxtrot,Natural Twist Turn,8,Hover Feather,Facing DC,Nil,,H,true,S,Hover Feather,Backing DC,Nil,,T,true,S,
 Foxtrot,Curved Feather to Back Feather,1,RF fwd,Facing LOD,Com to turn R 1/8 between 1-2,Rise e/o 1,HT,true,R,LF back,Backing LOD,Com to turn R 1/8 between 1-2,Rise e/o 1 NFR,TH,true,L,Note. Note the gradual rise in Back Feather. Normal ending is a Feather Finish.
-Foxtrot,Curved Feather to Back Feather,2,LF diag fwd preparing step OP L side leading,Facing DW,1/8 between 2-3,Up,T,false,R,RF back R side leading,Backing DW,1/s between 2-3,Up,T,false,L
-Foxtrot,Curved Feather to Back Feather,3,RF fwd in CBMP OP,Facing wall,1/8 between 3-4,Up. Lower e/o 3,TH,false,R,LF back in CBMP,Backing wall,1/s between 3-4,Up. Lower e/o 3,TH,false,L
-Foxtrot,Curved Feather to Back Feather,4,LF back in CBMP,Backing DC,Nil,Com to rise e/o 4 NFR,TH,true,S,RF fwd in CBMP OP,Facing DC,1/s between 4-6,Com to rise e/o 4,HT,true,S
-Foxtrot,Curved Feather to Back Feather,5,RF back R side leading,Curving towards LOD,1/8 between 4-6,Cont to rise on 5,T,false,S,LF fwd L side leading,Curving towards LOD,Nil,Cont to rise on 5,T,false,S
-Foxtrot,Curved Feather to Back Feather,6,LF back in CBMP,Backing LOD,Nil,Up. Lower e/o 6,TH,false,S,RF fwd in CBMP OP,Facing LOD,Nil,Up. Lower e/o 6,TH,false,S
-Foxtrot,Curved Feather to Back Feather,7,RF back,Backing LOD,Nil,,T,true,S,LF fwd,Facing LOD,Nil,,H,true,S
-Foxtrot,Natural Zig-Zag from Promenade Position,1,RF fwd and across in PP and CBMP,Facing DW (Moving along LOD),Com to turn R 1/8 between 1-2,Rise e/o 1,HT,true,Nil,LF fwd and across in PP and CBMP,Facing DC (Moving along LOD),Com to turn L,Rise e/o 1,HT,true,Nil
-Foxtrot,Natural Zig-Zag from Promenade Position,2,LF to side,Backing centre,Nil,Up,T,false,Nil,RF diag fwd preparing step OP on L side,Facing DC,Nil,Up,T,false,Nil
-Foxtrot,Natural Zig-Zag from Promenade Position,3,RF back in CBMP,Backing centre,Com to turn L 1/8 between 3-4 Body turns less,Up,T,true,Nil,LF fwd in CBMP OP on L side,Facing DC,1/8 between 3-4 Body turns less,Up,T,true,Nil
-Foxtrot,Natural Zig-Zag from Promenade Position,4,LF to side and slightly fwd,Pointing DW,Nil,Up,T,false,R,RF to side,Backing wall,1/8 between 4-5 Body turns less,Up,TH,false,L
-Foxtrot,Natural Zig-Zag from Promenade Position,5,RF fwd in CBMP OP,Facing DW,Nil,Up. Lower e/o 5,TH,false,R,LF back in CBMP,Backing DW,Nil,Up. NFR Lower e/o 5,TH,false,L
-Foxtrot,Natural Zig-Zag from Promenade Position,6,LF fwd,Facing DW,Nil,,H,true,S,RF back,Backing DW,Nil,,T,true,S
+Foxtrot,Curved Feather to Back Feather,2,LF diag fwd preparing step OP L side leading,Facing DW,1/8 between 2-3,Up,T,false,R,RF back R side leading,Backing DW,1/s between 2-3,Up,T,false,L,
+Foxtrot,Curved Feather to Back Feather,3,RF fwd in CBMP OP,Facing wall,1/8 between 3-4,Up. Lower e/o 3,TH,false,R,LF back in CBMP,Backing wall,1/s between 3-4,Up. Lower e/o 3,TH,false,L,
+Foxtrot,Curved Feather to Back Feather,4,LF back in CBMP,Backing DC,Nil,Com to rise e/o 4 NFR,TH,true,S,RF fwd in CBMP OP,Facing DC,1/s between 4-6,Com to rise e/o 4,HT,true,S,
+Foxtrot,Curved Feather to Back Feather,5,RF back R side leading,Curving towards LOD,1/8 between 4-6,Cont to rise on 5,T,false,S,LF fwd L side leading,Curving towards LOD,Nil,Cont to rise on 5,T,false,S,
+Foxtrot,Curved Feather to Back Feather,6,LF back in CBMP,Backing LOD,Nil,Up. Lower e/o 6,TH,false,S,RF fwd in CBMP OP,Facing LOD,Nil,Up. Lower e/o 6,TH,false,S,
+Foxtrot,Curved Feather to Back Feather,7,RF back,Backing LOD,Nil,,T,true,S,LF fwd,Facing LOD,Nil,,H,true,S,
+Foxtrot,Natural Zig-Zag from Promenade Position,1,RF fwd and across in PP and CBMP,Facing DW (Moving along LOD),Com to turn R 1/8 between 1-2,Rise e/o 1,HT,true,Nil,LF fwd and across in PP and CBMP,Facing DC (Moving along LOD),Com to turn L,Rise e/o 1,HT,true,Nil,
+Foxtrot,Natural Zig-Zag from Promenade Position,2,LF to side,Backing centre,Nil,Up,T,false,Nil,RF diag fwd preparing step OP on L side,Facing DC,Nil,Up,T,false,Nil,
+Foxtrot,Natural Zig-Zag from Promenade Position,3,RF back in CBMP,Backing centre,Com to turn L 1/8 between 3-4 Body turns less,Up,T,true,Nil,LF fwd in CBMP OP on L side,Facing DC,1/8 between 3-4 Body turns less,Up,T,true,Nil,
+Foxtrot,Natural Zig-Zag from Promenade Position,4,LF to side and slightly fwd,Pointing DW,Nil,Up,T,false,R,RF to side,Backing wall,1/8 between 4-5 Body turns less,Up,TH,false,L,
+Foxtrot,Natural Zig-Zag from Promenade Position,5,RF fwd in CBMP OP,Facing DW,Nil,Up. Lower e/o 5,TH,false,R,LF back in CBMP,Backing DW,Nil,Up. NFR Lower e/o 5,TH,false,L,
+Foxtrot,Natural Zig-Zag from Promenade Position,6,LF fwd,Facing DW,Nil,,H,true,S,RF back,Backing DW,Nil,,T,true,S,
 Foxtrot,Fallaway Reverse and Slip Pivot,1,LF fwd,Facing DC,Com to turn L 1/4 between 1-2,Rise e/o 1,HT,true,Nil,RF back,Backing DC,5/8 to L on 3 (Pivot),Rise e/o 1 NFR,TH,false,Nil,Note. RF step 4 should be pressed firmly into floor. Compact position is easier if Lady keeps head to L.
-Foxtrot,Fallaway Reverse and Slip Pivot,2,RF back in Fallaway R side leading,Backing DW (Moving down LOD),1/8 between 2-3 Body turns less,Up,T,false,Nil,LF back in Fallaway L side leading,Backing DC (Moving down LOD),1/4 or 1/8 on 4 (Pivot),Up,T,false,Nil
-Foxtrot,Fallaway Reverse and Slip Pivot,3,LF back in CBMP and Fallaway,Backing LOD,1/4 between 3-4 1/4 or 1/s on 4 (Pivot),Up. Lower e/o 3,TH,false,Nil,RF back in CBMP and Fallaway (small step) LF held in CBMP,Backing DC end facing centre,,Up. Lower e/o 3,T,true,Nil
-Foxtrot,Fallaway Reverse and Slip Pivot,4,RF back LF held in CBMP,To centre toe turned in end facing LOD or DW,,Up,,THT,true,Nil,LF fwd in CBMP RF held in CBMP,To centre to end LOD or DW,,,,TH,true,Nil
+Foxtrot,Fallaway Reverse and Slip Pivot,2,RF back in Fallaway R side leading,Backing DW (Moving down LOD),1/8 between 2-3 Body turns less,Up,T,false,Nil,LF back in Fallaway L side leading,Backing DC (Moving down LOD),1/4 or 1/8 on 4 (Pivot),Up,T,false,Nil,
+Foxtrot,Fallaway Reverse and Slip Pivot,3,LF back in CBMP and Fallaway,Backing LOD,1/4 between 3-4 1/4 or 1/s on 4 (Pivot),Up. Lower e/o 3,TH,false,Nil,RF back in CBMP and Fallaway (small step) LF held in CBMP,Backing DC end facing centre,,Up. Lower e/o 3,T,true,Nil,
+Foxtrot,Fallaway Reverse and Slip Pivot,4,RF back LF held in CBMP,To centre toe turned in end facing LOD or DW,,,THT,true,Nil,LF fwd in CBMP RF held in CBMP,To centre to end LOD or DW,,,TH,true,Nil,
 Foxtrot,Natural Hover Telemark,1,RF fwd,Facing DW,Com to turn R 1/4 between 1-2,Rise e/o 1,HT,true,R,LF back,Backing DW,Com to turn R 3/8 between 1-2,Rise slightly e/o 1 NFR,TH,true,L,Note. Technical details follow Natural Telemark.
-Foxtrot,Natural Hover Telemark,2,LF to side,Backing DC,1/2 between 2-3,Up. Lower e/o 2,TH,false,L,RF closes to LF (Heel Turn),Facing LOD,3/8 between 2-3,Cont to rise on 2 NFR,HT,false,R
-Foxtrot,Natural Hover Telemark,3,RF to side (Heel Pull),Facing DC,Slight body turn to R,Down on 3. Rise e/o 3,H IE whole foot,false,L,LF to side,Backing DC,Slight body turn to R,Down on 3. Rise e/o 3,T,false,R
-Foxtrot,Natural Hover Telemark,4,L knee veers inwards LF diag fwd preparing step OP L side leading,Facing DC,,Up,T (RF) pressure IE LF,false,L,RF brushes to LF,Backing DC,Nil,Up,T (LF) and IE of T of RF,false,R
-Foxtrot,Natural Hover Telemark,5,RF fwd in CBMP OP,Facing DC,,Up,T,false,S,RF diag. back R side leading,Backing DC,Nil,Up,TH,false,S
-Foxtrot,Natural Hover Telemark,6,LF fwd,Facing DC,,Up. Lower e/o 6,TH,false,S,LF back in CBMP,Backing DC,Nil,Up. NFR Lower e/o 6,TH,false,S
-Foxtrot,Natural Hover Telemark,7,RF back,Backing DC,,,,,H,true,S,RF back,Backing DC,Nil,,T,true,S
+Foxtrot,Natural Hover Telemark,2,LF to side,Backing DC,1/2 between 2-3,Up. Lower e/o 2,TH,false,L,RF closes to LF (Heel Turn),Facing LOD,3/8 between 2-3,Cont to rise on 2 NFR,HT,false,R,
+Foxtrot,Natural Hover Telemark,3,RF to side (Heel Pull),Facing DC,Slight body turn to R,Down on 3. Rise e/o 3,H IE whole foot,false,L,LF to side,Backing DC,Slight body turn to R,Down on 3. Rise e/o 3,T,false,R,
+Foxtrot,Natural Hover Telemark,4,L knee veers inwards LF diag fwd preparing step OP L side leading,Facing DC,,Up,T (RF) pressure IE LF,false,L,RF brushes to LF,Backing DC,Nil,Up,T (LF) and IE of T of RF,false,R,
+Foxtrot,Natural Hover Telemark,5,RF fwd in CBMP OP,Facing DC,,Up,T,false,S,RF diag. back R side leading,Backing DC,Nil,Up,TH,false,S,
+Foxtrot,Natural Hover Telemark,6,LF fwd,Facing DC,,Up. Lower e/o 6,TH,false,S,LF back in CBMP,Backing DC,Nil,Up. NFR Lower e/o 6,TH,false,S,
+Foxtrot,Natural Hover Telemark,7,LF fwd,Facing DC,Nil,,H,true,S,RF back,Backing DC,Nil,,T,true,S,
 Foxtrot,Bounce Fallaway with Weave Ending,1,LF fwd,Facing DC,Com to turn L 1/4 between 1-2,Rise e/o 1,HT,true,Nil,RF back,Backing DC,Nil,Rise e/o 1,THT,false,Nil,Note. Slight flexing of knees on steps 2 and 4. Heel may touch floor.
-Foxtrot,Bounce Fallaway with Weave Ending,2,RF back in Fallaway R side leading,Backing DW (Moving down LOD),Nil,Up. Lower e/o 2,T,false,Nil,LF back in Fallaway L side leading,Backing DC (Moving down LOD),Nil,Up. Lower e/o 2,T,false,Nil
-Foxtrot,Bounce Fallaway with Weave Ending,3,LF back in CBMP and Fallaway,Backing DW (Moving down LOD),1/8 between 4-5,Down. Rise e/o 3,T,true,Nil,RF back in CBMP and Fallaway,Backing DC (Moving down LOD),Com to turn L 3/8 between 3-4 Body turns less,Down. Rise e/o 3,T,true,Nil
-Foxtrot,Bounce Fallaway with Weave Ending,4,RF to side and slightly back,Backing DW,,Up. Lower e/o 4,T,false,R,LF to side and slightly fwd,Pointing to LOD,Slight body turn,Up. Lower e/o 4,T,false,L
-Foxtrot,Bounce Fallaway with Weave Ending,5,LF back in CBMP,Backing LOD,,Down. Rise e/o 5,T,true,R,RF fwd in CBMP OP,Facing LOD,,Down. Rise e/o 5,T,true,L
-Waltz,Reverse Turn,1,LF fwd,Facing DC,Com to turn L 1/4 between 1-2,Com to rise e/o 1,HT,true,S,RF back,Backing DC,Com to turn L,Com to rise e/o 1 NFR,TH,true,S
-Waltz,Reverse Turn,2,RF to side,Backing DW,1/8 between 2-3,Cont to rise on 2 and 3,T,false,L,LF to side,Pointing to LOD,3/8 between 1-2 Body turns less,NFR Cont to rise on 2 and 3,T,false,R
-Waltz,Reverse Turn,3,LF closes to RF,Backing LOD,Nil,Lower e/o 3,TH,false,L,RF closes to LF,Facing LOD,Body completes turn,Lower e/o 3,TH,false,R
-Waltz,Reverse Turn,4,RF back,Backing LOD,Com to turn L,Com to rise e/o 4 NFR,TH,true,S,LF fwd,Facing LOD,Com to turn L,Com to rise e/o 4,HT,true,S
-Waltz,Reverse Turn,5,LF to side,Pointing DW,3/8 between 4-5 Body turns less,Cont to rise on 5 and 6,T,false,R,RF to side,Backing wall,1/4 between 4-5,Cont to rise on 5 and 6,T,false,L
-Waltz,Reverse Turn,6,RF closes to LF,Facing DW,Body completes turn,Lower e/o 6,TH,false,R,LF closes to RF,Backing DW,1/8 between 5-6,Lower e/o 6,TH,false,L
+Foxtrot,Bounce Fallaway with Weave Ending,2,RF back in Fallaway R side leading,Backing DW (Moving down LOD),Nil,Up. Lower e/o 2,T,false,Nil,LF back in Fallaway L side leading,Backing DC (Moving down LOD),Nil,Up. Lower e/o 2,T,false,Nil,
+Foxtrot,Bounce Fallaway with Weave Ending,3,LF back in CBMP and Fallaway,Backing DW (Moving down LOD),1/8 between 4-5,Down. Rise e/o 3,T,true,Nil,RF back in CBMP and Fallaway,Backing DC (Moving down LOD),Com to turn L 3/8 between 3-4 Body turns less,Down. Rise e/o 3,T,true,Nil,
+Foxtrot,Bounce Fallaway with Weave Ending,4,RF to side and slightly back,Backing DW,,Up. Lower e/o 4,T,false,R,LF to side and slightly fwd,Pointing to LOD,Slight body turn,Up. Lower e/o 4,T,false,L,
+Foxtrot,Bounce Fallaway with Weave Ending,5,LF back in CBMP,Backing LOD,,Down. Rise e/o 5,T,true,R,RF fwd in CBMP OP,Facing LOD,,Down. Rise e/o 5,T,true,L,
+Waltz,Reverse Turn,1,LF fwd,Facing DC,Com to turn L 1/4 between 1-2,Com to rise e/o 1,HT,true,S,RF back,Backing DC,Com to turn L,Com to rise e/o 1 NFR,TH,true,S,
+Waltz,Reverse Turn,2,RF to side,Backing DW,1/8 between 2-3,Cont to rise on 2 and 3,T,false,L,LF to side,Pointing to LOD,3/8 between 1-2 Body turns less,NFR Cont to rise on 2 and 3,T,false,R,
+Waltz,Reverse Turn,3,LF closes to RF,Backing LOD,Nil,Lower e/o 3,TH,false,L,RF closes to LF,Facing LOD,Body completes turn,Lower e/o 3,TH,false,R,
+Waltz,Reverse Turn,4,RF back,Backing LOD,Com to turn L,Com to rise e/o 4 NFR,TH,true,S,LF fwd,Facing LOD,Com to turn L,Com to rise e/o 4,HT,true,S,
+Waltz,Reverse Turn,5,LF to side,Pointing DW,3/8 between 4-5 Body turns less,Cont to rise on 5 and 6,T,false,R,RF to side,Backing wall,1/4 between 4-5,Cont to rise on 5 and 6,T,false,L,
+Waltz,Reverse Turn,6,RF closes to LF,Facing DW,Body completes turn,Lower e/o 6,TH,false,R,LF closes to RF,Backing DW,1/8 between 5-6,Lower e/o 6,TH,false,L,
 Waltz,Natural Spin Turn,1,RF fwd,Facing DW,Com to turn R 1/4 between 1-2,Com to rise e/o 1,HT,true,S,LF back,Backing DW,Com to turn R,Com to rise e/o 1 NFR,TH,true,S,Note. When the Natural Spin Turn is danced at a corner or underturned along the side of the room the amount of turn is 3/8 on the pivot and 1/4 between 5-6.
-Waltz,Natural Spin Turn,2,LF to side,Backing DC,1/8 between 2-3,Cont to rise on 2 and 3,T,false,R,RF to side,Pointing to LOD,3/8 between 1-2 Body turns less completes,Cont to rise on 2 and 3,T,false,L
-Waltz,Natural Spin Turn,3,RF closes to LF,,1/8 between 2-3,Lower e/o 3,TH,false,R,LF closes to RF,Facing LOD,Nil,Lower e/o 3,TH,false,L
+Waltz,Natural Spin Turn,2,LF to side,Backing DC,1/8 between 2-3,Cont to rise on 2 and 3,T,false,R,RF to side,Pointing to LOD,3/8 between 1-2 Body turns less completes,Cont to rise on 2 and 3,T,false,L,
+Waltz,Natural Spin Turn,3,RF closes to LF,,1/8 between 2-3,Lower e/o 3,TH,false,R,LF closes to RF,Facing LOD,Nil,Lower e/o 3,TH,false,L,
 Waltz,Natural Spin Turn,4,LF back,Backing LOD Down LOD toe turned in,1/2 to R on 4 (pivot),Nil,THT,true,S,RF fwd,Facing LOD,1/2 to R on 4 (pivoting action),Rise e/o 5,HT,true,S,Note. Although the footwork on step 4 is THT the Heel is in contact with the floor during the actual turn.
 Waltz,Natural Spin Turn,5,RF fwd in CBMP,Facing LOD,Cont to turn,Rise e/o 5,HT,true,S,LF back and slightly to side,Backing LOD,Cont to turn. Body turn,Up. Lower e/o 6,T,false,S,Note. The Rise is taken from the ball of LF on step 5 (Lady).
 Waltz,Natural Spin Turn,6,LF to side and slightly back,Backing DC,3/8 between 5-6,Up. Lower e/o 6,TH,false,S,RF diag fwd having brushed to LF,Facing DC,3/8 between 5-6,Up. Lower e/o 6,TH,false,S,Note. As the RF commences to move to brush to LF the ball of RF not the Heel is in contact with the floor.
 Waltz,Whisk,1,LF fwd,Facing DW,Nil,Com to rise e/o 1,HT,true,S,RF back.,Backing DW,Nil,Com to rise e/o 1 NFR,TH,false,S,Note. The position of step 2 is consistent with step 2 of a Closed Change.
-Waltz,Whisk,2,RF to side and slightly fwd,Facing DW,Nil,Cont to rise on 2,T,false,L,LF diag back,Pointing DC,1/4 to R between 1-2 Body turns less,Cont to rise on 2,T,false,R
-Waltz,Whisk,3,LF crosses behind RF in PP,Facing DW,Nil,Up. Lower e/o 3,TH,false,L,RF crosses behind LF in PP,Facing DC,Body completes turn,Up. Lower e/o 3,TH,false,R
-Waltz,Chasse from PP,1,RF fwd and across in PP and CBMP,Facing DW (Moving along LOD),Nil,Com to rise e/o 1,HT,true,Nil,LF fwd and across in PP and CBMP,Facing DC (Moving along LOD),Com to turn to L,Com to rise e/o 1,HT,true,Nil,Note. Timing: 1 2 & 3 1. Beat Value: 1," 1/2"," 1/2"," 1"," 1."
-Waltz,Chasse from PP,2,LF to side and slightly fwd,Facing DW,Nil,Cont to rise on 2 and 3,T,false,Nil,RF to side,Backing wall against LOD,1/8 between 1-2,Cont to rise on 2 and 3,T,false,Nil
-Waltz,Chasse from PP,3,RF closes to LF,Facing DW,Nil,Up. Lower e/o 4,T,false,Nil,LF closes to RF,Backing DW,1/8 between 2-3 Body turns less,Up. Lower e/o 4,T,false,Nil
-Waltz,Chasse from PP,4,LF to side and slightly fwd,Facing DW,Nil,,TH,false,Nil,RF to side and slightly back,Backing DW,Nil,,TH,false,Nil
-Waltz,Chasse from PP,5,RF fwd in CBMP OP,Facing DW,Nil,,H,true,Nil,LF back in CBMP,Backing DW,Nil,,T,true,Nil
+Waltz,Whisk,2,RF to side and slightly fwd,Facing DW,Nil,Cont to rise on 2,T,false,L,LF diag back,Pointing DC,1/4 to R between 1-2 Body turns less,Cont to rise on 2,T,false,R,
+Waltz,Whisk,3,LF crosses behind RF in PP,Facing DW,Nil,Up. Lower e/o 3,TH,false,L,RF crosses behind LF in PP,Facing DC,Body completes turn,Up. Lower e/o 3,TH,false,R,
+Waltz,Chasse from PP,1,RF fwd and across in PP and CBMP,Facing DW (Moving along LOD),Nil,Com to rise e/o 1,HT,true,Nil,LF fwd and across in PP and CBMP,Facing DC (Moving along LOD),Com to turn to L,Com to rise e/o 1,HT,true,Nil,"Note. Timing: 1 2 & 3 1. Beat Value: 1, 1/2, 1/2, 1, 1."
+Waltz,Chasse from PP,2,LF to side and slightly fwd,Facing DW,Nil,Cont to rise on 2 and 3,T,false,Nil,RF to side,Backing wall against LOD,1/8 between 1-2,Cont to rise on 2 and 3,T,false,Nil,
+Waltz,Chasse from PP,3,RF closes to LF,Facing DW,Nil,Up. Lower e/o 4,T,false,Nil,LF closes to RF,Backing DW,1/8 between 2-3 Body turns less,Up. Lower e/o 4,T,false,Nil,
+Waltz,Chasse from PP,4,LF to side and slightly fwd,Facing DW,Nil,,TH,false,Nil,RF to side and slightly back,Backing DW,Nil,,TH,false,Nil,
+Waltz,Chasse from PP,5,RF fwd in CBMP OP,Facing DW,Nil,,H,true,Nil,LF back in CBMP,Backing DW,Nil,,T,true,Nil,
 Waltz,Closed Impetus,1,LF back,Backing LOD,Com to turn R,Rise e/o 2,TH,true,S,RF fwd,Facing LOD,Com to turn R,Com to rise e/o 1,HT,true,S,Note. When commenced backing DW turn 3/8 between 1-2 and 1/8 between 2-3. The Closed Impetus may be danced at a corner to end backing DC of new LOD.
-Waltz,Closed Impetus,2,RF closes to LF (Heel turn),Facing DC,3/8 between 1-2,Up. Lower e/o 3,HT,false,L,LF to side,Backing DC,3/8 between 1-2,Rise e/o 2,T,false,R
-Waltz,Closed Impetus,3,LF to side and slightly back,Backing DC against the LOD,1/4 between 2-3,,TH,false,S,RF diag fwd having brushed to LF,Facing DC,1/4 between 2-3,Up. Lower e/o 3,TH,false,S
-Waltz,Closed Impetus,4,RF back,Backing DC against the LOD,Nil,,T,true,S,LF fwd,Facing DC against LOD,Nil,,H,true,S
+Waltz,Closed Impetus,2,RF closes to LF (Heel turn),Facing DC,3/8 between 1-2,Up. Lower e/o 3,HT,false,L,LF to side,Backing DC,3/8 between 1-2,Rise e/o 2,T,false,R,
+Waltz,Closed Impetus,3,LF to side and slightly back,Backing DC against the LOD,1/4 between 2-3,,TH,false,S,RF diag fwd having brushed to LF,Facing DC,1/4 between 2-3,Up. Lower e/o 3,TH,false,S,
+Waltz,Closed Impetus,4,RF back,Backing DC against the LOD,Nil,,T,true,S,LF fwd,Facing DC against LOD,Nil,,H,true,S,
 Waltz,Hesitation Change,1,RF fwd,Facing DW,Com to turn R,Com to rise e/o 1,HT,true,S,LF back,Backing DW,Com to turn R,Com to rise e/o 1 NFR,TH,true,S,Note. When danced at a corner 1/8 or 1/4 turn could be made between 4-5.
-Waltz,Hesitation Change,2,LF to side,Backing DC,1/4 between 1-2,Cont to rise on 2 and 3,T,false,R,RF to side,Pointing to LOD,3/8 between 1-2 Body turns less,Cont to rise on 2 and 3,T,false,L
-Waltz,Hesitation Change,3,RF closes to LF,Backing LOD,1/8 between 2-3,Lower e/o 3,TH,false,R,LF closes to RF,Facing LOD,Body completes turn,Lower e/o 3,TH,false,L
-Waltz,Hesitation Change,4,LF back,Backing LOD,Com to turn R,,TH,true,S,RF fwd,Facing LOD,Com to turn R,,HT,true,S
-Waltz,Hesitation Change,5,RF to side small step (Heel Pull),Facing DC,3/8 between 4-5,,H; IE of foot; whole foot,false,L,LF to side,Backing DC,3/8 between 4-5,,TH,false,R
-Waltz,Hesitation Change,6,LF closes to RF without weight,Facing DC,Nil,,IE of T (LF),false,L,RF closes to LF without weight,Backing DC,Nil,,IE of T (RF),false,R
+Waltz,Hesitation Change,2,LF to side,Backing DC,1/4 between 1-2,Cont to rise on 2 and 3,T,false,R,RF to side,Pointing to LOD,3/8 between 1-2 Body turns less,Cont to rise on 2 and 3,T,false,L,
+Waltz,Hesitation Change,3,RF closes to LF,Backing LOD,1/8 between 2-3,Lower e/o 3,TH,false,R,LF closes to RF,Facing LOD,Body completes turn,Lower e/o 3,TH,false,L,
+Waltz,Hesitation Change,4,LF back,Backing LOD,Com to turn R,,TH,true,S,RF fwd,Facing LOD,Com to turn R,,HT,true,S,
+Waltz,Hesitation Change,5,RF to side small step (Heel Pull),Facing DC,3/8 between 4-5,,H; IE of foot; whole foot,false,L,LF to side,Backing DC,3/8 between 4-5,,TH,false,R,
+Waltz,Hesitation Change,6,LF closes to RF without weight,Facing DC,Nil,,IE of T (LF),false,L,RF closes to LF without weight,Backing DC,Nil,,IE of T (RF),false,R,
 Waltz,Outside Change,1,LF back,Backing DC,Nil,Com to rise e/o 1 NFR,TH,false,Nil,RF fwd,Facing DC,Nil,Com to rise e/o 1,HT,false,Nil,Note. The Outside Change may also be danced to end in Promenade Position.
-Waltz,Outside Change,2,RF back,Backing DC,Com to turn L,Cont to rise on 2,T,true,Nil,LF fwd,Facing DC,Com to turn L,Cont to rise on 2,T,true,Nil
-Waltz,Outside Change,3,LF to side and slightly fwd,Pointing DW,1/4 between 2-3 Body turns less,Up. Lower e/o 3,TH,false,Nil,RF to side and slightly back,Backing DW,1/4 between 2-3 Body turns less,Up. Lower e/o 3,TH,false,Nil
-Waltz,Outside Change,4,RF fwd in CBMP OP,Facing DW,Nil,,H,true,Nil,LF back in CBMP,Backing DW,Nil,,T,true,Nil
+Waltz,Outside Change,2,RF back,Backing DC,Com to turn L,Cont to rise on 2,T,true,Nil,LF fwd,Facing DC,Com to turn L,Cont to rise on 2,T,true,Nil,
+Waltz,Outside Change,3,LF to side and slightly fwd,Pointing DW,1/4 between 2-3 Body turns less,Up. Lower e/o 3,TH,false,Nil,RF to side and slightly back,Backing DW,1/4 between 2-3 Body turns less,Up. Lower e/o 3,TH,false,Nil,
+Waltz,Outside Change,4,RF fwd in CBMP OP,Facing DW,Nil,,H,true,Nil,LF back in CBMP,Backing DW,Nil,,T,true,Nil,
 Waltz,Reverse Corte,1,RF back,Backing LOD,Com to turn L 3/8 between 1-2,Rise on 2,TH,true,R,LF fwd,Facing LOD,Com to turn L 1/4 between 1-2,Com to rise e/o 1,HT,true,L,Note. Other alignments are: (b) Backing LOD 1/2 turn; (c) Backing LOD 5/8 turn; (d) Backing DC 1/4 turn.
 Waltz,Reverse Corte,2,LF closes to RF without weight,Backing DC against LOD,,Up. Lower e/o 3,H(LF) then Toes both feet,false,R,RF to side,Facing centre,1/4 between 1-2,Cont to rise on 2 and 3,T,false,L,Note. Lady commences to rise slightly earlier than the Man.
-Waltz,Reverse Corte,3,Position held,Backing DC against LOD,Nil,,TH(RF),false,R,LF closes to RF,Facing DC against LOD,1/8 between 2-3,Lower e/o 3,TTH,false,L
-Waltz,Back Whisk,1,LF back in CBMP,Backing DC against LOD,Nil,Com to rise e/o 1 NFR,TH,true,L,RF fwd in CBMP OP,Facing DC against LOD,Com to turn to R,Com to rise e/o 1,HT,true,R
-Waltz,Back Whisk,2,RF diag back,Backing DC against the LOD,Nil,Cont to rise on 2,T,false,L,LF to side.,Facing centre.,1/8 between 1-2,Cont to rise on 2,T,false,R,Note. If the Back Whisk is turned to R," the Man's step 2 will be ""Side & slightly back""."
+Waltz,Reverse Corte,3,Position held,Backing DC against LOD,Nil,,TH(RF),false,R,LF closes to RF,Facing DC against LOD,1/8 between 2-3,Lower e/o 3,TTH,false,L,
+Waltz,Back Whisk,1,LF back in CBMP,Backing DC against LOD,Nil,Com to rise e/o 1 NFR,TH,true,L,RF fwd in CBMP OP,Facing DC against LOD,Com to turn to R,Com to rise e/o 1,HT,true,R,
+Waltz,Back Whisk,2,RF diag back,Backing DC against the LOD,Nil,Cont to rise on 2,T,false,L,LF to side.,Facing centre.,1/8 between 1-2,Cont to rise on 2,T,false,R,"Note. If the Back Whisk is turned to R, the Man's step 2 will be 'Side & slightly back'."
 Waltz,Back Whisk,3,LF crosses behind RF in PP,Facing DW,Nil,Up. Lower e/o 3,TH,false,L,RF crosses behind LF in PP,Facing DC,1/8 between 2-3,Up. Lower e/o 3,TH,false,R,Note. It is permissible for the man to draw the LF back with the Toe or Heel in contact when cross behind step 3.
 Waltz,Basic Weave,1,RF back,Backing DW,Nil,Rise e/o 2,TH,true,Nil,LF fwd,Facing DW,Nil,,H,true,Nil,Note. Advanced Lady dancers may use ball of foot to whole foot on step 1.
-Waltz,Basic Weave,2,LF fwd,Facing DC against LOD,Com to turn L,Up. Lower e/o 3,HT,true,Nil,RF back,Backing DC against LOD,Com to turn L,Rise e/o 2,T,true,Nil
+Waltz,Basic Weave,2,LF fwd,Facing DC against LOD,Com to turn L,Up. Lower e/o 3,HT,true,Nil,RF back,Backing DC against LOD,Com to turn L,Rise e/o 2,T,true,Nil,
 Waltz,Basic Weave,3,RF to side.,Backing LOD,1/8 between 2-3,Com to rise e/o 4 NFR,TH,false,Nil,LF to side,Pointing DC,1/4 between 2-3 Body turns less,Up. Lower e/o 3,TH,false,Nil,Note. The Basic Weave may be ended in PP.
-Waltz,Basic Weave,4,LF back in CBMP,Backing DC,1/8 between 3-4,,TH,true,Nil,RF fwd in CBMP OP,Facing DC,Nil,Com to rise e/o 4,HT,true,Nil
-Waltz,Basic Weave,5,RF back.,Backing DC,Com to turn L,Cont to rise on 5,T,true,Nil,LF fwd,Facing DC,Com to turn L,Cont to rise on 5,T,true,Nil
-Waltz,Basic Weave,6,LF to side and slightly fwd,Pointing DW,1/4 between 5-6 Body turns less.,Up. Lower e/o 6,TH,false,Nil,RF to side and slightly back,Backing DW,1/4 between 5-6 Body turns less,Up. Lower e/o 6,TH,false,Nil
-Waltz,Basic Weave,7,RF fwd in CBMP OP,Facing DW,Nil,,H,true,Nil,LF back in CBMP,Backing DW,Nil,,T,true,Nil
-Waltz,Double Reverse Spin,1,LF fwd,Facing LOD,Com to turn L 3/8 between 1-2,Rise e/o 1,HT,true,Nil,RF back,Backing LOD,Com to turn L,Rise slightly e/o 1 NFR,TH,true,Nil,Note. Amount of turn varies between 3/4 and full turn. Division of turn for 3/4," 7/8"," and full turn given."
-Waltz,Double Reverse Spin,2,RF to side.,Backing DW,1/2 between 2-3,Up,T,false,Nil,LF closes to RF (Heel Turn),Facing LOD,1/2 between 1-2,Cont to rise on 2,HT,false,Nil
-Waltz,Double Reverse Spin,3,LF closes to RF without weight (Toe Pivot),Facing DW,Nil,Up. Lower e/o 3,T(LF) then TH(RF),false,Nil,RF to side and slightly back,Backing wall,1/4 between 2-3,Up,T,false,Nil,Note. Lady's timing: 1 2 & 3. Beat value: 1," 1/2"," 1/2"," 1."
-Waltz,Double Reverse Spin,4,,,,,,LF crosses in front of RF,Backing DW,1/8 between 3-4,Up. Lower e/o 4,TH,false,Nil
-Waltz,Reverse Pivot,1,RF back in CBMP (small step),DC toe turned in,Up to 1/2 to L (Pivot),,THT,true,Nil,LF fwd in CBMP (small step),Facing LOD,Up to 1/2 to L (Pivot),,TH,true,Nil,"Note. If commenced backing DC alignment is ""To centre"," toe turned in"". Step is in CBMP owing to body turning strongly L."
+Waltz,Basic Weave,4,LF back in CBMP,Backing DC,1/8 between 3-4,,TH,true,Nil,RF fwd in CBMP OP,Facing DC,Nil,Com to rise e/o 4,HT,true,Nil,
+Waltz,Basic Weave,5,RF back.,Backing DC,Com to turn L,Cont to rise on 5,T,true,Nil,LF fwd,Facing DC,Com to turn L,Cont to rise on 5,T,true,Nil,
+Waltz,Basic Weave,6,LF to side and slightly fwd,Pointing DW,1/4 between 5-6 Body turns less.,Up. Lower e/o 6,TH,false,Nil,RF to side and slightly back,Backing DW,1/4 between 5-6 Body turns less,Up. Lower e/o 6,TH,false,Nil,
+Waltz,Basic Weave,7,RF fwd in CBMP OP,Facing DW,Nil,,H,true,Nil,LF back in CBMP,Backing DW,Nil,,T,true,Nil,
+Waltz,Double Reverse Spin,1,LF fwd,Facing LOD,Com to turn L 3/8 between 1-2,Rise e/o 1,HT,true,Nil,RF back,Backing LOD,Com to turn L,Rise slightly e/o 1 NFR,TH,true,Nil,"Note. Amount of turn varies between 3/4 and full turn. Division of turn for 3/4, 7/8, and full turn given."
+Waltz,Double Reverse Spin,2,RF to side.,Backing DW,1/2 between 2-3,Up,T,false,Nil,LF closes to RF (Heel Turn),Facing LOD,1/2 between 1-2,Cont to rise on 2,HT,false,Nil,
+Waltz,Double Reverse Spin,3,LF closes to RF without weight (Toe Pivot),Facing DW,Nil,Up. Lower e/o 3,T(LF) then TH(RF),false,Nil,RF to side and slightly back,Backing wall,1/4 between 2-3,Up,T,false,Nil,"Note. Lady's timing: 1 2 & 3. Beat value: 1, 1/2, 1/2, 1."
+Waltz,Double Reverse Spin,4,,,,,,,LF crosses in front of RF,Backing DW,1/8 between 3-4,Up. Lower e/o 4,TH,false,Nil,,
+Waltz,Reverse Pivot,1,RF back in CBMP (small step),DC toe turned in,Up to 1/2 to L (Pivot),,THT,true,Nil,LF fwd in CBMP (small step),Facing LOD,Up to 1/2 to L (Pivot),,TH,true,Nil,"Note. If commenced backing DC alignment is 'To centre, toe turned in'. Step is in CBMP owing to body turning strongly L."
 Waltz,Progressive Chasse to Right,1,LF fwd,Facing DC,Com to turn L 1/8 between 1-2,Com to rise e/o 1,HT,true,Nil,RF back,Backing DC,Com to turn L,Com to rise e/o 1 NFR,TH,true,Nil,Note. May be commenced facing LOD and ended backing DW (3/8 turn) with modified turn divisions.
-Waltz,Progressive Chasse to Right,2,RF to side,Backing wall,1/8 between 2-3 Body turns less,Cont to rise on 2 and 3,T,false,Nil,LF to side,Pointing DW,1/4 between 1-2 Body turns less.,Cont to rise on 2 and 3,T,false,Nil
-Waltz,Progressive Chasse to Right,3,LF closes to RF,Backing DW,Nil,Up. Lower e/o 4,T,false,Nil,RF closes to LF,Facing DW,Slight body turn,Up. Lower e/o 4,T,false,Nil
-Waltz,Progressive Chasse to Right,4,RF to side and slightly back,Backing DW,Nil,,TH,false,Nil,LF to side and slightly fwd,Facing DW,Nil,,TH,false,Nil
-Waltz,Progressive Chasse to Right,5,LF back in CBMP,Backing DW,Nil,,T,true,Nil,RF fwd in CBMP OP,Facing DW,Nil,,H,true,Nil
+Waltz,Progressive Chasse to Right,2,RF to side,Backing wall,1/8 between 2-3 Body turns less,Cont to rise on 2 and 3,T,false,Nil,LF to side,Pointing DW,1/4 between 1-2 Body turns less.,Cont to rise on 2 and 3,T,false,Nil,
+Waltz,Progressive Chasse to Right,3,LF closes to RF,Backing DW,Nil,Up. Lower e/o 4,T,false,Nil,RF closes to LF,Facing DW,Slight body turn,Up. Lower e/o 4,T,false,Nil,
+Waltz,Progressive Chasse to Right,4,RF to side and slightly back,Backing DW,Nil,,TH,false,Nil,LF to side and slightly fwd,Facing DW,Nil,,TH,false,Nil,
+Waltz,Progressive Chasse to Right,5,LF back in CBMP,Backing DW,Nil,,T,true,Nil,RF fwd in CBMP OP,Facing DW,Nil,,H,true,Nil,
 Waltz,Weave from PP,1,RF fwd and across in PP and CBMP,Pointing centre Body facing DC,1/8 between preceding step and 1,Com to rise e/o 1,HT,false,Nil,LF fwd in PP and CBMP,Facing DC against LOD,Com to turn L,Com to rise e/o 1,HT,false,Nil,Note. Less turn could be made on the Whisk to end facing LOD or Open Impetus could be used as entry.
-Waltz,Weave from PP,2,LF fwd,Facing centre,Cont to turn L 1/4 between 2-3,Cont to rise on 2,T,true,Nil,RF to side and slightly back,Backing DC,1/4 between 1-2,Cont to rise on 2,T,false,Nil
-Waltz,Weave from PP,3,RF to side and slightly back,Backing LOD,1/8 between 3-4,Up. Lower e/o 3,TH,false,Nil,LF to side and slightly fwd,Pointing DC,1/2 between 2-3 Body turns less.,Up. Lower e/o 3,TH,false,Nil
-Waltz,Weave from PP,4,LF back in CBMP,Backing DC,Com to turn L,Com to rise e/o 4 NFR,TH,false,Nil,RF fwd in CBMP OP,Facing DC,Body turns less.,Com to rise e/o 4,HT,false,Nil
-Waltz,Weave from PP,5,RF back,Backing DC,1/4 between 5-6 Body turns less,Cont to rise on 5,T,true,Nil,LF fwd,Facing DC,Com to turn L,Cont to rise on 5,T,true,Nil
-Waltz,Weave from PP,6,LF side and slightly fwd,Pointing DW,Nil,Up. Lower e/o 6,TH,false,Nil,RF to side and slightly back,Backing DW,1/4 between 5-6 Body turns less,Up. Lower e/o 6,TH,false,Nil
+Waltz,Weave from PP,2,LF fwd,Facing centre,Cont to turn L 1/4 between 2-3,Cont to rise on 2,T,true,Nil,RF to side and slightly back,Backing DC,1/4 between 1-2,Cont to rise on 2,T,false,Nil,
+Waltz,Weave from PP,3,RF to side and slightly back,Backing LOD,1/8 between 3-4,Up. Lower e/o 3,TH,false,Nil,LF to side and slightly fwd,Pointing DC,1/2 between 2-3 Body turns less.,Up. Lower e/o 3,TH,false,Nil,
+Waltz,Weave from PP,4,LF back in CBMP,Backing DC,Com to turn L,Com to rise e/o 4 NFR,TH,false,Nil,RF fwd in CBMP OP,Facing DC,Body turns less.,Com to rise e/o 4,HT,false,Nil,
+Waltz,Weave from PP,5,RF back,Backing DC,1/4 between 5-6 Body turns less,Cont to rise on 5,T,true,Nil,LF fwd,Facing DC,Com to turn L,Cont to rise on 5,T,true,Nil,
+Waltz,Weave from PP,6,LF side and slightly fwd,Pointing DW,Nil,Up. Lower e/o 6,TH,false,Nil,RF to side and slightly back,Backing DW,1/4 between 5-6 Body turns less,Up. Lower e/o 6,TH,false,Nil,
 Waltz,Weave from PP,7,RF fwd in CBMP OP,Facing DW,Nil,,H,true,Nil,LF back in CBMP,Backing DW,Nil,,T,true,Nil,Note. The Weave from PP may be ended in PP.
-Waltz,Closed Telemark,1,LF fwd,Facing DC,Com to turn L Just under 3/8 between 1-2,Rise e/o 1,HT,true,S,RF back,Backing DC,Com to turn L,Rise slightly e/o 1 NFR,TH,true,S
-Waltz,Closed Telemark,2,RF to side,Almost backing LOD,Just over 3/8 between 2-3 Body turns less,Up,T,false,L,LF closes to RF (Heel Turn),Facing LOD,3/8 between 1-2,Cont to rise on 2,HT,false,R
-Waltz,Closed Telemark,3,LF to side and slightly fwd,Pointing DW,Nil,Up. Lower e/o 3,TH,false,S,RF to side and slightly back,Backing DW,3/8 between 2-3 Body turns less,Up. Lower e/o 3,TH,false,S
-Waltz,Closed Telemark,4,RF fwd in CBMP OP,Facing DW,Nil,,H,true,S,LF back in CBMP,Backing DW,Nil,,T,true,S
+Waltz,Closed Telemark,1,LF fwd,Facing DC,Com to turn L Just under 3/8 between 1-2,Rise e/o 1,HT,true,S,RF back,Backing DC,Com to turn L,Rise slightly e/o 1 NFR,TH,true,S,
+Waltz,Closed Telemark,2,RF to side,Almost backing LOD,Just over 3/8 between 2-3 Body turns less,Up,T,false,L,LF closes to RF (Heel Turn),Facing LOD,3/8 between 1-2,Cont to rise on 2,HT,false,R,
+Waltz,Closed Telemark,3,LF to side and slightly fwd,Pointing DW,Nil,Up. Lower e/o 3,TH,false,S,RF to side and slightly back,Backing DW,3/8 between 2-3 Body turns less,Up. Lower e/o 3,TH,false,S,
+Waltz,Closed Telemark,4,RF fwd in CBMP OP,Facing DW,Nil,,H,true,S,LF back in CBMP,Backing DW,Nil,,T,true,S,
 Waltz,Open Telemark and Cross Hesitation,1,LF fwd,Facing DC,Com to turn L 1/4 between 1-2,Rise e/o 1,HT,true,S,RF back,Backing DC,Com to turn L,Rise slightly e/o 1 NFR,TH,true,S,Note. Cross Hesitation can be used from other positions and may be overturned forward and across. No foot swivel on 4 unless overturned.
-Waltz,Open Telemark and Cross Hesitation,2,RF to side,Backing DW,1/2 between 2-3 Body turns less,Up,T,false,L,LF closes to RF (Heel Turn),Facing LOD,3/8 between 1-2,Cont to rise on 2,HT,false,R
-Waltz,Open Telemark and Cross Hesitation,3,LF to side and slightly fwd in PP,Pointing DW Body facing wall,Body completes turn,Up. Lower e/o 3,TH,false,S,RF diag. fwd in PP R side leading,Pointing to LOD,Slight body turn to L,Up. Lower e/o 3,TH,false,S
-Waltz,Open Telemark and Cross Hesitation,4,RF fwd in PP and CBMP,Pointing DW Body facing wall,,Com to rise e/o 4,HT,true,S,LF fwd and across in PP and CBMP,Pointing to LOD (Moving DW),Com to turn L,Com to rise e/o 4,HT,true,S
-Waltz,Open Telemark and Cross Hesitation,5,LF closes to RF without weight,Facing DW,,Cont to rise on 5 and 6,Toes of both feet,false,S,RF to side,Backing wall,1/4 between 4-5,Cont to rise on 5 and 6,T,false,L
-Waltz,Open Telemark and Cross Hesitation,6,Position held,Facing DW,,Lower e/o 6,TH (RF),false,S,LF closes to RF,Backing DW,1/8 between 5-6,Lower e/o 6,TH,false,L
-Waltz,Open Telemark and Wing,1,LF fwd,Facing DC,Com to turn L 1/4 between 1-2,Rise e/o 1,HT,true,S,RF back,Backing DC,Com to turn L,Rise slightly e/o 1 NFR,TH,true,S,Note. Wing step 4 is bold. No foot swivel on step 5 (Man)," but body turn only. Foot swivel is used to end facing DC."
-Waltz,Open Telemark and Wing,2,RF to side,Backing DW,1/2 between 2-3 Body turns less,Up,T,false,L,LF closes to RF (Heel Turn),Facing LOD,3/8 between 1-2,Cont to rise on 2,HT,false,R
-Waltz,Open Telemark and Wing,3,LF side and slightly back in PP,Pointing DW Body facing wall,1/8 between 3-4,Up. Lower e/o 3,TH,false,S,RF fwd and slightly to R in PP R side leading,Pointing to LOD,Slight body turn to L,Up. Lower e/o 3,TH,false,S
-Waltz,Open Telemark and Wing,4,RF fwd and across in PP and CBMP,Pointing to LOD,Body turn on 5,Slight rise on 5 and 6 NFR,H,true,S,LF fwd in PP and CBMP,Facing DC,1/8 between 3-4,Com to rise e/o 4,HT,true,S
-Waltz,Open Telemark and Wing,5,LF com. to close to RF,Towards alignment of 6,1/8 between 5-6,,Pressure on T of RF foot flat IE of T (LF),false,S,RF fwd preparing to step OP on L side,Facing centre.,1/8 between 4-5,Cont to rise on 5,T,false,S
-Waltz,Open Telemark and Wing,6,LF closes to RF without weight,Facing DC,Nil,Lower e/o 6,Pressure on T of RF foot flat IE of T (LF),false,S,LF fwd in CBMP OP on L side,Facing against LOD cont. turn to back DC,1/4 between 5-6 then cont turn body,Up. Lower e/o 6,TH (RF),false,S
-Waltz,Open Impetus and Cross Hesitation,1,LF back,Backing LOD,Com to turn R 3/8 between 1-2,Rise e/o 2,TH,true,S,RF fwd,Facing LOD,Com to turn R,Nil,HT,true,S
-Waltz,Open Impetus and Cross Hesitation,2,RF closes to LF (Heel Turn),Facing DC,Slight body turn to R,Up. Lower e/o 3,HT,false,L,LF to side,Backing DC,3/8 between 1-2,Rise e/o 2,T,false,R
-Waltz,Open Impetus and Cross Hesitation,3,LF diag. fwd in PP L side leading,Pointing DC Body facing LOD,Nil,Com to rise e/o 4,TH,false,S,RF side in PP having brushed to LF,Pointing to centre (moving DC),3/8 between 2-3 Body turns less,Up. Lower e/o 3,TH,false,S
-Waltz,Open Impetus and Cross Hesitation,4,RF fwd in PP and CBMP,Pointing DC Body facing LOD,Body turn to L,Cont to rise on 5 and 6,H,true,S,LF fwd and across in PP and CBMP,Pointing centre (moving DC),Com to turn L,Com to rise e/o 4,HT,true,S
-Waltz,Open Impetus and Cross Hesitation,5,LF closes to RF without weight,Facing DC,Nil,Lower e/o 6,Toes of both feet,false,S,RF to side.,Backing LOD,1/4 between 4-5,Cont to rise on 5 and 6,T,false,L
+Waltz,Open Telemark and Cross Hesitation,2,RF to side,Backing DW,1/2 between 2-3 Body turns less,Up,T,false,L,LF closes to RF (Heel Turn),Facing LOD,3/8 between 1-2,Cont to rise on 2,HT,false,R,
+Waltz,Open Telemark and Cross Hesitation,3,LF to side and slightly fwd in PP,Pointing DW Body facing wall,Body completes turn,Up. Lower e/o 3,TH,false,S,RF diag. fwd in PP R side leading,Pointing to LOD,Slight body turn to L,Up. Lower e/o 3,TH,false,S,
+Waltz,Open Telemark and Cross Hesitation,4,RF fwd in PP and CBMP,Pointing DW Body facing wall,,Com to rise e/o 4,HT,true,S,LF fwd and across in PP and CBMP,Pointing to LOD (Moving DW),Com to turn L,Com to rise e/o 4,HT,true,S,
+Waltz,Open Telemark and Cross Hesitation,5,LF closes to RF without weight,Facing DW,,Cont to rise on 5 and 6,Toes of both feet,false,S,RF to side,Backing wall,1/4 between 4-5,Cont to rise on 5 and 6,T,false,L,
+Waltz,Open Telemark and Cross Hesitation,6,Position held,Facing DW,,Lower e/o 6,TH (RF),false,S,LF closes to RF,Backing DW,1/8 between 5-6,Lower e/o 6,TH,false,L,
+Waltz,Open Telemark and Wing,1,LF fwd,Facing DC,Com to turn L 1/4 between 1-2,Rise e/o 1,HT,true,S,RF back,Backing DC,Com to turn L,Rise slightly e/o 1 NFR,TH,true,S,"Note. Wing step 4 is bold. No foot swivel on step 5 (Man), but body turn only. Foot swivel is used to end facing DC."
+Waltz,Open Telemark and Wing,2,RF to side,Backing DW,1/2 between 2-3 Body turns less,Up,T,false,L,LF closes to RF (Heel Turn),Facing LOD,3/8 between 1-2,Cont to rise on 2,HT,false,R,
+Waltz,Open Telemark and Wing,3,LF side and slightly back in PP,Pointing DW Body facing wall,1/8 between 3-4,Up. Lower e/o 3,TH,false,S,RF fwd and slightly to R in PP R side leading,Pointing to LOD,Slight body turn to L,Up. Lower e/o 3,TH,false,S,
+Waltz,Open Telemark and Wing,4,RF fwd and across in PP and CBMP,Pointing to LOD,Body turn on 5,Slight rise on 5 and 6 NFR,H,true,S,LF fwd in PP and CBMP,Facing DC,1/8 between 3-4,Com to rise e/o 4,HT,true,S,
+Waltz,Open Telemark and Wing,5,LF com. to close to RF,Towards alignment of 6,1/8 between 5-6,,Pressure on T of RF foot flat IE of T (LF),false,S,RF fwd preparing to step OP on L side,Facing centre.,1/8 between 4-5,Cont to rise on 5,T,false,S,
+Waltz,Open Telemark and Wing,6,LF closes to RF without weight,Facing DC,Nil,Lower e/o 6,Pressure on T of RF foot flat IE of T (LF),false,S,LF fwd in CBMP OP on L side,Facing against LOD cont. turn to back DC,1/4 between 5-6 then cont turn body,Up. Lower e/o 6,TH (RF),false,S,
+Waltz,Open Impetus and Cross Hesitation,1,LF back,Backing LOD,Com to turn R 3/8 between 1-2,Rise e/o 2,TH,true,S,RF fwd,Facing LOD,Com to turn R,Nil,HT,true,S,
+Waltz,Open Impetus and Cross Hesitation,2,RF closes to LF (Heel Turn),Facing DC,Slight body turn to R,Up. Lower e/o 3,HT,false,L,LF to side,Backing DC,3/8 between 1-2,Rise e/o 2,T,false,R,
+Waltz,Open Impetus and Cross Hesitation,3,LF diag. fwd in PP L side leading,Pointing DC Body facing LOD,Nil,Com to rise e/o 4,TH,false,S,RF side in PP having brushed to LF,Pointing to centre (moving DC),3/8 between 2-3 Body turns less,Up. Lower e/o 3,TH,false,S,
+Waltz,Open Impetus and Cross Hesitation,4,RF fwd in PP and CBMP,Pointing DC Body facing LOD,Body turn to L,Cont to rise on 5 and 6,H,true,S,LF fwd and across in PP and CBMP,Pointing centre (moving DC),Com to turn L,Com to rise e/o 4,HT,true,S,
+Waltz,Open Impetus and Cross Hesitation,5,LF closes to RF without weight,Facing DC,Nil,Lower e/o 6,Toes of both feet,false,S,RF to side.,Backing LOD,1/4 between 4-5,Cont to rise on 5 and 6,T,false,L,
 Waltz,Open Impetus and Cross Hesitation,6,Position held,Facing DC,Nil,,TH (RF),false,S,LF closes to RF,Backing DC,1/8 between 5-6,Lower e/o 6,TH,false,L,Note. There is no foot swivel on LF on step 6 (Man).
-Waltz,Open Impetus and Wing,1,LF back,Backing LOD,Com to turn R 3/8 between 1-2,Rise e/o 2,TH,true,S,RF fwd,Facing LOD,Com to turn R,Nil,HT,true,S
-Waltz,Open Impetus and Wing,2,RF closes to LF (Heel Turn),Facing DC,Slight body turn to R,Up. Lower e/o 3,HT,false,L,LF side,Backing DC,3/8 between 1-2,Rise e/o 2,T,false,R
-Waltz,Open Impetus and Wing,3,LF diag. fwd in PP L side leading,Pointing DC Body facing LOD,Nil,,TH,false,S,RF to side in PP having brushed to LF,Pointing to centre (moving DC),3/8 between 2-3 Body turns less,Up. Lower e/o 3,TH,false,S
-Waltz,Open Impetus and Wing,4,RF fwd in PP and CBMP,Pointing DC Body facing LOD,Body turn to L on 5,Slight rise on 5 and 6 NFR,H,true,S,LF fwd in PP and CBMP,Facing DC against LOD,1/8 to L between 3-4,Com to rise e/o 4,HT,true,S
-Waltz,Open Impetus and Wing,5,LF com. to close to RF,Towards alignment of 6,Body turn to L on 6,,Pressure on T of RF foot flat IE of T (LF),false,S,RF fwd preparing to step OP on L side,Facing against LOD,1/8 between 4-5,Cont to rise on 5,T,false,S
-Waltz,Open Impetus and Wing,6,LF closes to RF without weight,Facing DC,Nil,,Pressure on T of RF foot flat IE of T (LF),false,S,LF fwd in CBMP OP on L side,Facing DW against LOD,1/8 between 5-6,Up. Lower e/o 6,TH,false,S
+Waltz,Open Impetus and Wing,1,LF back,Backing LOD,Com to turn R 3/8 between 1-2,Rise e/o 2,TH,true,S,RF fwd,Facing LOD,Com to turn R,Nil,HT,true,S,
+Waltz,Open Impetus and Wing,2,RF closes to LF (Heel Turn),Facing DC,Slight body turn to R,Up. Lower e/o 3,HT,false,L,LF side,Backing DC,3/8 between 1-2,Rise e/o 2,T,false,R,
+Waltz,Open Impetus and Wing,3,LF diag. fwd in PP L side leading,Pointing DC Body facing LOD,Nil,,TH,false,S,RF to side in PP having brushed to LF,Pointing to centre (moving DC),3/8 between 2-3 Body turns less,Up. Lower e/o 3,TH,false,S,
+Waltz,Open Impetus and Wing,4,RF fwd in PP and CBMP,Pointing DC Body facing LOD,Body turn to L on 5,Slight rise on 5 and 6 NFR,H,true,S,LF fwd in PP and CBMP,Facing DC against LOD,1/8 to L between 3-4,Com to rise e/o 4,HT,true,S,
+Waltz,Open Impetus and Wing,5,LF com. to close to RF,Towards alignment of 6,Body turn to L on 6,,Pressure on T of RF foot flat IE of T (LF),false,S,RF fwd preparing to step OP on L side,Facing against LOD,1/8 between 4-5,Cont to rise on 5,T,false,S,
+Waltz,Open Impetus and Wing,6,LF closes to RF without weight,Facing DC,Nil,,Pressure on T of RF foot flat IE of T (LF),false,S,LF fwd in CBMP OP on L side,Facing DW against LOD,1/8 between 5-6,Up. Lower e/o 6,TH,false,S,
 Waltz,Outside Spin,1,LF back in CBMP (small step),DC against LOD toe turned in.,3/8 to R on 1 (pivot),Rise e/o 2,THT,true,Nil,RF fwd in CBMP OP,Facing DC against LOD,Com to turn R,Com to rise e/o 1,HT,true,Nil,Note. Outside Spin may be underturned to back DC. Turn values for underturning given for side of room and corner.
-Waltz,Outside Spin,2,RF fwd in CBMP OP,Facing against LOD,Cont to turn. 3/8 between 2-3,Up. Lower e/o 3,HT,true,Nil,LF closes to RF,Facing wall,5/8 between 1-2,Cont to rise on 2,T,false,Nil
-Waltz,Outside Spin,3,LF to side ending with LF back,Facing DC End facing DW,4 on 3,,TH,false,Nil,RF fwd ending in CBMP,Facing against LOD End backing DW,1/4 between 2-3 1/8 on 3,Up. Lower e/o 3,TH,false,Nil
-Waltz,Turning Lock,1,RF back R side leading,Backing DC,Nil,Com to rise e/o 1,T,false,L,LF fwd L side leading,Facing DC,Com to turn L,Com to rise e/o 1,HT,true,Nil,Note. Timing: 1 & 2 3 1. Beat Value: 1/2," 1/2"," 1"," 1"," 1."
-Waltz,Turning Lock,2,LF crosses in front of RF,Backing DC,Com to turn L,Cont to rise on 2 and 3,T,false,L,RF crosses behind LF,Facing DC,Nil,Cont to rise on 2 and 3,TH,false,Nil
+Waltz,Outside Spin,2,RF fwd in CBMP OP,Facing against LOD,Cont to turn. 3/8 between 2-3,Up. Lower e/o 3,HT,true,Nil,LF closes to RF,Facing wall,5/8 between 1-2,Cont to rise on 2,T,false,Nil,
+Waltz,Outside Spin,3,LF to side ending with LF back,Facing DC End facing DW,4 on 3,,TH,false,Nil,RF fwd ending in CBMP,Facing against LOD End backing DW,1/4 between 2-3 1/8 on 3,Up. Lower e/o 3,TH,false,Nil,
+Waltz,Turning Lock,1,RF back R side leading,Backing DC,Nil,Com to rise e/o 1,T,false,L,LF fwd L side leading,Facing DC,Com to turn L,Com to rise e/o 1,HT,true,Nil,"Note. Timing: 1 & 2 3 1. Beat Value: 1/2, 1/2, 1, 1, 1."
+Waltz,Turning Lock,2,LF crosses in front of RF,Backing DC,Com to turn L,Cont to rise on 2 and 3,T,false,L,RF crosses behind LF,Facing DC,Nil,Cont to rise on 2 and 3,TH,false,Nil,
 Waltz,Turning Lock,3,RF back and slightly rightwards,Backing DC,1/4 between 3-4 Body turns less,,T,false,L,LF fwd and slightly leftwards,Facing DC,Nil,,TH,false,Nil,Note. Lady may overturn slightly to L on step 3 and turn head well to L.
-Waltz,Turning Lock,4,LF to side and slightly fwd,Pointing DW,Nil,Up. Lower e/o 4,TH,false,S,RF to side and slightly back,Backing DW,1/4 between 3-4 Body turns less,Up. Lower e/o 4,TH,false,S
+Waltz,Turning Lock,4,LF to side and slightly fwd,Pointing DW,Nil,Up. Lower e/o 4,TH,false,S,RF to side and slightly back,Backing DW,1/4 between 3-4 Body turns less,Up. Lower e/o 4,TH,false,S,
 Waltz,Turning Lock,5,RF fwd in CBMP OP,Facing DW,Nil,,H,true,S,LF back in CBMP,Backing DW,Nil,,TH,false,S,Note. Man may commence RF back backing LOD with different alignment and turn.
 Waltz,Left Whisk,1,RF fwd and across in PP and CBMP,Facing DW (Moving along LOD),Body com. to turn L,Nil,H,false,Nil,LF back in CBMP,Backing DC,Nil,Com to rise e/o 1 NFR,T,true,Nil,Note. Timing: 1 2 3. Lady head well to L step 3; poise back.
-Waltz,Left Whisk,2,LF to side and slightly fwd,Pointing DW,Body turn to L,Nil,TH,false,Nil,RF to side and slightly back (small step),Backing DC,Slight body turn to L,Cont to rise on 2,,false,Nil
-Waltz,Left Whisk,3,RF crosses behind LF,Facing DW,Nil,Nil,T (RH lower next step),false,Nil,LF fwd in CBMP OP on L side,Facing DW against LOD,Nil,Up. Lower e/o 3,TH,false,Nil
+Waltz,Left Whisk,2,LF to side and slightly fwd,Pointing DW,Body turn to L,Nil,TH,false,Nil,RF to side and slightly back (small step),Backing DC,Slight body turn to L,Cont to rise on 2,,false,Nil,
+Waltz,Left Whisk,3,RF crosses behind LF,Facing DW,Nil,Nil,T (RH lower next step),false,Nil,LF fwd in CBMP OP on L side,Facing DW against LOD,Nil,Up. Lower e/o 3,TH,false,Nil,
 Waltz,Contra Check,1,LF fwd in CBMP,DW Pointing almost to LOD,Body turn to L,Down with knees slightly flexed,H or Ball Flat,true,Nil,RF back in CBMP,DW feet backing almost LOD,Body turn to L,Down with knees slightly flexed,TH,true,Nil,Note. Some prefer step forward with foot flat on step 1 Man.
-Waltz,Contra Check,2,Transfer weight back to RF,Backing DC against LOD,Body turn to R,Rise e/o 2,T,false,Nil,Transfer weight fwd to LF,Facing DC against LOD,Body turn to R,Rise e/o 2,T,false,L
-Waltz,Contra Check,3,LF to side in PP,Facing DW (Moving along LOD),Nil,Up. Lower e/o 3,TH,false,Nil,RF to side in PP,Facing DC (Moving along LOD),1/4 to R between 2-3,Up. Lower e/o 3,TH,false,L
+Waltz,Contra Check,2,Transfer weight back to RF,Backing DC against LOD,Body turn to R,Rise e/o 2,T,false,Nil,Transfer weight fwd to LF,Facing DC against LOD,Body turn to R,Rise e/o 2,T,false,L,
+Waltz,Contra Check,3,LF to side in PP,Facing DW (Moving along LOD),Nil,Up. Lower e/o 3,TH,false,Nil,RF to side in PP,Facing DC (Moving along LOD),1/4 to R between 2-3,Up. Lower e/o 3,TH,false,L,
 Waltz,Closed Wing,1,RF fwd in CBMP OP,Facing DC,Nil,,H,false,Nil,LF back in CBMP,Backing DC,Nil,Com to rise e/o 1 NFR,TH,true,Nil,Note. Lady may turn L between 2-3 to end in PP moving DC.
-Waltz,Closed Wing,2,LF commences to close to RF,Facing DC,Slight body turn to L on 2 and 3,Slight rise on 2 and 3 NFR,Whole foot,false,Nil,RF to side and slightly back (small step),Backing DC,Slight body turn to L,Cont to rise on 2,T,false,Nil
-Waltz,Closed Wing,3,LF closes to RF without weight,Facing DC,Nil,,Whole foot & pressure IE T LF,false,Nil,LF fwd in CBMP OP on L side,Facing DW against LOD,Nil,Up. Lower e/o 3,TH,false,Nil
-Waltz,Turning Lock to Right,1,RF back R side leading,Down LOD,Nil,Com to rise e/o 1,T,false,LLSS or RRSS,LF fwd L side leading,Down LOD,1/4 to R between 1-2,Com to rise e/o 1,T,false,RRSS or LLSS,Note. Timing: 1 & 2 3. Beat Value: 1/2," 1/2"," 1"," 1."
-Waltz,Turning Lock to Right,2,LF crosses loosely in front of RF,Facing centre,1/4 to R between 1-2,Cont to rise on 2 and 3,T,false,LLSS or RRSS,RF crosses loosely behind LF,Backing centre,1/8 between 2-3,Cont to rise on 2 and 3,T,false,RRSS or LLSS,Note. Lady will not brush on preceding Natural Spin Turn," but brush towards when moving into step 4."
-Waltz,Turning Lock to Right,3,RF to side and slightly fwd small step,Facing DC,1/8 between 2-3,Up. Lower e/o 4,T,false,LLSS or RRSS,LF to side and slightly back,Backing DC,3/8 between 3-4 Body turns less.,Up. Lower e/o 4,T,false,RRSS or LLSS
-Waltz,Turning Lock to Right,4,LF diag. fwd left side leading in PP,Pointing DC Body facing LOD,Slight body turn to R,,TH,false,LLSS or RRSS,RF to side in PP having brushed towards LF,Pointing to Centre Moving DC,,TH,false,RRSS or LLSS
-Waltz,Fallaway Reverse and Slip Pivot,1,LF fwd,Facing DC,Com to turn L 1/4 between 1-2,Rise e/o 1,HT,true,Nil,RF back,Backing DC,Nil,Rise e/o 1 NFR,TH,false,Nil,Note. Timing: 1 2 3 & OR 1 2 & 3. Beat Value: 1," 1"," 1/2"," 1/2 OR 1"," 1/2"," 1/2"," 1."
+Waltz,Closed Wing,2,LF commences to close to RF,Facing DC,Slight body turn to L on 2 and 3,Slight rise on 2 and 3 NFR,Whole foot,false,Nil,RF to side and slightly back (small step),Backing DC,Slight body turn to L,Cont to rise on 2,T,false,Nil,
+Waltz,Closed Wing,3,LF closes to RF without weight,Facing DC,Nil,,Whole foot & pressure IE T LF,false,Nil,LF fwd in CBMP OP on L side,Facing DW against LOD,Nil,Up. Lower e/o 3,TH,false,Nil,
+Waltz,Turning Lock to Right,1,RF back R side leading,Down LOD,Nil,Com to rise e/o 1,T,false,LLSS or RRSS,LF fwd L side leading,Down LOD,1/4 to R between 1-2,Com to rise e/o 1,T,false,RRSS or LLSS,"Note. Timing: 1 & 2 3. Beat Value: 1/2, 1/2, 1, 1."
+Waltz,Turning Lock to Right,2,LF crosses loosely in front of RF,Facing centre,1/4 to R between 1-2,Cont to rise on 2 and 3,T,false,LLSS or RRSS,RF crosses loosely behind LF,Backing centre,1/8 between 2-3,Cont to rise on 2 and 3,T,false,RRSS or LLSS,"Note. Lady will not brush on preceding Natural Spin Turn, but brush towards when moving into step 4."
+Waltz,Turning Lock to Right,3,RF to side and slightly fwd small step,Facing DC,1/8 between 2-3,Up. Lower e/o 4,T,false,LLSS or RRSS,LF to side and slightly back,Backing DC,3/8 between 3-4 Body turns less.,Up. Lower e/o 4,T,false,RRSS or LLSS,
+Waltz,Turning Lock to Right,4,LF diag. fwd left side leading in PP,Pointing DC Body facing LOD,Slight body turn to R,,TH,false,LLSS or RRSS,RF to side in PP having brushed towards LF,Pointing to Centre Moving DC,,,TH,false,RRSS or LLSS,
+Waltz,Fallaway Reverse and Slip Pivot,1,LF fwd,Facing DC,Com to turn L 1/4 between 1-2,Rise e/o 1,HT,true,Nil,RF back,Backing DC,Nil,Rise e/o 1 NFR,TH,false,Nil,"Note. Timing: 1 2 3 & OR 1 2 & 3. Beat Value: 1, 1, 1/2, 1/2 OR 1, 1/2, 1/2, 1."
 Waltz,Fallaway Reverse and Slip Pivot,2,RF back in Fallaway R side leading,Backing DW Moving down LOD,1/8 between 2-3 Body turns less,Up,T,false,Nil,LF back in Fallaway L side leading,Backing DC Moving down LOD,Nil,Up,T,false,Nil,Note. A compact position on Fallaway is easier if Lady keeps head to L.
-Waltz,Fallaway Reverse and Slip Pivot,3,LF back in CBMP and Fallaway,Backing LOD,1/4 between 3-4,Up. Lower e/o 3,TH,false,Nil,RF back in CBMP and Fallaway (small step) LF held in CBMP,Backing DC End facing centre,5/8 to L on 3 (Pivot),Up. Lower e/o 3,T,true,Nil
-Waltz,Fallaway Reverse and Slip Pivot,4,RF back LF held in CBMP,To centre toe turned in end facing LOD or DW,1/4 or 1/8 on 4 (pivot),,THT,true,Nil,LF fwd in CBMP RF held in CBMP,To centre. End backing LOD or DW,1/4 or 1/8 on 4 (pivot),,TH,true,Nil
+Waltz,Fallaway Reverse and Slip Pivot,3,LF back in CBMP and Fallaway,Backing LOD,1/4 between 3-4,Up. Lower e/o 3,TH,false,Nil,RF back in CBMP and Fallaway (small step) LF held in CBMP,Backing DC End facing centre,5/8 to L on 3 (Pivot),Up. Lower e/o 3,T,true,Nil,
+Waltz,Fallaway Reverse and Slip Pivot,4,RF back LF held in CBMP,To centre toe turned in end facing LOD or DW,1/4 or 1/8 on 4 (pivot),,THT,true,Nil,LF fwd in CBMP RF held in CBMP,To centre. End backing LOD or DW,1/4 or 1/8 on 4 (pivot),,TH,true,Nil,
 Waltz,Hover Corte,1,RF back,Backing LOD,Com to turn L,Com to rise e/o 1 NFR,TH,true,S,LF fwd,Facing LOD,Com to turn L,Com to rise e/o 1,HT,true,S,Note. May be danced using extra bar of music (3-5 beats) with modified Footwork and Sway.
-Waltz,Hover Corte,2,LF to side and slightly fwd,Pointing DW,3/8 between 1-2 Body turns less,Cont to rise on 2,T,false,R,RF to side and LF brushes towards RF,Facing centre to end facing DC against LOD,1/4 between 1-2 Cont to turn 1/8 on 2,Cont to rise on 2,T,false,L
-Waltz,Hover Corte,3,Transfer weight to RF side and slightly back,Backing DC against LOD,Cont turn body on 2,Up. Lower e/o 3,TH,false,S,LF diag. fwd,Facing DC against LOD,Nil,Up. Lower e/o 3,TH,false,S
-Waltz,Hover Corte,4,LF back in CBMP,Backing DC against LOD,Nil,,T,true,S,RF fwd in CBMP OP,Facing DC against LOD,Nil,,H,true,S
+Waltz,Hover Corte,2,LF to side and slightly fwd,Pointing DW,3/8 between 1-2 Body turns less,Cont to rise on 2,T,false,R,RF to side and LF brushes towards RF,Facing centre to end facing DC against LOD,1/4 between 1-2 Cont to turn 1/8 on 2,Cont to rise on 2,T,false,L,
+Waltz,Hover Corte,3,Transfer weight to RF side and slightly back,Backing DC against LOD,Cont turn body on 2,Up. Lower e/o 3,TH,false,S,LF diag. fwd,Facing DC against LOD,Nil,Up. Lower e/o 3,TH,false,S,
+Waltz,Hover Corte,4,LF back in CBMP,Backing DC against LOD,Nil,,T,true,S,RF fwd in CBMP OP,Facing DC against LOD,Nil,,H,true,S,
 Waltz,Closed Change Natural to Reverse,1,RF fwd,Facing DC,Nil,Com to rise e/o 1,HT,true,S,LF back,Backing DC,Nil,Com to rise e/o 1 NFR,TH,true,S,Note. a very slight turn to R may be made.
 Waltz,Closed Change Natural to Reverse,2,LF to side and slightly fwd,Facing DC,Nil,Cont to rise on 2 and 3,T,false,R,RF to side and slightly back,Backing DC,Nil,Cont to rise on 2 and 3,T,false,L,
 Waltz,Closed Change Natural to Reverse,3,RF closes to LF,Facing DC,Nil,Lower e/o 3,TH,false,R,LF closes to RF,Backing DC,Nil,Lower e/o 3,TH,false,L,

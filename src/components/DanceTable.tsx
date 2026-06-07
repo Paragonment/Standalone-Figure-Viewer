@@ -60,13 +60,14 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
     ? allHeaders.filter(h => visibleColumns.includes(h))
     : allHeaders;
 
-  // Filter out redundant 'Dance' and 'Figure Name' from the inner step details
-  const innerHeaders = headers.filter(h => h !== 'Dance' && h !== 'Figure Name');
+  // Filter out redundant 'Dance', 'Figure Name', and 'Level' from the inner step details
+  const innerHeaders = headers.filter(h => h !== 'Dance' && h !== 'Figure Name' && h !== 'Level');
 
   const showDance = !visibleColumns || visibleColumns.includes('Dance');
+  const showLevel = !visibleColumns || visibleColumns.includes('Level');
   const showStep = !visibleColumns || visibleColumns.includes('Step');
   const showNotes = !visibleColumns || visibleColumns.includes('General Notes');
-  const colSpan = 1 + (showDance ? 1 : 0) + 1 + (showStep ? 1 : 0) + (showNotes ? 1 : 0);
+  const colSpan = 1 + (showDance ? 1 : 0) + 1 + (showLevel ? 1 : 0) + (showStep ? 1 : 0) + (showNotes ? 1 : 0);
 
   const getDanceEmoji = (dance: string) => {
     switch (dance.toLowerCase()) {
@@ -168,6 +169,7 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
             <th className="th-toggle-arrow"></th>
             {showDance && <th>Dance</th>}
             <th>Figure Name</th>
+            {showLevel && <th>Level</th>}
             {showStep && <th className="th-step-count">Steps</th>}
             {showNotes && <th>General Notes Summary</th>}
           </tr>
@@ -198,6 +200,13 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
                   <td className="figure-name-cell">
                     <strong>{fig.name}</strong>
                   </td>
+                  {showLevel && (
+                    <td>
+                      <span className={`level-badge ${fig.level.toLowerCase().replace(' ', '-')}`}>
+                        {fig.level}
+                      </span>
+                    </td>
+                  )}
                   {showStep && (
                     <td className="td-step-count">
                       <span className="step-count-badge">

@@ -1,6 +1,7 @@
 export interface DanceStep {
   Dance: string;
   "Figure Name": string;
+  Level: string;
   Step: string;
   "Lead Feet Positions": string;
   "Lead Alignment": string;
@@ -22,6 +23,7 @@ export interface DanceStep {
 export interface FigureGroup {
   dance: string;
   name: string;
+  level: string;
   steps: DanceStep[];
   generalNotes: string;
 }

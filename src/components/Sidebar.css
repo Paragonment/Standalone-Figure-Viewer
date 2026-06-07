@@ -240,6 +240,7 @@
   overflow: hidden;
   box-shadow: var(--shadow);
   transition: box-shadow 0.2s;
+  flex-shrink: 0;
 }
 
 .explorer-accordion:hover:not(.disabled) {
@@ -345,14 +346,11 @@
 
 /* Figures Section & Filter Search */
 .figures-section {
-  max-height: 400px;
   display: flex;
   flex-direction: column;
 }
 
 .figures-list {
-  overflow-y: auto;
-  max-height: 250px;
   padding-right: 4px;
 }
 

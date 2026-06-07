@@ -11,7 +11,7 @@ interface ColumnToggleProps {
   onClearFilters: () => void;
 }
 
-const COMMON_COLUMNS = ['Dance', 'Step', 'General Notes'];
+const COMMON_COLUMNS = ['Dance', 'Step', 'General Notes', 'Level'];
 const LEAD_COLUMNS = [
   'Lead Feet Positions',
   'Lead Alignment',

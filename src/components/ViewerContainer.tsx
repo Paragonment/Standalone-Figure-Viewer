@@ -16,6 +16,7 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDance, setSelectedDance] = useState('');
   const [selectedFigure, setSelectedFigure] = useState('');
+  const [selectedLevel, setSelectedLevel] = useState('');
   
   // Column visibility state
   const [visibleColumns, setVisibleColumns] = useState<string[]>([]);
@@ -34,8 +35,8 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
     if (data.length > 0 && visibleColumns.length === 0) {
       const allHeaders = Object.keys(data[0]);
       // Default visible columns - common ones
-      const defaults = ['Dance', 'Figure Name', 'Step', 'Lead Feet Positions', 'Lead Footwork', 'Follow Feet Positions', 'Follow Footwork'];
-      setVisibleColumns(allHeaders.filter(h => defaults.includes(h) || h === 'Dance' || h === 'Figure Name' || h === 'Step'));
+      const defaults = ['Dance', 'Figure Name', 'Level', 'Step', 'Lead Feet Positions', 'Lead Footwork', 'Follow Feet Positions', 'Follow Footwork'];
+      setVisibleColumns(allHeaders.filter(h => defaults.includes(h) || h === 'Dance' || h === 'Figure Name' || h === 'Level' || h === 'Step'));
     }
   }, [data, visibleColumns.length]);
 
@@ -71,6 +72,7 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
         group = {
           dance: item.Dance,
           name: item["Figure Name"],
+          level: item.Level,
           steps: [],
           generalNotes: ''
         };
@@ -83,7 +85,11 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
       }
     });
 
-    return groups;
+    return groups.sort((a, b) => {
+      const nameCompare = a.name.localeCompare(b.name);
+      if (nameCompare !== 0) return nameCompare;
+      return a.dance.localeCompare(b.dance);
+    });
   }, [data]);
 
   const dances = useMemo(() => {
@@ -107,9 +113,12 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
       // 2. Filter by selected figure
       const matchesFigure = selectedFigure === '' || group.name === selectedFigure;
       
+      // 2b. Filter by selected level
+      const matchesLevel = selectedLevel === '' || group.level === selectedLevel;
+      
       // 3. Filter by search term
       const searchLower = searchTerm.trim().toLowerCase();
-      if (!searchLower) return matchesDance && matchesFigure;
+      if (!searchLower) return matchesDance && matchesFigure && matchesLevel;
       
       const matchesSearch =
         group.dance.toLowerCase().includes(searchLower) ||
@@ -121,9 +130,9 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
           )
         );
         
-      return matchesDance && matchesFigure && matchesSearch;
+      return matchesDance && matchesFigure && matchesLevel && matchesSearch;
     });
-  }, [figureGroups, searchTerm, selectedDance, selectedFigure]);
+  }, [figureGroups, searchTerm, selectedDance, selectedFigure, selectedLevel]);
 
   const allColumns = useMemo(() => {
     if (data.length === 0) return [];
@@ -173,6 +182,8 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
         figures={figures}
         selectedFigure={selectedFigure}
         setSelectedFigure={setSelectedFigure}
+        selectedLevel={selectedLevel}
+        setSelectedLevel={setSelectedLevel}
         theme={theme}
         toggleTheme={toggleTheme}
         collapsed={sidebarCollapsed}
@@ -223,12 +234,13 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
           </div>
 
           <div className="header-actions">
-            {(selectedDance || selectedFigure || searchTerm) && !showColumnControl && (
+            {(selectedDance || selectedFigure || selectedLevel || searchTerm) && !showColumnControl && (
               <button 
                 className="clear-filters-pill"
                 onClick={() => {
                   setSelectedDance('');
                   setSelectedFigure('');
+                  setSelectedLevel('');
                   setSearchTerm('');
                 }}
               >
@@ -253,7 +265,7 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
                 ref={searchInputRef}
                 type="text"
                 className="search-input"
-                placeholder="Search techniques..."
+                placeholder="Search for anything"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onFocus={() => setSearchFocused(true)}
@@ -285,10 +297,11 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
               setVisibleColumns={setVisibleColumns}
               toggleColumn={toggleColumn}
               filteredCount={filteredFigures.length}
-              hasFilters={!!(selectedDance || selectedFigure || searchTerm)}
+              hasFilters={!!(selectedDance || selectedFigure || selectedLevel || searchTerm)}
               onClearFilters={() => {
                 setSelectedDance('');
                 setSelectedFigure('');
+                setSelectedLevel('');
                 setSearchTerm('');
               }}
             />

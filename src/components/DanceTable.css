@@ -1,6 +1,6 @@
 .table-container {
   width: 100%;
-  overflow-x: auto;
+  overflow-x: hidden;
   margin-top: 10px;
   border-radius: 12px;
   box-shadow: var(--shadow);
@@ -143,6 +143,7 @@
 
 .expanded-details-cell {
   background-color: var(--row-zebra);
+  max-width: 0;
 }
 
 .dropdown-details-wrapper {
@@ -215,29 +216,12 @@
   max-width: 250px;
 }
 
-/* Sticky Step Column for horizontal scrolling */
+/* Step Column in sub-tables */
 .th-step, .td-step {
-  position: sticky;
-  left: 0;
-  z-index: 5;
-  background-color: var(--container-bg);
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
   width: 60px;
   min-width: 60px !important;
   max-width: 60px !important;
   text-align: center;
-}
-
-.nested-steps-table th.th-step {
-  background-color: var(--row-hover);
-}
-
-.nested-steps-table tr:nth-child(even) td.td-step {
-  background-color: var(--row-zebra);
-}
-
-.nested-steps-table tr:hover td.td-step {
-  background-color: var(--row-hover);
 }
 
 .nested-steps-table tr:last-child td {
@@ -490,3 +474,75 @@
     padding: 2px 4px;
   }
 }
+
+/* ==========================================================================
+   5. LEVEL BADGE STYLING
+   ========================================================================== */
+.level-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+/* Light Theme Level Colors */
+.level-badge.pre-bronze {
+  background-color: hsl(215, 20%, 93%);
+  color: hsl(215, 20%, 35%);
+  border-color: hsl(215, 20%, 85%);
+}
+
+.level-badge.bronze {
+  background-color: hsl(30, 60%, 93%);
+  color: hsl(30, 70%, 25%);
+  border-color: hsl(30, 60%, 85%);
+}
+
+.level-badge.silver {
+  background-color: hsl(200, 20%, 92%);
+  color: hsl(200, 30%, 30%);
+  border-color: hsl(200, 20%, 83%);
+}
+
+.level-badge.gold {
+  background-color: hsl(45, 90%, 92%);
+  color: hsl(45, 90%, 25%);
+  border-color: hsl(45, 90%, 80%);
+}
+
+/* Dark Theme Level Colors */
+[data-theme='dark'] .level-badge.pre-bronze {
+  background-color: hsl(215, 20%, 15%);
+  color: hsl(215, 20%, 80%);
+  border-color: hsl(215, 20%, 25%);
+}
+
+[data-theme='dark'] .level-badge.bronze {
+  background-color: hsl(30, 50%, 15%);
+  color: hsl(30, 80%, 75%);
+  border-color: hsl(30, 50%, 25%);
+}
+
+[data-theme='dark'] .level-badge.silver {
+  background-color: hsl(200, 20%, 16%);
+  color: hsl(200, 40%, 80%);
+  border-color: hsl(200, 20%, 26%);
+}
+
+[data-theme='dark'] .level-badge.gold {
+  background-color: hsl(45, 60%, 15%);
+  color: hsl(45, 90%, 75%);
+  border-color: hsl(45, 60%, 25%);
+}
+
+@media (max-width: 768px) {
+  .level-badge {
+    font-size: 0.72rem;
+    padding: 2px 6px;
+  }
+}
+

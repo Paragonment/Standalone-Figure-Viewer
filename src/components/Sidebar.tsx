@@ -8,6 +8,8 @@ interface SidebarProps {
   figures: string[];
   selectedFigure: string;
   setSelectedFigure: (figure: string) => void;
+  selectedLevel: string;
+  setSelectedLevel: (level: string) => void;
   theme: 'light' | 'dark';
   toggleTheme: () => void;
   collapsed: boolean;
@@ -23,6 +25,8 @@ const Sidebar: React.FC<SidebarProps> = ({
   figures,
   selectedFigure,
   setSelectedFigure,
+  selectedLevel,
+  setSelectedLevel,
   theme,
   toggleTheme,
   collapsed,
@@ -31,6 +35,7 @@ const Sidebar: React.FC<SidebarProps> = ({
   setMobileOpen,
 }) => {
   const [standardExpanded, setStandardExpanded] = useState(true);
+  const [levelExpanded, setLevelExpanded] = useState(true);
   const [figuresExpanded, setFiguresExpanded] = useState(true);
   const [figureSearch, setFigureSearch] = useState('');
 
@@ -125,10 +130,10 @@ const Sidebar: React.FC<SidebarProps> = ({
         <div className="explorer-header">
           <h2>Explorer</h2>
           <div className="explorer-actions-wrapper">
-            {selectedDance && (
+            {(selectedDance || selectedLevel) && (
               <button 
                 className="explorer-reset-btn"
-                onClick={() => { setSelectedDance(''); setSelectedFigure(''); setFigureSearch(''); }}
+                onClick={() => { setSelectedDance(''); setSelectedFigure(''); setSelectedLevel(''); setFigureSearch(''); }}
               >
                 Clear
               </button>
@@ -186,7 +191,38 @@ const Sidebar: React.FC<SidebarProps> = ({
             )}
           </div>
 
-          {/* Accordion 2: Latin Ballroom (Coming soon) */}
+          {/* Accordion 2: Skill Level */}
+          <div className={`explorer-accordion level-accordion ${levelExpanded ? 'expanded' : ''}`}>
+            <div 
+              className="accordion-header" 
+              onClick={() => setLevelExpanded(!levelExpanded)}
+            >
+              <span className="header-title">📊 Syllabus Level</span>
+              <span className="header-arrow">{levelExpanded ? '▼' : '▶'}</span>
+            </div>
+            {levelExpanded && (
+              <ul className="explorer-list">
+                {[
+                  { id: '', name: 'All Levels', emoji: '🌐' },
+                  { id: 'Pre-Bronze', name: 'Pre-Bronze', emoji: '⚪' },
+                  { id: 'Bronze', name: 'Bronze', emoji: '🥉' },
+                  { id: 'Silver', name: 'Silver', emoji: '🥈' },
+                  { id: 'Gold', name: 'Gold', emoji: '🥇' }
+                ].map((lvl) => (
+                  <li
+                    key={lvl.id}
+                    className={`explorer-item ${selectedLevel === lvl.id ? 'active' : ''}`}
+                    onClick={() => setSelectedLevel(lvl.id)}
+                  >
+                    <span className="item-icon">{lvl.emoji}</span>
+                    <span className="item-name">{lvl.name}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          {/* Accordion 3: Latin Ballroom (Coming soon) */}
           <div className="explorer-accordion collapsed disabled">
             <div className="accordion-header">
               <span className="header-title">🔥 Latin</span>

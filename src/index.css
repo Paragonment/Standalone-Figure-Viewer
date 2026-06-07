@@ -24,10 +24,10 @@
   --glass-border: rgba(255, 255, 255, 0.4);
 
   /* Functional Colors */
-  --lead-color: hsl(142, 71%, 45%);
-  --lead-light: rgba(16, 185, 129, 0.1);
-  --follow-color: hsl(325, 78%, 49%);
-  --follow-light: rgba(236, 72, 153, 0.1);
+  --lead-color: hsl(192, 54%, 48%);
+  --lead-light: hsl(192, 54%, 48%, 0.1);
+  --follow-color: hsl(49, 49%, 59%);
+  --follow-light: hsl(49, 49%, 59%, 0.1);
 }
 
 [data-theme='dark'] {
@@ -52,10 +52,10 @@
   --glass-bg: rgba(15, 23, 42, 0.75);
   --glass-border: rgba(255, 255, 255, 0.05);
 
-  --lead-color: hsl(142, 70%, 50%);
-  --lead-light: rgba(16, 185, 129, 0.15);
-  --follow-color: hsl(325, 78%, 55%);
-  --follow-light: rgba(236, 72, 153, 0.15);
+  --lead-color: hsl(192, 54%, 48%);
+  --lead-light: hsl(192, 54%, 48%, 0.1);
+  --follow-color: hsl(49, 49%, 59%);
+  --follow-light: hsl(49, 49%, 59%, 0.1);
 }
 
 body {

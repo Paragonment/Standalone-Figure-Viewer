@@ -2,20 +2,20 @@ export interface DanceStep {
   Dance: string;
   "Figure Name": string;
   Step: string;
-  "Man Feet Positions": string;
-  "Man Alignment": string;
-  "Man Amount of Turn": string;
-  "Man Rise and Fall": string;
-  "Man Footwork": string;
-  "Man CBM": string;
-  "Man Sway": string;
-  "Lady Feet Positions": string;
-  "Lady Alignment": string;
-  "Lady Amount of Turn": string;
-  "Lady Rise and Fall": string;
-  "Lady Footwork": string;
-  "Lady CBM": string;
-  "Lady Sway": string;
+  "Lead Feet Positions": string;
+  "Lead Alignment": string;
+  "Lead Amount of Turn": string;
+  "Lead Rise and Fall": string;
+  "Lead Footwork": string;
+  "Lead CBM": string;
+  "Lead Sway": string;
+  "Follow Feet Positions": string;
+  "Follow Alignment": string;
+  "Follow Amount of Turn": string;
+  "Follow Rise and Fall": string;
+  "Follow Footwork": string;
+  "Follow CBM": string;
+  "Follow Sway": string;
   "General Notes": string;
 }
 

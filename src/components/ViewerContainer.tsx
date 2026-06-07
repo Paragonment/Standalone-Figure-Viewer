@@ -34,10 +34,10 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
     if (data.length > 0 && visibleColumns.length === 0) {
       const allHeaders = Object.keys(data[0]);
       // Default visible columns - common ones
-      const defaults = ['Dance', 'Figure Name', 'Step', 'Man Feet Positions', 'Man Footwork', 'Lady Feet Positions', 'Lady Footwork'];
+      const defaults = ['Dance', 'Figure Name', 'Step', 'Lead Feet Positions', 'Lead Footwork', 'Follow Feet Positions', 'Follow Footwork'];
       setVisibleColumns(allHeaders.filter(h => defaults.includes(h) || h === 'Dance' || h === 'Figure Name' || h === 'Step'));
     }
-  }, [data]);
+  }, [data, visibleColumns.length]);
 
   // Focus search input when user presses the "/" key
   useEffect(() => {

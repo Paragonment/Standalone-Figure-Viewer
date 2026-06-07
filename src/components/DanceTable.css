@@ -421,7 +421,7 @@
 }
 
 .nested-steps-table tr:nth-child(even) td.td-lead {
-  background-color: rgba(16, 185, 129, 0.05) !important;
+  background-color: hsl(192, 54%, 48%, 0.05) !important;
 }
 
 .th-follow {
@@ -434,7 +434,7 @@
 }
 
 .nested-steps-table tr:nth-child(even) td.td-follow {
-  background-color: rgba(236, 72, 153, 0.05) !important;
+  background-color: hsl(49, 49%, 59%, 0.05) !important;
 }
 
 .header-text-mobile {

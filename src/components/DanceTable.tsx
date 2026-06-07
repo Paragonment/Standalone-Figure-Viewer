@@ -10,20 +10,20 @@ interface DanceTableProps {
 
 const getShortenedHeader = (header: string) => {
   return header
-    .replace('Man Feet Positions', 'Feet')
-    .replace('Lady Feet Positions', 'Feet')
-    .replace('Man Alignment', 'Align')
-    .replace('Lady Alignment', 'Align')
-    .replace('Man Amount of Turn', 'Turn')
-    .replace('Lady Amount of Turn', 'Turn')
-    .replace('Man Rise and Fall', 'Rise/Fall')
-    .replace('Lady Rise and Fall', 'Rise/Fall')
-    .replace('Man Footwork', 'Footwork')
-    .replace('Lady Footwork', 'Footwork')
-    .replace('Man CBM', 'CBM')
-    .replace('Lady CBM', 'CBM')
-    .replace('Man Sway', 'Sway')
-    .replace('Lady Sway', 'Sway')
+    .replace('Lead Feet Positions', 'Feet')
+    .replace('Follow Feet Positions', 'Feet')
+    .replace('Lead Alignment', 'Align')
+    .replace('Follow Alignment', 'Align')
+    .replace('Lead Amount of Turn', 'Turn')
+    .replace('Follow Amount of Turn', 'Turn')
+    .replace('Lead Rise and Fall', 'Rise/Fall')
+    .replace('Follow Rise and Fall', 'Rise/Fall')
+    .replace('Lead Footwork', 'Footwork')
+    .replace('Follow Footwork', 'Footwork')
+    .replace('Lead CBM', 'CBM')
+    .replace('Follow CBM', 'CBM')
+    .replace('Lead Sway', 'Sway')
+    .replace('Follow Sway', 'Sway')
     .replace('General Notes', 'Notes');
 };
 
@@ -62,6 +62,11 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
 
   // Filter out redundant 'Dance' and 'Figure Name' from the inner step details
   const innerHeaders = headers.filter(h => h !== 'Dance' && h !== 'Figure Name');
+
+  const showDance = !visibleColumns || visibleColumns.includes('Dance');
+  const showStep = !visibleColumns || visibleColumns.includes('Step');
+  const showNotes = !visibleColumns || visibleColumns.includes('General Notes');
+  const colSpan = 1 + (showDance ? 1 : 0) + 1 + (showStep ? 1 : 0) + (showNotes ? 1 : 0);
 
   const getDanceEmoji = (dance: string) => {
     switch (dance.toLowerCase()) {
@@ -107,8 +112,8 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
           </span>
         );
 
-      case 'Man CBM':
-      case 'Lady CBM': {
+      case 'Lead CBM':
+      case 'Follow CBM': {
         const isCbm = value.toLowerCase() === 'true';
         return (
           <span className={`cbm-pill ${isCbm ? 'active' : 'inactive'}`}>
@@ -117,16 +122,16 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
         );
       }
 
-      case 'Man Footwork':
-      case 'Lady Footwork':
+      case 'Lead Footwork':
+      case 'Follow Footwork':
         return (
           <span className="footwork-pill" title={value}>
             {value}
           </span>
         );
 
-      case 'Man Sway':
-      case 'Lady Sway': {
+      case 'Lead Sway':
+      case 'Follow Sway': {
         const valUpper = value.toUpperCase();
         let swayClass = 'sway-none';
         let swayLabel = value;
@@ -161,10 +166,10 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
         <thead>
           <tr>
             <th className="th-toggle-arrow"></th>
-            <th>Dance</th>
+            {showDance && <th>Dance</th>}
             <th>Figure Name</th>
-            <th className="th-step-count">Steps</th>
-            <th>General Notes Summary</th>
+            {showStep && <th className="th-step-count">Steps</th>}
+            {showNotes && <th>General Notes Summary</th>}
           </tr>
         </thead>
         <tbody>
@@ -182,31 +187,36 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
                   <td className="td-toggle-arrow">
                     <span className={`toggle-arrow-icon ${isExpanded ? 'rotated' : ''}`}>▶</span>
                   </td>
-                  <td>
-                    <span className="dance-badge">
-                      <span className="dance-badge-icon">{getDanceEmoji(fig.dance)}</span>
-                      <span className="dance-badge-name">{fig.dance}</span>
-                    </span>
-                  </td>
+                  {showDance && (
+                    <td>
+                      <span className="dance-badge">
+                        <span className="dance-badge-icon">{getDanceEmoji(fig.dance)}</span>
+                        <span className="dance-badge-name">{fig.dance}</span>
+                      </span>
+                    </td>
+                  )}
                   <td className="figure-name-cell">
                     <strong>{fig.name}</strong>
                   </td>
-                  <td className="td-step-count">
-                    <span className="step-count-badge">
-                      {fig.steps.length} step{fig.steps.length === 1 ? '' : 's'}
-                    </span>
-                  </td>
-                  <td className="general-notes-summary-cell">
-                    <span className="notes-text truncate">{fig.generalNotes || '—'}</span>
-                  </td>
+                  {showStep && (
+                    <td className="td-step-count">
+                      <span className="step-count-badge">
+                        {fig.steps.length} step{fig.steps.length === 1 ? '' : 's'}
+                      </span>
+                    </td>
+                  )}
+                  {showNotes && (
+                    <td className="general-notes-summary-cell">
+                      <span className="notes-text truncate">{fig.generalNotes || '—'}</span>
+                    </td>
+                  )}
                 </tr>
 
                 {/* Expanded Sub-table Row */}
                 {isExpanded && (
                   <tr className="figure-child-row">
-                    <td colSpan={5} className="expanded-details-cell">
+                    <td colSpan={colSpan} className="expanded-details-cell">
                       <div className="dropdown-details-wrapper">
-                        <h4 className="dropdown-subtitle">👣 Technical Steps breakdown for "{fig.name}"</h4>
                         <div className="nested-table-scroll">
                           <table className="nested-steps-table">
                             <thead>
@@ -214,8 +224,8 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
                                 {innerHeaders.map((header) => {
                                   let className = '';
                                   if (header === 'Step') className = 'th-step';
-                                  else if (header.startsWith('Man ')) className = 'th-lead';
-                                  else if (header.startsWith('Lady ')) className = 'th-follow';
+                                  else if (header.startsWith('Lead ')) className = 'th-lead';
+                                  else if (header.startsWith('Follow ')) className = 'th-follow';
                                   
                                   return (
                                     <th key={header} className={className}>
@@ -232,8 +242,8 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
                                   {innerHeaders.map((header) => {
                                     let className = '';
                                     if (header === 'Step') className = 'td-step';
-                                    else if (header.startsWith('Man ')) className = 'td-lead';
-                                    else if (header.startsWith('Lady ')) className = 'td-follow';
+                                    else if (header.startsWith('Lead ')) className = 'td-lead';
+                                    else if (header.startsWith('Follow ')) className = 'td-follow';
                                     
                                     return (
                                       <td key={header} className={className}>

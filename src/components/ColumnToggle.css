@@ -39,13 +39,16 @@
 }
 
 .segmented-control {
-  display: flex;
+  display: inline-flex;
+  align-items: stretch;
   background-color: var(--row-hover);
-  padding: 4px;
-  border-radius: 10px;
+  padding: 3px;
+  border-radius: 8px;
   border: 1px solid var(--border-color);
-  align-items: center;
   gap: 2px;
+  height: 38px;
+  box-sizing: border-box;
+  box-shadow: var(--shadow);
 }
 
 .preset-btn {
@@ -54,11 +57,15 @@
   font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 600;
-  padding: 6px 14px;
-  border-radius: 8px;
+  padding: 0 14px;
+  border-radius: 6px;
   cursor: pointer;
   color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .preset-btn:hover {
@@ -77,13 +84,16 @@
 }
 
 .preset-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-size: 0.7rem;
   font-weight: 700;
   color: var(--accent-color);
   background-color: var(--accent-light);
-  padding: 2px 8px;
-  border-radius: 10px;
-  margin-left: 6px;
+  padding: 0 8px;
+  border-radius: 6px;
+  margin: 0 6px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -91,7 +101,8 @@
 .preset-results-summary {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
+  height: 38px;
 }
 
 .results-count-text {
@@ -105,17 +116,21 @@
 }
 
 .clear-filters-btn.inline-clear {
-  background: none;
-  border: 1px solid var(--border-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--container-bg);
+  border: 1px solid var(--border-color);
   color: var(--text-secondary);
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 6px;
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
   box-shadow: var(--shadow);
+  box-sizing: border-box;
 }
 
 .clear-filters-btn.inline-clear:hover {
@@ -124,21 +139,24 @@
   border-color: var(--text-muted);
 }
 
-
 /* Customize Toggle Button */
 .customize-toggle-btn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   background-color: var(--container-bg);
   border: 1px solid var(--border-color);
   color: var(--text-secondary);
-  padding: 8px 16px;
+  height: 38px;
+  padding: 0 16px;
   border-radius: 8px;
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
+  box-shadow: var(--shadow);
+  box-sizing: border-box;
 }
 
 .customize-toggle-btn:hover {
@@ -153,10 +171,24 @@
   border-color: var(--accent-color);
 }
 
+.customize-toggle-btn.open:hover {
+  background-color: var(--accent-light);
+  border-color: var(--accent-color);
+  opacity: 0.9;
+}
+
 .customize-toggle-btn .arrow {
   font-size: 0.7rem;
   margin-left: 4px;
   transition: transform 0.2s;
+}
+
+/* Keyboard accessibility focus styling */
+.customize-toggle-btn:focus-visible,
+.clear-filters-btn.inline-clear:focus-visible,
+.preset-btn:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
 }
 
 /* Granular Checklist */
@@ -316,14 +348,34 @@
     display: inline;
   }
   
+  .segmented-control {
+    height: 34px;
+    padding: 3px;
+  }
+
   .customize-toggle-btn {
-    justify-content: center;
-    padding: 6px 12px;
+    height: 34px;
+    padding: 0 12px;
+    font-size: 0.8rem;
+  }
+
+  .clear-filters-btn.inline-clear {
+    height: 34px;
+    padding: 0 12px;
     font-size: 0.8rem;
   }
 
   .preset-btn {
-    padding: 6px 10px;
+    padding: 0 10px;
+    font-size: 0.8rem;
+  }
+
+  .preset-results-summary {
+    height: 34px;
+    gap: 8px;
+  }
+
+  .results-count-text {
     font-size: 0.8rem;
   }
 }

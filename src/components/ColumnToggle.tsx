@@ -11,24 +11,24 @@ interface ColumnToggleProps {
   onClearFilters: () => void;
 }
 
-const COMMON_COLUMNS = ['Dance', 'Figure Name', 'Step', 'General Notes'];
+const COMMON_COLUMNS = ['Dance', 'Step', 'General Notes'];
 const LEAD_COLUMNS = [
-  'Man Feet Positions',
-  'Man Alignment',
-  'Man Amount of Turn',
-  'Man Rise and Fall',
-  'Man Footwork',
-  'Man CBM',
-  'Man Sway'
+  'Lead Feet Positions',
+  'Lead Alignment',
+  'Lead Amount of Turn',
+  'Lead Rise and Fall',
+  'Lead Footwork',
+  'Lead CBM',
+  'Lead Sway'
 ];
 const FOLLOW_COLUMNS = [
-  'Lady Feet Positions',
-  'Lady Alignment',
-  'Lady Amount of Turn',
-  'Lady Rise and Fall',
-  'Lady Footwork',
-  'Lady CBM',
-  'Lady Sway'
+  'Follow Feet Positions',
+  'Follow Alignment',
+  'Follow Amount of Turn',
+  'Follow Rise and Fall',
+  'Follow Footwork',
+  'Follow CBM',
+  'Follow Sway'
 ];
 
 const ColumnToggle: React.FC<ColumnToggleProps> = ({
@@ -120,7 +120,7 @@ const ColumnToggle: React.FC<ColumnToggleProps> = ({
         </button>
         <div className="preset-results-summary">
           <span className="results-count-text">
-            Showing <strong>{filteredCount}</strong> figure{filteredCount === 1 ? '' : 's'}
+            Showing <strong> {filteredCount} </strong> figure{filteredCount === 1 ? '' : 's'}
           </span>
           {hasFilters && (
             <button className="clear-filters-btn inline-clear" onClick={onClearFilters}>
@@ -161,7 +161,7 @@ const ColumnToggle: React.FC<ColumnToggleProps> = ({
                       onChange={() => toggleColumn(col)}
                     />
                     <span className="checkbox-custom"></span>
-                    <span className="column-name">{col.replace('Man ', '')}</span>
+                    <span className="column-name">{col.replace('Lead ', '')}</span>
                   </label>
                 ))}
               </div>
@@ -178,7 +178,7 @@ const ColumnToggle: React.FC<ColumnToggleProps> = ({
                       onChange={() => toggleColumn(col)}
                     />
                     <span className="checkbox-custom"></span>
-                    <span className="column-name">{col.replace('Lady ', '')}</span>
+                    <span className="column-name">{col.replace('Follow ', '')}</span>
                   </label>
                 ))}
               </div>

@@ -97,6 +97,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         </div>
 
         <div className="rail-bottom">
+          <div className="rail-divider" />
           <button
             className="rail-btn collapse-toggle-btn"
             onClick={() => setCollapsed(!collapsed)}
@@ -106,7 +107,7 @@ const Sidebar: React.FC<SidebarProps> = ({
             <span className="rail-tooltip">{collapsed ? 'Expand Sidebar' : 'Collapse Sidebar'}</span>
           </button>
           
-          <div className="rail-divider" />
+
 
           <button 
             className="rail-btn theme-btn" 
@@ -149,7 +150,7 @@ const Sidebar: React.FC<SidebarProps> = ({
               className="accordion-header" 
               onClick={() => setStandardExpanded(!standardExpanded)}
             >
-              <span className="header-title">🏆 Standard Ballroom</span>
+              <span className="header-title">🏆 Ballroom</span>
               <span className="header-arrow">{standardExpanded ? '▼' : '▶'}</span>
             </div>
             {standardExpanded && (
@@ -188,7 +189,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           {/* Accordion 2: Latin Ballroom (Coming soon) */}
           <div className="explorer-accordion collapsed disabled">
             <div className="accordion-header">
-              <span className="header-title">🔥 Latin Ballroom</span>
+              <span className="header-title">🔥 Latin</span>
               <span className="badge-coming-soon">Soon</span>
             </div>
           </div>

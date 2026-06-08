@@ -14,9 +14,9 @@ interface ViewerContainerProps {
 const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme }) => {
   const { data, loading, error } = useDanceData();
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedDance, setSelectedDance] = useState('');
-  const [selectedFigure, setSelectedFigure] = useState('');
-  const [selectedLevel, setSelectedLevel] = useState('');
+  const [selectedDances, setSelectedDances] = useState<string[]>([]);
+  const [selectedFigures, setSelectedFigures] = useState<string[]>([]);
+  const [selectedLevels, setSelectedLevels] = useState<string[]>([]);
   
   // Column visibility state
   const [visibleColumns, setVisibleColumns] = useState<string[]>([]);
@@ -95,23 +95,23 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
   }, [data]);
 
   const figures = useMemo(() => {
-    if (!selectedDance) return [];
+    if (selectedDances.length === 0) return [];
     const danceFigures = data
-      .filter(item => item.Dance === selectedDance)
+      .filter(item => selectedDances.includes(item.Dance))
       .map(item => item["Figure Name"]);
     return Array.from(new Set(danceFigures)).sort();
-  }, [data, selectedDance]);
+  }, [data, selectedDances]);
 
   const filteredFigures = useMemo(() => {
     return figureGroups.filter((group) => {
-      // 1. Filter by selected dance
-      const matchesDance = selectedDance === '' || group.dance === selectedDance;
+      // 1. Filter by selected dances
+      const matchesDance = selectedDances.length === 0 || selectedDances.includes(group.dance);
       
-      // 2. Filter by selected figure
-      const matchesFigure = selectedFigure === '' || group.name === selectedFigure;
+      // 2. Filter by selected figures
+      const matchesFigure = selectedFigures.length === 0 || selectedFigures.includes(group.name);
       
-      // 2b. Filter by selected level
-      const matchesLevel = selectedLevel === '' || group.level === selectedLevel;
+      // 2b. Filter by selected levels
+      const matchesLevel = selectedLevels.length === 0 || selectedLevels.includes(group.level);
       
       // 3. Filter by search term
       const searchLower = searchTerm.trim().toLowerCase();
@@ -129,7 +129,7 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
         
       return matchesDance && matchesFigure && matchesLevel && matchesSearch;
     });
-  }, [figureGroups, searchTerm, selectedDance, selectedFigure, selectedLevel]);
+  }, [figureGroups, searchTerm, selectedDances, selectedFigures, selectedLevels]);
 
   const allColumns = useMemo(() => {
     if (data.length === 0) return [];
@@ -168,44 +168,50 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
         <header className="viewer-header">
           <div className="title-area">
             <nav className="breadcrumbs" aria-label="Breadcrumb">
-              <span className="breadcrumb-item linkable" onClick={() => { setSelectedDance(''); setSelectedFigure(''); }}>
+              <span className="breadcrumb-item linkable" onClick={() => { setSelectedDances([]); setSelectedFigures([]); }}>
                 Dances
               </span>
-              {selectedDance && (
+              {selectedDances.length > 0 && (
                 <>
                   <span className="breadcrumb-separator">/</span>
-                  <span className="breadcrumb-item linkable" onClick={() => setSelectedFigure('')}>
-                    {selectedDance}
+                  <span className="breadcrumb-item linkable" onClick={() => setSelectedFigures([])}>
+                    {selectedDances.length === 1 ? selectedDances[0] : `${selectedDances.length} Dances`}
                   </span>
                 </>
               )}
-              {selectedFigure && (
+              {selectedFigures.length > 0 && (
                 <>
                   <span className="breadcrumb-separator">/</span>
-                  <span className="breadcrumb-item active">{selectedFigure}</span>
+                  <span className="breadcrumb-item active">
+                    {selectedFigures.length === 1 ? selectedFigures[0] : `${selectedFigures.length} Figures`}
+                  </span>
                 </>
               )}
             </nav>
             <h1>
-              {selectedFigure ? selectedFigure : selectedDance ? `${selectedDance} Figures` : 'Standard Ballroom Techniques'}
+              {selectedFigures.length > 0 
+                ? (selectedFigures.length === 1 ? selectedFigures[0] : 'Selected Figures') 
+                : selectedDances.length > 0 
+                  ? `${selectedDances.length === 1 ? selectedDances[0] : 'Selected'} Figures` 
+                  : 'Standard Ballroom Techniques'}
             </h1>
             <p>
-              {selectedFigure 
-                ? `Detailed steps, alignments, footwork, rise & fall, CBM, and sway for ${selectedFigure}.`
-                : selectedDance 
-                  ? `Technique syllabus and figures for the competitive ${selectedDance}.`
+              {selectedFigures.length > 0 
+                ? `Detailed steps, alignments, footwork, rise & fall, CBM, and sway for ${selectedFigures.length === 1 ? selectedFigures[0] : 'the selected figures'}.`
+                : selectedDances.length > 0 
+                  ? `Technique syllabus and figures for the selected competitive dances.`
                   : 'Select a dance style to explore figures, step techniques, and alignment guides.'}
             </p>
           </div>
 
           <div className="header-actions">
-            {(selectedDance || selectedFigure || selectedLevel || searchTerm) && (
+            {(selectedDances.length > 0 || selectedFigures.length > 0 || selectedLevels.length > 0 || searchTerm) && (
               <button 
                 className="clear-filters-pill"
                 onClick={() => {
-                  setSelectedDance('');
-                  setSelectedFigure('');
-                  setSelectedLevel('');
+                  setSelectedDances([]);
+                  setSelectedFigures([]);
+                  setSelectedLevels([]);
                   setSearchTerm('');
                 }}
               >
@@ -280,13 +286,13 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
           {showFilterControl && (
             <FilterToggle 
               dances={dances}
-              selectedDance={selectedDance}
-              setSelectedDance={setSelectedDance}
-              selectedLevel={selectedLevel}
-              setSelectedLevel={setSelectedLevel}
+              selectedDances={selectedDances}
+              setSelectedDances={setSelectedDances}
+              selectedLevels={selectedLevels}
+              setSelectedLevels={setSelectedLevels}
               figures={figures}
-              selectedFigure={selectedFigure}
-              setSelectedFigure={setSelectedFigure}
+              selectedFigures={selectedFigures}
+              setSelectedFigures={setSelectedFigures}
               filteredCount={filteredFigures.length}
             />
           )}
@@ -297,14 +303,13 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
               visibleColumns={visibleColumns}
               setVisibleColumns={setVisibleColumns}
               toggleColumn={toggleColumn}
-              filteredCount={filteredFigures.length}
             />
           )}
 
           <DanceTable 
             data={filteredFigures} 
             visibleColumns={visibleColumns} 
-            selectedFigure={selectedFigure}
+            selectedFigures={selectedFigures}
           />
         </div>
       </main>

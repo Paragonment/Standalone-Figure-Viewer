@@ -3,25 +3,25 @@ import './FilterToggle.css';
 
 interface FilterToggleProps {
   dances: string[];
-  selectedDance: string;
-  setSelectedDance: (dance: string) => void;
-  selectedLevel: string;
-  setSelectedLevel: (level: string) => void;
+  selectedDances: string[];
+  setSelectedDances: (dances: string[]) => void;
+  selectedLevels: string[];
+  setSelectedLevels: (levels: string[]) => void;
   figures: string[];
-  selectedFigure: string;
-  setSelectedFigure: (figure: string) => void;
+  selectedFigures: string[];
+  setSelectedFigures: (figures: string[]) => void;
   filteredCount: number;
 }
 
 const FilterToggle: React.FC<FilterToggleProps> = ({
   dances,
-  selectedDance,
-  setSelectedDance,
-  selectedLevel,
-  setSelectedLevel,
+  selectedDances,
+  setSelectedDances,
+  selectedLevels,
+  setSelectedLevels,
   figures,
-  selectedFigure,
-  setSelectedFigure,
+  selectedFigures,
+  setSelectedFigures,
   filteredCount,
 }) => {
   const getDanceEmoji = (dance: string) => {
@@ -44,27 +44,46 @@ const FilterToggle: React.FC<FilterToggleProps> = ({
     }
   };
 
+  // Determine active style (dance) preset
+  const activeDancePreset = selectedDances.length === 0
+    ? ''
+    : selectedDances.length === 1
+      ? selectedDances[0]
+      : 'custom';
+
+  const applyDancePreset = (dance: string) => {
+    if (dance === '') {
+      setSelectedDances([]);
+    } else {
+      setSelectedDances([dance]);
+    }
+    setSelectedFigures([]); // Clear selected figures when dance changes
+  };
+
   return (
     <div className="filter-control-panel">
-      {/* Preset Row: Syllabus Level Segments */}
+      {/* Preset Row: Dance Style (Styles) Segments */}
       <div className="preset-row">
         <div className="preset-group">
           <div className="segmented-control">
-            {[
-              { id: '', label: 'All Levels' },
-              { id: 'Pre-Bronze', label: 'Pre-Bronze' },
-              { id: 'Bronze', label: '🥉 Bronze' },
-              { id: 'Silver', label: '🥈 Silver' },
-              { id: 'Gold', label: '🥇 Gold' },
-            ].map((preset) => (
+            <button
+              className={`preset-btn ${activeDancePreset === '' ? 'active' : ''}`}
+              onClick={() => applyDancePreset('')}
+            >
+              All Standard
+            </button>
+            {dances.map((dance) => (
               <button
-                key={preset.id}
-                className={`preset-btn ${selectedLevel === preset.id ? 'active' : ''}`}
-                onClick={() => setSelectedLevel(preset.id)}
+                key={dance}
+                className={`preset-btn ${activeDancePreset === dance ? 'active' : ''}`}
+                onClick={() => applyDancePreset(dance)}
               >
-                {preset.label}
+                {getDanceEmoji(dance)} {dance}
               </button>
             ))}
+            {activeDancePreset === 'custom' && (
+              <span className="preset-badge">Customized</span>
+            )}
           </div>
         </div>
 
@@ -78,106 +97,135 @@ const FilterToggle: React.FC<FilterToggleProps> = ({
       {/* Grid of Card Sections */}
       <div className="granular-filters-container">
         <div className="filter-group-grid">
-          {/* Card 1: Dance Styles */}
+          {/* Card 1: Dance Styles (Multiple Select Checkboxes) */}
           <div className="filter-group-card dance-card">
             <h5>🏆 Dance Style</h5>
-            <div className="filter-radio-list">
-              <label className="filter-radio-item">
+            <div className="filter-checkbox-list">
+              <label className="filter-checkbox-item">
                 <input
-                  type="radio"
-                  name="dance-filter"
-                  checked={selectedDance === ''}
+                  type="checkbox"
+                  checked={selectedDances.length === 0}
                   onChange={() => {
-                    setSelectedDance('');
-                    setSelectedFigure('');
+                    setSelectedDances([]);
+                    setSelectedFigures([]);
                   }}
                 />
-                <span className="radio-custom"></span>
+                <span className="checkbox-custom"></span>
                 <span className="filter-name">All Standard</span>
               </label>
 
-              {dances.map((dance) => (
-                <label key={dance} className="filter-radio-item">
-                  <input
-                    type="radio"
-                    name="dance-filter"
-                    checked={selectedDance === dance}
-                    onChange={() => {
-                      setSelectedDance(dance);
-                      setSelectedFigure('');
-                    }}
-                  />
-                  <span className="radio-custom"></span>
-                  <span className="filter-name">
-                    <span className="filter-emoji">{getDanceEmoji(dance)}</span>
-                    {dance}
-                  </span>
-                </label>
-              ))}
+              {dances.map((dance) => {
+                const isChecked = selectedDances.includes(dance);
+                return (
+                  <label key={dance} className="filter-checkbox-item">
+                    <input
+                      type="checkbox"
+                      checked={isChecked}
+                      onChange={() => {
+                        if (isChecked) {
+                          setSelectedDances(selectedDances.filter((d) => d !== dance));
+                        } else {
+                          setSelectedDances([...selectedDances, dance]);
+                        }
+                        setSelectedFigures([]);
+                      }}
+                    />
+                    <span className="checkbox-custom"></span>
+                    <span className="filter-name">
+                      <span className="filter-emoji">{getDanceEmoji(dance)}</span>
+                      {dance}
+                    </span>
+                  </label>
+                );
+              })}
             </div>
           </div>
 
-          {/* Card 2: Syllabus Levels */}
+          {/* Card 2: Syllabus Levels (Multiple Select Checkboxes) */}
           <div className="filter-group-card level-card">
             <h5>📊 Syllabus Level</h5>
-            <div className="filter-radio-list">
+            <div className="filter-checkbox-list">
+              <label className="filter-checkbox-item">
+                <input
+                  type="checkbox"
+                  checked={selectedLevels.length === 0}
+                  onChange={() => setSelectedLevels([])}
+                />
+                <span className="checkbox-custom"></span>
+                <span className="filter-name">All Levels</span>
+              </label>
+
               {[
-                { id: '', name: 'All Levels' },
                 { id: 'Pre-Bronze', name: 'Pre-Bronze' },
                 { id: 'Bronze', name: 'Bronze' },
                 { id: 'Silver', name: 'Silver' },
                 { id: 'Gold', name: 'Gold' },
-              ].map((lvl) => (
-                <label key={lvl.id} className="filter-radio-item">
-                  <input
-                    type="radio"
-                    name="level-filter"
-                    checked={selectedLevel === lvl.id}
-                    onChange={() => setSelectedLevel(lvl.id)}
-                  />
-                  <span className="radio-custom"></span>
-                  <span className="filter-name">
-                    <span className="filter-emoji">{getLevelEmoji(lvl.id)}</span>
-                    {lvl.name}
-                  </span>
-                </label>
-              ))}
+              ].map((lvl) => {
+                const isChecked = selectedLevels.includes(lvl.id);
+                return (
+                  <label key={lvl.id} className="filter-checkbox-item">
+                    <input
+                      type="checkbox"
+                      checked={isChecked}
+                      onChange={() => {
+                        if (isChecked) {
+                          setSelectedLevels(selectedLevels.filter((l) => l !== lvl.id));
+                        } else {
+                          setSelectedLevels([...selectedLevels, lvl.id]);
+                        }
+                      }}
+                    />
+                    <span className="checkbox-custom"></span>
+                    <span className="filter-name">
+                      <span className="filter-emoji">{getLevelEmoji(lvl.id)}</span>
+                      {lvl.name}
+                    </span>
+                  </label>
+                );
+              })}
             </div>
           </div>
 
-          {/* Card 3: Specific Figures */}
+          {/* Card 3: Specific Figures (Multiple Select Checkboxes) */}
           <div className="filter-group-card figures-card">
-            <h5>📂 {selectedDance ? `${selectedDance} Figures` : 'Specific Figure'}</h5>
-            <div className="filter-radio-list scrollable-list">
-              {selectedDance ? (
+            <h5>📂 Figures</h5>
+            <div className="filter-checkbox-list scrollable-list">
+              {selectedDances.length > 0 ? (
                 <>
-                  <label className="filter-radio-item">
+                  <label className="filter-checkbox-item">
                     <input
-                      type="radio"
-                      name="figure-filter"
-                      checked={selectedFigure === ''}
-                      onChange={() => setSelectedFigure('')}
+                      type="checkbox"
+                      checked={selectedFigures.length === 0}
+                      onChange={() => setSelectedFigures([])}
                     />
-                    <span className="radio-custom"></span>
+                    <span className="checkbox-custom"></span>
                     <span className="filter-name">All Figures</span>
                   </label>
 
-                  {figures.map((figure) => (
-                    <label key={figure} className="filter-radio-item">
-                      <input
-                        type="radio"
-                        name="figure-filter"
-                        checked={selectedFigure === figure}
-                        onChange={() => setSelectedFigure(figure)}
-                      />
-                      <span className="radio-custom"></span>
-                      <span className="filter-name">🩰 {figure}</span>
-                    </label>
-                  ))}
+                  {figures.map((figure) => {
+                    const isChecked = selectedFigures.includes(figure);
+                    return (
+                      <label key={figure} className="filter-checkbox-item">
+                        <input
+                          type="checkbox"
+                          checked={isChecked}
+                          onChange={() => {
+                            if (isChecked) {
+                              setSelectedFigures(selectedFigures.filter((f) => f !== figure));
+                            } else {
+                              setSelectedFigures([...selectedFigures, figure]);
+                            }
+                          }}
+                        />
+                        <span className="checkbox-custom"></span>
+                        <span className="filter-name">🩰 {figure}</span>
+                      </label>
+                    );
+                  })}
                 </>
               ) : (
                 <div className="filter-tip">
-                  <p>Select a dance style first to list and filter by specific figures.</p>
+                  <p>Select at least one dance style to list and filter by specific figures.</p>
                 </div>
               )}
             </div>

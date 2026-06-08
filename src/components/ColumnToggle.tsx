@@ -6,7 +6,6 @@ interface ColumnToggleProps {
   visibleColumns: string[];
   setVisibleColumns: (cols: string[]) => void;
   toggleColumn: (column: string) => void;
-  filteredCount: number;
 }
 
 const COMMON_COLUMNS = ['Dance', 'Step', 'General Notes', 'Level'];
@@ -33,8 +32,7 @@ const ColumnToggle: React.FC<ColumnToggleProps> = ({
   columns,
   visibleColumns,
   setVisibleColumns,
-  toggleColumn,
-  filteredCount
+  toggleColumn
 }) => {
   // Determine active preset based on currently visible columns
   const getActivePreset = (): 'all' | 'lead' | 'follow' | 'custom' => {
@@ -75,6 +73,21 @@ const ColumnToggle: React.FC<ColumnToggleProps> = ({
   const leadHeaders = columns.filter(col => LEAD_COLUMNS.includes(col));
   const followHeaders = columns.filter(col => FOLLOW_COLUMNS.includes(col));
 
+  const headers = visibleColumns.length > 0
+    ? columns.filter(h => visibleColumns.includes(h))
+    : columns;
+
+  const innerHeaders = headers.filter(h => h !== 'Dance' && h !== 'Figure Name' && h !== 'Level');
+
+  const showDance = visibleColumns.length === 0 || visibleColumns.includes('Dance');
+  const showLevel = visibleColumns.length === 0 || visibleColumns.includes('Level');
+  const showStep = visibleColumns.length === 0 || visibleColumns.includes('Step');
+  const showNotes = visibleColumns.length === 0 || visibleColumns.includes('General Notes');
+
+  const mainColumnsCount = 1 + (showDance ? 1 : 0) + 1 + (showLevel ? 1 : 0) + (showStep ? 1 : 0) + (showNotes ? 1 : 0);
+  const subColumnsCount = innerHeaders.length;
+  const totalColumnsCount = mainColumnsCount + subColumnsCount;
+
   return (
     <div className="column-control-panel">
       <div className="preset-row">
@@ -106,7 +119,7 @@ const ColumnToggle: React.FC<ColumnToggleProps> = ({
         
         <div className="preset-results-summary">
           <span className="results-count-text">
-            Showing <strong> {filteredCount} </strong> figure{filteredCount === 1 ? '' : 's'}
+            Showing <strong> {totalColumnsCount} </strong> column{totalColumnsCount === 1 ? '' : 's'}
           </span>
         </div>
       </div>

@@ -13,7 +13,19 @@ function App() {
   }, [theme])
 
   const toggleTheme = () => {
-    setTheme(prev => prev === 'light' ? 'dark' : 'light')
+    document.documentElement.classList.add('no-transitions');
+    
+    const nextTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(nextTheme);
+    document.documentElement.setAttribute('data-theme', nextTheme);
+    localStorage.setItem('theme', nextTheme);
+
+    // Force a reflow to flush styles synchronously
+    void window.getComputedStyle(document.documentElement).opacity;
+
+    setTimeout(() => {
+      document.documentElement.classList.remove('no-transitions');
+    }, 20);
   }
 
   return (

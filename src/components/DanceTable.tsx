@@ -5,7 +5,7 @@ import './DanceTable.css';
 interface DanceTableProps {
   data: FigureGroup[];
   visibleColumns?: string[];
-  selectedFigure?: string;
+  selectedFigures?: string[];
 }
 
 const getShortenedHeader = (header: string) => {
@@ -27,22 +27,24 @@ const getShortenedHeader = (header: string) => {
     .replace('General Notes', 'Notes');
 };
 
-const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedFigure }) => {
+const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedFigures }) => {
   const [expandedFigures, setExpandedFigures] = useState<Set<string>>(new Set());
 
-  // Auto-expand the selected figure when it changes
+  // Auto-expand the selected figures when they change
   useEffect(() => {
-    if (selectedFigure) {
-      const found = data.find(f => f.name === selectedFigure);
-      if (found) {
-        setExpandedFigures(prev => {
-          const next = new Set(prev);
-          next.add(`${found.dance}-${found.name}`);
-          return next;
+    if (selectedFigures && selectedFigures.length > 0) {
+      setExpandedFigures(prev => {
+        const next = new Set(prev);
+        selectedFigures.forEach(figName => {
+          const matchingGroups = data.filter(f => f.name === figName);
+          matchingGroups.forEach(g => {
+            next.add(`${g.dance}-${g.name}`);
+          });
         });
-      }
+        return next;
+      });
     }
-  }, [selectedFigure, data]);
+  }, [selectedFigures, data]);
 
   if (data.length === 0) {
     return (

@@ -227,7 +227,7 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
               }}
               title={showFilterControl ? "Hide Filters" : "Show Filters"}
             >
-              ⏳
+              🪩
             </button>
 
             <button 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './ColumnToggle.css';
 
 interface ColumnToggleProps {
@@ -7,8 +7,6 @@ interface ColumnToggleProps {
   setVisibleColumns: (cols: string[]) => void;
   toggleColumn: (column: string) => void;
   filteredCount: number;
-  hasFilters: boolean;
-  onClearFilters: () => void;
 }
 
 const COMMON_COLUMNS = ['Dance', 'Step', 'General Notes', 'Level'];
@@ -36,12 +34,8 @@ const ColumnToggle: React.FC<ColumnToggleProps> = ({
   visibleColumns,
   setVisibleColumns,
   toggleColumn,
-  filteredCount,
-  hasFilters,
-  onClearFilters
+  filteredCount
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
   // Determine active preset based on currently visible columns
   const getActivePreset = (): 'all' | 'lead' | 'follow' | 'custom' => {
     if (columns.length === 0) return 'all';
@@ -109,83 +103,68 @@ const ColumnToggle: React.FC<ColumnToggleProps> = ({
             )}
           </div>
         </div>
-        <button
-          className={`customize-toggle-btn ${isOpen ? 'open' : ''}`}
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          <span className="icon">⚙️</span>
-          <span className="btn-text-desktop">{isOpen ? 'Hide Column Settings' : 'Customize Columns'}</span>
-          <span className="btn-text-mobile">{isOpen ? 'Hide' : 'Columns'}</span>
-          <span className="arrow">{isOpen ? '▲' : '▼'}</span>
-        </button>
+        
         <div className="preset-results-summary">
           <span className="results-count-text">
             Showing <strong> {filteredCount} </strong> figure{filteredCount === 1 ? '' : 's'}
           </span>
-          {hasFilters && (
-            <button className="clear-filters-btn inline-clear" onClick={onClearFilters}>
-              Clear
-            </button>
-          )}
         </div>
       </div>
 
-      {isOpen && (
-        <div className="granular-columns-container">
-          <div className="column-group-grid">
-            <div className="column-group-card">
-              <h5>Common Info</h5>
-              <div className="column-checkbox-list">
-                {commonHeaders.map(col => (
-                  <label key={col} className="column-checkbox-item">
-                    <input
-                      type="checkbox"
-                      checked={visibleColumns.includes(col)}
-                      onChange={() => toggleColumn(col)}
-                    />
-                    <span className="checkbox-custom"></span>
-                    <span className="column-name">{col}</span>
-                  </label>
-                ))}
-              </div>
+      <div className="granular-columns-container">
+        <div className="column-group-grid">
+          <div className="column-group-card">
+            <h5>Common Info</h5>
+            <div className="column-checkbox-list">
+              {commonHeaders.map(col => (
+                <label key={col} className="column-checkbox-item">
+                  <input
+                    type="checkbox"
+                    checked={visibleColumns.includes(col)}
+                    onChange={() => toggleColumn(col)}
+                  />
+                  <span className="checkbox-custom"></span>
+                  <span className="column-name">{col}</span>
+                </label>
+              ))}
             </div>
+          </div>
 
-            <div className="column-group-card lead-card">
-              <h5>Lead (Man) Details</h5>
-              <div className="column-checkbox-list">
-                {leadHeaders.map(col => (
-                  <label key={col} className="column-checkbox-item">
-                    <input
-                      type="checkbox"
-                      checked={visibleColumns.includes(col)}
-                      onChange={() => toggleColumn(col)}
-                    />
-                    <span className="checkbox-custom"></span>
-                    <span className="column-name">{col.replace('Lead ', '')}</span>
-                  </label>
-                ))}
-              </div>
+          <div className="column-group-card lead-card">
+            <h5>Lead (Man) Details</h5>
+            <div className="column-checkbox-list">
+              {leadHeaders.map(col => (
+                <label key={col} className="column-checkbox-item">
+                  <input
+                    type="checkbox"
+                    checked={visibleColumns.includes(col)}
+                    onChange={() => toggleColumn(col)}
+                  />
+                  <span className="checkbox-custom"></span>
+                  <span className="column-name">{col.replace('Lead ', '')}</span>
+                </label>
+              ))}
             </div>
+          </div>
 
-            <div className="column-group-card follow-card">
-              <h5>Follow (Lady) Details</h5>
-              <div className="column-checkbox-list">
-                {followHeaders.map(col => (
-                  <label key={col} className="column-checkbox-item">
-                    <input
-                      type="checkbox"
-                      checked={visibleColumns.includes(col)}
-                      onChange={() => toggleColumn(col)}
-                    />
-                    <span className="checkbox-custom"></span>
-                    <span className="column-name">{col.replace('Follow ', '')}</span>
-                  </label>
-                ))}
-              </div>
+          <div className="column-group-card follow-card">
+            <h5>Follow (Lady) Details</h5>
+            <div className="column-checkbox-list">
+              {followHeaders.map(col => (
+                <label key={col} className="column-checkbox-item">
+                  <input
+                    type="checkbox"
+                    checked={visibleColumns.includes(col)}
+                    onChange={() => toggleColumn(col)}
+                  />
+                  <span className="checkbox-custom"></span>
+                  <span className="column-name">{col.replace('Follow ', '')}</span>
+                </label>
+              ))}
             </div>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };

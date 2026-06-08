@@ -168,10 +168,18 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
           <tr>
             <th className="th-toggle-arrow"></th>
             {showDance && <th>Dance</th>}
-            <th>Figure Name</th>
+            <th>
+              <span className="header-text-desktop">Figure Name</span>
+              <span className="header-text-mobile">Figure</span>
+            </th>
             {showLevel && <th>Level</th>}
             {showStep && <th className="th-step-count">Steps</th>}
-            {showNotes && <th>General Notes Summary</th>}
+            {showNotes && (
+              <th className="desktop-only">
+                <span className="header-text-desktop">General Notes Summary</span>
+                <span className="header-text-mobile">Notes</span>
+              </th>
+            )}
           </tr>
         </thead>
         <tbody>
@@ -215,7 +223,7 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
                     </td>
                   )}
                   {showNotes && (
-                    <td className="general-notes-summary-cell">
+                    <td className="general-notes-summary-cell desktop-only">
                       <span className="notes-text truncate">{fig.generalNotes || '—'}</span>
                     </td>
                   )}

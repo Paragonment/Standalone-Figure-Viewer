@@ -85,8 +85,10 @@
   z-index: 50;
 }
 
-/* Column Toggle Button in Header */
-.header-column-toggle-btn {
+/* Header Toggle Buttons (Column, Filter, Theme) */
+.header-column-toggle-btn,
+.header-filter-toggle-btn,
+.header-theme-toggle-btn {
   background: var(--container-bg);
   border: 1px solid var(--border-color);
   border-radius: 50%;
@@ -100,15 +102,19 @@
   box-shadow: var(--shadow);
   transition: all 0.2s ease;
   color: var(--text-secondary);
+  flex-shrink: 0;
 }
 
-.header-column-toggle-btn:hover {
+.header-column-toggle-btn:hover,
+.header-filter-toggle-btn:hover,
+.header-theme-toggle-btn:hover {
   background-color: var(--row-hover);
   color: var(--text-primary);
   border-color: var(--text-muted);
 }
 
-.header-column-toggle-btn.active {
+.header-column-toggle-btn.active,
+.header-filter-toggle-btn.active {
   background-color: var(--accent-light);
   color: var(--accent-color);
   border-color: var(--accent-color);
@@ -228,6 +234,7 @@
   flex-direction: column;
   overflow: hidden;
   gap: 16px;
+  position: relative;
 }
 
 .results-summary {
@@ -318,45 +325,7 @@
 }
 
 
-/* ==========================================================================
-   5. MOBILE MENU & BACKDROP
-   ========================================================================== */
-.mobile-sidebar-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(4px);
-  z-index: 999;
-  animation: fadeIn 0.25s ease-out;
-}
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.mobile-menu-toggle-btn {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: var(--text-primary);
-  cursor: pointer;
-  padding: 0;
-  margin-right: 12px;
-  line-height: 1;
-  align-items: center;
-  justify-content: center;
-  border-radius: 6px;
-  transition: background-color 0.2s;
-}
-
-.mobile-menu-toggle-btn:hover {
-  background-color: var(--row-hover);
-}
 
 
 /* ==========================================================================
@@ -403,7 +372,9 @@
     gap: 8px;
   }
 
-  .header-column-toggle-btn {
+  .header-column-toggle-btn,
+  .header-filter-toggle-btn,
+  .header-theme-toggle-btn {
     width: 30px;
     height: 30px;
     font-size: 0.9rem;
@@ -471,20 +442,12 @@
 /* ==========================================================================
    7. DYNAMIC TABLE VIEWPORT HEIGHTS
    ========================================================================== */
-.column-control-open .table-container {
-  max-height: calc(100vh - 180px) !important;
-}
-
-.column-control-closed .table-container {
+.table-container {
   max-height: calc(100vh - 110px) !important;
 }
 
 @media (max-width: 900px) {
-  .column-control-open .table-container {
-    max-height: calc(100vh - 215px) !important;
-  }
-
-  .column-control-closed .table-container {
+  .table-container {
     max-height: calc(100vh - 145px) !important;
   }
 }

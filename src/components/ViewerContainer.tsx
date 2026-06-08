@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useDanceData } from '../hooks/useDanceData';
 import type { FigureGroup } from '../types';
-import Sidebar from './Sidebar';
+import FilterToggle from './FilterToggle';
 import DanceTable from './DanceTable';
 import ColumnToggle from './ColumnToggle';
 import './ViewerContainer.css';
@@ -23,12 +23,9 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
   const [searchFocused, setSearchFocused] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
-  // Sidebar and Column Control states
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [showColumnControl, setShowColumnControl] = useState(() => 
-    typeof window !== 'undefined' ? window.innerWidth > 900 : true
-  );
+  // Dropdown states
+  const [showFilterControl, setShowFilterControl] = useState(false);
+  const [showColumnControl, setShowColumnControl] = useState(false);
 
   // Initialize visible columns once data is loaded
   useEffect(() => {
@@ -166,43 +163,11 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
   }
 
   return (
-    <div className={`viewer-layout ${sidebarCollapsed ? 'sidebar-collapsed' : ''} ${showColumnControl ? 'column-control-open' : 'column-control-closed'}`}>
-      {/* Mobile Sidebar Overlay Backdrop */}
-      {mobileMenuOpen && (
-        <div 
-          className="mobile-sidebar-backdrop" 
-          onClick={() => setMobileMenuOpen(false)}
-        />
-      )}
-
-      <Sidebar 
-        dances={dances}
-        selectedDance={selectedDance}
-        setSelectedDance={setSelectedDance}
-        figures={figures}
-        selectedFigure={selectedFigure}
-        setSelectedFigure={setSelectedFigure}
-        selectedLevel={selectedLevel}
-        setSelectedLevel={setSelectedLevel}
-        theme={theme}
-        toggleTheme={toggleTheme}
-        collapsed={sidebarCollapsed}
-        setCollapsed={setSidebarCollapsed}
-        mobileOpen={mobileMenuOpen}
-        setMobileOpen={setMobileMenuOpen}
-      />
-      
+    <div className="viewer-layout">
       <main className="main-content">
         <header className="viewer-header">
           <div className="title-area">
             <nav className="breadcrumbs" aria-label="Breadcrumb">
-              <button 
-                className="mobile-menu-toggle-btn"
-                onClick={() => setMobileMenuOpen(true)}
-                aria-label="Open navigation menu"
-              >
-                ☰
-              </button>
               <span className="breadcrumb-item linkable" onClick={() => { setSelectedDance(''); setSelectedFigure(''); }}>
                 Dances
               </span>
@@ -234,7 +199,7 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
           </div>
 
           <div className="header-actions">
-            {(selectedDance || selectedFigure || selectedLevel || searchTerm) && !showColumnControl && (
+            {(selectedDance || selectedFigure || selectedLevel || searchTerm) && (
               <button 
                 className="clear-filters-pill"
                 onClick={() => {
@@ -244,16 +209,38 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
                   setSearchTerm('');
                 }}
               >
-                Clear
+                Clear Filters
               </button>
             )}
 
             <button 
+              className={`header-filter-toggle-btn ${showFilterControl ? 'active' : ''}`}
+              onClick={() => {
+                setShowFilterControl(!showFilterControl);
+                setShowColumnControl(false);
+              }}
+              title={showFilterControl ? "Hide Filters" : "Show Filters"}
+            >
+              ⏳
+            </button>
+
+            <button 
               className={`header-column-toggle-btn ${showColumnControl ? 'active' : ''}`}
-              onClick={() => setShowColumnControl(!showColumnControl)}
+              onClick={() => {
+                setShowColumnControl(!showColumnControl);
+                setShowFilterControl(false);
+              }}
               title={showColumnControl ? "Hide Column Settings" : "Show Column Settings"}
             >
               ⚙️
+            </button>
+
+            <button 
+              className="header-theme-toggle-btn"
+              onClick={toggleTheme}
+              title={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+            >
+              {theme === 'light' ? '🌙' : '☀️'}
             </button>
 
             <div 
@@ -290,6 +277,20 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
         </header>
         
         <div className="content-body">
+          {showFilterControl && (
+            <FilterToggle 
+              dances={dances}
+              selectedDance={selectedDance}
+              setSelectedDance={setSelectedDance}
+              selectedLevel={selectedLevel}
+              setSelectedLevel={setSelectedLevel}
+              figures={figures}
+              selectedFigure={selectedFigure}
+              setSelectedFigure={setSelectedFigure}
+              filteredCount={filteredFigures.length}
+            />
+          )}
+
           {showColumnControl && (
             <ColumnToggle 
               columns={allColumns}
@@ -297,13 +298,6 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
               setVisibleColumns={setVisibleColumns}
               toggleColumn={toggleColumn}
               filteredCount={filteredFigures.length}
-              hasFilters={!!(selectedDance || selectedFigure || selectedLevel || searchTerm)}
-              onClearFilters={() => {
-                setSelectedDance('');
-                setSelectedFigure('');
-                setSelectedLevel('');
-                setSearchTerm('');
-              }}
             />
           )}
 

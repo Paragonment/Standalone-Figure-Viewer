@@ -395,18 +395,3 @@
     margin-right: 6px !important;
   }
 }
-
-/* ==========================================================================
-   7. DYNAMIC TABLE VIEWPORT HEIGHTS
-   ========================================================================== */
-.table-container {
-  max-height: calc(100vh - 110px) !important;
-  max-height: calc(100dvh - 110px) !important;
-}
-
-@media (max-width: 768px) {
-  .table-container {
-    max-height: calc(100vh - 145px) !important;
-    max-height: calc(100dvh - 145px) !important;
-  }
-}

@@ -36,23 +36,10 @@
   gap: 16px;
 }
 
-.btn-text-mobile {
-  display: none;
-}
-
 .preset-group {
   display: flex;
   align-items: center;
   gap: 12px;
-}
-
-.preset-label {
-  font-family: var(--font-heading);
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  letter-spacing: 0.05em;
 }
 
 .segmented-control {
@@ -132,77 +119,7 @@
   font-weight: 700;
 }
 
-.clear-filters-btn.inline-clear {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--container-bg);
-  border: 1px solid var(--border-color);
-  color: var(--text-secondary);
-  font-size: 0.85rem;
-  font-weight: 600;
-  height: 38px;
-  padding: 0 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: var(--shadow);
-  box-sizing: border-box;
-}
-
-.clear-filters-btn.inline-clear:hover {
-  background-color: var(--row-hover);
-  color: var(--text-primary);
-  border-color: var(--text-muted);
-}
-
-/* Customize Toggle Button */
-.customize-toggle-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background-color: var(--container-bg);
-  border: 1px solid var(--border-color);
-  color: var(--text-secondary);
-  height: 38px;
-  padding: 0 16px;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: var(--shadow);
-  box-sizing: border-box;
-}
-
-.customize-toggle-btn:hover {
-  color: var(--text-primary);
-  border-color: var(--text-muted);
-  background-color: var(--row-hover);
-}
-
-.customize-toggle-btn.open {
-  background-color: var(--accent-light);
-  color: var(--accent-color);
-  border-color: var(--accent-color);
-}
-
-.customize-toggle-btn.open:hover {
-  background-color: var(--accent-light);
-  border-color: var(--accent-color);
-  opacity: 0.9;
-}
-
-.customize-toggle-btn .arrow {
-  font-size: 0.7rem;
-  margin-left: 4px;
-  transition: transform 0.2s;
-}
-
 /* Keyboard accessibility focus styling */
-.customize-toggle-btn:focus-visible,
-.clear-filters-btn.inline-clear:focus-visible,
 .preset-btn:focus-visible {
   outline: 2px solid var(--accent-color);
   outline-offset: 2px;
@@ -353,33 +270,9 @@
     flex-wrap: wrap;
   }
 
-  .preset-label {
-    display: none; /* Hide label on very small screens to save space */
-  }
-
-  .btn-text-desktop {
-    display: none;
-  }
-
-  .btn-text-mobile {
-    display: inline;
-  }
-  
   .segmented-control {
     height: 34px;
     padding: 3px;
-  }
-
-  .customize-toggle-btn {
-    height: 34px;
-    padding: 0 12px;
-    font-size: 0.8rem;
-  }
-
-  .clear-filters-btn.inline-clear {
-    height: 34px;
-    padding: 0 12px;
-    font-size: 0.8rem;
   }
 
   .preset-btn {

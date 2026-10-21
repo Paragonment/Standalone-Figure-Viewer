@@ -1,10 +1,12 @@
 import React from 'react';
+import { getDanceEmoji, getLevelEmoji } from '../utils/danceEmoji';
 import './FilterToggle.css';
 
 interface FilterToggleProps {
   dances: string[];
   selectedDances: string[];
   setSelectedDances: (dances: string[]) => void;
+  levels: string[];
   selectedLevels: string[];
   setSelectedLevels: (levels: string[]) => void;
   figures: string[];
@@ -17,6 +19,7 @@ const FilterToggle: React.FC<FilterToggleProps> = ({
   dances,
   selectedDances,
   setSelectedDances,
+  levels,
   selectedLevels,
   setSelectedLevels,
   figures,
@@ -24,26 +27,6 @@ const FilterToggle: React.FC<FilterToggleProps> = ({
   setSelectedFigures,
   filteredCount,
 }) => {
-  const getDanceEmoji = (dance: string) => {
-    switch (dance.toLowerCase()) {
-      case 'waltz': return '⏳';
-      case 'tango': return '🌹';
-      case 'foxtrot': return '🦊';
-      case 'quickstep': return '⚡';
-      default: return '💃';
-    }
-  };
-
-  const getLevelEmoji = (level: string) => {
-    switch (level) {
-      case 'Pre-Bronze': return '⚪';
-      case 'Bronze': return '🥉';
-      case 'Silver': return '🥈';
-      case 'Gold': return '🥇';
-      default: return '🌐';
-    }
-  };
-
   // Determine active style (dance) preset
   const activeDancePreset = selectedDances.length === 0
     ? ''
@@ -155,30 +138,25 @@ const FilterToggle: React.FC<FilterToggleProps> = ({
                 <span className="filter-name">All Levels</span>
               </label>
 
-              {[
-                { id: 'Pre-Bronze', name: 'Pre-Bronze' },
-                { id: 'Bronze', name: 'Bronze' },
-                { id: 'Silver', name: 'Silver' },
-                { id: 'Gold', name: 'Gold' },
-              ].map((lvl) => {
-                const isChecked = selectedLevels.includes(lvl.id);
+              {levels.map((level) => {
+                const isChecked = selectedLevels.includes(level);
                 return (
-                  <label key={lvl.id} className="filter-checkbox-item">
+                  <label key={level} className="filter-checkbox-item">
                     <input
                       type="checkbox"
                       checked={isChecked}
                       onChange={() => {
                         if (isChecked) {
-                          setSelectedLevels(selectedLevels.filter((l) => l !== lvl.id));
+                          setSelectedLevels(selectedLevels.filter((l) => l !== level));
                         } else {
-                          setSelectedLevels([...selectedLevels, lvl.id]);
+                          setSelectedLevels([...selectedLevels, level]);
                         }
                       }}
                     />
                     <span className="checkbox-custom"></span>
                     <span className="filter-name">
-                      <span className="filter-emoji">{getLevelEmoji(lvl.id)}</span>
-                      {lvl.name}
+                      <span className="filter-emoji">{getLevelEmoji(level)}</span>
+                      {level}
                     </span>
                   </label>
                 );

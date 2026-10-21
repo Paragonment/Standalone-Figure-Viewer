@@ -6,7 +6,6 @@
   box-shadow: var(--shadow);
   background: var(--container-bg);
   border: 1px solid var(--border-color);
-  max-height: calc(100vh - 280px); /* Constrain table height for interior scrolling */
   position: relative;
   transition: all 0.3s ease;
 }
@@ -222,6 +221,13 @@
   min-width: 60px !important;
   max-width: 60px !important;
   text-align: center;
+}
+
+/* General Notes Column in sub-tables */
+.th-notes, .td-notes {
+  width: 360px;
+  min-width: 360px !important;
+  max-width: 750px !important;
 }
 
 .nested-steps-table tr:last-child td {
@@ -465,6 +471,12 @@
     width: 44px;
     min-width: 44px !important;
     max-width: 44px !important;
+  }
+
+  .th-notes, .td-notes {
+    width: 240px;
+    min-width: 240px !important;
+    max-width: 540px !important;
   }
 
   .step-badge {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { ALWAYS_VISIBLE_COLUMNS, getColumnGroup } from '../utils/columns';
 import './ColumnToggle.css';
 
 interface ColumnToggleProps {
@@ -8,25 +9,14 @@ interface ColumnToggleProps {
   toggleColumn: (column: string) => void;
 }
 
-const COMMON_COLUMNS = ['Dance', 'Step', 'General Notes', 'Level'];
-const LEAD_COLUMNS = [
-  'Lead Feet Positions',
-  'Lead Alignment',
-  'Lead Amount of Turn',
-  'Lead Rise and Fall',
-  'Lead Footwork',
-  'Lead CBM',
-  'Lead Sway'
-];
-const FOLLOW_COLUMNS = [
-  'Follow Feet Positions',
-  'Follow Alignment',
-  'Follow Amount of Turn',
-  'Follow Rise and Fall',
-  'Follow Footwork',
-  'Follow CBM',
-  'Follow Sway'
-];
+// A column is "expected" visible under a Lead/Follow preset if it isn't
+// tagged for the opposite role - this keeps presets correct automatically
+// for any new "Lead "/"Follow "-prefixed CSV column, with no list to update.
+const expectedForPreset = (column: string, preset: 'lead' | 'follow') => {
+  if (ALWAYS_VISIBLE_COLUMNS.includes(column)) return true;
+  const opposite = preset === 'lead' ? 'follow' : 'lead';
+  return getColumnGroup(column) !== opposite;
+};
 
 const ColumnToggle: React.FC<ColumnToggleProps> = ({
   columns,
@@ -41,16 +31,10 @@ const ColumnToggle: React.FC<ColumnToggleProps> = ({
     const hasAll = columns.every(col => visibleColumns.includes(col));
     if (hasAll && visibleColumns.length === columns.length) return 'all';
 
-    const matchesLead = columns.every(col => {
-      const expected = COMMON_COLUMNS.includes(col) || LEAD_COLUMNS.includes(col);
-      return visibleColumns.includes(col) === expected;
-    });
+    const matchesLead = columns.every(col => visibleColumns.includes(col) === expectedForPreset(col, 'lead'));
     if (matchesLead) return 'lead';
 
-    const matchesFollow = columns.every(col => {
-      const expected = COMMON_COLUMNS.includes(col) || FOLLOW_COLUMNS.includes(col);
-      return visibleColumns.includes(col) === expected;
-    });
+    const matchesFollow = columns.every(col => visibleColumns.includes(col) === expectedForPreset(col, 'follow'));
     if (matchesFollow) return 'follow';
 
     return 'custom';
@@ -61,17 +45,15 @@ const ColumnToggle: React.FC<ColumnToggleProps> = ({
   const applyPreset = (preset: 'all' | 'lead' | 'follow') => {
     if (preset === 'all') {
       setVisibleColumns([...columns]);
-    } else if (preset === 'lead') {
-      setVisibleColumns(columns.filter(col => COMMON_COLUMNS.includes(col) || LEAD_COLUMNS.includes(col)));
-    } else if (preset === 'follow') {
-      setVisibleColumns(columns.filter(col => COMMON_COLUMNS.includes(col) || FOLLOW_COLUMNS.includes(col)));
+    } else {
+      setVisibleColumns(columns.filter(col => expectedForPreset(col, preset)));
     }
   };
 
   // Group columns for cleaner display in custom toggle grid
-  const commonHeaders = columns.filter(col => COMMON_COLUMNS.includes(col));
-  const leadHeaders = columns.filter(col => LEAD_COLUMNS.includes(col));
-  const followHeaders = columns.filter(col => FOLLOW_COLUMNS.includes(col));
+  const commonHeaders = columns.filter(col => getColumnGroup(col) === 'common' && !ALWAYS_VISIBLE_COLUMNS.includes(col));
+  const leadHeaders = columns.filter(col => getColumnGroup(col) === 'lead');
+  const followHeaders = columns.filter(col => getColumnGroup(col) === 'follow');
 
   const headers = visibleColumns.length > 0
     ? columns.filter(h => visibleColumns.includes(h))

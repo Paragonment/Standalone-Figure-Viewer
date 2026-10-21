@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import type { FigureGroup, DanceStep } from '../types';
+import { getDanceEmoji } from '../utils/danceEmoji';
+import { getColumnGroup, getShortHeader } from '../utils/columns';
 import './DanceTable.css';
 
 interface DanceTableProps {
@@ -7,25 +9,6 @@ interface DanceTableProps {
   visibleColumns?: string[];
   selectedFigures?: string[];
 }
-
-const getShortenedHeader = (header: string) => {
-  return header
-    .replace('Lead Feet Positions', 'Feet')
-    .replace('Follow Feet Positions', 'Feet')
-    .replace('Lead Alignment', 'Align')
-    .replace('Follow Alignment', 'Align')
-    .replace('Lead Amount of Turn', 'Turn')
-    .replace('Follow Amount of Turn', 'Turn')
-    .replace('Lead Rise and Fall', 'Rise/Fall')
-    .replace('Follow Rise and Fall', 'Rise/Fall')
-    .replace('Lead Footwork', 'Footwork')
-    .replace('Follow Footwork', 'Footwork')
-    .replace('Lead CBM', 'CBM')
-    .replace('Follow CBM', 'CBM')
-    .replace('Lead Sway', 'Sway')
-    .replace('Follow Sway', 'Sway')
-    .replace('General Notes', 'Notes');
-};
 
 const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedFigures }) => {
   const [expandedFigures, setExpandedFigures] = useState<Set<string>>(new Set());
@@ -70,16 +53,6 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
   const showStep = !visibleColumns || visibleColumns.includes('Step');
   const showNotes = !visibleColumns || visibleColumns.includes('General Notes');
   const colSpan = 1 + (showDance ? 1 : 0) + 1 + (showLevel ? 1 : 0) + (showStep ? 1 : 0) + (showNotes ? 1 : 0);
-
-  const getDanceEmoji = (dance: string) => {
-    switch (dance.toLowerCase()) {
-      case 'waltz': return '⏳';
-      case 'tango': return '🌹';
-      case 'foxtrot': return '🦊';
-      case 'quickstep': return '⚡';
-      default: return '💃';
-    }
-  };
 
   const toggleFigure = (dance: string, name: string) => {
     const key = `${dance}-${name}`;
@@ -243,13 +216,14 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
                                 {innerHeaders.map((header) => {
                                   let className = '';
                                   if (header === 'Step') className = 'th-step';
-                                  else if (header.startsWith('Lead ')) className = 'th-lead';
-                                  else if (header.startsWith('Follow ')) className = 'th-follow';
-                                  
+                                  else if (header === 'General Notes') className = 'th-notes';
+                                  else if (getColumnGroup(header) === 'lead') className = 'th-lead';
+                                  else if (getColumnGroup(header) === 'follow') className = 'th-follow';
+
                                   return (
                                     <th key={header} className={className}>
                                       <span className="header-text-desktop">{header}</span>
-                                      <span className="header-text-mobile">{getShortenedHeader(header)}</span>
+                                      <span className="header-text-mobile">{getShortHeader(header)}</span>
                                     </th>
                                   );
                                 })}
@@ -261,9 +235,10 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
                                   {innerHeaders.map((header) => {
                                     let className = '';
                                     if (header === 'Step') className = 'td-step';
-                                    else if (header.startsWith('Lead ')) className = 'td-lead';
-                                    else if (header.startsWith('Follow ')) className = 'td-follow';
-                                    
+                                    else if (header === 'General Notes') className = 'td-notes';
+                                    else if (getColumnGroup(header) === 'lead') className = 'td-lead';
+                                    else if (getColumnGroup(header) === 'follow') className = 'td-follow';
+
                                     return (
                                       <td key={header} className={className}>
                                         {renderCell(header, step[header])}

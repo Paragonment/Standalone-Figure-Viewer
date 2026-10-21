@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useDanceData } from '../hooks/useDanceData';
-import type { FigureGroup } from '../types';
+import { useFigureGroups } from '../hooks/useFigureGroups';
+import { useDanceFilters } from '../hooks/useDanceFilters';
 import FilterToggle from './FilterToggle';
 import DanceTable from './DanceTable';
 import ColumnToggle from './ColumnToggle';
@@ -13,11 +14,24 @@ interface ViewerContainerProps {
 
 const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme }) => {
   const { data, loading, error } = useDanceData();
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedDances, setSelectedDances] = useState<string[]>([]);
-  const [selectedFigures, setSelectedFigures] = useState<string[]>([]);
-  const [selectedLevels, setSelectedLevels] = useState<string[]>([]);
-  
+  const figureGroups = useFigureGroups(data);
+  const {
+    searchTerm,
+    setSearchTerm,
+    selectedDances,
+    setSelectedDances,
+    selectedFigures,
+    setSelectedFigures,
+    selectedLevels,
+    setSelectedLevels,
+    dances,
+    figures,
+    levels,
+    filteredFigures,
+    hasActiveFilters,
+    clearFilters,
+  } = useDanceFilters(data, figureGroups);
+
   // Column visibility state
   const [visibleColumns, setVisibleColumns] = useState<string[]>([]);
   const [searchFocused, setSearchFocused] = useState(false);
@@ -26,6 +40,10 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
   // Dropdown states
   const [showFilterControl, setShowFilterControl] = useState(false);
   const [showColumnControl, setShowColumnControl] = useState(false);
+  const filterBtnRef = useRef<HTMLButtonElement>(null);
+  const filterPanelRef = useRef<HTMLDivElement>(null);
+  const columnBtnRef = useRef<HTMLButtonElement>(null);
+  const columnPanelRef = useRef<HTMLDivElement>(null);
 
   // Initialize visible columns once data is loaded
   useEffect(() => {
@@ -57,79 +75,42 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Group raw step rows into structured figures
-  const figureGroups = useMemo<FigureGroup[]>(() => {
-    const groups: FigureGroup[] = [];
-    const seen = new Map<string, FigureGroup>();
+  // Close an open dropdown panel on outside click or Escape
+  useEffect(() => {
+    if (!showFilterControl && !showColumnControl) return;
 
-    data.forEach(item => {
-      const key = `${item.Dance} - ${item["Figure Name"]}`;
-      let group = seen.get(key);
-      if (!group) {
-        group = {
-          dance: item.Dance,
-          name: item["Figure Name"],
-          level: item.Level,
-          steps: [],
-          generalNotes: ''
-        };
-        seen.set(key, group);
-        groups.push(group);
+    const handlePointerDown = (e: MouseEvent) => {
+      const target = e.target as Node;
+      if (
+        showFilterControl &&
+        !filterPanelRef.current?.contains(target) &&
+        !filterBtnRef.current?.contains(target)
+      ) {
+        setShowFilterControl(false);
       }
-      group.steps.push(item);
-      if (item["General Notes"] && !group.generalNotes) {
-        group.generalNotes = item["General Notes"];
+      if (
+        showColumnControl &&
+        !columnPanelRef.current?.contains(target) &&
+        !columnBtnRef.current?.contains(target)
+      ) {
+        setShowColumnControl(false);
       }
-    });
+    };
 
-    return groups.sort((a, b) => {
-      const nameCompare = a.name.localeCompare(b.name);
-      if (nameCompare !== 0) return nameCompare;
-      return a.dance.localeCompare(b.dance);
-    });
-  }, [data]);
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setShowFilterControl(false);
+        setShowColumnControl(false);
+      }
+    };
 
-  const dances = useMemo(() => {
-    const uniqueDances = new Set(data.map((item) => item.Dance));
-    return Array.from(uniqueDances).sort();
-  }, [data]);
-
-  const figures = useMemo(() => {
-    if (selectedDances.length === 0) return [];
-    const danceFigures = data
-      .filter(item => selectedDances.includes(item.Dance))
-      .map(item => item["Figure Name"]);
-    return Array.from(new Set(danceFigures)).sort();
-  }, [data, selectedDances]);
-
-  const filteredFigures = useMemo(() => {
-    return figureGroups.filter((group) => {
-      // 1. Filter by selected dances
-      const matchesDance = selectedDances.length === 0 || selectedDances.includes(group.dance);
-      
-      // 2. Filter by selected figures
-      const matchesFigure = selectedFigures.length === 0 || selectedFigures.includes(group.name);
-      
-      // 2b. Filter by selected levels
-      const matchesLevel = selectedLevels.length === 0 || selectedLevels.includes(group.level);
-      
-      // 3. Filter by search term
-      const searchLower = searchTerm.trim().toLowerCase();
-      if (!searchLower) return matchesDance && matchesFigure && matchesLevel;
-      
-      const matchesSearch =
-        group.dance.toLowerCase().includes(searchLower) ||
-        group.name.toLowerCase().includes(searchLower) ||
-        group.generalNotes.toLowerCase().includes(searchLower) ||
-        group.steps.some((step) =>
-          Object.values(step).some((val) =>
-            String(val).toLowerCase().includes(searchLower)
-          )
-        );
-        
-      return matchesDance && matchesFigure && matchesLevel && matchesSearch;
-    });
-  }, [figureGroups, searchTerm, selectedDances, selectedFigures, selectedLevels]);
+    document.addEventListener('mousedown', handlePointerDown);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handlePointerDown);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [showFilterControl, showColumnControl]);
 
   const allColumns = useMemo(() => {
     if (data.length === 0) return [];
@@ -205,38 +186,37 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
           </div>
 
           <div className="header-actions">
-            {(selectedDances.length > 0 || selectedFigures.length > 0 || selectedLevels.length > 0 || searchTerm) && (
-              <button 
+            {hasActiveFilters && (
+              <button
                 className="clear-filters-pill"
-                onClick={() => {
-                  setSelectedDances([]);
-                  setSelectedFigures([]);
-                  setSelectedLevels([]);
-                  setSearchTerm('');
-                }}
+                onClick={clearFilters}
               >
                 Clear Filters
               </button>
             )}
 
-            <button 
+            <button
+              ref={filterBtnRef}
               className={`header-filter-toggle-btn ${showFilterControl ? 'active' : ''}`}
               onClick={() => {
                 setShowFilterControl(!showFilterControl);
                 setShowColumnControl(false);
               }}
               title={showFilterControl ? "Hide Filters" : "Show Filters"}
+              aria-expanded={showFilterControl}
             >
               🪩
             </button>
 
-            <button 
+            <button
+              ref={columnBtnRef}
               className={`header-column-toggle-btn ${showColumnControl ? 'active' : ''}`}
               onClick={() => {
                 setShowColumnControl(!showColumnControl);
                 setShowFilterControl(false);
               }}
               title={showColumnControl ? "Hide Column Settings" : "Show Column Settings"}
+              aria-expanded={showColumnControl}
             >
               ⚙️
             </button>
@@ -284,26 +264,31 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
         
         <div className="content-body">
           {showFilterControl && (
-            <FilterToggle 
-              dances={dances}
-              selectedDances={selectedDances}
-              setSelectedDances={setSelectedDances}
-              selectedLevels={selectedLevels}
-              setSelectedLevels={setSelectedLevels}
-              figures={figures}
-              selectedFigures={selectedFigures}
-              setSelectedFigures={setSelectedFigures}
-              filteredCount={filteredFigures.length}
-            />
+            <div ref={filterPanelRef}>
+              <FilterToggle
+                dances={dances}
+                selectedDances={selectedDances}
+                setSelectedDances={setSelectedDances}
+                levels={levels}
+                selectedLevels={selectedLevels}
+                setSelectedLevels={setSelectedLevels}
+                figures={figures}
+                selectedFigures={selectedFigures}
+                setSelectedFigures={setSelectedFigures}
+                filteredCount={filteredFigures.length}
+              />
+            </div>
           )}
 
           {showColumnControl && (
-            <ColumnToggle 
-              columns={allColumns}
-              visibleColumns={visibleColumns}
-              setVisibleColumns={setVisibleColumns}
-              toggleColumn={toggleColumn}
-            />
+            <div ref={columnPanelRef}>
+              <ColumnToggle
+                columns={allColumns}
+                visibleColumns={visibleColumns}
+                setVisibleColumns={setVisibleColumns}
+                toggleColumn={toggleColumn}
+              />
+            </div>
           )}
 
           <DanceTable 

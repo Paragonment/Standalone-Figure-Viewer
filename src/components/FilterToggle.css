@@ -262,71 +262,7 @@
   display: block;
 }
 
-/* Custom Radios */
-.filter-radio-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  user-select: none;
-  position: relative;
-}
-
-.filter-radio-item input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-.radio-custom {
-  position: relative;
-  height: 18px;
-  width: 18px;
-  background-color: var(--container-bg);
-  border: 1.5px solid var(--border-color);
-  border-radius: 50%; /* Make it circular */
-  transition: all 0.2s ease;
-}
-
-.filter-radio-item:hover input ~ .radio-custom {
-  border-color: var(--text-muted);
-}
-
-.filter-radio-item input:checked ~ .radio-custom {
-  background-color: var(--container-bg);
-  border-color: var(--accent-color);
-}
-
-.figures-card .filter-radio-item input:checked ~ .radio-custom {
-  border-color: var(--lead-color);
-}
-
-.radio-custom:after {
-  content: "";
-  position: absolute;
-  display: none;
-  left: 4px;
-  top: 4px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent-color);
-}
-
-.figures-card .filter-radio-item input:checked ~ .radio-custom:after {
-  background-color: var(--lead-color);
-}
-
-.filter-radio-item input:checked ~ .radio-custom:after {
-  display: block;
-}
-
-.filter-checkbox-item:hover,
-.filter-radio-item:hover {
+.filter-checkbox-item:hover {
   color: var(--text-primary);
 }
 

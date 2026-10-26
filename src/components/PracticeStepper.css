@@ -1,0 +1,249 @@
+.practice-stepper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  background: var(--container-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.ps-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px 0;
+  flex-shrink: 0;
+}
+
+.ps-dots {
+  display: flex;
+  gap: 5px;
+  flex: 1;
+}
+
+.ps-dot {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--border-color);
+  transition: background-color 0.2s ease;
+}
+
+.ps-dot.done {
+  background-color: var(--accent-color);
+}
+
+.ps-count {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Full-width Lead/Follow switch - a direct, one-tap choice of whose part
+   to read, with a tap target sized for a thumb rather than a fingertip. */
+.ps-role-switch {
+  display: flex;
+  gap: 8px;
+  padding: 14px 20px 0;
+  flex-shrink: 0;
+}
+
+.ps-role-btn {
+  flex: 1;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: var(--row-hover);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ps-role-btn.lead.active {
+  background-color: var(--lead-light);
+  border-color: var(--lead-color);
+  color: var(--lead-color);
+}
+
+.ps-role-btn.follow.active {
+  background-color: var(--follow-light);
+  border-color: var(--follow-color);
+  color: var(--follow-color);
+}
+
+.ps-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px 24px 20px;
+}
+
+/* The auto top margins here and on .ps-secondary keep the step itself
+   (hero + details) as one centered group in the free space, with the other
+   role's summary anchored at the bottom - rather than three pieces flung
+   to the top, middle and bottom when only a few fields are shown. */
+.ps-hero {
+  margin-top: auto;
+  text-align: center;
+}
+
+.ps-feet {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.9rem;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  text-wrap: balance;
+}
+
+.ps-align {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.ps-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+/* A lone last tile spans the row instead of leaving a half-empty one. */
+.ps-meta-cell:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+.ps-meta-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* keep value pills at their natural width */
+  gap: 4px;
+  background-color: var(--row-hover);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.ps-meta-label {
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.ps-secondary {
+  margin-top: auto;
+  text-align: center;
+  border-top: 1px dashed var(--border-color);
+  padding-top: 16px;
+}
+
+.ps-secondary-label {
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.ps-secondary-value {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+.ps-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 20px 18px;
+  flex-shrink: 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.ps-arrow {
+  flex: 1;
+  height: 48px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: var(--container-bg);
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ps-arrow:hover:not(:disabled) {
+  background-color: var(--row-hover);
+  border-color: var(--text-muted);
+}
+
+.ps-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+@media (max-width: 768px) {
+  .ps-top {
+    padding: 14px 16px 0;
+  }
+
+  .ps-role-switch {
+    padding: 12px 16px 0;
+  }
+
+  .ps-role-btn {
+    padding: 10px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .ps-body {
+    gap: 16px;
+    padding: 20px 16px 16px;
+  }
+
+  .ps-feet {
+    font-size: 1.6rem;
+  }
+
+  .ps-align {
+    font-size: 1rem;
+  }
+
+  /* Always two columns: on narrow phones the 140px auto-fit minimum
+     collapses to one, doubling the height of the grid. */
+  .ps-meta-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .ps-meta-cell {
+    padding: 10px 12px;
+  }
+
+  .ps-nav {
+    padding: 12px 16px 14px;
+  }
+
+  .ps-arrow {
+    -webkit-tap-highlight-color: transparent;
+  }
+}

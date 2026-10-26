@@ -1,0 +1,117 @@
+.step-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0 0 8px;
+  list-style: none;
+}
+
+.step-card-list-empty {
+  margin: 0;
+  padding: 28px 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  background: var(--container-bg);
+  border: 1px dashed var(--border-color);
+  border-radius: 12px;
+}
+
+.step-card {
+  background: var(--container-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 10px 14px 6px;
+}
+
+.step-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.step-table th,
+.step-table td {
+  padding: 8px 0;
+  text-align: left;
+  vertical-align: baseline;
+  font-weight: normal;
+}
+
+.step-table td {
+  padding-left: 10px;
+  font-size: 0.85rem;
+  line-height: 1.35;
+  color: var(--text-primary);
+  overflow-wrap: anywhere;
+}
+
+/* Field-name column: just wide enough for "Rise & Fall". */
+.step-table-corner {
+  width: 76px;
+}
+
+.step-table thead th {
+  padding: 0 0 8px;
+  vertical-align: middle;
+}
+
+.step-table thead th + th {
+  padding-left: 10px;
+}
+
+.step-table tbody th {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.step-table tbody tr + tr th,
+.step-table tbody tr + tr td {
+  border-top: 1px solid var(--border-color);
+}
+
+/* Feet is the line you read first, so it carries the card's weight. */
+.step-table tr.is-feet td,
+.step-table tr.is-feet td .standard-text {
+  font-family: var(--font-heading);
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: var(--accent-light);
+  color: var(--accent-color);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.82rem;
+}
+
+.role-chip {
+  display: inline-flex;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 5px;
+}
+
+.role-chip.lead {
+  background-color: var(--lead-light);
+  color: var(--lead-color);
+}
+
+.role-chip.follow {
+  background-color: var(--follow-light);
+  color: var(--follow-color);
+}

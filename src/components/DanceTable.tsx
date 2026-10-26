@@ -1,19 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import type { FigureGroup, DanceStep } from '../types';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import type { DanceStep, FigureGroup } from '../types';
 import { getDanceEmoji } from '../utils/danceEmoji';
 import { getColumnGroup, getShortHeader } from '../utils/columns';
+import { useIsMobile } from '../hooks/useIsMobile';
+import FieldValue from './FieldValue';
 import './DanceTable.css';
 
 interface DanceTableProps {
   data: FigureGroup[];
   visibleColumns?: string[];
   selectedFigures?: string[];
+  onSelectFigure: (figure: FigureGroup) => void;
+  // Owned by the parent so the scroll offset outlives this component,
+  // which unmounts while a figure's detail view is open.
+  scrollTopRef?: React.RefObject<number>;
 }
 
-const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedFigures }) => {
-  const [expandedFigures, setExpandedFigures] = useState<Set<string>>(new Set());
+const baseFieldKey = (header: string) => header.replace(/^(Lead|Follow) /, '');
 
-  // Auto-expand the selected figures when they change
+const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedFigures, onSelectFigure, scrollTopRef }) => {
+  const isMobile = useIsMobile();
+  const [expandedFigures, setExpandedFigures] = useState<Set<string>>(new Set());
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Restore before paint so the list never flashes at the top first.
+  useLayoutEffect(() => {
+    if (containerRef.current && scrollTopRef) {
+      containerRef.current.scrollTop = scrollTopRef.current;
+    }
+    // Mount only: afterwards the container's own scroll position is the source of truth.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Auto-expand the selected figures when they change (desktop only).
   useEffect(() => {
     if (selectedFigures && selectedFigures.length > 0) {
       setExpandedFigures(prev => {
@@ -29,6 +48,12 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
     }
   }, [selectedFigures, data]);
 
+  // A figure open via inline expansion doesn't carry over if the viewport
+  // crosses into mobile, which navigates to the detail view instead.
+  useEffect(() => {
+    if (isMobile) setExpandedFigures(new Set());
+  }, [isMobile]);
+
   if (data.length === 0) {
     return (
       <div className="no-results">
@@ -39,13 +64,10 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
     );
   }
 
-  // Obtain all headers from the first step of the first figure
   const allHeaders = Object.keys(data[0].steps[0]) as (keyof DanceStep)[];
-  const headers = visibleColumns 
+  const headers = visibleColumns
     ? allHeaders.filter(h => visibleColumns.includes(h))
     : allHeaders;
-
-  // Filter out redundant 'Dance', 'Figure Name', and 'Level' from the inner step details
   const innerHeaders = headers.filter(h => h !== 'Dance' && h !== 'Figure Name' && h !== 'Level');
 
   const showDance = !visibleColumns || visibleColumns.includes('Dance');
@@ -54,8 +76,27 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
   const showNotes = !visibleColumns || visibleColumns.includes('General Notes');
   const colSpan = 1 + (showDance ? 1 : 0) + 1 + (showLevel ? 1 : 0) + (showStep ? 1 : 0) + (showNotes ? 1 : 0);
 
-  const toggleFigure = (dance: string, name: string) => {
-    const key = `${dance}-${name}`;
+  const renderInnerCell = (header: keyof DanceStep, value: string) => {
+    if (header === 'Step') {
+      return (
+        <div className="step-cell">
+          <span className="step-badge">{value}</span>
+        </div>
+      );
+    }
+    if (header === 'General Notes') {
+      if (!value || value.trim() === '') return <span className="cell-empty">—</span>;
+      return <span className="notes-text">{value}</span>;
+    }
+    return <FieldValue field={baseFieldKey(header)} value={value} />;
+  };
+
+  const handleRowClick = (fig: FigureGroup) => {
+    if (isMobile) {
+      onSelectFigure(fig);
+      return;
+    }
+    const key = `${fig.dance}-${fig.name}`;
     setExpandedFigures(prev => {
       const next = new Set(prev);
       if (next.has(key)) {
@@ -67,77 +108,14 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
     });
   };
 
-  const renderCell = (header: keyof DanceStep, value: string) => {
-    if (!value || value.trim() === '' || value.trim() === 'Nil') {
-      return <span className="cell-empty">—</span>;
-    }
-
-    switch (header) {
-      case 'Step':
-        return (
-          <div className="step-cell">
-            <span className="step-badge">{value}</span>
-          </div>
-        );
-      
-      case 'Dance':
-        return (
-          <span className="dance-badge">
-            <span className="dance-badge-icon">{getDanceEmoji(value)}</span>
-            <span className="dance-badge-name">{value}</span>
-          </span>
-        );
-
-      case 'Lead CBM':
-      case 'Follow CBM': {
-        const isCbm = value.toLowerCase() === 'true';
-        return (
-          <span className={`cbm-pill ${isCbm ? 'active' : 'inactive'}`}>
-            {isCbm ? 'CBM' : 'No'}
-          </span>
-        );
-      }
-
-      case 'Lead Footwork':
-      case 'Follow Footwork':
-        return (
-          <span className="footwork-pill" title={value}>
-            {value}
-          </span>
-        );
-
-      case 'Lead Sway':
-      case 'Follow Sway': {
-        const valUpper = value.toUpperCase();
-        let swayClass = 'sway-none';
-        let swayLabel = value;
-        if (valUpper === 'L') {
-          swayClass = 'sway-left';
-          swayLabel = 'Left (L)';
-        } else if (valUpper === 'R') {
-          swayClass = 'sway-right';
-          swayLabel = 'Right (R)';
-        } else if (valUpper === 'S') {
-          swayClass = 'sway-straight';
-          swayLabel = 'Straight (S)';
-        }
-        return (
-          <span className={`sway-pill ${swayClass}`}>
-            {swayLabel}
-          </span>
-        );
-      }
-
-      case 'General Notes':
-        return <span className="notes-text">{value}</span>;
-
-      default:
-        return <span className="standard-text">{value}</span>;
-    }
-  };
-
   return (
-    <div className="table-container">
+    <div
+      className="table-container"
+      ref={containerRef}
+      onScroll={(e) => {
+        if (scrollTopRef) scrollTopRef.current = e.currentTarget.scrollTop;
+      }}
+    >
       <table className="dance-table">
         <thead>
           <tr>
@@ -148,7 +126,12 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
               <span className="header-text-mobile">Figure</span>
             </th>
             {showLevel && <th>Level</th>}
-            {showStep && <th className="th-step-count">Steps</th>}
+            {showStep && (
+              <th className="th-step-count">
+                <span className="header-text-desktop">Steps</span>
+                <span className="header-text-mobile">#</span>
+              </th>
+            )}
             {showNotes && (
               <th className="desktop-only">
                 <span className="header-text-desktop">General Notes Summary</span>
@@ -160,17 +143,26 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
         <tbody>
           {data.map((fig) => {
             const key = `${fig.dance}-${fig.name}`;
-            const isExpanded = expandedFigures.has(key);
+            const isExpanded = !isMobile && expandedFigures.has(key);
 
             return (
               <React.Fragment key={key}>
-                {/* Parent Row */}
-                <tr 
+                <tr
                   className={`figure-parent-row ${isExpanded ? 'parent-expanded' : ''}`}
-                  onClick={() => toggleFigure(fig.dance, fig.name)}
+                  onClick={() => handleRowClick(fig)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      handleRowClick(fig);
+                    }
+                  }}
+                  tabIndex={0}
+                  aria-expanded={isMobile ? undefined : isExpanded}
                 >
                   <td className="td-toggle-arrow">
-                    <span className={`toggle-arrow-icon ${isExpanded ? 'rotated' : ''}`}>▶</span>
+                    <span className={`toggle-arrow-icon ${isExpanded ? 'rotated' : ''}`}>
+                      {isMobile ? '›' : '▶'}
+                    </span>
                   </td>
                   {showDance && (
                     <td>
@@ -193,7 +185,10 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
                   {showStep && (
                     <td className="td-step-count">
                       <span className="step-count-badge">
-                        {fig.steps.length} step{fig.steps.length === 1 ? '' : 's'}
+                        <span className="header-text-desktop">
+                          {fig.steps.length} step{fig.steps.length === 1 ? '' : 's'}
+                        </span>
+                        <span className="header-text-mobile">{fig.steps.length}</span>
                       </span>
                     </td>
                   )}
@@ -204,7 +199,6 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
                   )}
                 </tr>
 
-                {/* Expanded Sub-table Row */}
                 {isExpanded && (
                   <tr className="figure-child-row">
                     <td colSpan={colSpan} className="expanded-details-cell">
@@ -241,7 +235,7 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
 
                                     return (
                                       <td key={header} className={className}>
-                                        {renderCell(header, step[header])}
+                                        {renderInnerCell(header, step[header])}
                                       </td>
                                     );
                                   })}

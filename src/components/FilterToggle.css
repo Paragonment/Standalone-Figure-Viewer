@@ -226,6 +226,7 @@
   background-color: var(--container-bg);
   border: 1.5px solid var(--border-color);
   border-radius: 5px;
+  flex-shrink: 0;
   transition: all 0.2s ease;
 }
 
@@ -246,6 +247,12 @@
 .level-card .filter-checkbox-item input:checked ~ .checkbox-custom {
   background-color: var(--text-primary);
   border-color: var(--text-primary);
+}
+
+/* --text-primary flips to near-white in dark mode, so a white tick would
+   vanish; draw it in the panel color, which always contrasts. */
+.level-card .filter-checkbox-item input:checked ~ .checkbox-custom:after {
+  border-color: var(--container-bg);
 }
 
 .figures-card .filter-checkbox-item input:checked ~ .checkbox-custom {
@@ -317,4 +324,59 @@
   .results-count-text {
     font-size: 0.8rem;
   }
+
+  /* Rows sized for a thumb; the list gap shrinks to compensate. */
+  .filter-checkbox-list {
+    gap: 2px;
+  }
+
+  .filter-checkbox-item {
+    min-height: 36px;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Inside the mobile bottom sheet the panel is just content: the sheet
+   provides the surface, the scrolling and the result count (on its
+   button), so drop the dropdown chrome and the nested scroll area. */
+.bottom-sheet .filter-control-panel {
+  position: static;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  max-height: none;
+  overflow: visible;
+  animation: none;
+}
+
+/* The Dance Style checklist below covers the same choices as the preset
+   segments, and the result count moves onto the sheet's button. */
+.bottom-sheet .preset-row {
+  display: none;
+}
+
+.bottom-sheet .granular-filters-container {
+  padding-top: 0;
+  border-top: none;
+  animation: none;
+}
+
+/* Flat sections instead of boxed cards inside the sheet's own surface. */
+.bottom-sheet .filter-group-grid {
+  gap: 22px;
+}
+
+.bottom-sheet .filter-group-card {
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  gap: 4px;
+}
+
+.bottom-sheet .scrollable-list {
+  max-height: none;
+  overflow: visible;
 }

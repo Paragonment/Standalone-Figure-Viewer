@@ -10,7 +10,15 @@ export const useDanceData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/data.csv');
+        // Resolve against the app's base path, not the domain root: GitHub
+        // Pages serves the app from /Standalone-Figure-Viewer/, where
+        // "/data.csv" is a 404.
+        const response = await fetch(`${import.meta.env.BASE_URL}data.csv`);
+        // Without this, an error page would be parsed as CSV and render as
+        // an empty table instead of an error.
+        if (!response.ok) {
+          throw new Error(`data.csv request failed (${response.status} ${response.statusText})`);
+        }
         const csvText = await response.text();
         
         Papa.parse(csvText, {

@@ -1,11 +1,28 @@
-import React, { useState, useMemo, useEffect, useRef } from 'react';
+import React, { useState, useMemo, useEffect, useRef, useCallback } from 'react';
+import type { FigureGroup } from '../types';
 import { useDanceData } from '../hooks/useDanceData';
 import { useFigureGroups } from '../hooks/useFigureGroups';
 import { useDanceFilters } from '../hooks/useDanceFilters';
 import FilterToggle from './FilterToggle';
 import DanceTable from './DanceTable';
 import ColumnToggle from './ColumnToggle';
+import FigureDetail from './FigureDetail';
+import ModeMenu from './ModeMenu';
+import type { DetailMode } from '../utils/detailModes';
+import BottomSheet from './BottomSheet';
+import StepFieldFilter from './StepFieldFilter';
+import { useIsMobile } from '../hooks/useIsMobile';
+import { STEP_FIELDS } from '../utils/stepFields';
 import './ViewerContainer.css';
+
+interface FigureHistoryState {
+  figureKey: string;
+}
+
+const getFigureKey = (figure: FigureGroup) => `${figure.dance}-${figure.name}`;
+
+const readHistoryFigureKey = (): string | null =>
+  (window.history.state as FigureHistoryState | null)?.figureKey ?? null;
 
 interface ViewerContainerProps {
   theme: 'light' | 'dark';
@@ -36,6 +53,63 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
   const [visibleColumns, setVisibleColumns] = useState<string[]>([]);
   const [searchFocused, setSearchFocused] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
+
+  const isMobile = useIsMobile();
+
+  // Figure detail navigation (mobile only - desktop expands the row
+  // in place instead). Opening a figure pushes a history entry, so the
+  // phone's back gesture returns to the list instead of leaving the app;
+  // the open figure is read back from history.state, which also restores
+  // it after a reload. detailMode is lifted here rather than into
+  // FigureDetail so it persists across re-renders of the detail view.
+  const [activeFigureKey, setActiveFigureKey] = useState<string | null>(readHistoryFigureKey);
+  const [detailMode, setDetailMode] = useState<DetailMode>('cards');
+
+  // The list's scroll offset survives a round trip through the detail
+  // view, so going back lands where you left off.
+  const listScrollTopRef = useRef(0);
+
+  const activeFigure = useMemo<FigureGroup | null>(() => {
+    if (!activeFigureKey) return null;
+    return figureGroups.find((f) => getFigureKey(f) === activeFigureKey) ?? null;
+  }, [figureGroups, activeFigureKey]);
+
+  const view: 'list' | 'detail' = activeFigure ? 'detail' : 'list';
+
+  const openFigure = (figure: FigureGroup) => {
+    const figureKey = getFigureKey(figure);
+    window.history.pushState({ figureKey } satisfies FigureHistoryState, '');
+    setActiveFigureKey(figureKey);
+    setDetailMode('cards');
+    setShowFilterControl(false);
+    setShowColumnControl(false);
+  };
+
+  const closeDetail = useCallback(() => {
+    if (readHistoryFigureKey()) {
+      // The popstate listener below clears activeFigureKey.
+      window.history.back();
+    } else {
+      setActiveFigureKey(null);
+    }
+  }, []);
+
+  useEffect(() => {
+    const handlePopState = () => setActiveFigureKey(readHistoryFigureKey());
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  // Escape returns to the figure list from the detail view.
+  useEffect(() => {
+    if (view !== 'detail') return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // An open sheet handles its own Escape; don't also leave the figure.
+      if (e.key === 'Escape' && !document.querySelector('dialog[open]')) closeDetail();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [view, closeDetail]);
 
   // Dropdown states
   const [showFilterControl, setShowFilterControl] = useState(false);
@@ -75,9 +149,10 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Close an open dropdown panel on outside click or Escape
+  // Close an open dropdown panel on outside click or Escape. On mobile the
+  // same controls live in bottom sheets, which dismiss themselves.
   useEffect(() => {
-    if (!showFilterControl && !showColumnControl) return;
+    if (isMobile || (!showFilterControl && !showColumnControl)) return;
 
     const handlePointerDown = (e: MouseEvent) => {
       const target = e.target as Node;
@@ -110,12 +185,16 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
       document.removeEventListener('mousedown', handlePointerDown);
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [showFilterControl, showColumnControl]);
+  }, [isMobile, showFilterControl, showColumnControl]);
 
   const allColumns = useMemo(() => {
     if (data.length === 0) return [];
     return Object.keys(data[0]);
   }, [data]);
+
+  const shownFieldCount = STEP_FIELDS.filter(
+    (f) => visibleColumns.includes(f.leadKey) || visibleColumns.includes(f.followKey)
+  ).length;
 
   const toggleColumn = (column: string) => {
     setVisibleColumns(prev => 
@@ -146,47 +225,56 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
   return (
     <div className="viewer-layout">
       <main className="main-content">
-        <header className="viewer-header">
+        <header className={`viewer-header ${view === 'list' && (searchFocused || searchTerm) ? 'search-active' : ''}`}>
           <div className="title-area">
+            {view === 'detail' && activeFigure && (
+              <button
+                type="button"
+                className="detail-back-btn"
+                onClick={closeDetail}
+                aria-label="Back to figures"
+                title="Back to figures"
+              >
+                ‹
+              </button>
+            )}
             <nav className="breadcrumbs" aria-label="Breadcrumb">
-              <span className="breadcrumb-item linkable" onClick={() => { setSelectedDances([]); setSelectedFigures([]); }}>
-                Dances
-              </span>
-              {selectedDances.length > 0 && (
+              {view === 'detail' && activeFigure ? (
                 <>
-                  <span className="breadcrumb-separator">/</span>
-                  <span className="breadcrumb-item linkable" onClick={() => setSelectedFigures([])}>
-                    {selectedDances.length === 1 ? selectedDances[0] : `${selectedDances.length} Dances`}
-                  </span>
+                  <button type="button" className="breadcrumb-item linkable detail-root" onClick={closeDetail}>
+                    Dances
+                  </button>
+                  <span className="breadcrumb-separator detail-root">/</span>
+                  <ModeMenu figureName={activeFigure.name} mode={detailMode} setMode={setDetailMode} />
                 </>
-              )}
-              {selectedFigures.length > 0 && (
+              ) : (
                 <>
-                  <span className="breadcrumb-separator">/</span>
-                  <span className="breadcrumb-item active">
-                    {selectedFigures.length === 1 ? selectedFigures[0] : `${selectedFigures.length} Figures`}
-                  </span>
+                  <button type="button" className="breadcrumb-item linkable" onClick={() => { setSelectedDances([]); setSelectedFigures([]); }}>
+                    Dances
+                  </button>
+                  {selectedDances.length > 0 && (
+                    <>
+                      <span className="breadcrumb-separator">/</span>
+                      <button type="button" className="breadcrumb-item linkable" onClick={() => setSelectedFigures([])}>
+                        {selectedDances.length === 1 ? selectedDances[0] : `${selectedDances.length} Dances`}
+                      </button>
+                    </>
+                  )}
+                  {selectedFigures.length > 0 && (
+                    <>
+                      <span className="breadcrumb-separator">/</span>
+                      <span className="breadcrumb-item active" aria-current="page">
+                        {selectedFigures.length === 1 ? selectedFigures[0] : `${selectedFigures.length} Figures`}
+                      </span>
+                    </>
+                  )}
                 </>
               )}
             </nav>
-            <h1>
-              {selectedFigures.length > 0 
-                ? (selectedFigures.length === 1 ? selectedFigures[0] : 'Selected Figures') 
-                : selectedDances.length > 0 
-                  ? `${selectedDances.length === 1 ? selectedDances[0] : 'Selected'} Figures` 
-                  : 'Standard Ballroom Techniques'}
-            </h1>
-            <p>
-              {selectedFigures.length > 0 
-                ? `Detailed steps, alignments, footwork, rise & fall, CBM, and sway for ${selectedFigures.length === 1 ? selectedFigures[0] : 'the selected figures'}.`
-                : selectedDances.length > 0 
-                  ? `Technique syllabus and figures for the selected competitive dances.`
-                  : 'Select a dance style to explore figures, step techniques, and alignment guides.'}
-            </p>
           </div>
 
           <div className="header-actions">
-            {hasActiveFilters && (
+            {view === 'list' && hasActiveFilters && (
               <button
                 className="clear-filters-pill"
                 onClick={clearFilters}
@@ -195,6 +283,7 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
               </button>
             )}
 
+            {view === 'list' && (
             <button
               ref={filterBtnRef}
               className={`header-filter-toggle-btn ${showFilterControl ? 'active' : ''}`}
@@ -207,7 +296,11 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
             >
               🪩
             </button>
+            )}
 
+            {/* On mobile the list has no step columns to configure, so this
+                only appears on a figure, where it picks the step details. */}
+            {(!isMobile || view === 'detail') && (
             <button
               ref={columnBtnRef}
               className={`header-column-toggle-btn ${showColumnControl ? 'active' : ''}`}
@@ -215,13 +308,18 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
                 setShowColumnControl(!showColumnControl);
                 setShowFilterControl(false);
               }}
-              title={showColumnControl ? "Hide Column Settings" : "Show Column Settings"}
+              title={isMobile ? 'Choose step details' : showColumnControl ? 'Hide Column Settings' : 'Show Column Settings'}
+              aria-label={isMobile ? `Choose step details, ${shownFieldCount} of ${STEP_FIELDS.length} shown` : undefined}
               aria-expanded={showColumnControl}
             >
               ⚙️
+              {isMobile && shownFieldCount < STEP_FIELDS.length && (
+                <span className="header-btn-badge" aria-hidden="true">{shownFieldCount}</span>
+              )}
             </button>
+            )}
 
-            <button 
+            <button
               className="header-theme-toggle-btn"
               onClick={toggleTheme}
               title={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
@@ -229,7 +327,8 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
               {theme === 'light' ? '🌙' : '☀️'}
             </button>
 
-            <div 
+            {view === 'list' && (
+            <div
               className={`expandable-search-container ${searchFocused ? 'focused' : ''} ${searchTerm ? 'has-text' : ''}`}
               onClick={() => searchInputRef.current?.focus()}
             >
@@ -245,8 +344,8 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
                 onBlur={() => setSearchFocused(false)}
               />
               {searchTerm && (
-                <button 
-                  className="search-clear-btn" 
+                <button
+                  className="search-clear-btn"
                   onClick={(e) => {
                     e.stopPropagation();
                     setSearchTerm('');
@@ -259,11 +358,12 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
                 <span className="search-shortcut-hint">/</span>
               )}
             </div>
+            )}
           </div>
         </header>
-        
+
         <div className="content-body">
-          {showFilterControl && (
+          {!isMobile && view === 'list' && showFilterControl && (
             <div ref={filterPanelRef}>
               <FilterToggle
                 dances={dances}
@@ -280,7 +380,7 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
             </div>
           )}
 
-          {showColumnControl && (
+          {!isMobile && showColumnControl && (
             <div ref={columnPanelRef}>
               <ColumnToggle
                 columns={allColumns}
@@ -291,11 +391,53 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
             </div>
           )}
 
-          <DanceTable 
-            data={filteredFigures} 
-            visibleColumns={visibleColumns} 
-            selectedFigures={selectedFigures}
-          />
+          {isMobile && (
+            <>
+              <BottomSheet
+                open={view === 'list' && showFilterControl}
+                onClose={() => setShowFilterControl(false)}
+                title="Filter figures"
+                doneLabel={`Show ${filteredFigures.length} figure${filteredFigures.length === 1 ? '' : 's'}`}
+              >
+                <FilterToggle
+                  dances={dances}
+                  selectedDances={selectedDances}
+                  setSelectedDances={setSelectedDances}
+                  levels={levels}
+                  selectedLevels={selectedLevels}
+                  setSelectedLevels={setSelectedLevels}
+                  figures={figures}
+                  selectedFigures={selectedFigures}
+                  setSelectedFigures={setSelectedFigures}
+                  filteredCount={filteredFigures.length}
+                />
+              </BottomSheet>
+
+              <BottomSheet
+                open={view === 'detail' && showColumnControl}
+                onClose={() => setShowColumnControl(false)}
+                title="Show on each step"
+              >
+                <StepFieldFilter visibleColumns={visibleColumns} setVisibleColumns={setVisibleColumns} />
+              </BottomSheet>
+            </>
+          )}
+
+          {view === 'detail' && activeFigure ? (
+            <FigureDetail
+              figure={activeFigure}
+              visibleColumns={visibleColumns}
+              mode={detailMode}
+            />
+          ) : (
+            <DanceTable
+              data={filteredFigures}
+              visibleColumns={visibleColumns}
+              selectedFigures={selectedFigures}
+              onSelectFigure={openFigure}
+              scrollTopRef={listScrollTopRef}
+            />
+          )}
         </div>
       </main>
     </div>

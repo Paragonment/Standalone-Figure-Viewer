@@ -1,0 +1,56 @@
+.figure-detail {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 2px;
+}
+
+/* Practice owns the full height and scrolls inside its own body, so the
+   page itself must not scroll too. */
+.figure-detail.mode-practice {
+  overflow: hidden;
+}
+
+.figure-detail-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* These badges are shared with the figure list, whose mobile rules shrink
+   them to fit table cells. Here they sit side by side as a summary row,
+   so give them one common size regardless of viewport. */
+.figure-detail-meta > .dance-badge,
+.figure-detail-meta > .level-badge,
+.figure-detail-meta > .step-count-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.figure-detail-notes {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  background-color: var(--row-zebra);
+  border: 1px solid var(--border-color);
+  border-left: 3px solid var(--accent-color);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+}
+
+@media (max-width: 768px) {
+  .figure-detail {
+    gap: 12px;
+  }
+}

@@ -335,3 +335,48 @@
     -webkit-tap-highlight-color: transparent;
   }
 }
+
+/* Inside the mobile bottom sheet the panel is just content: the sheet
+   provides the surface, the scrolling and the result count (on its
+   button), so drop the dropdown chrome and the nested scroll area. */
+.bottom-sheet .filter-control-panel {
+  position: static;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  max-height: none;
+  overflow: visible;
+  animation: none;
+}
+
+/* The Dance Style checklist below covers the same choices as the preset
+   segments, and the result count moves onto the sheet's button. */
+.bottom-sheet .preset-row {
+  display: none;
+}
+
+.bottom-sheet .granular-filters-container {
+  padding-top: 0;
+  border-top: none;
+  animation: none;
+}
+
+/* Flat sections instead of boxed cards inside the sheet's own surface. */
+.bottom-sheet .filter-group-grid {
+  gap: 22px;
+}
+
+.bottom-sheet .filter-group-card {
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  gap: 4px;
+}
+
+.bottom-sheet .scrollable-list {
+  max-height: none;
+  overflow: visible;
+}

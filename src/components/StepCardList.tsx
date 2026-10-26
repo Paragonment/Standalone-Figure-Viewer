@@ -9,65 +9,50 @@ interface StepCardListProps {
   visibleColumns: string[];
 }
 
+// Each step is a small table with Lead and Follow side by side, so both
+// partners' part of the same step reads in one glance and a card is half
+// the height of stacking the two roles. Feet leads (and is emphasized)
+// because it's the line a dancer actually reads first.
 const StepCardList: React.FC<StepCardListProps> = ({ figure, visibleColumns }) => {
-  const leadFields = STEP_FIELDS.filter((f) => visibleColumns.includes(f.leadKey));
-  const followFields = STEP_FIELDS.filter((f) => visibleColumns.includes(f.followKey));
-  const showLeadFeet = visibleColumns.includes('Lead Feet Positions');
-  const showFollowFeet = visibleColumns.includes('Follow Feet Positions');
+  const fields = STEP_FIELDS.filter(
+    (f) => visibleColumns.includes(f.leadKey) || visibleColumns.includes(f.followKey)
+  );
+
+  if (fields.length === 0) {
+    return (
+      <p className="step-card-list-empty">
+        No step details are selected. Tap ⚙️ at the top to choose some.
+      </p>
+    );
+  }
 
   return (
-    <div className="step-card-list">
-      {figure.steps.map((step, idx) => {
-        const headline = [showLeadFeet ? step['Lead Feet Positions'] : null, showFollowFeet ? step['Follow Feet Positions'] : null]
-          .filter(Boolean)
-          .join(' / ');
-
-        return (
-          <div className="step-card" key={idx}>
-            <div className="step-card-head">
-              <span className="step-num">{idx + 1}</span>
-              {headline && <span className="step-headline">{headline}</span>}
-            </div>
-            <div className="step-split">
-              <div className="step-col">
-                <div className="step-col-head">
-                  <span className="role-chip lead">Lead</span>
-                </div>
-                {leadFields.length === 0 ? (
-                  <p className="step-col-empty">No fields selected</p>
-                ) : (
-                  leadFields.map((f) => (
-                    <div className="field-row" key={f.key}>
-                      <div className="field-label">{f.label}</div>
-                      <div className="field-value">
-                        <FieldValue field={f.key} value={step[f.leadKey]} />
-                      </div>
-                    </div>
-                  ))
-                )}
-              </div>
-              <div className="step-col">
-                <div className="step-col-head">
-                  <span className="role-chip follow">Follow</span>
-                </div>
-                {followFields.length === 0 ? (
-                  <p className="step-col-empty">No fields selected</p>
-                ) : (
-                  followFields.map((f) => (
-                    <div className="field-row" key={f.key}>
-                      <div className="field-label">{f.label}</div>
-                      <div className="field-value">
-                        <FieldValue field={f.key} value={step[f.followKey]} />
-                      </div>
-                    </div>
-                  ))
-                )}
-              </div>
-            </div>
-          </div>
-        );
-      })}
-    </div>
+    <ol className="step-card-list">
+      {figure.steps.map((step, idx) => (
+        <li className="step-card" key={idx}>
+          <table className="step-table">
+            <thead>
+              <tr>
+                <th scope="col" className="step-table-corner">
+                  <span className="step-num" aria-label={`Step ${idx + 1}`}>{idx + 1}</span>
+                </th>
+                <th scope="col"><span className="role-chip lead">Lead</span></th>
+                <th scope="col"><span className="role-chip follow">Follow</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              {fields.map((f) => (
+                <tr key={f.key} className={f.key === 'Feet Positions' ? 'is-feet' : undefined}>
+                  <th scope="row">{f.label}</th>
+                  <td>{visibleColumns.includes(f.leadKey) && <FieldValue field={f.key} value={step[f.leadKey]} />}</td>
+                  <td>{visibleColumns.includes(f.followKey) && <FieldValue field={f.key} value={step[f.followKey]} />}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </li>
+      ))}
+    </ol>
   );
 };
 

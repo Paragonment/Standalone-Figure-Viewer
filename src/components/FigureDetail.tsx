@@ -3,7 +3,6 @@ import type { FigureGroup } from '../types';
 import { getDanceEmoji, getLevelEmoji } from '../utils/danceEmoji';
 import StepCardList from './StepCardList';
 import PracticeStepper from './PracticeStepper';
-import StepFieldFilter from './StepFieldFilter';
 import './FigureDetail.css';
 
 export type DetailMode = 'cards' | 'practice';
@@ -24,7 +23,6 @@ const DETAIL_MODES: DetailModeDef[] = [
 interface FigureDetailProps {
   figure: FigureGroup;
   visibleColumns: string[];
-  setVisibleColumns: (cols: string[]) => void;
   mode: DetailMode;
   setMode: (mode: DetailMode) => void;
 }
@@ -32,15 +30,15 @@ interface FigureDetailProps {
 const FigureDetail: React.FC<FigureDetailProps> = ({
   figure,
   visibleColumns,
-  setVisibleColumns,
   mode,
   setMode,
 }) => {
   // The mode switch stays first in both modes so it doesn't jump out from
-  // under your thumb when you tap it. Practice is a focused, full-bleed
-  // mode: the figure overview drops away and the field picker collapses
-  // to one line, so the stepper gets the whole screen without nesting a
-  // scroll area inside a scrolling page.
+  // under your thumb when you tap it. Which step fields show is chosen
+  // from the header's settings button rather than inline, so neither mode
+  // spends screen space on a control you set once. Practice is focused and
+  // full-bleed: the figure overview drops away too, so the stepper gets the
+  // whole screen without nesting a scroll area inside a scrolling page.
   return (
     <div className={`figure-detail mode-${mode}`}>
       <div className="mode-switch" role="tablist" aria-label="Viewing mode">
@@ -75,16 +73,10 @@ const FigureDetail: React.FC<FigureDetailProps> = ({
 
           {figure.generalNotes && <p className="figure-detail-notes">{figure.generalNotes}</p>}
 
-          <StepFieldFilter visibleColumns={visibleColumns} setVisibleColumns={setVisibleColumns} />
-
           <StepCardList figure={figure} visibleColumns={visibleColumns} />
         </>
       ) : (
-        <>
-          <StepFieldFilter visibleColumns={visibleColumns} setVisibleColumns={setVisibleColumns} collapsible />
-
-          <PracticeStepper figure={figure} visibleColumns={visibleColumns} />
-        </>
+        <PracticeStepper figure={figure} visibleColumns={visibleColumns} />
       )}
     </div>
   );

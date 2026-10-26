@@ -88,3 +88,17 @@
   color: var(--accent-color);
   box-shadow: var(--shadow);
 }
+
+@media (max-width: 768px) {
+  .figure-detail {
+    gap: 12px;
+  }
+
+  .mode-switch {
+    box-shadow: none;
+  }
+
+  .mode-switch-btn {
+    padding: 7px 12px;
+  }
+}

@@ -7,7 +7,10 @@ import FilterToggle from './FilterToggle';
 import DanceTable from './DanceTable';
 import ColumnToggle from './ColumnToggle';
 import FigureDetail, { type DetailMode } from './FigureDetail';
+import BottomSheet from './BottomSheet';
+import StepFieldFilter from './StepFieldFilter';
 import { useIsMobile } from '../hooks/useIsMobile';
+import { STEP_FIELDS } from '../utils/stepFields';
 import './ViewerContainer.css';
 
 interface FigureHistoryState {
@@ -77,6 +80,7 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
     setActiveFigureKey(figureKey);
     setDetailMode('cards');
     setShowFilterControl(false);
+    setShowColumnControl(false);
   };
 
   const closeDetail = useCallback(() => {
@@ -98,7 +102,8 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
   useEffect(() => {
     if (view !== 'detail') return;
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') closeDetail();
+      // An open sheet handles its own Escape; don't also leave the figure.
+      if (e.key === 'Escape' && !document.querySelector('dialog[open]')) closeDetail();
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
@@ -142,9 +147,10 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Close an open dropdown panel on outside click or Escape
+  // Close an open dropdown panel on outside click or Escape. On mobile the
+  // same controls live in bottom sheets, which dismiss themselves.
   useEffect(() => {
-    if (!showFilterControl && !showColumnControl) return;
+    if (isMobile || (!showFilterControl && !showColumnControl)) return;
 
     const handlePointerDown = (e: MouseEvent) => {
       const target = e.target as Node;
@@ -177,12 +183,16 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
       document.removeEventListener('mousedown', handlePointerDown);
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [showFilterControl, showColumnControl]);
+  }, [isMobile, showFilterControl, showColumnControl]);
 
   const allColumns = useMemo(() => {
     if (data.length === 0) return [];
     return Object.keys(data[0]);
   }, [data]);
+
+  const shownFieldCount = STEP_FIELDS.filter(
+    (f) => visibleColumns.includes(f.leadKey) || visibleColumns.includes(f.followKey)
+  ).length;
 
   const toggleColumn = (column: string) => {
     setVisibleColumns(prev => 
@@ -286,7 +296,9 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
             </button>
             )}
 
-            {!isMobile && (
+            {/* On mobile the list has no step columns to configure, so this
+                only appears on a figure, where it picks the step details. */}
+            {(!isMobile || view === 'detail') && (
             <button
               ref={columnBtnRef}
               className={`header-column-toggle-btn ${showColumnControl ? 'active' : ''}`}
@@ -294,10 +306,14 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
                 setShowColumnControl(!showColumnControl);
                 setShowFilterControl(false);
               }}
-              title={showColumnControl ? "Hide Column Settings" : "Show Column Settings"}
+              title={isMobile ? 'Choose step details' : showColumnControl ? 'Hide Column Settings' : 'Show Column Settings'}
+              aria-label={isMobile ? `Choose step details, ${shownFieldCount} of ${STEP_FIELDS.length} shown` : undefined}
               aria-expanded={showColumnControl}
             >
               ⚙️
+              {isMobile && shownFieldCount < STEP_FIELDS.length && (
+                <span className="header-btn-badge" aria-hidden="true">{shownFieldCount}</span>
+              )}
             </button>
             )}
 
@@ -345,7 +361,7 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
         </header>
 
         <div className="content-body">
-          {view === 'list' && showFilterControl && (
+          {!isMobile && view === 'list' && showFilterControl && (
             <div ref={filterPanelRef}>
               <FilterToggle
                 dances={dances}
@@ -373,11 +389,42 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
             </div>
           )}
 
+          {isMobile && (
+            <>
+              <BottomSheet
+                open={view === 'list' && showFilterControl}
+                onClose={() => setShowFilterControl(false)}
+                title="Filter figures"
+                doneLabel={`Show ${filteredFigures.length} figure${filteredFigures.length === 1 ? '' : 's'}`}
+              >
+                <FilterToggle
+                  dances={dances}
+                  selectedDances={selectedDances}
+                  setSelectedDances={setSelectedDances}
+                  levels={levels}
+                  selectedLevels={selectedLevels}
+                  setSelectedLevels={setSelectedLevels}
+                  figures={figures}
+                  selectedFigures={selectedFigures}
+                  setSelectedFigures={setSelectedFigures}
+                  filteredCount={filteredFigures.length}
+                />
+              </BottomSheet>
+
+              <BottomSheet
+                open={view === 'detail' && showColumnControl}
+                onClose={() => setShowColumnControl(false)}
+                title="Show on each step"
+              >
+                <StepFieldFilter visibleColumns={visibleColumns} setVisibleColumns={setVisibleColumns} />
+              </BottomSheet>
+            </>
+          )}
+
           {view === 'detail' && activeFigure ? (
             <FigureDetail
               figure={activeFigure}
               visibleColumns={visibleColumns}
-              setVisibleColumns={setVisibleColumns}
               mode={detailMode}
               setMode={setDetailMode}
             />

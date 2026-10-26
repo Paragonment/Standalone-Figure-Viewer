@@ -1,132 +1,93 @@
-.step-field-filter,
-.step-field-filter-body {
+.step-field-filter {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
 }
 
-.step-field-filter {
-  flex-shrink: 0;
-}
-
-/* Collapsible variant: a one-line summary that opens into the chips. */
-.step-field-filter.collapsible {
-  background: var(--container-bg);
+/* Presets are a segmented control. Neither segment is pressed when the
+   selection is custom, which itself tells you "you've customized this". */
+.step-field-presets {
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  background-color: var(--row-hover);
   border: 1px solid var(--border-color);
   border-radius: 10px;
-  gap: 0;
 }
 
-.step-field-filter.collapsible .step-field-filter-body {
-  padding: 2px 12px 12px;
-}
-
-.step-field-filter-summary {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  min-height: 44px;
-  padding: 0 12px;
-  background: none;
+.step-field-presets button {
+  flex: 1;
+  height: 38px;
   border: none;
+  border-radius: 8px;
+  background: none;
   font-family: var(--font-body);
-  text-align: left;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-secondary);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+  transition: all 0.15s ease;
 }
 
-.step-field-filter-summary-text {
-  flex: 1;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.step-field-filter-chevron {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  transition: transform 0.2s ease;
-}
-
-.step-field-filter.open .step-field-filter-chevron {
-  transform: rotate(180deg);
-}
-
-.step-field-filter-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.step-field-filter-label {
-  font-family: var(--font-heading);
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
-}
-
-.step-field-filter-presets {
-  display: flex;
-  gap: 14px;
-}
-
-/* Vertical padding (cancelled by the negative margin) gives these text
-   links a thumb-sized tap target without changing the row's height. */
-.step-field-filter-presets button {
-  background: none;
-  border: none;
-  padding: 10px 0;
-  margin: -10px 0;
-  font-family: var(--font-body);
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  cursor: pointer;
-}
-
-.step-field-filter-presets button:hover {
-  color: var(--text-secondary);
-}
-
-.step-field-filter-presets button.active {
+.step-field-presets button[aria-pressed='true'] {
+  background-color: var(--container-bg);
   color: var(--accent-color);
+  box-shadow: var(--shadow);
 }
 
 .step-field-chips {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
 }
 
 .step-field-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 46px;
+  padding: 0 14px;
   font-family: var(--font-body);
-  font-size: 0.82rem;
+  font-size: 0.92rem;
   font-weight: 600;
-  color: var(--text-muted);
+  text-align: left;
+  color: var(--text-secondary);
   background: var(--container-bg);
   border: 1px solid var(--border-color);
-  border-radius: 20px;
-  padding: 7px 14px;
+  border-radius: 12px;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
   transition: all 0.15s ease;
 }
 
-.step-field-chip:hover {
-  border-color: var(--text-muted);
-  color: var(--text-secondary);
+.step-field-chip-mark {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  background-color: var(--row-hover);
 }
 
 .step-field-chip.active {
-  background-color: var(--accent-color);
+  color: var(--text-primary);
   border-color: var(--accent-color);
+  background-color: var(--accent-light);
+}
+
+.step-field-chip.active .step-field-chip-mark {
   color: white;
-  font-weight: 700;
+  background-color: var(--accent-color);
+}
+
+.step-field-chip:focus-visible,
+.step-field-presets button:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
 }

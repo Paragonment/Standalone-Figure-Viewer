@@ -6,7 +6,9 @@ import { useDanceFilters } from '../hooks/useDanceFilters';
 import FilterToggle from './FilterToggle';
 import DanceTable from './DanceTable';
 import ColumnToggle from './ColumnToggle';
-import FigureDetail, { type DetailMode } from './FigureDetail';
+import FigureDetail from './FigureDetail';
+import ModeMenu from './ModeMenu';
+import type { DetailMode } from '../utils/detailModes';
 import BottomSheet from './BottomSheet';
 import StepFieldFilter from './StepFieldFilter';
 import { useIsMobile } from '../hooks/useIsMobile';
@@ -243,7 +245,7 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
                     Dances
                   </button>
                   <span className="breadcrumb-separator detail-root">/</span>
-                  <span className="breadcrumb-item active" aria-current="page">{activeFigure.name}</span>
+                  <ModeMenu figureName={activeFigure.name} mode={detailMode} setMode={setDetailMode} />
                 </>
               ) : (
                 <>
@@ -426,7 +428,6 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
               figure={activeFigure}
               visibleColumns={visibleColumns}
               mode={detailMode}
-              setMode={setDetailMode}
             />
           ) : (
             <DanceTable

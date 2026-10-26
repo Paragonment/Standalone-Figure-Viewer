@@ -85,12 +85,16 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   gap: 20px;
   padding: 24px 24px 20px;
 }
 
+/* The auto top margins here and on .ps-secondary keep the step itself
+   (hero + details) as one centered group in the free space, with the other
+   role's summary anchored at the bottom - rather than three pieces flung
+   to the top, middle and bottom when only a few fields are shown. */
 .ps-hero {
+  margin-top: auto;
   text-align: center;
 }
 
@@ -115,6 +119,11 @@
   gap: 10px;
 }
 
+/* A lone last tile spans the row instead of leaving a half-empty one. */
+.ps-meta-cell:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 .ps-meta-cell {
   display: flex;
   flex-direction: column;
@@ -136,6 +145,7 @@
 }
 
 .ps-secondary {
+  margin-top: auto;
   text-align: center;
   border-top: 1px dashed var(--border-color);
   padding-top: 16px;

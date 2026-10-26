@@ -52,14 +52,37 @@
    ========================================================================== */
 .figure-parent-row {
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.figure-parent-row:focus {
+  outline: none;
 }
 
 .figure-parent-row td {
   background-color: var(--container-bg);
 }
 
-.figure-parent-row:hover td {
+/* Hover only where a pointer can actually hover - on touch screens a
+   :hover style sticks to the last tapped row. :active gives the tap
+   feedback instead. */
+@media (hover: hover) {
+  .figure-parent-row:hover td {
+    background-color: var(--row-hover);
+  }
+
+  .figure-parent-row:hover .toggle-arrow-icon {
+    color: var(--accent-color);
+  }
+}
+
+.figure-parent-row:active td,
+.figure-parent-row:focus-visible td {
   background-color: var(--row-hover);
+}
+
+.figure-parent-row:focus-visible td:first-child {
+  box-shadow: inset 3px 0 0 var(--accent-color);
 }
 
 /* Bind parent and child visually when expanded (desktop) */
@@ -87,10 +110,6 @@
   font-size: 0.7rem;
   color: var(--text-muted);
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s;
-}
-
-.figure-parent-row:hover .toggle-arrow-icon {
-  color: var(--accent-color);
 }
 
 .toggle-arrow-icon.rotated {

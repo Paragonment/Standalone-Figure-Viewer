@@ -20,7 +20,8 @@ const roleKey = (role: Role): 'leadKey' | 'followKey' => (role === 'lead' ? 'lea
 const PracticeStepper: React.FC<PracticeStepperProps> = ({ figure, visibleColumns }) => {
   const [stepIndex, setStepIndex] = useState(0);
   const [primaryRole, setPrimaryRole] = useState<Role>('lead');
-  const touchStartX = useRef<number | null>(null);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+  const bodyRef = useRef<HTMLDivElement>(null);
 
   // A different figure means a different step count, so start over rather
   // than risk landing past the end of a shorter figure.
@@ -34,6 +35,8 @@ const PracticeStepper: React.FC<PracticeStepperProps> = ({ figure, visibleColumn
   const goTo = (next: number) => {
     if (next < 0 || next >= total) return;
     setStepIndex(next);
+    // Each step starts from its top, not wherever the last one was scrolled to.
+    bodyRef.current?.scrollTo({ top: 0 });
   };
 
   useEffect(() => {
@@ -47,16 +50,19 @@ const PracticeStepper: React.FC<PracticeStepperProps> = ({ figure, visibleColumn
   }, [stepIndex, total]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
+    touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current === null) return;
-    const delta = e.changedTouches[0].clientX - touchStartX.current;
-    if (Math.abs(delta) > 50) {
-      goTo(stepIndex + (delta < 0 ? 1 : -1));
+    if (touchStart.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchStart.current.x;
+    const dy = e.changedTouches[0].clientY - touchStart.current.y;
+    touchStart.current = null;
+    // Only a mostly-horizontal drag is a swipe; a vertical one is the user
+    // scrolling a long step and shouldn't change steps.
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      goTo(stepIndex + (dx < 0 ? 1 : -1));
     }
-    touchStartX.current = null;
   };
 
   if (!step) return null;
@@ -112,7 +118,7 @@ const PracticeStepper: React.FC<PracticeStepperProps> = ({ figure, visibleColumn
         </button>
       </div>
 
-      <div className="ps-body" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+      <div className="ps-body" ref={bodyRef} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
         <div className="ps-hero">
           {showFeet && <div className="ps-feet">{step[FEET_FIELD[primaryK]]}</div>}
           {showAlign && <div className="ps-align">{step[ALIGNMENT_FIELD[primaryK]]}</div>}

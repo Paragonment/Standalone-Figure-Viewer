@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import type { DanceStep, FigureGroup } from '../types';
 import { getDanceEmoji } from '../utils/danceEmoji';
 import { getColumnGroup, getShortHeader } from '../utils/columns';
@@ -11,13 +11,26 @@ interface DanceTableProps {
   visibleColumns?: string[];
   selectedFigures?: string[];
   onSelectFigure: (figure: FigureGroup) => void;
+  // Owned by the parent so the scroll offset outlives this component,
+  // which unmounts while a figure's detail view is open.
+  scrollTopRef?: React.RefObject<number>;
 }
 
 const baseFieldKey = (header: string) => header.replace(/^(Lead|Follow) /, '');
 
-const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedFigures, onSelectFigure }) => {
+const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedFigures, onSelectFigure, scrollTopRef }) => {
   const isMobile = useIsMobile();
   const [expandedFigures, setExpandedFigures] = useState<Set<string>>(new Set());
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Restore before paint so the list never flashes at the top first.
+  useLayoutEffect(() => {
+    if (containerRef.current && scrollTopRef) {
+      containerRef.current.scrollTop = scrollTopRef.current;
+    }
+    // Mount only: afterwards the container's own scroll position is the source of truth.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Auto-expand the selected figures when they change (desktop only).
   useEffect(() => {
@@ -96,7 +109,13 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
   };
 
   return (
-    <div className="table-container">
+    <div
+      className="table-container"
+      ref={containerRef}
+      onScroll={(e) => {
+        if (scrollTopRef) scrollTopRef.current = e.currentTarget.scrollTop;
+      }}
+    >
       <table className="dance-table">
         <thead>
           <tr>
@@ -131,6 +150,14 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
                 <tr
                   className={`figure-parent-row ${isExpanded ? 'parent-expanded' : ''}`}
                   onClick={() => handleRowClick(fig)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      handleRowClick(fig);
+                    }
+                  }}
+                  tabIndex={0}
+                  aria-expanded={isMobile ? undefined : isExpanded}
                 >
                   <td className="td-toggle-arrow">
                     <span className={`toggle-arrow-icon ${isExpanded ? 'rotated' : ''}`}>

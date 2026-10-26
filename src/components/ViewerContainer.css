@@ -37,7 +37,9 @@
 .title-area {
   display: flex;
   align-items: center;
+  gap: 10px;
   flex: 1;
+  min-width: 0;
 }
 
 /* Breadcrumbs style */
@@ -45,6 +47,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  min-width: 0;
+  overflow: hidden;
   font-family: var(--font-heading);
   font-size: 0.8rem;
   font-weight: 600;
@@ -53,11 +57,28 @@
   color: var(--text-muted);
 }
 
+/* Crumbs truncate rather than push the header actions off screen or
+   slide underneath them; only the root "Dances" crumb keeps its width. */
 .breadcrumb-item {
   transition: color 0.2s;
+  white-space: nowrap;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.breadcrumb-item:first-child {
+  flex-shrink: 0;
 }
 
 .breadcrumb-item.linkable {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: inherit;
   cursor: pointer;
 }
 
@@ -71,12 +92,31 @@
 
 .breadcrumb-separator {
   color: var(--border-color);
+  flex-shrink: 0;
 }
 
-/* Header Text styling - Hidden to save vertical space, matching mobile */
-.viewer-header h1,
-.viewer-header p {
-  display: none;
+.detail-back-btn {
+  background: var(--container-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 3px 0; /* optically center the chevron glyph */
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--text-primary);
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: all 0.2s ease;
+}
+
+.detail-back-btn:hover {
+  background-color: var(--row-hover);
+  border-color: var(--text-muted);
 }
 
 .header-actions {
@@ -287,102 +327,110 @@
   color: hsl(354, 70%, 50%);
 }
 
-
-
-
-
 /* ==========================================================================
-/* ==========================================================================
-   6. RESPONSIVE MEDIA QUERIES
+   5. RESPONSIVE MEDIA QUERIES
    ========================================================================== */
 @media (max-width: 768px) {
   .main-content {
     padding: 12px;
-    height: 100%;
-    overflow: hidden;
   }
 
   .viewer-header {
-    flex-direction: column;
-    align-items: stretch;
     gap: 8px;
+    min-height: 0;
     padding-bottom: 8px;
     margin-bottom: 12px;
   }
 
-  .title-area {
-    padding-right: 110px; /* Give room for column toggle + search buttons */
-  }
-
-  .title-area h1,
-  .title-area p {
-    display: none; /* Hide headings on mobile to maximize vertical space */
+  /* The back button already says where you'd go, so the "Dances /" crumb
+     is dropped to give the figure name the whole width. */
+  .detail-root {
+    display: none;
   }
 
   .header-actions {
-    position: absolute;
-    top: 8px; /* Centered in nav bar */
-    right: 8px;
-    z-index: 100;
-    display: flex;
-    align-items: center;
     gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .header-column-toggle-btn,
+  .header-filter-toggle-btn,
+  .header-theme-toggle-btn,
+  .detail-back-btn {
+    width: 40px;
+    height: 40px;
+    box-shadow: none;
   }
 
   .header-column-toggle-btn,
   .header-filter-toggle-btn,
   .header-theme-toggle-btn {
-    width: 40px;
-    height: 40px;
     font-size: 0.95rem;
-    box-shadow: none;
   }
 
   .clear-filters-pill {
-    height: 32px;
-    padding: 2px 10px;
-    font-size: 0.7rem;
+    height: 40px;
+    padding: 0 12px;
+    border-radius: 20px;
+    font-size: 0.72rem;
     box-shadow: none;
+    white-space: nowrap;
+  }
+
+  /* While searching, the search field takes over the bar (breadcrumbs
+     hide) rather than squeezing into whatever space is left. */
+  .viewer-header.search-active .title-area {
+    display: none;
+  }
+
+  .viewer-header.search-active .header-actions {
+    flex: 1;
+    min-width: 0;
   }
 
   .expandable-search-container {
-    width: 40px !important;
+    width: 40px;
     height: 40px;
-    padding: 0 !important;
+    padding: 0;
     justify-content: center;
-    border-radius: 50% !important;
+    border-radius: 50%;
     overflow: hidden;
-    border-color: var(--border-color);
     box-shadow: none;
   }
-  
+
   .expandable-search-container .search-input {
     width: 0;
     opacity: 0;
     pointer-events: none;
-    transition: width 0.3s ease, opacity 0.2s ease;
+    /* Anything under 16px makes iOS Safari zoom the page on focus. */
+    font-size: 16px;
+    transition: opacity 0.2s ease;
   }
-  
+
   .expandable-search-container .search-icon {
-    margin-right: 0 !important;
+    margin-right: 0;
     cursor: pointer;
     font-size: 0.85rem;
   }
 
   .expandable-search-container .search-shortcut-hint {
-    display: none !important;
+    display: none;
   }
-  
+
   .expandable-search-container.focused,
   .expandable-search-container.has-text {
-    width: 180px !important;
-    border-radius: 15px !important;
-    padding: 4px 10px !important;
+    flex: 1;
+    width: auto;
+    min-width: 0;
+    padding: 0 14px;
+    border-radius: 20px;
     justify-content: flex-start;
-    background-color: var(--container-bg);
-    box-shadow: var(--shadow-lg);
   }
-  
+
+  .expandable-search-container.has-text:not(.focused) {
+    box-shadow: none;
+  }
+
   .expandable-search-container.focused .search-input,
   .expandable-search-container.has-text .search-input {
     width: 100%;
@@ -392,6 +440,13 @@
 
   .expandable-search-container.focused .search-icon,
   .expandable-search-container.has-text .search-icon {
-    margin-right: 6px !important;
+    margin-right: 8px;
+  }
+
+  .search-clear-btn {
+    font-size: 1.3rem;
+    padding: 0 0 0 8px;
+    margin-left: 0;
+    align-self: stretch;
   }
 }

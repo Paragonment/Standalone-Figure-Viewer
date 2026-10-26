@@ -1,7 +1,60 @@
-.step-field-filter {
+.step-field-filter,
+.step-field-filter-body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.step-field-filter {
+  flex-shrink: 0;
+}
+
+/* Collapsible variant: a one-line summary that opens into the chips. */
+.step-field-filter.collapsible {
+  background: var(--container-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  gap: 0;
+}
+
+.step-field-filter.collapsible .step-field-filter-body {
+  padding: 2px 12px 12px;
+}
+
+.step-field-filter-summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.step-field-filter-summary-text {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.step-field-filter-chevron {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  transition: transform 0.2s ease;
+}
+
+.step-field-filter.open .step-field-filter-chevron {
+  transform: rotate(180deg);
 }
 
 .step-field-filter-head {
@@ -25,10 +78,13 @@
   gap: 14px;
 }
 
+/* Vertical padding (cancelled by the negative margin) gives these text
+   links a thumb-sized tap target without changing the row's height. */
 .step-field-filter-presets button {
   background: none;
   border: none;
-  padding: 0;
+  padding: 10px 0;
+  margin: -10px 0;
   font-family: var(--font-body);
   font-size: 0.78rem;
   font-weight: 600;

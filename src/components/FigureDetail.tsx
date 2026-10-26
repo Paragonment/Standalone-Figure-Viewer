@@ -36,25 +36,13 @@ const FigureDetail: React.FC<FigureDetailProps> = ({
   mode,
   setMode,
 }) => {
+  // The mode switch stays first in both modes so it doesn't jump out from
+  // under your thumb when you tap it. Practice is a focused, full-bleed
+  // mode: the figure overview drops away and the field picker collapses
+  // to one line, so the stepper gets the whole screen without nesting a
+  // scroll area inside a scrolling page.
   return (
-    <div className="figure-detail">
-      <div className="figure-detail-meta">
-        <span className="dance-badge">
-          <span className="dance-badge-icon">{getDanceEmoji(figure.dance)}</span>
-          <span className="dance-badge-name">{figure.dance}</span>
-        </span>
-        <span className={`level-badge ${figure.level.toLowerCase().replace(' ', '-')}`}>
-          {getLevelEmoji(figure.level)} {figure.level}
-        </span>
-        <span className="step-count-badge">
-          {figure.steps.length} step{figure.steps.length === 1 ? '' : 's'}
-        </span>
-      </div>
-
-      {figure.generalNotes && <p className="figure-detail-notes">{figure.generalNotes}</p>}
-
-      <StepFieldFilter visibleColumns={visibleColumns} setVisibleColumns={setVisibleColumns} />
-
+    <div className={`figure-detail mode-${mode}`}>
       <div className="mode-switch" role="tablist" aria-label="Viewing mode">
         {DETAIL_MODES.map((m) => (
           <button
@@ -71,9 +59,32 @@ const FigureDetail: React.FC<FigureDetailProps> = ({
       </div>
 
       {mode === 'cards' ? (
-        <StepCardList figure={figure} visibleColumns={visibleColumns} />
+        <>
+          <div className="figure-detail-meta">
+            <span className="dance-badge">
+              <span className="dance-badge-icon">{getDanceEmoji(figure.dance)}</span>
+              <span className="dance-badge-name">{figure.dance}</span>
+            </span>
+            <span className={`level-badge ${figure.level.toLowerCase().replace(' ', '-')}`}>
+              {getLevelEmoji(figure.level)} {figure.level}
+            </span>
+            <span className="step-count-badge">
+              {figure.steps.length} step{figure.steps.length === 1 ? '' : 's'}
+            </span>
+          </div>
+
+          {figure.generalNotes && <p className="figure-detail-notes">{figure.generalNotes}</p>}
+
+          <StepFieldFilter visibleColumns={visibleColumns} setVisibleColumns={setVisibleColumns} />
+
+          <StepCardList figure={figure} visibleColumns={visibleColumns} />
+        </>
       ) : (
-        <PracticeStepper figure={figure} visibleColumns={visibleColumns} />
+        <>
+          <StepFieldFilter visibleColumns={visibleColumns} setVisibleColumns={setVisibleColumns} collapsible />
+
+          <PracticeStepper figure={figure} visibleColumns={visibleColumns} />
+        </>
       )}
     </div>
   );

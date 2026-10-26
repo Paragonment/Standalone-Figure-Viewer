@@ -226,6 +226,7 @@
   background-color: var(--container-bg);
   border: 1.5px solid var(--border-color);
   border-radius: 5px;
+  flex-shrink: 0;
   transition: all 0.2s ease;
 }
 
@@ -246,6 +247,12 @@
 .level-card .filter-checkbox-item input:checked ~ .checkbox-custom {
   background-color: var(--text-primary);
   border-color: var(--text-primary);
+}
+
+/* --text-primary flips to near-white in dark mode, so a white tick would
+   vanish; draw it in the panel color, which always contrasts. */
+.level-card .filter-checkbox-item input:checked ~ .checkbox-custom:after {
+  border-color: var(--container-bg);
 }
 
 .figures-card .filter-checkbox-item input:checked ~ .checkbox-custom {
@@ -316,5 +323,15 @@
 
   .results-count-text {
     font-size: 0.8rem;
+  }
+
+  /* Rows sized for a thumb; the list gap shrinks to compensate. */
+  .filter-checkbox-list {
+    gap: 2px;
+  }
+
+  .filter-checkbox-item {
+    min-height: 36px;
+    -webkit-tap-highlight-color: transparent;
   }
 }

@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useRef } from 'react';
+import React, { useState, useMemo, useEffect, useRef, useCallback } from 'react';
 import type { FigureGroup } from '../types';
 import { useDanceData } from '../hooks/useDanceData';
 import { useFigureGroups } from '../hooks/useFigureGroups';
@@ -9,6 +9,15 @@ import ColumnToggle from './ColumnToggle';
 import FigureDetail, { type DetailMode } from './FigureDetail';
 import { useIsMobile } from '../hooks/useIsMobile';
 import './ViewerContainer.css';
+
+interface FigureHistoryState {
+  figureKey: string;
+}
+
+const getFigureKey = (figure: FigureGroup) => `${figure.dance}-${figure.name}`;
+
+const readHistoryFigureKey = (): string | null =>
+  (window.history.state as FigureHistoryState | null)?.figureKey ?? null;
 
 interface ViewerContainerProps {
   theme: 'light' | 'dark';
@@ -43,41 +52,57 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
   const isMobile = useIsMobile();
 
   // Figure detail navigation (mobile only - desktop expands the row
-  // in place instead). detailMode is lifted here rather than into
-  // FigureDetail so it persists as you move between figures.
-  const [view, setView] = useState<'list' | 'detail'>('list');
-  const [activeFigureKey, setActiveFigureKey] = useState<string | null>(null);
+  // in place instead). Opening a figure pushes a history entry, so the
+  // phone's back gesture returns to the list instead of leaving the app;
+  // the open figure is read back from history.state, which also restores
+  // it after a reload. detailMode is lifted here rather than into
+  // FigureDetail so it persists across re-renders of the detail view.
+  const [activeFigureKey, setActiveFigureKey] = useState<string | null>(readHistoryFigureKey);
   const [detailMode, setDetailMode] = useState<DetailMode>('cards');
+
+  // The list's scroll offset survives a round trip through the detail
+  // view, so going back lands where you left off.
+  const listScrollTopRef = useRef(0);
 
   const activeFigure = useMemo<FigureGroup | null>(() => {
     if (!activeFigureKey) return null;
-    return figureGroups.find((f) => `${f.dance}-${f.name}` === activeFigureKey) ?? null;
+    return figureGroups.find((f) => getFigureKey(f) === activeFigureKey) ?? null;
   }, [figureGroups, activeFigureKey]);
 
+  const view: 'list' | 'detail' = activeFigure ? 'detail' : 'list';
+
   const openFigure = (figure: FigureGroup) => {
-    setActiveFigureKey(`${figure.dance}-${figure.name}`);
+    const figureKey = getFigureKey(figure);
+    window.history.pushState({ figureKey } satisfies FigureHistoryState, '');
+    setActiveFigureKey(figureKey);
     setDetailMode('cards');
-    setView('detail');
     setShowFilterControl(false);
   };
 
-  const closeDetail = () => {
-    setView('list');
-    setActiveFigureKey(null);
-  };
+  const closeDetail = useCallback(() => {
+    if (readHistoryFigureKey()) {
+      // The popstate listener below clears activeFigureKey.
+      window.history.back();
+    } else {
+      setActiveFigureKey(null);
+    }
+  }, []);
+
+  useEffect(() => {
+    const handlePopState = () => setActiveFigureKey(readHistoryFigureKey());
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   // Escape returns to the figure list from the detail view.
   useEffect(() => {
     if (view !== 'detail') return;
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setView('list');
-        setActiveFigureKey(null);
-      }
+      if (e.key === 'Escape') closeDetail();
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [view]);
+  }, [view, closeDetail]);
 
   // Dropdown states
   const [showFilterControl, setShowFilterControl] = useState(false);
@@ -188,34 +213,45 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
   return (
     <div className="viewer-layout">
       <main className="main-content">
-        <header className="viewer-header">
+        <header className={`viewer-header ${view === 'list' && (searchFocused || searchTerm) ? 'search-active' : ''}`}>
           <div className="title-area">
+            {view === 'detail' && activeFigure && (
+              <button
+                type="button"
+                className="detail-back-btn"
+                onClick={closeDetail}
+                aria-label="Back to figures"
+                title="Back to figures"
+              >
+                ‹
+              </button>
+            )}
             <nav className="breadcrumbs" aria-label="Breadcrumb">
               {view === 'detail' && activeFigure ? (
                 <>
-                  <span className="breadcrumb-item linkable" onClick={closeDetail}>
+                  <button type="button" className="breadcrumb-item linkable detail-root" onClick={closeDetail}>
                     Dances
-                  </span>
-                  <span className="breadcrumb-separator">/</span>
-                  <span className="breadcrumb-item active">{activeFigure.name}</span>
+                  </button>
+                  <span className="breadcrumb-separator detail-root">/</span>
+                  <span className="breadcrumb-item active" aria-current="page">{activeFigure.name}</span>
                 </>
               ) : (
                 <>
-                  <span className="breadcrumb-item linkable" onClick={() => { setSelectedDances([]); setSelectedFigures([]); }}>
+                  <button type="button" className="breadcrumb-item linkable" onClick={() => { setSelectedDances([]); setSelectedFigures([]); }}>
                     Dances
-                  </span>
+                  </button>
                   {selectedDances.length > 0 && (
                     <>
                       <span className="breadcrumb-separator">/</span>
-                      <span className="breadcrumb-item linkable" onClick={() => setSelectedFigures([])}>
+                      <button type="button" className="breadcrumb-item linkable" onClick={() => setSelectedFigures([])}>
                         {selectedDances.length === 1 ? selectedDances[0] : `${selectedDances.length} Dances`}
-                      </span>
+                      </button>
                     </>
                   )}
                   {selectedFigures.length > 0 && (
                     <>
                       <span className="breadcrumb-separator">/</span>
-                      <span className="breadcrumb-item active">
+                      <span className="breadcrumb-item active" aria-current="page">
                         {selectedFigures.length === 1 ? selectedFigures[0] : `${selectedFigures.length} Figures`}
                       </span>
                     </>
@@ -223,29 +259,6 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
                 </>
               )}
             </nav>
-            {view === 'detail' && activeFigure ? (
-              <>
-                <h1>{activeFigure.name}</h1>
-                <p>{activeFigure.dance} · {activeFigure.level} technique, step by step.</p>
-              </>
-            ) : (
-              <>
-                <h1>
-                  {selectedFigures.length > 0
-                    ? (selectedFigures.length === 1 ? selectedFigures[0] : 'Selected Figures')
-                    : selectedDances.length > 0
-                      ? `${selectedDances.length === 1 ? selectedDances[0] : 'Selected'} Figures`
-                      : 'Standard Ballroom Techniques'}
-                </h1>
-                <p>
-                  {selectedFigures.length > 0
-                    ? `Detailed steps, alignments, footwork, rise & fall, CBM, and sway for ${selectedFigures.length === 1 ? selectedFigures[0] : 'the selected figures'}.`
-                    : selectedDances.length > 0
-                      ? `Technique syllabus and figures for the selected competitive dances.`
-                      : 'Select a dance style to explore figures, step techniques, and alignment guides.'}
-                </p>
-              </>
-            )}
           </div>
 
           <div className="header-actions">
@@ -374,6 +387,7 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
               visibleColumns={visibleColumns}
               selectedFigures={selectedFigures}
               onSelectFigure={openFigure}
+              scrollTopRef={listScrollTopRef}
             />
           )}
         </div>

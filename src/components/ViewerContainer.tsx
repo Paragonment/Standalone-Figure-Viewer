@@ -1,10 +1,12 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
+import type { FigureGroup } from '../types';
 import { useDanceData } from '../hooks/useDanceData';
 import { useFigureGroups } from '../hooks/useFigureGroups';
 import { useDanceFilters } from '../hooks/useDanceFilters';
 import FilterToggle from './FilterToggle';
 import DanceTable from './DanceTable';
 import ColumnToggle from './ColumnToggle';
+import FigureDetail, { type DetailMode } from './FigureDetail';
 import './ViewerContainer.css';
 
 interface ViewerContainerProps {
@@ -36,6 +38,44 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
   const [visibleColumns, setVisibleColumns] = useState<string[]>([]);
   const [searchFocused, setSearchFocused] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
+
+  // Figure detail navigation: which figure is open, and how it's being
+  // viewed. detailMode and highlightFields are lifted here (rather than
+  // into FigureDetail) so they persist as you move between figures.
+  const [view, setView] = useState<'list' | 'detail'>('list');
+  const [activeFigureKey, setActiveFigureKey] = useState<string | null>(null);
+  const [detailMode, setDetailMode] = useState<DetailMode>('cards');
+  const [highlightFields, setHighlightFields] = useState<string[]>([]);
+
+  const activeFigure = useMemo<FigureGroup | null>(() => {
+    if (!activeFigureKey) return null;
+    return figureGroups.find((f) => `${f.dance}-${f.name}` === activeFigureKey) ?? null;
+  }, [figureGroups, activeFigureKey]);
+
+  const openFigure = (figure: FigureGroup) => {
+    setActiveFigureKey(`${figure.dance}-${figure.name}`);
+    setDetailMode('cards');
+    setView('detail');
+    setShowFilterControl(false);
+  };
+
+  const closeDetail = () => {
+    setView('list');
+    setActiveFigureKey(null);
+  };
+
+  // Escape returns to the figure list from the detail view.
+  useEffect(() => {
+    if (view !== 'detail') return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setView('list');
+        setActiveFigureKey(null);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [view]);
 
   // Dropdown states
   const [showFilterControl, setShowFilterControl] = useState(false);
@@ -149,44 +189,65 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
         <header className="viewer-header">
           <div className="title-area">
             <nav className="breadcrumbs" aria-label="Breadcrumb">
-              <span className="breadcrumb-item linkable" onClick={() => { setSelectedDances([]); setSelectedFigures([]); }}>
-                Dances
-              </span>
-              {selectedDances.length > 0 && (
+              {view === 'detail' && activeFigure ? (
                 <>
-                  <span className="breadcrumb-separator">/</span>
-                  <span className="breadcrumb-item linkable" onClick={() => setSelectedFigures([])}>
-                    {selectedDances.length === 1 ? selectedDances[0] : `${selectedDances.length} Dances`}
+                  <span className="breadcrumb-item linkable" onClick={closeDetail}>
+                    Dances
                   </span>
+                  <span className="breadcrumb-separator">/</span>
+                  <span className="breadcrumb-item active">{activeFigure.name}</span>
                 </>
-              )}
-              {selectedFigures.length > 0 && (
+              ) : (
                 <>
-                  <span className="breadcrumb-separator">/</span>
-                  <span className="breadcrumb-item active">
-                    {selectedFigures.length === 1 ? selectedFigures[0] : `${selectedFigures.length} Figures`}
+                  <span className="breadcrumb-item linkable" onClick={() => { setSelectedDances([]); setSelectedFigures([]); }}>
+                    Dances
                   </span>
+                  {selectedDances.length > 0 && (
+                    <>
+                      <span className="breadcrumb-separator">/</span>
+                      <span className="breadcrumb-item linkable" onClick={() => setSelectedFigures([])}>
+                        {selectedDances.length === 1 ? selectedDances[0] : `${selectedDances.length} Dances`}
+                      </span>
+                    </>
+                  )}
+                  {selectedFigures.length > 0 && (
+                    <>
+                      <span className="breadcrumb-separator">/</span>
+                      <span className="breadcrumb-item active">
+                        {selectedFigures.length === 1 ? selectedFigures[0] : `${selectedFigures.length} Figures`}
+                      </span>
+                    </>
+                  )}
                 </>
               )}
             </nav>
-            <h1>
-              {selectedFigures.length > 0 
-                ? (selectedFigures.length === 1 ? selectedFigures[0] : 'Selected Figures') 
-                : selectedDances.length > 0 
-                  ? `${selectedDances.length === 1 ? selectedDances[0] : 'Selected'} Figures` 
-                  : 'Standard Ballroom Techniques'}
-            </h1>
-            <p>
-              {selectedFigures.length > 0 
-                ? `Detailed steps, alignments, footwork, rise & fall, CBM, and sway for ${selectedFigures.length === 1 ? selectedFigures[0] : 'the selected figures'}.`
-                : selectedDances.length > 0 
-                  ? `Technique syllabus and figures for the selected competitive dances.`
-                  : 'Select a dance style to explore figures, step techniques, and alignment guides.'}
-            </p>
+            {view === 'detail' && activeFigure ? (
+              <>
+                <h1>{activeFigure.name}</h1>
+                <p>{activeFigure.dance} · {activeFigure.level} technique, step by step.</p>
+              </>
+            ) : (
+              <>
+                <h1>
+                  {selectedFigures.length > 0
+                    ? (selectedFigures.length === 1 ? selectedFigures[0] : 'Selected Figures')
+                    : selectedDances.length > 0
+                      ? `${selectedDances.length === 1 ? selectedDances[0] : 'Selected'} Figures`
+                      : 'Standard Ballroom Techniques'}
+                </h1>
+                <p>
+                  {selectedFigures.length > 0
+                    ? `Detailed steps, alignments, footwork, rise & fall, CBM, and sway for ${selectedFigures.length === 1 ? selectedFigures[0] : 'the selected figures'}.`
+                    : selectedDances.length > 0
+                      ? `Technique syllabus and figures for the selected competitive dances.`
+                      : 'Select a dance style to explore figures, step techniques, and alignment guides.'}
+                </p>
+              </>
+            )}
           </div>
 
           <div className="header-actions">
-            {hasActiveFilters && (
+            {view === 'list' && hasActiveFilters && (
               <button
                 className="clear-filters-pill"
                 onClick={clearFilters}
@@ -195,6 +256,7 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
               </button>
             )}
 
+            {view === 'list' && (
             <button
               ref={filterBtnRef}
               className={`header-filter-toggle-btn ${showFilterControl ? 'active' : ''}`}
@@ -207,6 +269,7 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
             >
               🪩
             </button>
+            )}
 
             <button
               ref={columnBtnRef}
@@ -229,7 +292,8 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
               {theme === 'light' ? '🌙' : '☀️'}
             </button>
 
-            <div 
+            {view === 'list' && (
+            <div
               className={`expandable-search-container ${searchFocused ? 'focused' : ''} ${searchTerm ? 'has-text' : ''}`}
               onClick={() => searchInputRef.current?.focus()}
             >
@@ -245,8 +309,8 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
                 onBlur={() => setSearchFocused(false)}
               />
               {searchTerm && (
-                <button 
-                  className="search-clear-btn" 
+                <button
+                  className="search-clear-btn"
                   onClick={(e) => {
                     e.stopPropagation();
                     setSearchTerm('');
@@ -259,11 +323,12 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
                 <span className="search-shortcut-hint">/</span>
               )}
             </div>
+            )}
           </div>
         </header>
-        
+
         <div className="content-body">
-          {showFilterControl && (
+          {view === 'list' && showFilterControl && (
             <div ref={filterPanelRef}>
               <FilterToggle
                 dances={dances}
@@ -291,11 +356,22 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
             </div>
           )}
 
-          <DanceTable 
-            data={filteredFigures} 
-            visibleColumns={visibleColumns} 
-            selectedFigures={selectedFigures}
-          />
+          {view === 'detail' && activeFigure ? (
+            <FigureDetail
+              figure={activeFigure}
+              visibleColumns={visibleColumns}
+              highlightFields={highlightFields}
+              setHighlightFields={setHighlightFields}
+              mode={detailMode}
+              setMode={setDetailMode}
+            />
+          ) : (
+            <DanceTable
+              data={filteredFigures}
+              visibleColumns={visibleColumns}
+              onSelectFigure={openFigure}
+            />
+          )}
         </div>
       </main>
     </div>

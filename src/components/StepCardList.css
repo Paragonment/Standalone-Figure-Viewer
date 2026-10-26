@@ -1,0 +1,135 @@
+.step-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-bottom: 8px;
+}
+
+.step-card {
+  background: var(--container-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 16px 18px;
+}
+
+.step-card-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--accent-light);
+  color: var(--accent-color);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.step-headline {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.step-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.step-col-head {
+  margin-bottom: 8px;
+}
+
+.role-chip {
+  display: inline-flex;
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.role-chip.lead {
+  background-color: var(--lead-light);
+  color: var(--lead-color);
+}
+
+.role-chip.follow {
+  background-color: var(--follow-light);
+  color: var(--follow-color);
+}
+
+.step-col-empty {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.field-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border-color);
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
+}
+
+.field-row:last-child {
+  border-bottom: none;
+}
+
+.field-row.highlighted {
+  background-color: var(--accent-light);
+  padding-left: 8px;
+  padding-right: 8px;
+  margin: 0 -8px;
+}
+
+.field-row.highlighted .field-label {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.field-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.field-value {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .step-split {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .step-col + .step-col {
+    padding-top: 12px;
+    border-top: 1px dashed var(--border-color);
+  }
+}

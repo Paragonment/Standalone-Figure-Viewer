@@ -47,7 +47,7 @@
 }
 
 /* ==========================================================================
-   1. PARENT FIGURE ROWS
+   1. FIGURE ROWS (open the step-by-step detail view)
    ========================================================================== */
 .figure-parent-row {
   cursor: pointer;
@@ -61,40 +61,30 @@
   background-color: var(--row-hover);
 }
 
-/* Bind parent and child visually when expanded */
-.figure-parent-row.parent-expanded td {
-  background-color: var(--accent-light);
-  border-bottom-color: transparent;
-}
-
 .figure-name-cell strong {
   font-family: var(--font-heading);
   font-size: 0.95rem;
   color: var(--text-primary);
 }
 
-/* Toggle Arrow */
+/* Open-detail arrow */
 .th-toggle-arrow, .td-toggle-arrow {
-  width: 44px;
-  min-width: 44px !important;
-  max-width: 44px !important;
+  width: 32px;
+  min-width: 32px !important;
+  max-width: 32px !important;
   text-align: center;
 }
 
-.toggle-arrow-icon {
+.open-arrow-icon {
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: 1rem;
   color: var(--text-muted);
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s;
+  transition: color 0.2s, transform 0.2s ease;
 }
 
-.figure-parent-row:hover .toggle-arrow-icon {
+.figure-parent-row:hover .open-arrow-icon {
   color: var(--accent-color);
-}
-
-.toggle-arrow-icon.rotated {
-  transform: rotate(90deg);
-  color: var(--accent-color);
+  transform: translateX(2px);
 }
 
 /* Step count pill */
@@ -116,160 +106,28 @@
   white-space: nowrap;
 }
 
-.parent-expanded .step-count-badge {
-  background-color: var(--accent-color);
-  color: white;
-}
-
 /* Summary Truncation */
 .general-notes-summary-cell {
   max-width: 300px;
 }
 
-.notes-text.truncate {
+.notes-text {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
   display: block;
+}
+
+.notes-text.truncate {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 400px;
 }
 
-
 /* ==========================================================================
-   2. CHILD EXPANDED DROPDOWN DETAILS
+   2. CELL ELEMENTS (BADGES / PILLS)
    ========================================================================== */
-.figure-child-row td {
-  padding: 0;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.expanded-details-cell {
-  background-color: var(--row-zebra);
-  max-width: 0;
-}
-
-.dropdown-details-wrapper {
-  padding: 16px 20px 24px 44px; /* Align content with text after the toggle arrow */
-  border-left: 4px solid var(--accent-color);
-  animation: dropdownFadeIn 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes dropdownFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.dropdown-subtitle {
-  margin: 0 0 12px 0;
-  font-family: var(--font-heading);
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-  letter-spacing: 0.05em;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* Inner Nested Steps Table */
-.nested-table-scroll {
-  width: 100%;
-  overflow-x: auto;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  background-color: var(--container-bg);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
-}
-
-.nested-steps-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  font-size: 0.84rem;
-}
-
-.nested-steps-table th {
-  background-color: var(--row-hover);
-  color: var(--text-secondary);
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding: 10px 14px;
-  border-bottom: 1px solid var(--border-color);
-  white-space: nowrap;
-  position: static; /* No sticky needed inside local dropdown */
-}
-
-.nested-steps-table td {
-  padding: 10px 14px;
-  border-bottom: 1px solid var(--border-color);
-  color: var(--text-secondary);
-  background-color: var(--container-bg);
-  min-width: 120px;
-  max-width: 250px;
-}
-
-/* Step Column in sub-tables */
-.th-step, .td-step {
-  width: 60px;
-  min-width: 60px !important;
-  max-width: 60px !important;
-  text-align: center;
-}
-
-/* General Notes Column in sub-tables */
-.th-notes, .td-notes {
-  width: 360px;
-  min-width: 360px !important;
-  max-width: 750px !important;
-}
-
-.nested-steps-table tr:last-child td {
-  border-bottom: none;
-}
-
-.nested-steps-table tr:nth-child(even) td {
-  background-color: var(--row-zebra);
-}
-
-.nested-steps-table tr:hover td {
-  background-color: var(--row-hover);
-}
-
-
-/* ==========================================================================
-   3. CELL ELEMENTS (BADGES / PILLS)
-   ========================================================================== */
-.step-cell {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.step-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-color: var(--accent-light);
-  color: var(--accent-color);
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.8rem;
-  border: 1px solid rgba(79, 70, 229, 0.15);
-}
-
 .dance-badge {
   display: inline-flex;
   align-items: center;
@@ -287,86 +145,8 @@
   font-size: 0.95rem;
 }
 
-.cbm-pill {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 2px 6px;
-  border-radius: 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  text-align: center;
-}
-
-.cbm-pill.active {
-  background-color: var(--lead-light);
-  color: var(--lead-color);
-  border: 1px solid rgba(16, 185, 129, 0.2);
-}
-
-.cbm-pill.inactive {
-  background-color: transparent;
-  color: var(--text-muted);
-  border: 1px solid var(--border-color);
-}
-
-.footwork-pill {
-  display: inline-block;
-  background-color: var(--accent-light);
-  color: var(--accent-color);
-  padding: 3px 8px;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.78rem;
-  border: 1px solid rgba(79, 70, 229, 0.12);
-  font-family: monospace;
-}
-
-.sway-pill {
-  display: inline-block;
-  padding: 3px 8px;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.78rem;
-  text-align: center;
-}
-
-.sway-left {
-  background-color: rgba(59, 130, 246, 0.1);
-  color: #3b82f6;
-  border: 1px solid rgba(59, 130, 246, 0.15);
-}
-
-.sway-right {
-  background-color: var(--follow-light);
-  color: var(--follow-color);
-  border: 1px solid rgba(236, 72, 153, 0.15);
-}
-
-.sway-straight {
-  background-color: rgba(16, 185, 129, 0.1);
-  color: #10b981;
-  border: 1px solid rgba(16, 185, 129, 0.15);
-}
-
-.sway-none {
-  color: var(--text-muted);
-}
-
-.cell-empty {
-  color: var(--text-muted);
-  font-weight: 300;
-}
-
-.notes-text {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  line-height: 1.45;
-  display: block;
-}
-
 /* ==========================================================================
-   4. NO RESULTS & SCREEN ADAPTATION
+   3. NO RESULTS & SCREEN ADAPTATION
    ========================================================================== */
 .no-results {
   text-align: center;
@@ -403,33 +183,6 @@
   line-height: 1.5;
 }
 
-/* Lead / Follow Column Color Tinting */
-.th-lead {
-  border-bottom: 2px solid var(--lead-color) !important;
-  color: var(--lead-color) !important;
-}
-
-.td-lead {
-  background-color: var(--lead-light) !important;
-}
-
-.nested-steps-table tr:nth-child(even) td.td-lead {
-  background-color: hsl(192, 54%, 48%, 0.05) !important;
-}
-
-.th-follow {
-  border-bottom: 2px solid var(--follow-color) !important;
-  color: var(--follow-color) !important;
-}
-
-.td-follow {
-  background-color: var(--follow-light) !important;
-}
-
-.nested-steps-table tr:nth-child(even) td.td-follow {
-  background-color: hsl(49, 49%, 59%, 0.05) !important;
-}
-
 .header-text-mobile {
   display: none;
 }
@@ -437,11 +190,6 @@
 @media (max-width: 768px) {
   .desktop-only {
     display: none !important;
-  }
-
-  .dropdown-details-wrapper {
-    padding: 12px 12px 16px 12px;
-    border-left-width: 3px;
   }
 
   .header-text-desktop {
@@ -457,45 +205,38 @@
   }
 
   .dance-table th, .dance-table td {
-    padding: 10px 12px;
+    padding: 10px 8px;
   }
 
-  .nested-steps-table {
-    font-size: 0.78rem;
+  /* Badges keep the row within the viewport: icon-only dance badge, and a
+     bare number for step count instead of "N steps". */
+  .dance-table .dance-badge-name {
+    display: none;
   }
 
-  .nested-steps-table th, .nested-steps-table td {
-    padding: 8px 10px;
-    min-width: 80px;
-    max-width: 180px;
+  .dance-table .dance-badge {
+    padding: 3px 6px;
   }
 
-  .th-step, .td-step {
-    width: 44px;
-    min-width: 44px !important;
-    max-width: 44px !important;
+  .th-toggle-arrow, .td-toggle-arrow {
+    width: 26px;
+    min-width: 26px !important;
+    max-width: 26px !important;
   }
 
-  .th-notes, .td-notes {
-    width: 240px;
-    min-width: 240px !important;
-    max-width: 540px !important;
+  .th-step-count, .td-step-count {
+    width: 40px;
+    min-width: 40px !important;
+    max-width: 40px !important;
   }
 
-  .step-badge {
-    width: 20px;
-    height: 20px;
-    font-size: 0.75rem;
-  }
-
-  .footwork-pill, .sway-pill, .cbm-pill {
-    font-size: 0.7rem;
-    padding: 2px 4px;
+  .step-count-badge {
+    padding: 3px 6px;
   }
 }
 
 /* ==========================================================================
-   5. LEVEL BADGE STYLING
+   4. LEVEL BADGE STYLING
    ========================================================================== */
 .level-badge {
   display: inline-flex;
@@ -560,8 +301,7 @@
 
 @media (max-width: 768px) {
   .level-badge {
-    font-size: 0.72rem;
-    padding: 2px 6px;
+    font-size: 0.7rem;
+    padding: 2px 4px;
   }
 }
-

@@ -1,0 +1,156 @@
+import React, { useEffect, useRef, useState } from 'react';
+import type { FigureGroup } from '../types';
+import { STEP_FIELDS } from '../utils/stepFields';
+import FieldValue from './FieldValue';
+import './PracticeStepper.css';
+
+interface PracticeStepperProps {
+  figure: FigureGroup;
+  visibleColumns: string[];
+  highlightFields: string[];
+}
+
+type Role = 'lead' | 'follow';
+
+const FEET_FIELD = STEP_FIELDS.find((f) => f.key === 'Feet Positions')!;
+const ALIGNMENT_FIELD = STEP_FIELDS.find((f) => f.key === 'Alignment')!;
+const META_FIELDS = STEP_FIELDS.filter((f) => f.key !== 'Feet Positions' && f.key !== 'Alignment');
+
+const roleKey = (role: Role): 'leadKey' | 'followKey' => (role === 'lead' ? 'leadKey' : 'followKey');
+
+const PracticeStepper: React.FC<PracticeStepperProps> = ({ figure, visibleColumns, highlightFields }) => {
+  const [stepIndex, setStepIndex] = useState(0);
+  const [primaryRole, setPrimaryRole] = useState<Role>('lead');
+  const touchStartX = useRef<number | null>(null);
+
+  // A different figure means a different step count, so start over rather
+  // than risk landing past the end of a shorter figure.
+  useEffect(() => {
+    setStepIndex(0);
+  }, [figure]);
+
+  const total = figure.steps.length;
+  const step = figure.steps[stepIndex];
+
+  const goTo = (next: number) => {
+    if (next < 0 || next >= total) return;
+    setStepIndex(next);
+  };
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowRight') goTo(stepIndex + 1);
+      if (e.key === 'ArrowLeft') goTo(stepIndex - 1);
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stepIndex, total]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const delta = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(delta) > 50) {
+      goTo(stepIndex + (delta < 0 ? 1 : -1));
+    }
+    touchStartX.current = null;
+  };
+
+  if (!step) return null;
+
+  const primaryK = roleKey(primaryRole);
+  const secondaryRole: Role = primaryRole === 'lead' ? 'follow' : 'lead';
+  const secondaryK = roleKey(secondaryRole);
+
+  const showFeet = visibleColumns.includes(FEET_FIELD[primaryK]);
+  const showAlign = visibleColumns.includes(ALIGNMENT_FIELD[primaryK]);
+  const metaFields = META_FIELDS.filter((f) => visibleColumns.includes(f[primaryK]));
+
+  const secondaryShowFeet = visibleColumns.includes(FEET_FIELD[secondaryK]);
+  const secondaryShowAlign = visibleColumns.includes(ALIGNMENT_FIELD[secondaryK]);
+  const secondarySummary = [
+    secondaryShowFeet ? step[FEET_FIELD[secondaryK]] : null,
+    secondaryShowAlign ? step[ALIGNMENT_FIELD[secondaryK]] : null,
+  ]
+    .filter(Boolean)
+    .join(' · ');
+
+  return (
+    <div className="practice-stepper">
+      <div className="ps-top">
+        <div className="ps-dots">
+          {figure.steps.map((_, i) => (
+            <span key={i} className={`ps-dot ${i <= stepIndex ? 'done' : ''}`} />
+          ))}
+        </div>
+        <div className="ps-count">
+          Step {stepIndex + 1} / {total}
+        </div>
+      </div>
+
+      <div className="ps-body" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+        <div className="ps-primary-role">
+          <span className={`role-chip ${primaryRole}`}>{primaryRole}</span>
+        </div>
+
+        {showFeet && <div className="ps-feet">{step[FEET_FIELD[primaryK]]}</div>}
+        {showAlign && <div className="ps-align">{step[ALIGNMENT_FIELD[primaryK]]}</div>}
+
+        {metaFields.length > 0 && (
+          <div className="ps-meta-row">
+            {metaFields.map((f) => (
+              <span
+                key={f.key}
+                className={`ps-meta-chip ${highlightFields.includes(f.key) ? 'highlighted' : ''}`}
+              >
+                <span className="ps-meta-label">{f.label}</span>
+                <FieldValue field={f.key} value={step[f[primaryK]]} />
+              </span>
+            ))}
+          </div>
+        )}
+
+        {secondarySummary && (
+          <div className="ps-secondary">
+            <div className="ps-secondary-label">{secondaryRole} on this step</div>
+            <div className="ps-secondary-value">{secondarySummary}</div>
+          </div>
+        )}
+      </div>
+
+      <div className="ps-nav">
+        <button
+          type="button"
+          className="ps-arrow"
+          disabled={stepIndex === 0}
+          onClick={() => goTo(stepIndex - 1)}
+          aria-label="Previous step"
+        >
+          ←
+        </button>
+        <button
+          type="button"
+          className="ps-flip"
+          onClick={() => setPrimaryRole((r) => (r === 'lead' ? 'follow' : 'lead'))}
+        >
+          ⇄ Flip role
+        </button>
+        <button
+          type="button"
+          className="ps-arrow"
+          disabled={stepIndex === total - 1}
+          onClick={() => goTo(stepIndex + 1)}
+          aria-label="Next step"
+        >
+          →
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default PracticeStepper;

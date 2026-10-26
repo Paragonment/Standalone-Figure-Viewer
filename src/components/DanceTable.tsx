@@ -1,34 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import type { FigureGroup, DanceStep } from '../types';
+import React from 'react';
+import type { FigureGroup } from '../types';
 import { getDanceEmoji } from '../utils/danceEmoji';
-import { getColumnGroup, getShortHeader } from '../utils/columns';
 import './DanceTable.css';
 
 interface DanceTableProps {
   data: FigureGroup[];
   visibleColumns?: string[];
-  selectedFigures?: string[];
+  onSelectFigure: (figure: FigureGroup) => void;
 }
 
-const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedFigures }) => {
-  const [expandedFigures, setExpandedFigures] = useState<Set<string>>(new Set());
-
-  // Auto-expand the selected figures when they change
-  useEffect(() => {
-    if (selectedFigures && selectedFigures.length > 0) {
-      setExpandedFigures(prev => {
-        const next = new Set(prev);
-        selectedFigures.forEach(figName => {
-          const matchingGroups = data.filter(f => f.name === figName);
-          matchingGroups.forEach(g => {
-            next.add(`${g.dance}-${g.name}`);
-          });
-        });
-        return next;
-      });
-    }
-  }, [selectedFigures, data]);
-
+const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, onSelectFigure }) => {
   if (data.length === 0) {
     return (
       <div className="no-results">
@@ -39,102 +20,10 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
     );
   }
 
-  // Obtain all headers from the first step of the first figure
-  const allHeaders = Object.keys(data[0].steps[0]) as (keyof DanceStep)[];
-  const headers = visibleColumns 
-    ? allHeaders.filter(h => visibleColumns.includes(h))
-    : allHeaders;
-
-  // Filter out redundant 'Dance', 'Figure Name', and 'Level' from the inner step details
-  const innerHeaders = headers.filter(h => h !== 'Dance' && h !== 'Figure Name' && h !== 'Level');
-
   const showDance = !visibleColumns || visibleColumns.includes('Dance');
   const showLevel = !visibleColumns || visibleColumns.includes('Level');
   const showStep = !visibleColumns || visibleColumns.includes('Step');
   const showNotes = !visibleColumns || visibleColumns.includes('General Notes');
-  const colSpan = 1 + (showDance ? 1 : 0) + 1 + (showLevel ? 1 : 0) + (showStep ? 1 : 0) + (showNotes ? 1 : 0);
-
-  const toggleFigure = (dance: string, name: string) => {
-    const key = `${dance}-${name}`;
-    setExpandedFigures(prev => {
-      const next = new Set(prev);
-      if (next.has(key)) {
-        next.delete(key);
-      } else {
-        next.add(key);
-      }
-      return next;
-    });
-  };
-
-  const renderCell = (header: keyof DanceStep, value: string) => {
-    if (!value || value.trim() === '' || value.trim() === 'Nil') {
-      return <span className="cell-empty">—</span>;
-    }
-
-    switch (header) {
-      case 'Step':
-        return (
-          <div className="step-cell">
-            <span className="step-badge">{value}</span>
-          </div>
-        );
-      
-      case 'Dance':
-        return (
-          <span className="dance-badge">
-            <span className="dance-badge-icon">{getDanceEmoji(value)}</span>
-            <span className="dance-badge-name">{value}</span>
-          </span>
-        );
-
-      case 'Lead CBM':
-      case 'Follow CBM': {
-        const isCbm = value.toLowerCase() === 'true';
-        return (
-          <span className={`cbm-pill ${isCbm ? 'active' : 'inactive'}`}>
-            {isCbm ? 'CBM' : 'No'}
-          </span>
-        );
-      }
-
-      case 'Lead Footwork':
-      case 'Follow Footwork':
-        return (
-          <span className="footwork-pill" title={value}>
-            {value}
-          </span>
-        );
-
-      case 'Lead Sway':
-      case 'Follow Sway': {
-        const valUpper = value.toUpperCase();
-        let swayClass = 'sway-none';
-        let swayLabel = value;
-        if (valUpper === 'L') {
-          swayClass = 'sway-left';
-          swayLabel = 'Left (L)';
-        } else if (valUpper === 'R') {
-          swayClass = 'sway-right';
-          swayLabel = 'Right (R)';
-        } else if (valUpper === 'S') {
-          swayClass = 'sway-straight';
-          swayLabel = 'Straight (S)';
-        }
-        return (
-          <span className={`sway-pill ${swayClass}`}>
-            {swayLabel}
-          </span>
-        );
-      }
-
-      case 'General Notes':
-        return <span className="notes-text">{value}</span>;
-
-      default:
-        return <span className="standard-text">{value}</span>;
-    }
-  };
 
   return (
     <div className="table-container">
@@ -148,7 +37,12 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
               <span className="header-text-mobile">Figure</span>
             </th>
             {showLevel && <th>Level</th>}
-            {showStep && <th className="th-step-count">Steps</th>}
+            {showStep && (
+              <th className="th-step-count">
+                <span className="header-text-desktop">Steps</span>
+                <span className="header-text-mobile">#</span>
+              </th>
+            )}
             {showNotes && (
               <th className="desktop-only">
                 <span className="header-text-desktop">General Notes Summary</span>
@@ -160,101 +54,50 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
         <tbody>
           {data.map((fig) => {
             const key = `${fig.dance}-${fig.name}`;
-            const isExpanded = expandedFigures.has(key);
 
             return (
-              <React.Fragment key={key}>
-                {/* Parent Row */}
-                <tr 
-                  className={`figure-parent-row ${isExpanded ? 'parent-expanded' : ''}`}
-                  onClick={() => toggleFigure(fig.dance, fig.name)}
-                >
-                  <td className="td-toggle-arrow">
-                    <span className={`toggle-arrow-icon ${isExpanded ? 'rotated' : ''}`}>▶</span>
+              <tr
+                className="figure-parent-row"
+                key={key}
+                onClick={() => onSelectFigure(fig)}
+              >
+                <td className="td-toggle-arrow">
+                  <span className="open-arrow-icon">›</span>
+                </td>
+                {showDance && (
+                  <td>
+                    <span className="dance-badge">
+                      <span className="dance-badge-icon">{getDanceEmoji(fig.dance)}</span>
+                      <span className="dance-badge-name">{fig.dance}</span>
+                    </span>
                   </td>
-                  {showDance && (
-                    <td>
-                      <span className="dance-badge">
-                        <span className="dance-badge-icon">{getDanceEmoji(fig.dance)}</span>
-                        <span className="dance-badge-name">{fig.dance}</span>
-                      </span>
-                    </td>
-                  )}
-                  <td className="figure-name-cell">
-                    <strong>{fig.name}</strong>
+                )}
+                <td className="figure-name-cell">
+                  <strong>{fig.name}</strong>
+                </td>
+                {showLevel && (
+                  <td>
+                    <span className={`level-badge ${fig.level.toLowerCase().replace(' ', '-')}`}>
+                      {fig.level}
+                    </span>
                   </td>
-                  {showLevel && (
-                    <td>
-                      <span className={`level-badge ${fig.level.toLowerCase().replace(' ', '-')}`}>
-                        {fig.level}
-                      </span>
-                    </td>
-                  )}
-                  {showStep && (
-                    <td className="td-step-count">
-                      <span className="step-count-badge">
+                )}
+                {showStep && (
+                  <td className="td-step-count">
+                    <span className="step-count-badge">
+                      <span className="header-text-desktop">
                         {fig.steps.length} step{fig.steps.length === 1 ? '' : 's'}
                       </span>
-                    </td>
-                  )}
-                  {showNotes && (
-                    <td className="general-notes-summary-cell desktop-only">
-                      <span className="notes-text truncate">{fig.generalNotes || '—'}</span>
-                    </td>
-                  )}
-                </tr>
-
-                {/* Expanded Sub-table Row */}
-                {isExpanded && (
-                  <tr className="figure-child-row">
-                    <td colSpan={colSpan} className="expanded-details-cell">
-                      <div className="dropdown-details-wrapper">
-                        <div className="nested-table-scroll">
-                          <table className="nested-steps-table">
-                            <thead>
-                              <tr>
-                                {innerHeaders.map((header) => {
-                                  let className = '';
-                                  if (header === 'Step') className = 'th-step';
-                                  else if (header === 'General Notes') className = 'th-notes';
-                                  else if (getColumnGroup(header) === 'lead') className = 'th-lead';
-                                  else if (getColumnGroup(header) === 'follow') className = 'th-follow';
-
-                                  return (
-                                    <th key={header} className={className}>
-                                      <span className="header-text-desktop">{header}</span>
-                                      <span className="header-text-mobile">{getShortHeader(header)}</span>
-                                    </th>
-                                  );
-                                })}
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {fig.steps.map((step, idx) => (
-                                <tr key={idx}>
-                                  {innerHeaders.map((header) => {
-                                    let className = '';
-                                    if (header === 'Step') className = 'td-step';
-                                    else if (header === 'General Notes') className = 'td-notes';
-                                    else if (getColumnGroup(header) === 'lead') className = 'td-lead';
-                                    else if (getColumnGroup(header) === 'follow') className = 'td-follow';
-
-                                    return (
-                                      <td key={header} className={className}>
-                                        {renderCell(header, step[header])}
-                                      </td>
-                                    );
-                                  })}
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
+                      <span className="header-text-mobile">{fig.steps.length}</span>
+                    </span>
+                  </td>
                 )}
-              </React.Fragment>
+                {showNotes && (
+                  <td className="general-notes-summary-cell desktop-only">
+                    <span className="notes-text truncate">{fig.generalNotes || '—'}</span>
+                  </td>
+                )}
+              </tr>
             );
           })}
         </tbody>

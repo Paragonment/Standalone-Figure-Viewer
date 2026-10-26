@@ -7,7 +7,6 @@ import './PracticeStepper.css';
 interface PracticeStepperProps {
   figure: FigureGroup;
   visibleColumns: string[];
-  highlightFields: string[];
 }
 
 type Role = 'lead' | 'follow';
@@ -18,7 +17,7 @@ const META_FIELDS = STEP_FIELDS.filter((f) => f.key !== 'Feet Positions' && f.ke
 
 const roleKey = (role: Role): 'leadKey' | 'followKey' => (role === 'lead' ? 'leadKey' : 'followKey');
 
-const PracticeStepper: React.FC<PracticeStepperProps> = ({ figure, visibleColumns, highlightFields }) => {
+const PracticeStepper: React.FC<PracticeStepperProps> = ({ figure, visibleColumns }) => {
   const [stepIndex, setStepIndex] = useState(0);
   const [primaryRole, setPrimaryRole] = useState<Role>('lead');
   const touchStartX = useRef<number | null>(null);
@@ -92,24 +91,40 @@ const PracticeStepper: React.FC<PracticeStepperProps> = ({ figure, visibleColumn
         </div>
       </div>
 
+      <div className="ps-role-switch" role="tablist" aria-label="Whose part to show">
+        <button
+          type="button"
+          role="tab"
+          aria-selected={primaryRole === 'lead'}
+          className={`ps-role-btn lead ${primaryRole === 'lead' ? 'active' : ''}`}
+          onClick={() => setPrimaryRole('lead')}
+        >
+          🕺 Lead
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={primaryRole === 'follow'}
+          className={`ps-role-btn follow ${primaryRole === 'follow' ? 'active' : ''}`}
+          onClick={() => setPrimaryRole('follow')}
+        >
+          💃 Follow
+        </button>
+      </div>
+
       <div className="ps-body" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
-        <div className="ps-primary-role">
-          <span className={`role-chip ${primaryRole}`}>{primaryRole}</span>
+        <div className="ps-hero">
+          {showFeet && <div className="ps-feet">{step[FEET_FIELD[primaryK]]}</div>}
+          {showAlign && <div className="ps-align">{step[ALIGNMENT_FIELD[primaryK]]}</div>}
         </div>
 
-        {showFeet && <div className="ps-feet">{step[FEET_FIELD[primaryK]]}</div>}
-        {showAlign && <div className="ps-align">{step[ALIGNMENT_FIELD[primaryK]]}</div>}
-
         {metaFields.length > 0 && (
-          <div className="ps-meta-row">
+          <div className="ps-meta-grid">
             {metaFields.map((f) => (
-              <span
-                key={f.key}
-                className={`ps-meta-chip ${highlightFields.includes(f.key) ? 'highlighted' : ''}`}
-              >
+              <div key={f.key} className="ps-meta-cell">
                 <span className="ps-meta-label">{f.label}</span>
                 <FieldValue field={f.key} value={step[f[primaryK]]} />
-              </span>
+              </div>
             ))}
           </div>
         )}
@@ -131,13 +146,6 @@ const PracticeStepper: React.FC<PracticeStepperProps> = ({ figure, visibleColumn
           aria-label="Previous step"
         >
           ←
-        </button>
-        <button
-          type="button"
-          className="ps-flip"
-          onClick={() => setPrimaryRole((r) => (r === 'lead' ? 'follow' : 'lead'))}
-        >
-          ⇄ Flip role
         </button>
         <button
           type="button"

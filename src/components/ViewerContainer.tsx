@@ -7,6 +7,7 @@ import FilterToggle from './FilterToggle';
 import DanceTable from './DanceTable';
 import ColumnToggle from './ColumnToggle';
 import FigureDetail, { type DetailMode } from './FigureDetail';
+import { useIsMobile } from '../hooks/useIsMobile';
 import './ViewerContainer.css';
 
 interface ViewerContainerProps {
@@ -39,13 +40,14 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
   const [searchFocused, setSearchFocused] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
-  // Figure detail navigation: which figure is open, and how it's being
-  // viewed. detailMode and highlightFields are lifted here (rather than
-  // into FigureDetail) so they persist as you move between figures.
+  const isMobile = useIsMobile();
+
+  // Figure detail navigation (mobile only - desktop expands the row
+  // in place instead). detailMode is lifted here rather than into
+  // FigureDetail so it persists as you move between figures.
   const [view, setView] = useState<'list' | 'detail'>('list');
   const [activeFigureKey, setActiveFigureKey] = useState<string | null>(null);
   const [detailMode, setDetailMode] = useState<DetailMode>('cards');
-  const [highlightFields, setHighlightFields] = useState<string[]>([]);
 
   const activeFigure = useMemo<FigureGroup | null>(() => {
     if (!activeFigureKey) return null;
@@ -271,6 +273,7 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
             </button>
             )}
 
+            {!isMobile && (
             <button
               ref={columnBtnRef}
               className={`header-column-toggle-btn ${showColumnControl ? 'active' : ''}`}
@@ -283,8 +286,9 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
             >
               ⚙️
             </button>
+            )}
 
-            <button 
+            <button
               className="header-theme-toggle-btn"
               onClick={toggleTheme}
               title={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
@@ -345,7 +349,7 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
             </div>
           )}
 
-          {showColumnControl && (
+          {!isMobile && showColumnControl && (
             <div ref={columnPanelRef}>
               <ColumnToggle
                 columns={allColumns}
@@ -360,8 +364,7 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
             <FigureDetail
               figure={activeFigure}
               visibleColumns={visibleColumns}
-              highlightFields={highlightFields}
-              setHighlightFields={setHighlightFields}
+              setVisibleColumns={setVisibleColumns}
               mode={detailMode}
               setMode={setDetailMode}
             />
@@ -369,6 +372,7 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
             <DanceTable
               data={filteredFigures}
               visibleColumns={visibleColumns}
+              selectedFigures={selectedFigures}
               onSelectFigure={openFigure}
             />
           )}

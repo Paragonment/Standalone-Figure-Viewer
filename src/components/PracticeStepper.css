@@ -44,87 +44,94 @@
   white-space: nowrap;
 }
 
+/* Full-width Lead/Follow switch - a direct, one-tap choice of whose part
+   to read, with a tap target sized for a thumb rather than a fingertip. */
+.ps-role-switch {
+  display: flex;
+  gap: 8px;
+  padding: 14px 20px 0;
+  flex-shrink: 0;
+}
+
+.ps-role-btn {
+  flex: 1;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: var(--row-hover);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ps-role-btn.lead.active {
+  background-color: var(--lead-light);
+  border-color: var(--lead-color);
+  color: var(--lead-color);
+}
+
+.ps-role-btn.follow.active {
+  background-color: var(--follow-light);
+  border-color: var(--follow-color);
+  color: var(--follow-color);
+}
+
 .ps-body {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 24px 32px;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 24px 20px;
 }
 
-.ps-primary-role {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 16px;
-}
-
-.role-chip {
-  display: inline-flex;
-  font-family: var(--font-heading);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 3px 10px;
-  border-radius: 20px;
-}
-
-.role-chip.lead {
-  background-color: var(--lead-light);
-  color: var(--lead-color);
-}
-
-.role-chip.follow {
-  background-color: var(--follow-light);
-  color: var(--follow-color);
+.ps-hero {
+  text-align: center;
 }
 
 .ps-feet {
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 1.5rem;
-  line-height: 1.2;
-  text-align: center;
+  font-size: 1.9rem;
+  line-height: 1.15;
   color: var(--text-primary);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  text-wrap: balance;
 }
 
 .ps-align {
-  text-align: center;
   color: var(--text-secondary);
-  font-size: 1rem;
-  margin-bottom: 20px;
+  font-size: 1.1rem;
 }
 
-.ps-meta-row {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+.ps-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 10px;
-  margin-bottom: 24px;
 }
 
-.ps-meta-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.8rem;
+.ps-meta-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   background-color: var(--row-hover);
   border: 1px solid var(--border-color);
-  border-radius: 20px;
-  padding: 5px 12px;
-}
-
-.ps-meta-chip.highlighted {
-  background-color: var(--accent-light);
-  border-color: var(--accent-color);
+  border-radius: 10px;
+  padding: 12px 14px;
 }
 
 .ps-meta-label {
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   color: var(--text-muted);
-  font-size: 0.72rem;
 }
 
 .ps-secondary {
@@ -144,7 +151,7 @@
 }
 
 .ps-secondary-value {
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   color: var(--text-secondary);
 }
 
@@ -159,13 +166,13 @@
 }
 
 .ps-arrow {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
+  flex: 1;
+  height: 48px;
+  border-radius: 10px;
   border: 1px solid var(--border-color);
   background: var(--container-bg);
   color: var(--text-primary);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -181,50 +188,4 @@
 .ps-arrow:disabled {
   opacity: 0.3;
   cursor: default;
-}
-
-.ps-flip {
-  font-family: var(--font-heading);
-  font-weight: 600;
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  background-color: var(--row-hover);
-  border: 1px solid var(--border-color);
-  border-radius: 20px;
-  padding: 10px 18px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.ps-flip:hover {
-  color: var(--text-primary);
-  border-color: var(--text-muted);
-}
-
-@media (max-width: 768px) {
-  .ps-feet {
-    font-size: 1.25rem;
-  }
-
-  .ps-body {
-    padding: 20px 20px;
-  }
-}
-
-/* On a wide screen, full-bleed-to-the-viewport stops feeling like a focused
-   flashcard and starts feeling like an empty page. Mobile keeps the
-   immersive fill (practice is meant to be used one-handed, standing up);
-   desktop gets a card sized to its content instead. */
-@media (min-width: 769px) {
-  .practice-stepper {
-    flex: 0 1 auto;
-    align-self: center;
-    width: 100%;
-    max-width: 640px;
-    margin-top: 12px;
-  }
-
-  .ps-body {
-    padding: 40px 48px;
-  }
 }

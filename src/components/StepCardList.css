@@ -89,24 +89,10 @@
   gap: 12px;
   padding: 7px 0;
   border-bottom: 1px solid var(--border-color);
-  border-radius: 4px;
-  transition: background-color 0.15s ease;
 }
 
 .field-row:last-child {
   border-bottom: none;
-}
-
-.field-row.highlighted {
-  background-color: var(--accent-light);
-  padding-left: 8px;
-  padding-right: 8px;
-  margin: 0 -8px;
-}
-
-.field-row.highlighted .field-label {
-  color: var(--accent-color);
-  font-weight: 600;
 }
 
 .field-label {

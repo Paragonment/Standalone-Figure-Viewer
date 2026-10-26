@@ -1,9 +1,9 @@
 import React from 'react';
 import type { FigureGroup } from '../types';
-import { STEP_FIELDS } from '../utils/stepFields';
 import { getDanceEmoji, getLevelEmoji } from '../utils/danceEmoji';
 import StepCardList from './StepCardList';
 import PracticeStepper from './PracticeStepper';
+import StepFieldFilter from './StepFieldFilter';
 import './FigureDetail.css';
 
 export type DetailMode = 'cards' | 'practice';
@@ -15,7 +15,7 @@ interface DetailModeDef {
 }
 
 // Ordered list of ways to view a figure's steps. To add another one (e.g. a
-// future "Quiz" mode), add an entry here and a case in the switch below.
+// future "Quiz" mode), add an entry here and a case in the render switch below.
 const DETAIL_MODES: DetailModeDef[] = [
   { id: 'cards', label: 'Step Cards', icon: '🗂️' },
   { id: 'practice', label: 'Practice', icon: '▶️' },
@@ -24,8 +24,7 @@ const DETAIL_MODES: DetailModeDef[] = [
 interface FigureDetailProps {
   figure: FigureGroup;
   visibleColumns: string[];
-  highlightFields: string[];
-  setHighlightFields: (fields: string[]) => void;
+  setVisibleColumns: (cols: string[]) => void;
   mode: DetailMode;
   setMode: (mode: DetailMode) => void;
 }
@@ -33,21 +32,10 @@ interface FigureDetailProps {
 const FigureDetail: React.FC<FigureDetailProps> = ({
   figure,
   visibleColumns,
-  highlightFields,
-  setHighlightFields,
+  setVisibleColumns,
   mode,
   setMode,
 }) => {
-  const availableHighlightFields = STEP_FIELDS.filter(
-    (f) => visibleColumns.includes(f.leadKey) || visibleColumns.includes(f.followKey)
-  );
-
-  const toggleHighlight = (key: string) => {
-    setHighlightFields(
-      highlightFields.includes(key) ? highlightFields.filter((f) => f !== key) : [...highlightFields, key]
-    );
-  };
-
   return (
     <div className="figure-detail">
       <div className="figure-detail-meta">
@@ -65,46 +53,27 @@ const FigureDetail: React.FC<FigureDetailProps> = ({
 
       {figure.generalNotes && <p className="figure-detail-notes">{figure.generalNotes}</p>}
 
-      <div className="figure-detail-controls">
-        <div className="mode-switch" role="tablist" aria-label="Viewing mode">
-          {DETAIL_MODES.map((m) => (
-            <button
-              key={m.id}
-              type="button"
-              role="tab"
-              aria-selected={mode === m.id}
-              className={`mode-switch-btn ${mode === m.id ? 'active' : ''}`}
-              onClick={() => setMode(m.id)}
-            >
-              <span aria-hidden="true">{m.icon}</span> {m.label}
-            </button>
-          ))}
-        </div>
+      <StepFieldFilter visibleColumns={visibleColumns} setVisibleColumns={setVisibleColumns} />
 
-        {availableHighlightFields.length > 0 && (
-          <div className="highlight-row">
-            <span className="highlight-label">Focus on</span>
-            <div className="highlight-chips">
-              {availableHighlightFields.map((f) => (
-                <button
-                  key={f.key}
-                  type="button"
-                  className={`highlight-chip ${highlightFields.includes(f.key) ? 'active' : ''}`}
-                  onClick={() => toggleHighlight(f.key)}
-                  aria-pressed={highlightFields.includes(f.key)}
-                >
-                  {f.label}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
+      <div className="mode-switch" role="tablist" aria-label="Viewing mode">
+        {DETAIL_MODES.map((m) => (
+          <button
+            key={m.id}
+            type="button"
+            role="tab"
+            aria-selected={mode === m.id}
+            className={`mode-switch-btn ${mode === m.id ? 'active' : ''}`}
+            onClick={() => setMode(m.id)}
+          >
+            <span aria-hidden="true">{m.icon}</span> {m.label}
+          </button>
+        ))}
       </div>
 
       {mode === 'cards' ? (
-        <StepCardList figure={figure} visibleColumns={visibleColumns} highlightFields={highlightFields} />
+        <StepCardList figure={figure} visibleColumns={visibleColumns} />
       ) : (
-        <PracticeStepper figure={figure} visibleColumns={visibleColumns} highlightFields={highlightFields} />
+        <PracticeStepper figure={figure} visibleColumns={visibleColumns} />
       )}
     </div>
   );

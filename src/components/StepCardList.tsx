@@ -7,10 +7,9 @@ import './StepCardList.css';
 interface StepCardListProps {
   figure: FigureGroup;
   visibleColumns: string[];
-  highlightFields: string[];
 }
 
-const StepCardList: React.FC<StepCardListProps> = ({ figure, visibleColumns, highlightFields }) => {
+const StepCardList: React.FC<StepCardListProps> = ({ figure, visibleColumns }) => {
   const leadFields = STEP_FIELDS.filter((f) => visibleColumns.includes(f.leadKey));
   const followFields = STEP_FIELDS.filter((f) => visibleColumns.includes(f.followKey));
   const showLeadFeet = visibleColumns.includes('Lead Feet Positions');
@@ -38,10 +37,7 @@ const StepCardList: React.FC<StepCardListProps> = ({ figure, visibleColumns, hig
                   <p className="step-col-empty">No fields selected</p>
                 ) : (
                   leadFields.map((f) => (
-                    <div
-                      className={`field-row ${highlightFields.includes(f.key) ? 'highlighted' : ''}`}
-                      key={f.key}
-                    >
+                    <div className="field-row" key={f.key}>
                       <div className="field-label">{f.label}</div>
                       <div className="field-value">
                         <FieldValue field={f.key} value={step[f.leadKey]} />
@@ -58,10 +54,7 @@ const StepCardList: React.FC<StepCardListProps> = ({ figure, visibleColumns, hig
                   <p className="step-col-empty">No fields selected</p>
                 ) : (
                   followFields.map((f) => (
-                    <div
-                      className={`field-row ${highlightFields.includes(f.key) ? 'highlighted' : ''}`}
-                      key={f.key}
-                    >
+                    <div className="field-row" key={f.key}>
                       <div className="field-label">{f.label}</div>
                       <div className="field-value">
                         <FieldValue field={f.key} value={step[f.followKey]} />

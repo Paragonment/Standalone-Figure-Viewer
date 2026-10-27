@@ -86,7 +86,7 @@ const FilterToggle: React.FC<FilterToggleProps> = ({
 
         <div className="preset-results-summary">
           <span className="results-count-text">
-            Found <strong> {filteredCount} </strong> matching figure{filteredCount === 1 ? '' : 's'}
+            <strong>{filteredCount}</strong> figure{filteredCount === 1 ? '' : 's'}
           </span>
         </div>
       </div>

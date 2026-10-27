@@ -40,6 +40,14 @@
   gap: 16px;
 }
 
+/* ColumnToggle shares these class names, so scope the overrides: the
+   style presets wrap among themselves on narrower screens while the
+   figure count stays pinned top right. */
+.filter-control-panel .preset-row {
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+
 .preset-group {
   display: flex;
   align-items: center;
@@ -69,7 +77,7 @@
   font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 600;
-  padding: 0 14px;
+  padding: 0 12px;
   border-radius: 6px;
   cursor: pointer;
   color: var(--text-secondary);
@@ -115,6 +123,12 @@
   align-items: center;
   gap: 12px;
   height: 38px;
+}
+
+/* Right-aligned so it reads as the row's total, not another preset. */
+.filter-control-panel .preset-results-summary {
+  flex-shrink: 0;
+  margin-left: auto;
 }
 
 .results-count-text {

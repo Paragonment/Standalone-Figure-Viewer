@@ -28,6 +28,8 @@
   --lead-light: hsl(192, 54%, 48%, 0.1);
   --follow-color: hsl(49, 49%, 59%);
   --follow-light: hsl(49, 49%, 59%, 0.1);
+  --latin-color: hsl(12, 72%, 48%);
+  --latin-light: hsl(12, 72%, 48%, 0.1);
 }
 
 [data-theme='dark'] {
@@ -56,6 +58,8 @@
   --lead-light: hsl(192, 54%, 48%, 0.1);
   --follow-color: hsl(49, 49%, 59%);
   --follow-light: hsl(49, 49%, 59%, 0.1);
+  --latin-color: hsl(12, 80%, 64%);
+  --latin-light: hsl(12, 80%, 64%, 0.14);
 }
 
 body {

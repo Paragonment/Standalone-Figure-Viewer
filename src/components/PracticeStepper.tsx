@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import type { FigureGroup } from '../types';
-import { STEP_FIELDS } from '../utils/stepFields';
+import { BEAT_VALUE_COLUMN, getStepFields, TIMING_COLUMN } from '../utils/stepFields';
 import FieldValue from './FieldValue';
 import './PracticeStepper.css';
 
@@ -11,10 +11,6 @@ interface PracticeStepperProps {
 
 type Role = 'lead' | 'follow';
 type Direction = 'next' | 'prev';
-
-const FEET_FIELD = STEP_FIELDS.find((f) => f.key === 'Feet Positions')!;
-const ALIGNMENT_FIELD = STEP_FIELDS.find((f) => f.key === 'Alignment')!;
-const META_FIELDS = STEP_FIELDS.filter((f) => f.key !== 'Feet Positions' && f.key !== 'Alignment');
 
 const ROLES: { id: Role; label: string; icon: string }[] = [
   { id: 'lead', label: 'Lead', icon: '🕺' },
@@ -31,6 +27,9 @@ const FLICK_MS = 250;
 const FLICK_PX = 35;
 // How much of the drag carries through when there's no step that way.
 const EDGE_RESISTANCE = 0.3;
+
+// "2 beats" and "1 1/2 beats", but "1 beat" and "1/2 beat".
+const isPluralBeat = (value: string) => value !== '1' && !/^\d+\/\d+$/.test(value);
 
 const roleKey = (role: Role): 'leadKey' | 'followKey' => (role === 'lead' ? 'leadKey' : 'followKey');
 
@@ -65,6 +64,13 @@ const PracticeStepper: React.FC<PracticeStepperProps> = ({ figure, visibleColumn
 
   const total = figure.steps.length;
   const step = figure.steps[stepIndex];
+
+  // Feet and alignment make the hero; everything else the style charts
+  // goes in the grid below.
+  const stepFields = getStepFields(figure.style);
+  const feetField = stepFields.find((f) => f.key === 'Feet Positions')!;
+  const alignmentField = stepFields.find((f) => f.key === 'Alignment')!;
+  const otherFields = stepFields.filter((f) => f !== feetField && f !== alignmentField);
 
   const goTo = (next: number) => {
     if (next < 0 || next >= total || next === stepIndex) return;
@@ -140,15 +146,15 @@ const PracticeStepper: React.FC<PracticeStepperProps> = ({ figure, visibleColumn
   const secondaryRole: Role = primaryRole === 'lead' ? 'follow' : 'lead';
   const secondaryK = roleKey(secondaryRole);
 
-  const showFeet = visibleColumns.includes(FEET_FIELD[primaryK]);
-  const showAlign = visibleColumns.includes(ALIGNMENT_FIELD[primaryK]);
-  const metaFields = META_FIELDS.filter((f) => visibleColumns.includes(f[primaryK]));
+  const showFeet = visibleColumns.includes(feetField[primaryK]);
+  const showAlign = visibleColumns.includes(alignmentField[primaryK]);
+  const metaFields = otherFields.filter((f) => visibleColumns.includes(f[primaryK]));
 
-  const secondaryShowFeet = visibleColumns.includes(FEET_FIELD[secondaryK]);
-  const secondaryShowAlign = visibleColumns.includes(ALIGNMENT_FIELD[secondaryK]);
+  const secondaryShowFeet = visibleColumns.includes(feetField[secondaryK]);
+  const secondaryShowAlign = visibleColumns.includes(alignmentField[secondaryK]);
   const secondarySummary = [
-    secondaryShowFeet ? step[FEET_FIELD[secondaryK]] : null,
-    secondaryShowAlign ? step[ALIGNMENT_FIELD[secondaryK]] : null,
+    secondaryShowFeet ? step[feetField[secondaryK]] : null,
+    secondaryShowAlign ? step[alignmentField[secondaryK]] : null,
   ]
     .filter(Boolean)
     .join(' · ');
@@ -206,9 +212,21 @@ const PracticeStepper: React.FC<PracticeStepperProps> = ({ figure, visibleColumn
           className={`ps-slide ${enterFrom ? `enter-${enterFrom}` : ''}`}
         >
           <div className="ps-hero">
-            <div className="ps-count">Step {stepIndex + 1} of {total}</div>
-            {showFeet && <div className="ps-feet">{step[FEET_FIELD[primaryK]]}</div>}
-            {showAlign && <div className="ps-align">{step[ALIGNMENT_FIELD[primaryK]]}</div>}
+            <div className="ps-count">
+              Step {stepIndex + 1} of {total}
+              {step[TIMING_COLUMN] && (
+                <span className="ps-timing">
+                  <span className="timing-badge">{step[TIMING_COLUMN]}</span>
+                  {step[BEAT_VALUE_COLUMN] && (
+                    <span className="ps-beat">
+                      {step[BEAT_VALUE_COLUMN]} beat{isPluralBeat(step[BEAT_VALUE_COLUMN]) ? 's' : ''}
+                    </span>
+                  )}
+                </span>
+              )}
+            </div>
+            {showFeet && <div className="ps-feet">{step[feetField[primaryK]]}</div>}
+            {showAlign && <div className="ps-align">{step[alignmentField[primaryK]]}</div>}
           </div>
 
           {metaFields.length > 0 && (

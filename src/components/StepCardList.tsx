@@ -1,6 +1,6 @@
 import React from 'react';
 import type { FigureGroup } from '../types';
-import { STEP_FIELDS } from '../utils/stepFields';
+import { BEAT_VALUE_COLUMN, getStepFields, TIMING_COLUMN } from '../utils/stepFields';
 import FieldValue from './FieldValue';
 import './StepCardList.css';
 
@@ -12,9 +12,11 @@ interface StepCardListProps {
 // Each step is a small table with Lead and Follow side by side, so both
 // partners' part of the same step reads in one glance and a card is half
 // the height of stacking the two roles. Feet leads (and is emphasized)
-// because it's the line a dancer actually reads first.
+// because it's the line a dancer actually reads first. A Latin step's
+// count sits by its number: it's shared by both partners and always shown,
+// since in Latin the timing is as much the figure as the feet are.
 const StepCardList: React.FC<StepCardListProps> = ({ figure, visibleColumns }) => {
-  const fields = STEP_FIELDS.filter(
+  const fields = getStepFields(figure.style).filter(
     (f) => visibleColumns.includes(f.leadKey) || visibleColumns.includes(f.followKey)
   );
 
@@ -35,6 +37,15 @@ const StepCardList: React.FC<StepCardListProps> = ({ figure, visibleColumns }) =
               <tr>
                 <th scope="col" className="step-table-corner">
                   <span className="step-num" aria-label={`Step ${idx + 1}`}>{idx + 1}</span>
+                  {step[TIMING_COLUMN] && (
+                    <span
+                      className="timing-badge"
+                      title={step[BEAT_VALUE_COLUMN] ? `Beat value ${step[BEAT_VALUE_COLUMN]}` : undefined}
+                      aria-label={`Count ${step[TIMING_COLUMN]}`}
+                    >
+                      {step[TIMING_COLUMN]}
+                    </span>
+                  )}
                 </th>
                 <th scope="col"><span className="role-chip lead">Lead</span></th>
                 <th scope="col"><span className="role-chip follow">Follow</span></th>

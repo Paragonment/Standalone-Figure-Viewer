@@ -3,6 +3,7 @@ import type { FigureGroup } from '../types';
 import type { DetailMode } from '../utils/detailModes';
 import { getDanceEmoji, getLevelEmoji } from '../utils/danceEmoji';
 import StepCardList from './StepCardList';
+import FigurePositions from './FigurePositions';
 import PracticeStepper from './PracticeStepper';
 import './FigureDetail.css';
 
@@ -34,6 +35,12 @@ const FigureDetail: React.FC<FigureDetailProps> = ({ figure, visibleColumns, mod
               {figure.steps.length} step{figure.steps.length === 1 ? '' : 's'}
             </span>
           </div>
+
+          <FigurePositions
+            figure={figure}
+            showStart={visibleColumns.includes('Starting Position')}
+            showEnd={visibleColumns.includes('Ending Position')}
+          />
 
           {figure.generalNotes && <p className="figure-detail-notes">{figure.generalNotes}</p>}
 

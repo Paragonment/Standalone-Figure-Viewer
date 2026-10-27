@@ -244,6 +244,15 @@
   border-color: var(--accent-color);
 }
 
+.filter-group-card.dance-card.style-latin h5 {
+  color: var(--latin-color);
+}
+
+.dance-card.style-latin .filter-checkbox-item input:checked ~ .checkbox-custom {
+  background-color: var(--latin-color);
+  border-color: var(--latin-color);
+}
+
 .level-card .filter-checkbox-item input:checked ~ .checkbox-custom {
   background-color: var(--text-primary);
   border-color: var(--text-primary);

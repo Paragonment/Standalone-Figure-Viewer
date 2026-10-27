@@ -1,9 +1,13 @@
 import React from 'react';
+import type { DanceStyle } from '../types';
 import { ALWAYS_VISIBLE_COLUMNS, getColumnGroup } from '../utils/columns';
 import './ColumnToggle.css';
 
 interface ColumnToggleProps {
   columns: string[];
+  // Styles whose data has each column; a column only one style charts
+  // (e.g. Standard's Sway, Latin's Timing) is tagged with that style.
+  columnStyles: Record<string, DanceStyle[]>;
   visibleColumns: string[];
   setVisibleColumns: (cols: string[]) => void;
   toggleColumn: (column: string) => void;
@@ -20,10 +24,18 @@ const expectedForPreset = (column: string, preset: 'lead' | 'follow') => {
 
 const ColumnToggle: React.FC<ColumnToggleProps> = ({
   columns,
+  columnStyles,
   visibleColumns,
   setVisibleColumns,
   toggleColumn
 }) => {
+  const styleCount = new Set(Object.values(columnStyles).flat()).size;
+  const styleTag = (col: string) => {
+    const styles = columnStyles[col] ?? [];
+    if (styleCount < 2 || styles.length !== 1) return null;
+    return <span className={`column-style-tag ${styles[0].toLowerCase()}`}>{styles[0]}</span>;
+  };
+
   // Determine active preset based on currently visible columns
   const getActivePreset = (): 'all' | 'lead' | 'follow' | 'custom' => {
     if (columns.length === 0) return 'all';
@@ -120,6 +132,7 @@ const ColumnToggle: React.FC<ColumnToggleProps> = ({
                   />
                   <span className="checkbox-custom"></span>
                   <span className="column-name">{col}</span>
+                  {styleTag(col)}
                 </label>
               ))}
             </div>
@@ -137,6 +150,7 @@ const ColumnToggle: React.FC<ColumnToggleProps> = ({
                   />
                   <span className="checkbox-custom"></span>
                   <span className="column-name">{col.replace('Lead ', '')}</span>
+                  {styleTag(col)}
                 </label>
               ))}
             </div>
@@ -154,6 +168,7 @@ const ColumnToggle: React.FC<ColumnToggleProps> = ({
                   />
                   <span className="checkbox-custom"></span>
                   <span className="column-name">{col.replace('Follow ', '')}</span>
+                  {styleTag(col)}
                 </label>
               ))}
             </div>

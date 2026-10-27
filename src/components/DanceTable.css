@@ -118,10 +118,11 @@
 }
 
 /* Step count pill */
+/* Shrink-wrap to the "N steps" badge: a fixed width minus the cell
+   padding left too little room, so the badge spilled past the table. */
 .th-step-count, .td-step-count {
-  width: 90px;
-  min-width: 90px !important;
-  max-width: 90px !important;
+  width: 1%;
+  white-space: nowrap;
 }
 
 .step-count-badge {
@@ -213,6 +214,10 @@
   padding: 16px 20px 24px 44px;
   border-left: 4px solid var(--accent-color);
   animation: dropdownFadeIn 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dropdown-details-wrapper > .figure-positions {
+  margin-bottom: 12px;
 }
 
 @keyframes dropdownFadeIn {

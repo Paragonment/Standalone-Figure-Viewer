@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, useRef, useCallback } from 'react';
-import type { FigureGroup } from '../types';
+import type { DanceStyle, FigureGroup } from '../types';
 import { useDanceData } from '../hooks/useDanceData';
 import { useFigureGroups } from '../hooks/useFigureGroups';
 import { useDanceFilters } from '../hooks/useDanceFilters';
@@ -12,7 +12,8 @@ import type { DetailMode } from '../utils/detailModes';
 import BottomSheet from './BottomSheet';
 import StepFieldFilter from './StepFieldFilter';
 import { useIsMobile } from '../hooks/useIsMobile';
-import { STEP_FIELDS } from '../utils/stepFields';
+import { getStepFields, STEP_FIELDS } from '../utils/stepFields';
+import { describeSelection } from '../utils/danceStyles';
 import './ViewerContainer.css';
 
 interface FigureHistoryState {
@@ -30,8 +31,8 @@ interface ViewerContainerProps {
 }
 
 const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme }) => {
-  const { data, loading, error } = useDanceData();
-  const figureGroups = useFigureGroups(data);
+  const { datasets, loading, error } = useDanceData();
+  const figureGroups = useFigureGroups(datasets);
   const {
     searchTerm,
     setSearchTerm,
@@ -41,13 +42,13 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
     setSelectedFigures,
     selectedLevels,
     setSelectedLevels,
-    dances,
+    danceGroups,
     figures,
     levels,
     filteredFigures,
     hasActiveFilters,
     clearFilters,
-  } = useDanceFilters(data, figureGroups);
+  } = useDanceFilters(figureGroups);
 
   // Column visibility state
   const [visibleColumns, setVisibleColumns] = useState<string[]>([]);
@@ -119,15 +120,31 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
   const columnBtnRef = useRef<HTMLButtonElement>(null);
   const columnPanelRef = useRef<HTMLDivElement>(null);
 
+  // Every column any style's CSV has, Standard's first, in CSV order.
+  const allColumns = useMemo(() => {
+    return Array.from(new Set(datasets.flatMap((d) => d.columns)));
+  }, [datasets]);
+
+  // Which styles chart each column, so the column settings can mark the
+  // ones that only apply to Standard or only to Latin figures.
+  const columnStyles = useMemo(() => {
+    const styles: Record<string, DanceStyle[]> = {};
+    datasets.forEach((d) => d.columns.forEach((c) => (styles[c] ??= []).push(d.style)));
+    return styles;
+  }, [datasets]);
+
   // Initialize visible columns once data is loaded
   useEffect(() => {
-    if (data.length > 0 && visibleColumns.length === 0) {
-      const allHeaders = Object.keys(data[0]);
+    if (allColumns.length > 0 && visibleColumns.length === 0) {
       // Default visible columns - common ones
-      const defaults = ['Dance', 'Figure Name', 'Level', 'Step', 'Lead Feet Positions', 'Lead Footwork', 'Follow Feet Positions', 'Follow Footwork'];
-      setVisibleColumns(allHeaders.filter(h => defaults.includes(h) || h === 'Dance' || h === 'Figure Name' || h === 'Level' || h === 'Step'));
+      const defaults = [
+        'Dance', 'Figure Name', 'Level', 'Step', 'Timing',
+        'Lead Feet Positions', 'Lead Footwork', 'Follow Feet Positions', 'Follow Footwork',
+        'Starting Position', 'Ending Position',
+      ];
+      setVisibleColumns(allColumns.filter(h => defaults.includes(h)));
     }
-  }, [data, visibleColumns.length]);
+  }, [allColumns, visibleColumns.length]);
 
   // Focus search input when user presses the "/" key
   useEffect(() => {
@@ -187,12 +204,10 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
     };
   }, [isMobile, showFilterControl, showColumnControl]);
 
-  const allColumns = useMemo(() => {
-    if (data.length === 0) return [];
-    return Object.keys(data[0]);
-  }, [data]);
-
-  const shownFieldCount = STEP_FIELDS.filter(
+  // The open figure's style decides which step fields the mobile picker
+  // offers; Latin has no Rise & Fall, CBM or Sway to toggle.
+  const detailStepFields = activeFigure ? getStepFields(activeFigure.style) : STEP_FIELDS;
+  const shownFieldCount = detailStepFields.filter(
     (f) => visibleColumns.includes(f.leadKey) || visibleColumns.includes(f.followKey)
   ).length;
 
@@ -256,7 +271,7 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
                     <>
                       <span className="breadcrumb-separator">/</span>
                       <button type="button" className="breadcrumb-item linkable" onClick={() => setSelectedFigures([])}>
-                        {selectedDances.length === 1 ? selectedDances[0] : `${selectedDances.length} Dances`}
+                        {describeSelection(selectedDances, danceGroups)}
                       </button>
                     </>
                   )}
@@ -309,11 +324,11 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
                 setShowFilterControl(false);
               }}
               title={isMobile ? 'Choose step details' : showColumnControl ? 'Hide Column Settings' : 'Show Column Settings'}
-              aria-label={isMobile ? `Choose step details, ${shownFieldCount} of ${STEP_FIELDS.length} shown` : undefined}
+              aria-label={isMobile ? `Choose step details, ${shownFieldCount} of ${detailStepFields.length} shown` : undefined}
               aria-expanded={showColumnControl}
             >
               ⚙️
-              {isMobile && shownFieldCount < STEP_FIELDS.length && (
+              {isMobile && shownFieldCount < detailStepFields.length && (
                 <span className="header-btn-badge" aria-hidden="true">{shownFieldCount}</span>
               )}
             </button>
@@ -366,7 +381,7 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
           {!isMobile && view === 'list' && showFilterControl && (
             <div ref={filterPanelRef}>
               <FilterToggle
-                dances={dances}
+                danceGroups={danceGroups}
                 selectedDances={selectedDances}
                 setSelectedDances={setSelectedDances}
                 levels={levels}
@@ -384,6 +399,7 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
             <div ref={columnPanelRef}>
               <ColumnToggle
                 columns={allColumns}
+                columnStyles={columnStyles}
                 visibleColumns={visibleColumns}
                 setVisibleColumns={setVisibleColumns}
                 toggleColumn={toggleColumn}
@@ -400,7 +416,7 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
                 doneLabel={`Show ${filteredFigures.length} figure${filteredFigures.length === 1 ? '' : 's'}`}
               >
                 <FilterToggle
-                  dances={dances}
+                  danceGroups={danceGroups}
                   selectedDances={selectedDances}
                   setSelectedDances={setSelectedDances}
                   levels={levels}
@@ -418,7 +434,11 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
                 onClose={() => setShowColumnControl(false)}
                 title="Show on each step"
               >
-                <StepFieldFilter visibleColumns={visibleColumns} setVisibleColumns={setVisibleColumns} />
+                <StepFieldFilter
+                  fields={detailStepFields}
+                  visibleColumns={visibleColumns}
+                  setVisibleColumns={setVisibleColumns}
+                />
               </BottomSheet>
             </>
           )}

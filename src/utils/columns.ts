@@ -25,6 +25,10 @@ const SHORT_HEADER_LABELS: Record<string, string> = {
   'Follow CBM': 'CBM',
   'Lead Sway': 'Sway',
   'Follow Sway': 'Sway',
+  'Lead Action': 'Action',
+  'Follow Action': 'Action',
+  'Timing': 'Count',
+  'Beat Value': 'Beat',
   'General Notes': 'Notes',
 };
 

@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
-import type { DanceStep, FigureGroup } from '../types';
+import type { FigureGroup } from '../types';
+import { DANCE_STYLES, type StyleDances } from '../utils/danceStyles';
 
 // Known syllabus levels in pedagogical (not alphabetical) order. Any level
 // found in the data but not listed here is appended alphabetically, so a
@@ -18,27 +19,32 @@ const sortLevels = (levels: string[]): string[] => {
   });
 };
 
-export const useDanceFilters = (data: DanceStep[], figureGroups: FigureGroup[]) => {
+export const useDanceFilters = (figureGroups: FigureGroup[]) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDances, setSelectedDances] = useState<string[]>([]);
   const [selectedFigures, setSelectedFigures] = useState<string[]>([]);
   const [selectedLevels, setSelectedLevels] = useState<string[]>([]);
 
-  const dances = useMemo(() => {
-    return Array.from(new Set(data.map((item) => item.Dance))).sort();
-  }, [data]);
+  // Each style's dances, alphabetically, in DANCE_STYLES order. A style
+  // with no data yet is left out rather than shown as an empty filter.
+  const danceGroups = useMemo<StyleDances[]>(() => {
+    return DANCE_STYLES.map((s) => ({
+      style: s.id,
+      dances: Array.from(new Set(figureGroups.filter((g) => g.style === s.id).map((g) => g.dance))).sort(),
+    })).filter((g) => g.dances.length > 0);
+  }, [figureGroups]);
 
   const levels = useMemo(() => {
-    return sortLevels(Array.from(new Set(data.map((item) => item.Level))));
-  }, [data]);
+    return sortLevels(Array.from(new Set(figureGroups.map((g) => g.level))));
+  }, [figureGroups]);
 
   const figures = useMemo(() => {
     if (selectedDances.length === 0) return [];
-    const danceFigures = data
-      .filter((item) => selectedDances.includes(item.Dance))
-      .map((item) => item['Figure Name']);
+    const danceFigures = figureGroups
+      .filter((g) => selectedDances.includes(g.dance))
+      .map((g) => g.name);
     return Array.from(new Set(danceFigures)).sort();
-  }, [data, selectedDances]);
+  }, [figureGroups, selectedDances]);
 
   const filteredFigures = useMemo(() => {
     const searchLower = searchTerm.trim().toLowerCase();
@@ -53,6 +59,7 @@ export const useDanceFilters = (data: DanceStep[], figureGroups: FigureGroup[]) 
 
       return (
         group.dance.toLowerCase().includes(searchLower) ||
+        group.style.toLowerCase().includes(searchLower) ||
         group.name.toLowerCase().includes(searchLower) ||
         group.generalNotes.toLowerCase().includes(searchLower) ||
         group.steps.some((step) =>
@@ -84,7 +91,7 @@ export const useDanceFilters = (data: DanceStep[], figureGroups: FigureGroup[]) 
     setSelectedFigures,
     selectedLevels,
     setSelectedLevels,
-    dances,
+    danceGroups,
     figures,
     levels,
     filteredFigures,

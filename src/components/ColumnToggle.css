@@ -297,3 +297,23 @@
     font-size: 0.8rem;
   }
 }
+
+/* Marks a column only one style's book charts, e.g. Standard's Sway or
+   Latin's Timing, so it's clear why it's empty for the other style. */
+.column-style-tag {
+  margin-left: auto;
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background-color: var(--accent-light);
+  color: var(--accent-color);
+}
+
+.column-style-tag.latin {
+  background-color: var(--latin-light);
+  color: var(--latin-color);
+}

@@ -1,9 +1,10 @@
 import React from 'react';
-import { getDanceEmoji, getLevelEmoji } from '../utils/danceEmoji';
+import { getDanceEmoji, getLevelEmoji, getStyleEmoji } from '../utils/danceEmoji';
+import { DANCE_STYLES, isStyleFullyShown, toggleDance, toggleStyle, type StyleDances } from '../utils/danceStyles';
 import './FilterToggle.css';
 
 interface FilterToggleProps {
-  dances: string[];
+  danceGroups: StyleDances[];
   selectedDances: string[];
   setSelectedDances: (dances: string[]) => void;
   levels: string[];
@@ -15,8 +16,12 @@ interface FilterToggleProps {
   filteredCount: number;
 }
 
+const styleLabel = (group: StyleDances) => DANCE_STYLES.find((s) => s.id === group.style)?.label ?? group.style;
+
+const sameDances = (a: string[], b: string[]) => a.length === b.length && a.every((d) => b.includes(d));
+
 const FilterToggle: React.FC<FilterToggleProps> = ({
-  dances,
+  danceGroups,
   selectedDances,
   setSelectedDances,
   levels,
@@ -27,47 +32,56 @@ const FilterToggle: React.FC<FilterToggleProps> = ({
   setSelectedFigures,
   filteredCount,
 }) => {
-  // Determine active style (dance) preset
-  const activeDancePreset = selectedDances.length === 0
-    ? ''
-    : selectedDances.length === 1
-      ? selectedDances[0]
-      : 'custom';
-
-  const applyDancePreset = (dance: string) => {
-    if (dance === '') {
-      setSelectedDances([]);
-    } else {
-      setSelectedDances([dance]);
-    }
-    setSelectedFigures([]); // Clear selected figures when dance changes
+  // Figures are listed per selected dance, so any dance change resets them.
+  const changeDances = (dances: string[]) => {
+    setSelectedDances(dances);
+    setSelectedFigures([]);
   };
+
+  // The presets are one-tap shortcuts: a dance shows only that dance, and
+  // "All <style>" shows only that style - or, tapped again while it's the
+  // only thing shown, goes back to every dance. With no dance filter every
+  // "All" segment reads as active, since every style is on screen.
+  const applyStylePreset = (group: StyleDances) => {
+    changeDances(sameDances(selectedDances, group.dances) ? [] : group.dances);
+  };
+
+  const isPresetSelection =
+    selectedDances.length <= 1 || danceGroups.some((g) => sameDances(selectedDances, g.dances));
 
   return (
     <div className="filter-control-panel">
-      {/* Preset Row: Dance Style (Styles) Segments */}
+      {/* Preset Row: one segmented control per style, Standard then Latin */}
       <div className="preset-row">
         <div className="preset-group">
-          <div className="segmented-control">
-            <button
-              className={`preset-btn ${activeDancePreset === '' ? 'active' : ''}`}
-              onClick={() => applyDancePreset('')}
-            >
-              All Standard
-            </button>
-            {dances.map((dance) => (
-              <button
-                key={dance}
-                className={`preset-btn ${activeDancePreset === dance ? 'active' : ''}`}
-                onClick={() => applyDancePreset(dance)}
-              >
-                {getDanceEmoji(dance)} {dance}
-              </button>
-            ))}
-            {activeDancePreset === 'custom' && (
-              <span className="preset-badge">Customized</span>
-            )}
-          </div>
+          {danceGroups.map((group) => {
+            const styleShown = isStyleFullyShown(group, selectedDances);
+            return (
+              <div key={group.style} className="segmented-control" role="group" aria-label={`${styleLabel(group)} dances`}>
+                <button
+                  className={`preset-btn ${styleShown ? 'active' : ''}`}
+                  aria-pressed={styleShown}
+                  onClick={() => applyStylePreset(group)}
+                >
+                  All {styleLabel(group)}
+                </button>
+                {group.dances.map((dance) => {
+                  const active = !styleShown && selectedDances.length === 1 && selectedDances[0] === dance;
+                  return (
+                    <button
+                      key={dance}
+                      className={`preset-btn ${active ? 'active' : ''}`}
+                      aria-pressed={active}
+                      onClick={() => changeDances([dance])}
+                    >
+                      {getDanceEmoji(dance)} {dance}
+                    </button>
+                  );
+                })}
+              </div>
+            );
+          })}
+          {!isPresetSelection && <span className="preset-badge">Customized</span>}
         </div>
 
         <div className="preset-results-summary">
@@ -80,51 +94,47 @@ const FilterToggle: React.FC<FilterToggleProps> = ({
       {/* Grid of Card Sections */}
       <div className="granular-filters-container">
         <div className="filter-group-grid">
-          {/* Card 1: Dance Styles (Multiple Select Checkboxes) */}
-          <div className="filter-group-card dance-card">
-            <h5>🏆 Dance Style</h5>
-            <div className="filter-checkbox-list">
-              <label className="filter-checkbox-item">
-                <input
-                  type="checkbox"
-                  checked={selectedDances.length === 0}
-                  onChange={() => {
-                    setSelectedDances([]);
-                    setSelectedFigures([]);
-                  }}
-                />
-                <span className="checkbox-custom"></span>
-                <span className="filter-name">All Standard</span>
-              </label>
-
-              {dances.map((dance) => {
-                const isChecked = selectedDances.includes(dance);
-                return (
-                  <label key={dance} className="filter-checkbox-item">
+          {/* One card per style (Multiple Select Checkboxes) */}
+          {danceGroups.map((group) => {
+            const label = styleLabel(group);
+            const styleShown = isStyleFullyShown(group, selectedDances);
+            return (
+              <div key={group.style} className={`filter-group-card dance-card style-${group.style.toLowerCase()}`}>
+                <h5>{getStyleEmoji(group.style)} {label}</h5>
+                <div className="filter-checkbox-list">
+                  <label className="filter-checkbox-item">
                     <input
                       type="checkbox"
-                      checked={isChecked}
-                      onChange={() => {
-                        if (isChecked) {
-                          setSelectedDances(selectedDances.filter((d) => d !== dance));
-                        } else {
-                          setSelectedDances([...selectedDances, dance]);
-                        }
-                        setSelectedFigures([]);
-                      }}
+                      checked={styleShown}
+                      onChange={() => changeDances(toggleStyle(group, selectedDances, danceGroups))}
                     />
                     <span className="checkbox-custom"></span>
-                    <span className="filter-name">
-                      <span className="filter-emoji">{getDanceEmoji(dance)}</span>
-                      {dance}
-                    </span>
+                    <span className="filter-name">All {label}</span>
                   </label>
-                );
-              })}
-            </div>
-          </div>
 
-          {/* Card 2: Syllabus Levels (Multiple Select Checkboxes) */}
+                  {group.dances.map((dance) => {
+                    const isChecked = !styleShown && selectedDances.includes(dance);
+                    return (
+                      <label key={dance} className="filter-checkbox-item">
+                        <input
+                          type="checkbox"
+                          checked={isChecked}
+                          onChange={() => changeDances(toggleDance(dance, group, selectedDances, danceGroups))}
+                        />
+                        <span className="checkbox-custom"></span>
+                        <span className="filter-name">
+                          <span className="filter-emoji">{getDanceEmoji(dance)}</span>
+                          {dance}
+                        </span>
+                      </label>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+
+          {/* Syllabus Levels (Multiple Select Checkboxes) */}
           <div className="filter-group-card level-card">
             <h5>📊 Syllabus Level</h5>
             <div className="filter-checkbox-list">
@@ -164,7 +174,7 @@ const FilterToggle: React.FC<FilterToggleProps> = ({
             </div>
           </div>
 
-          {/* Card 3: Specific Figures (Multiple Select Checkboxes) */}
+          {/* Specific Figures (Multiple Select Checkboxes) */}
           <div className="filter-group-card figures-card">
             <h5>📂 Figures</h5>
             <div className="filter-checkbox-list scrollable-list">

@@ -38,12 +38,9 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
     setSearchTerm,
     selectedDances,
     setSelectedDances,
-    selectedFigures,
-    setSelectedFigures,
     selectedLevels,
     setSelectedLevels,
     danceGroups,
-    figures,
     levels,
     filteredFigures,
     hasActiveFilters,
@@ -264,22 +261,14 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
                 </>
               ) : (
                 <>
-                  <button type="button" className="breadcrumb-item linkable" onClick={() => { setSelectedDances([]); setSelectedFigures([]); }}>
+                  <button type="button" className="breadcrumb-item linkable" onClick={() => setSelectedDances([])}>
                     Dances
                   </button>
                   {selectedDances.length > 0 && (
                     <>
                       <span className="breadcrumb-separator">/</span>
-                      <button type="button" className="breadcrumb-item linkable" onClick={() => setSelectedFigures([])}>
-                        {describeSelection(selectedDances, danceGroups)}
-                      </button>
-                    </>
-                  )}
-                  {selectedFigures.length > 0 && (
-                    <>
-                      <span className="breadcrumb-separator">/</span>
                       <span className="breadcrumb-item active" aria-current="page">
-                        {selectedFigures.length === 1 ? selectedFigures[0] : `${selectedFigures.length} Figures`}
+                        {describeSelection(selectedDances, danceGroups)}
                       </span>
                     </>
                   )}
@@ -381,15 +370,13 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
           {!isMobile && view === 'list' && showFilterControl && (
             <div ref={filterPanelRef}>
               <FilterToggle
+                layout="panel"
                 danceGroups={danceGroups}
                 selectedDances={selectedDances}
                 setSelectedDances={setSelectedDances}
                 levels={levels}
                 selectedLevels={selectedLevels}
                 setSelectedLevels={setSelectedLevels}
-                figures={figures}
-                selectedFigures={selectedFigures}
-                setSelectedFigures={setSelectedFigures}
                 filteredCount={filteredFigures.length}
               />
             </div>
@@ -416,15 +403,13 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
                 doneLabel={`Show ${filteredFigures.length} figure${filteredFigures.length === 1 ? '' : 's'}`}
               >
                 <FilterToggle
+                  layout="sheet"
                   danceGroups={danceGroups}
                   selectedDances={selectedDances}
                   setSelectedDances={setSelectedDances}
                   levels={levels}
                   selectedLevels={selectedLevels}
                   setSelectedLevels={setSelectedLevels}
-                  figures={figures}
-                  selectedFigures={selectedFigures}
-                  setSelectedFigures={setSelectedFigures}
                   filteredCount={filteredFigures.length}
                 />
               </BottomSheet>
@@ -453,7 +438,6 @@ const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme })
             <DanceTable
               data={filteredFigures}
               visibleColumns={visibleColumns}
-              selectedFigures={selectedFigures}
               onSelectFigure={openFigure}
               scrollTopRef={listScrollTopRef}
             />

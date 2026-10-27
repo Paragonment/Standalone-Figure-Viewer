@@ -11,7 +11,6 @@ import './DanceTable.css';
 interface DanceTableProps {
   data: FigureGroup[];
   visibleColumns?: string[];
-  selectedFigures?: string[];
   onSelectFigure: (figure: FigureGroup) => void;
   // Owned by the parent so the scroll offset outlives this component,
   // which unmounts while a figure's detail view is open.
@@ -23,7 +22,7 @@ const baseFieldKey = (header: string) => header.replace(/^(Lead|Follow) /, '');
 // Shown on the figure's own row (or above its steps), not per step.
 const OUTER_COLUMNS = ['Dance', 'Figure Name', 'Level', 'Starting Position', 'Ending Position'];
 
-const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedFigures, onSelectFigure, scrollTopRef }) => {
+const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, onSelectFigure, scrollTopRef }) => {
   const isMobile = useIsMobile();
   const [expandedFigures, setExpandedFigures] = useState<Set<string>>(new Set());
   const containerRef = useRef<HTMLDivElement>(null);
@@ -36,22 +35,6 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
     // Mount only: afterwards the container's own scroll position is the source of truth.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // Auto-expand the selected figures when they change (desktop only).
-  useEffect(() => {
-    if (selectedFigures && selectedFigures.length > 0) {
-      setExpandedFigures(prev => {
-        const next = new Set(prev);
-        selectedFigures.forEach(figName => {
-          const matchingGroups = data.filter(f => f.name === figName);
-          matchingGroups.forEach(g => {
-            next.add(`${g.dance}-${g.name}`);
-          });
-        });
-        return next;
-      });
-    }
-  }, [selectedFigures, data]);
 
   // A figure open via inline expansion doesn't carry over if the viewport
   // crosses into mobile, which navigates to the detail view instead.

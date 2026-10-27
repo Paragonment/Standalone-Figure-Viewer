@@ -48,6 +48,14 @@
   align-items: flex-start;
 }
 
+/* Dances on top, levels always on a row of their own below. */
+.preset-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
 .preset-group {
   display: flex;
   align-items: center;
@@ -103,19 +111,13 @@
   box-shadow: var(--shadow);
 }
 
-.preset-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--accent-color);
-  background-color: var(--accent-light);
-  padding: 0 8px;
-  border-radius: 6px;
-  margin: 0 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+/* Each control picks up its own color, matching the sheet's checklists. */
+.segmented-control.style-latin .preset-btn.active {
+  color: var(--latin-color);
+}
+
+.segmented-control.level-control .preset-btn.active {
+  color: var(--text-primary);
 }
 
 .preset-results-summary {
@@ -139,24 +141,6 @@
 .results-count-text strong {
   color: var(--text-primary);
   font-weight: 700;
-}
-
-/* Granular Checklist */
-.granular-filters-container {
-  padding-top: 16px;
-  border-top: 1px dashed var(--border-color);
-  animation: filterSlideDown 0.2s ease-out;
-}
-
-@keyframes filterSlideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .filter-group-grid {
@@ -192,25 +176,30 @@
   color: var(--accent-color);
 }
 
+/* Standard and Latin share the Dances box, one column each. */
+.dance-style-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 8px 16px;
+}
+
+.filter-checkbox-item.style-all {
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+.style-latin .filter-checkbox-item.style-all {
+  color: var(--latin-color);
+}
+
 .filter-group-card.level-card h5 {
   color: var(--text-primary);
 }
 
-.filter-group-card.figures-card h5 {
-  color: var(--lead-color);
-}
-
-.filter-checkbox-list,
-.filter-radio-list {
+.filter-checkbox-list {
   display: flex;
   flex-direction: column;
   gap: 8px;
-}
-
-.scrollable-list {
-  max-height: 180px;
-  overflow-y: auto;
-  padding-right: 4px;
 }
 
 /* Custom Checkboxes */
@@ -258,11 +247,7 @@
   border-color: var(--accent-color);
 }
 
-.filter-group-card.dance-card.style-latin h5 {
-  color: var(--latin-color);
-}
-
-.dance-card.style-latin .filter-checkbox-item input:checked ~ .checkbox-custom {
+.dance-card .style-latin .filter-checkbox-item input:checked ~ .checkbox-custom {
   background-color: var(--latin-color);
   border-color: var(--latin-color);
 }
@@ -276,11 +261,6 @@
    vanish; draw it in the panel color, which always contrasts. */
 .level-card .filter-checkbox-item input:checked ~ .checkbox-custom:after {
   border-color: var(--container-bg);
-}
-
-.figures-card .filter-checkbox-item input:checked ~ .checkbox-custom {
-  background-color: var(--lead-color);
-  border-color: var(--lead-color);
 }
 
 .checkbox-custom:after {
@@ -306,14 +286,6 @@
 
 .filter-emoji {
   margin-right: 6px;
-}
-
-.filter-tip {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  line-height: 1.4;
-  padding: 8px;
-  text-align: center;
 }
 
 @media (max-width: 600px) {
@@ -374,18 +346,6 @@
   animation: none;
 }
 
-/* The Dance Style checklist below covers the same choices as the preset
-   segments, and the result count moves onto the sheet's button. */
-.bottom-sheet .preset-row {
-  display: none;
-}
-
-.bottom-sheet .granular-filters-container {
-  padding-top: 0;
-  border-top: none;
-  animation: none;
-}
-
 /* Flat sections instead of boxed cards inside the sheet's own surface. */
 .bottom-sheet .filter-group-grid {
   gap: 22px;
@@ -397,9 +357,4 @@
   border: none;
   border-radius: 0;
   gap: 4px;
-}
-
-.bottom-sheet .scrollable-list {
-  max-height: none;
-  overflow: visible;
 }

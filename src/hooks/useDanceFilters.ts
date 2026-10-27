@@ -22,7 +22,6 @@ const sortLevels = (levels: string[]): string[] => {
 export const useDanceFilters = (figureGroups: FigureGroup[]) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDances, setSelectedDances] = useState<string[]>([]);
-  const [selectedFigures, setSelectedFigures] = useState<string[]>([]);
   const [selectedLevels, setSelectedLevels] = useState<string[]>([]);
 
   // Each style's dances, alphabetically, in DANCE_STYLES order. A style
@@ -38,23 +37,14 @@ export const useDanceFilters = (figureGroups: FigureGroup[]) => {
     return sortLevels(Array.from(new Set(figureGroups.map((g) => g.level))));
   }, [figureGroups]);
 
-  const figures = useMemo(() => {
-    if (selectedDances.length === 0) return [];
-    const danceFigures = figureGroups
-      .filter((g) => selectedDances.includes(g.dance))
-      .map((g) => g.name);
-    return Array.from(new Set(danceFigures)).sort();
-  }, [figureGroups, selectedDances]);
-
   const filteredFigures = useMemo(() => {
     const searchLower = searchTerm.trim().toLowerCase();
 
     return figureGroups.filter((group) => {
       const matchesDance = selectedDances.length === 0 || selectedDances.includes(group.dance);
-      const matchesFigure = selectedFigures.length === 0 || selectedFigures.includes(group.name);
       const matchesLevel = selectedLevels.length === 0 || selectedLevels.includes(group.level);
 
-      if (!matchesDance || !matchesFigure || !matchesLevel) return false;
+      if (!matchesDance || !matchesLevel) return false;
       if (!searchLower) return true;
 
       return (
@@ -67,17 +57,15 @@ export const useDanceFilters = (figureGroups: FigureGroup[]) => {
         )
       );
     });
-  }, [figureGroups, searchTerm, selectedDances, selectedFigures, selectedLevels]);
+  }, [figureGroups, searchTerm, selectedDances, selectedLevels]);
 
   const hasActiveFilters =
     selectedDances.length > 0 ||
-    selectedFigures.length > 0 ||
     selectedLevels.length > 0 ||
     searchTerm.length > 0;
 
   const clearFilters = () => {
     setSelectedDances([]);
-    setSelectedFigures([]);
     setSelectedLevels([]);
     setSearchTerm('');
   };
@@ -87,12 +75,9 @@ export const useDanceFilters = (figureGroups: FigureGroup[]) => {
     setSearchTerm,
     selectedDances,
     setSelectedDances,
-    selectedFigures,
-    setSelectedFigures,
     selectedLevels,
     setSelectedLevels,
     danceGroups,
-    figures,
     levels,
     filteredFigures,
     hasActiveFilters,

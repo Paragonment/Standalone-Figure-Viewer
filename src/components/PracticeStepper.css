@@ -170,6 +170,19 @@
   margin-bottom: 8px;
 }
 
+/* A Latin step's count and beat value, next to the step number. */
+.ps-timing {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.ps-beat {
+  font-weight: 500;
+}
+
 .ps-feet {
   font-family: var(--font-heading);
   font-weight: 700;

@@ -52,6 +52,12 @@
 /* Field-name column: just wide enough for "Rise & Fall". */
 .step-table-corner {
   width: 76px;
+  white-space: nowrap;
+}
+
+.step-table-corner .timing-badge {
+  margin-left: 6px;
+  vertical-align: middle;
 }
 
 .step-table thead th {

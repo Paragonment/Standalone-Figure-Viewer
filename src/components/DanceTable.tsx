@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
-import type { DanceStep, FigureGroup } from '../types';
+import type { FigureGroup } from '../types';
 import { getDanceEmoji } from '../utils/danceEmoji';
 import { getColumnGroup, getShortHeader } from '../utils/columns';
 import { useIsMobile } from '../hooks/useIsMobile';
 import FieldValue from './FieldValue';
+import FigurePositions from './FigurePositions';
+import { TIMING_COLUMN } from '../utils/stepFields';
 import './DanceTable.css';
 
 interface DanceTableProps {
   data: FigureGroup[];
   visibleColumns?: string[];
-  selectedFigures?: string[];
   onSelectFigure: (figure: FigureGroup) => void;
   // Owned by the parent so the scroll offset outlives this component,
   // which unmounts while a figure's detail view is open.
@@ -18,7 +19,10 @@ interface DanceTableProps {
 
 const baseFieldKey = (header: string) => header.replace(/^(Lead|Follow) /, '');
 
-const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedFigures, onSelectFigure, scrollTopRef }) => {
+// Shown on the figure's own row (or above its steps), not per step.
+const OUTER_COLUMNS = ['Dance', 'Figure Name', 'Level', 'Starting Position', 'Ending Position'];
+
+const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, onSelectFigure, scrollTopRef }) => {
   const isMobile = useIsMobile();
   const [expandedFigures, setExpandedFigures] = useState<Set<string>>(new Set());
   const containerRef = useRef<HTMLDivElement>(null);
@@ -31,22 +35,6 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
     // Mount only: afterwards the container's own scroll position is the source of truth.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // Auto-expand the selected figures when they change (desktop only).
-  useEffect(() => {
-    if (selectedFigures && selectedFigures.length > 0) {
-      setExpandedFigures(prev => {
-        const next = new Set(prev);
-        selectedFigures.forEach(figName => {
-          const matchingGroups = data.filter(f => f.name === figName);
-          matchingGroups.forEach(g => {
-            next.add(`${g.dance}-${g.name}`);
-          });
-        });
-        return next;
-      });
-    }
-  }, [selectedFigures, data]);
 
   // A figure open via inline expansion doesn't carry over if the viewport
   // crosses into mobile, which navigates to the detail view instead.
@@ -64,19 +52,27 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
     );
   }
 
-  const allHeaders = Object.keys(data[0].steps[0]) as (keyof DanceStep)[];
-  const headers = visibleColumns
-    ? allHeaders.filter(h => visibleColumns.includes(h))
-    : allHeaders;
-  const innerHeaders = headers.filter(h => h !== 'Dance' && h !== 'Figure Name' && h !== 'Level');
+  const isVisible = (column: string) => !visibleColumns || visibleColumns.includes(column);
 
-  const showDance = !visibleColumns || visibleColumns.includes('Dance');
-  const showLevel = !visibleColumns || visibleColumns.includes('Level');
-  const showStep = !visibleColumns || visibleColumns.includes('Step');
-  const showNotes = !visibleColumns || visibleColumns.includes('General Notes');
+  // Standard and Latin rows chart different columns, so each figure's
+  // step table is built from its own. Positions are figure-level and sit
+  // above the table instead of as a mostly empty column.
+  const innerHeadersFor = (fig: FigureGroup) =>
+    Object.keys(fig.steps[0]).filter(
+      (h) => isVisible(h) && !OUTER_COLUMNS.includes(h)
+    );
+
+  const showDance = isVisible('Dance');
+  const showLevel = isVisible('Level');
+  const showStep = isVisible('Step');
+  const showNotes = isVisible('General Notes');
   const colSpan = 1 + (showDance ? 1 : 0) + 1 + (showLevel ? 1 : 0) + (showStep ? 1 : 0) + (showNotes ? 1 : 0);
 
-  const renderInnerCell = (header: keyof DanceStep, value: string) => {
+  const renderInnerCell = (header: string, value: string) => {
+    if (header === TIMING_COLUMN) {
+      if (!value || value.trim() === '') return <span className="cell-empty">—</span>;
+      return <span className="timing-badge">{value}</span>;
+    }
     if (header === 'Step') {
       return (
         <div className="step-cell">
@@ -203,11 +199,16 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
                   <tr className="figure-child-row">
                     <td colSpan={colSpan} className="expanded-details-cell">
                       <div className="dropdown-details-wrapper">
+                        <FigurePositions
+                          figure={fig}
+                          showStart={isVisible('Starting Position')}
+                          showEnd={isVisible('Ending Position')}
+                        />
                         <div className="nested-table-scroll">
                           <table className="nested-steps-table">
                             <thead>
                               <tr>
-                                {innerHeaders.map((header) => {
+                                {innerHeadersFor(fig).map((header) => {
                                   let className = '';
                                   if (header === 'Step') className = 'th-step';
                                   else if (header === 'General Notes') className = 'th-notes';
@@ -226,7 +227,7 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, selectedF
                             <tbody>
                               {fig.steps.map((step, idx) => (
                                 <tr key={idx}>
-                                  {innerHeaders.map((header) => {
+                                  {innerHeadersFor(fig).map((header) => {
                                     let className = '';
                                     if (header === 'Step') className = 'td-step';
                                     else if (header === 'General Notes') className = 'td-notes';

@@ -1,29 +1,23 @@
-export interface DanceStep {
+// The two technique books chart different attributes per step (Standard
+// has Rise and Fall, CBM and Sway; Latin has Timing, Beat Value and
+// Action), so a row is any set of CSV columns plus the four every style
+// shares. A column a style doesn't chart is simply absent from its rows.
+export type DanceStep = Record<string, string> & {
   Dance: string;
   "Figure Name": string;
   Level: string;
   Step: string;
-  "Lead Feet Positions": string;
-  "Lead Alignment": string;
-  "Lead Amount of Turn": string;
-  "Lead Rise and Fall": string;
-  "Lead Footwork": string;
-  "Lead CBM": string;
-  "Lead Sway": string;
-  "Follow Feet Positions": string;
-  "Follow Alignment": string;
-  "Follow Amount of Turn": string;
-  "Follow Rise and Fall": string;
-  "Follow Footwork": string;
-  "Follow CBM": string;
-  "Follow Sway": string;
-  "General Notes": string;
-}
+};
+
+export type DanceStyle = 'Standard' | 'Latin';
 
 export interface FigureGroup {
+  style: DanceStyle;
   dance: string;
   name: string;
   level: string;
   steps: DanceStep[];
   generalNotes: string;
+  startingPosition: string;
+  endingPosition: string;
 }

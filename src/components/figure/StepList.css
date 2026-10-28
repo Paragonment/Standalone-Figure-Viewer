@@ -1,0 +1,144 @@
+.fig-steps {
+  background: var(--floor);
+  min-height: 100%;
+  padding-bottom: 32px;
+}
+
+.fig-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fig-step {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  column-gap: 10px;
+  padding: 14px var(--gutter) 16px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.fig-step-both {
+  grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.fig-num {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.fig-n {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 0.9;
+  color: var(--ink);
+  transition: color var(--dur-fast) ease;
+}
+
+.fig-step-both .fig-n {
+  font-size: 32px;
+}
+
+.fig-step-current .fig-n {
+  color: var(--accent);
+}
+
+.fig-count {
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--shade);
+  white-space: nowrap;
+}
+
+.fig-body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fig-feet {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.fig-details {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 3px;
+}
+
+.fig-detail {
+  display: grid;
+  grid-template-columns: var(--fig-label-w, 66px) minmax(0, 1fr);
+  column-gap: 8px;
+  align-items: baseline;
+}
+
+.fig-detail dt {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--slate);
+}
+
+.fig-detail dd {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.fig-partner {
+  margin-top: 7px;
+}
+
+.fig-partner dt {
+  font-weight: 700;
+}
+
+.fig-partner dd {
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--shade);
+}
+
+.fig-partner .fig-partner-lead {
+  color: var(--lead);
+}
+
+.fig-partner .fig-partner-follow {
+  color: var(--follow);
+}
+
+/* Side by side */
+.fig-part {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fig-part .fig-feet {
+  font-size: 15px;
+}
+
+.fig-inline {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.fig-inline-item {
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.fig-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--slate);
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import type { DanceStyle } from '../types';
+import CheckBox from './ui/CheckBox';
 import { ALWAYS_VISIBLE_COLUMNS, getColumnGroup } from '../utils/columns';
 import './ColumnToggle.css';
 
@@ -33,7 +34,7 @@ const ColumnToggle: React.FC<ColumnToggleProps> = ({
   const styleTag = (col: string) => {
     const styles = columnStyles[col] ?? [];
     if (styleCount < 2 || styles.length !== 1) return null;
-    return <span className={`column-style-tag ${styles[0].toLowerCase()}`}>{styles[0]}</span>;
+    return <span className="column-style-tag">{styles[0]}</span>;
   };
 
   // Determine active preset based on currently visible columns
@@ -82,96 +83,75 @@ const ColumnToggle: React.FC<ColumnToggleProps> = ({
   const subColumnsCount = innerHeaders.length;
   const totalColumnsCount = mainColumnsCount + subColumnsCount;
 
+  const renderColumn = (col: string, label: string) => (
+    <label key={col} className="column-checkbox-item">
+      <input
+        type="checkbox"
+        className="fv-sr-only"
+        checked={visibleColumns.includes(col)}
+        onChange={() => toggleColumn(col)}
+      />
+      <CheckBox state={visibleColumns.includes(col) ? 'on' : 'off'} />
+      <span className="column-name">{label}</span>
+      {styleTag(col)}
+    </label>
+  );
+
   return (
     <div className="column-control-panel">
-      <div className="preset-row">
-        <div className="preset-group">
-          <div className="segmented-control">
-            <button
-              className={`preset-btn ${activePreset === 'all' ? 'active' : ''}`}
-              onClick={() => applyPreset('all')}
-            >
-              Show All
-            </button>
-            <button
-              className={`preset-btn ${activePreset === 'lead' ? 'active' : ''}`}
-              onClick={() => applyPreset('lead')}
-            >
-              🕺 Lead
-            </button>
-            <button
-              className={`preset-btn ${activePreset === 'follow' ? 'active' : ''}`}
-              onClick={() => applyPreset('follow')}
-            >
-              💃 Follow
-            </button>
-            {activePreset === 'custom' && (
-              <span className="preset-badge">Customized</span>
-            )}
-          </div>
+      <div className="column-preset-row">
+        <div className="column-presets" role="group" aria-label="Column presets">
+          <button
+            type="button"
+            className={`column-preset${activePreset === 'all' ? ' on' : ''}`}
+            aria-pressed={activePreset === 'all'}
+            onClick={() => applyPreset('all')}
+          >
+            Show all
+          </button>
+          <button
+            type="button"
+            className={`column-preset lead${activePreset === 'lead' ? ' on' : ''}`}
+            aria-pressed={activePreset === 'lead'}
+            onClick={() => applyPreset('lead')}
+          >
+            Lead
+          </button>
+          <button
+            type="button"
+            className={`column-preset follow${activePreset === 'follow' ? ' on' : ''}`}
+            aria-pressed={activePreset === 'follow'}
+            onClick={() => applyPreset('follow')}
+          >
+            Follow
+          </button>
         </div>
-        
-        <div className="preset-results-summary">
-          <span className="results-count-text">
-            Showing <strong> {totalColumnsCount} </strong> column{totalColumnsCount === 1 ? '' : 's'}
-          </span>
-        </div>
+        {activePreset === 'custom' && <span className="column-custom">Customized</span>}
+
+        <p className="column-count" aria-live="polite">
+          Showing <strong>{totalColumnsCount}</strong> column{totalColumnsCount === 1 ? '' : 's'}
+        </p>
       </div>
 
-      <div className="granular-columns-container">
-        <div className="column-group-grid">
-          <div className="column-group-card">
-            <h5>Common Info</h5>
-            <div className="column-checkbox-list">
-              {commonHeaders.map(col => (
-                <label key={col} className="column-checkbox-item">
-                  <input
-                    type="checkbox"
-                    checked={visibleColumns.includes(col)}
-                    onChange={() => toggleColumn(col)}
-                  />
-                  <span className="checkbox-custom"></span>
-                  <span className="column-name">{col}</span>
-                  {styleTag(col)}
-                </label>
-              ))}
-            </div>
+      <div className="column-group-grid">
+        <div className="column-group">
+          <h5>Common info</h5>
+          <div className="column-checkbox-list">
+            {commonHeaders.map(col => renderColumn(col, col))}
           </div>
+        </div>
 
-          <div className="column-group-card lead-card">
-            <h5>Lead (Man) Details</h5>
-            <div className="column-checkbox-list">
-              {leadHeaders.map(col => (
-                <label key={col} className="column-checkbox-item">
-                  <input
-                    type="checkbox"
-                    checked={visibleColumns.includes(col)}
-                    onChange={() => toggleColumn(col)}
-                  />
-                  <span className="checkbox-custom"></span>
-                  <span className="column-name">{col.replace('Lead ', '')}</span>
-                  {styleTag(col)}
-                </label>
-              ))}
-            </div>
+        <div className="column-group lead-group">
+          <h5>Lead details</h5>
+          <div className="column-checkbox-list">
+            {leadHeaders.map(col => renderColumn(col, col.replace('Lead ', '')))}
           </div>
+        </div>
 
-          <div className="column-group-card follow-card">
-            <h5>Follow (Lady) Details</h5>
-            <div className="column-checkbox-list">
-              {followHeaders.map(col => (
-                <label key={col} className="column-checkbox-item">
-                  <input
-                    type="checkbox"
-                    checked={visibleColumns.includes(col)}
-                    onChange={() => toggleColumn(col)}
-                  />
-                  <span className="checkbox-custom"></span>
-                  <span className="column-name">{col.replace('Follow ', '')}</span>
-                  {styleTag(col)}
-                </label>
-              ))}
-            </div>
+        <div className="column-group follow-group">
+          <h5>Follow details</h5>
+          <div className="column-checkbox-list">
+            {followHeaders.map(col => renderColumn(col, col.replace('Follow ', '')))}
           </div>
         </div>
       </div>

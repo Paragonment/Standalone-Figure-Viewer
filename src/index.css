@@ -1,81 +1,113 @@
 :root {
-  --font-heading: 'Outfit', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-display: 'Big Shoulders', sans-serif;
+  --font-body: 'Instrument Sans', sans-serif;
 
-  /* Light Theme Palette */
-  --bg-color: hsl(210, 40%, 98%);
-  --container-bg: hsl(0, 0%, 100%);
-  --sidebar-bg: hsl(215, 20%, 95%);
-  --rail-bg: hsl(215, 20%, 90%);
-  --text-primary: hsl(222, 47%, 11%);
-  --text-secondary: hsl(215, 16%, 42%);
-  --text-muted: hsl(215, 16%, 60%);
-  --border-color: hsl(214, 32%, 91%);
-  --accent-color: hsl(243, 75%, 59%);
-  --accent-hover: hsl(243, 75%, 52%);
-  --accent-light: rgba(79, 70, 229, 0.1);
-  --row-hover: hsl(210, 40%, 96%);
-  --row-zebra: hsl(210, 40%, 99%);
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
-  --header-bg: hsl(210, 40%, 96%);
-  --input-bg: hsl(0, 0%, 100%);
-  --glass-bg: rgba(255, 255, 255, 0.75);
-  --glass-border: rgba(255, 255, 255, 0.4);
+  /* Light theme: Mirror ground, Floor surfaces, Tailcoat ink */
+  --mirror: #eef1f5;
+  --floor: #ffffff;
+  --ink: #121a33;
+  --on-ink: #ffffff;
+  --shade: #3d4559;
+  --slate: #586074;
+  --lead: #1f4ed8;
+  --follow: #b4440e;
+  --on-role: #ffffff;
+  --rule: #d6dbe4;
+  --hairline: #e4e8ef;
+  --edge: #d6dbe4;
+  --idle: #b9c0cc;
+  --track: #eef1f5;
+  --match: #dde2ea;
+  --tint: #f6f8fb;
+  --chevron: #9aa2b2;
+  --scrim: rgba(18, 26, 51, 0.5);
+  --lift: 0 1px 2px rgba(18, 26, 51, 0.14);
+  --bronze: #8b5a2b;
+  --bronze-dot: #a8703a;
+  --silver: #5c6878;
+  --silver-dot: #8c97a7;
+  --gold: #876a00;
+  --gold-dot: #c9a227;
+  --pre-bronze-dot: #a8703a;
 
-  /* Functional Colors */
-  --lead-color: hsl(192, 54%, 48%);
-  --lead-light: hsl(192, 54%, 48%, 0.1);
-  --follow-color: hsl(49, 49%, 59%);
-  --follow-light: hsl(49, 49%, 59%, 0.1);
-  --latin-color: hsl(12, 72%, 48%);
-  --latin-light: hsl(12, 72%, 48%, 0.1);
+  /* Shape, motion, spacing */
+  --r-field: 12px;
+  --r-small: 10px;
+  --r-pill: 18px;
+  --r-cta: 14px;
+  --r-step-btn: 16px;
+  --dur-fast: 120ms;
+  --dur: 150ms;
+  --dur-panel: 200ms;
+  --gutter: 16px;
+  --target: 44px;
 }
 
 [data-theme='dark'] {
-  /* Dark Theme Palette */
-  --bg-color: hsl(222, 47%, 4%);
-  --container-bg: hsl(222, 47%, 8%);
-  --sidebar-bg: hsl(222, 47%, 6%);
-  --rail-bg: hsl(222, 47%, 3%);
-  --text-primary: hsl(210, 40%, 98%);
-  --text-secondary: hsl(215, 20%, 78%);
-  --text-muted: hsl(215, 16%, 50%);
-  --border-color: hsl(217, 32%, 14%);
-  --accent-color: hsl(245, 90%, 66%);
-  --accent-hover: hsl(245, 90%, 72%);
-  --accent-light: rgba(99, 102, 241, 0.15);
-  --row-hover: hsl(217, 32%, 12%);
-  --row-zebra: hsl(217, 32%, 10%);
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.7), 0 4px 6px -2px rgba(0, 0, 0, 0.5);
-  --header-bg: hsl(222, 47%, 10%);
-  --input-bg: hsl(222, 47%, 11%);
-  --glass-bg: rgba(15, 23, 42, 0.75);
-  --glass-border: rgba(255, 255, 255, 0.05);
+  /* Dark theme: Night ground, Floor surfaces, Chalk ink */
+  --mirror: #0d1224;
+  --floor: #151b30;
+  --ink: #e8ebf4;
+  --on-ink: #0d1224;
+  --shade: #c3c9d8;
+  --slate: #9aa3b8;
+  --lead: #86a5ff;
+  --follow: #ff9b66;
+  --on-role: #0d1224;
+  --rule: #2a3350;
+  --hairline: #232b45;
+  --edge: #3a4466;
+  --idle: #3a4466;
+  --track: #0d1224;
+  --match: #2a3350;
+  --tint: #101629;
+  --chevron: #6e7893;
+  --scrim: rgba(0, 0, 0, 0.6);
+  --lift: inset 0 0 0 1px var(--edge);
+  --bronze: #d9a066;
+  --bronze-dot: #c98a4b;
+  --silver: #b4bfd0;
+  --silver-dot: #8c97a7;
+  --gold: #e3bc3c;
+  --gold-dot: #c9a227;
+  --pre-bronze-dot: #c98a4b;
+}
 
-  --lead-color: hsl(192, 54%, 48%);
-  --lead-light: hsl(192, 54%, 48%, 0.1);
-  --follow-color: hsl(49, 49%, 59%);
-  --follow-light: hsl(49, 49%, 59%, 0.1);
-  --latin-color: hsl(12, 80%, 64%);
-  --latin-light: hsl(12, 80%, 64%, 0.14);
+html {
+  color-scheme: light dark;
+}
+
+html[data-theme='light'] {
+  color-scheme: light;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--bg-color);
-  color: var(--text-primary);
+  background-color: var(--mirror);
+  color: var(--ink);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  overflow: hidden; /* App is a fixed height layout like Discord */
+  overflow: hidden; /* App is a fixed height layout; each screen scrolls inside */
 }
 
 * {
   box-sizing: border-box;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
 }
 
 /* Custom Sleek Scrollbar */
@@ -89,12 +121,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-color);
+  background: var(--rule);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--text-muted);
+  background: var(--slate);
 }
 
 /* Disable all transitions temporarily (e.g. during theme toggle) */
@@ -103,4 +135,54 @@ body {
 .no-transitions *::before,
 .no-transitions *::after {
   transition: none !important;
+}
+
+/* Shared utilities */
+.fv-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+}
+
+.fv-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Underlined text action (Show all, Search all, Try again) */
+.fv-act {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+/* Matched search text: always bold ink on the Match highlight */
+mark,
+.fv-mark {
+  background: var(--match);
+  color: var(--ink);
+  font-weight: 700;
+  border-radius: 3px;
+  padding: 0 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

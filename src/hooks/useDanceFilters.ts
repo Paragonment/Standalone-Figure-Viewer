@@ -24,13 +24,16 @@ export const useDanceFilters = (figureGroups: FigureGroup[]) => {
   const [selectedDances, setSelectedDances] = useState<string[]>([]);
   const [selectedLevels, setSelectedLevels] = useState<string[]>([]);
 
-  // Each style's dances, alphabetically, in DANCE_STYLES order. A style
-  // with no data yet is left out rather than shown as an empty filter.
+  // Each style's dances in the style's own display order (any dance the
+  // order doesn't list follows alphabetically), in DANCE_STYLES order. A
+  // style with no data yet is left out rather than shown as an empty filter.
   const danceGroups = useMemo<StyleDances[]>(() => {
-    return DANCE_STYLES.map((s) => ({
-      style: s.id,
-      dances: Array.from(new Set(figureGroups.filter((g) => g.style === s.id).map((g) => g.dance))).sort(),
-    })).filter((g) => g.dances.length > 0);
+    return DANCE_STYLES.map((s) => {
+      const present = new Set(figureGroups.filter((g) => g.style === s.id).map((g) => g.dance));
+      const known = s.dances.filter((d) => present.has(d));
+      const unknown = [...present].filter((d) => !s.dances.includes(d)).sort();
+      return { style: s.id, dances: [...known, ...unknown] };
+    }).filter((g) => g.dances.length > 0);
   }, [figureGroups]);
 
   const levels = useMemo(() => {

@@ -1,0 +1,19 @@
+/* The artboard is a fixed one-line row; real positions run up to 80
+   characters, so the row wraps instead of overflowing. */
+.ui-positions {
+  margin: 0;
+  min-height: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 8px;
+  row-gap: 2px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.ui-positions-arrow {
+  flex: none;
+  color: var(--slate);
+}

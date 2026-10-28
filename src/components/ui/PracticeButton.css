@@ -1,0 +1,35 @@
+/* The button is the 44px touch target; the pill inside is 34px high. */
+.ui-practice-btn {
+  flex: none;
+  height: var(--target);
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.ui-practice-pill {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px 0 9px;
+  border: 1px solid var(--rule);
+  border-radius: var(--r-small);
+  background: var(--floor);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* The ring wraps the visible pill, not the 44px target around it. */
+.ui-practice-btn:focus-visible {
+  outline: none;
+}
+
+.ui-practice-btn:focus-visible .ui-practice-pill {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}

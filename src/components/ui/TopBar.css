@@ -1,0 +1,60 @@
+.ui-topbar {
+  flex: none;
+  height: 61px;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 8px 0 4px;
+  border-bottom: 1px solid transparent;
+  background: var(--mirror);
+  transition: border-color var(--dur) ease;
+}
+
+.ui-topbar-rule {
+  border-bottom-color: var(--rule);
+}
+
+.ui-topbar-back {
+  flex: none;
+  min-width: var(--target);
+  height: var(--target);
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0 8px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ui-topbar-back-icon {
+  padding: 0 11px;
+}
+
+.ui-topbar-title {
+  flex: 1;
+  min-width: 0;
+  height: var(--target);
+  line-height: var(--target);
+  padding: 0 4px;
+  text-align: left;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 21px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity var(--dur) ease;
+}
+
+.ui-topbar-title-hidden {
+  opacity: 0;
+}
+
+.ui-topbar-back:focus-visible {
+  border-radius: var(--r-field);
+}

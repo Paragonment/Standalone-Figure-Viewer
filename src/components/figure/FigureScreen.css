@@ -1,0 +1,48 @@
+.fig-scroll {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  overflow-y: auto;
+  overflow-anchor: none;
+}
+
+.fig-header {
+  padding: 3px var(--gutter) 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.fig-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 42px;
+  line-height: 1;
+}
+
+.fig-meta {
+  margin: 8px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 14px;
+  font-size: 15px;
+  color: var(--slate);
+}
+
+.fig-level {
+  font-weight: 600;
+}
+
+/* Positions, rhythm strip and part switch stay above the steps. The
+   top: -1px hides the doubled border where it meets the scroller's edge. */
+.fig-bar {
+  position: sticky;
+  top: -1px;
+  z-index: 1;
+  padding: 7px var(--gutter) 8px;
+  display: flex;
+  flex-direction: column;
+  background: var(--floor);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--hairline);
+}

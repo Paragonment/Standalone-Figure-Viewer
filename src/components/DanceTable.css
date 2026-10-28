@@ -5,54 +5,45 @@
   overflow-x: hidden;
   overflow-y: auto;
   margin-top: 10px;
-  border-radius: 12px;
-  box-shadow: var(--shadow);
-  background: var(--container-bg);
-  border: 1px solid var(--border-color);
+  border-radius: var(--r-field);
+  background: var(--floor);
+  border: 1px solid var(--rule);
   position: relative;
-  transition: all 0.3s ease;
 }
 
 .dance-table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  font-size: 0.88rem;
+  font-size: 14px;
   text-align: left;
 }
 
 .dance-table th {
-  background-color: var(--header-bg);
-  color: var(--text-primary);
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 14px 18px;
-  border-bottom: 2px solid var(--border-color);
+  background-color: var(--floor);
+  color: var(--slate);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--rule);
   white-space: nowrap;
   position: sticky;
   top: 0;
   z-index: 10;
-  transition: background-color 0.3s ease;
 }
 
 .dance-table td {
-  padding: 14px 18px;
-  border-bottom: 1px solid var(--border-color);
-  color: var(--text-secondary);
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--hairline);
+  color: var(--shade);
   vertical-align: middle;
-  transition: background-color 0.2s, color 0.2s;
 }
 
 /* ==========================================================================
-   1. FIGURE ROWS - desktop expands an inline nested table, mobile
-      navigates to the dedicated detail view instead.
+   1. FIGURE ROWS - a click expands an inline nested table of the steps.
    ========================================================================== */
 .figure-parent-row {
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
 }
 
 .figure-parent-row:focus {
@@ -60,41 +51,43 @@
 }
 
 .figure-parent-row td {
-  background-color: var(--container-bg);
+  background-color: var(--floor);
+  transition: background-color var(--dur-fast) ease;
 }
 
-/* Hover only where a pointer can actually hover - on touch screens a
-   :hover style sticks to the last tapped row. :active gives the tap
-   feedback instead. */
 @media (hover: hover) {
   .figure-parent-row:hover td {
-    background-color: var(--row-hover);
+    background-color: var(--tint);
   }
 
   .figure-parent-row:hover .toggle-arrow-icon {
-    color: var(--accent-color);
+    color: var(--ink);
   }
 }
 
-.figure-parent-row:active td,
 .figure-parent-row:focus-visible td {
-  background-color: var(--row-hover);
+  background-color: var(--tint);
 }
 
 .figure-parent-row:focus-visible td:first-child {
-  box-shadow: inset 3px 0 0 var(--accent-color);
+  box-shadow: inset 3px 0 0 var(--ink);
 }
 
-/* Bind parent and child visually when expanded (desktop) */
+/* Bind parent and child visually when expanded */
 .figure-parent-row.parent-expanded td {
-  background-color: var(--accent-light);
+  background-color: var(--tint);
   border-bottom-color: transparent;
 }
 
 .figure-name-cell strong {
-  font-family: var(--font-heading);
-  font-size: 0.95rem;
-  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.dance-cell {
+  color: var(--slate);
+  white-space: nowrap;
 }
 
 /* Toggle/open arrow */
@@ -105,36 +98,31 @@
   text-align: center;
 }
 
+.td-toggle-arrow {
+  padding-left: 12px;
+  padding-right: 4px;
+}
+
 .toggle-arrow-icon {
-  display: inline-block;
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s;
+  display: block;
+  margin: 0 auto;
+  color: var(--chevron);
+  transition: transform var(--dur-panel) ease, color var(--dur-fast) ease;
 }
 
 .toggle-arrow-icon.rotated {
   transform: rotate(90deg);
-  color: var(--accent-color);
+  color: var(--ink);
 }
 
-/* Step count pill */
-/* Shrink-wrap to the "N steps" badge: a fixed width minus the cell
-   padding left too little room, so the badge spilled past the table. */
+/* Shrink-wrap to the "N steps" text. */
 .th-step-count, .td-step-count {
   width: 1%;
   white-space: nowrap;
 }
 
-.step-count-badge {
-  background-color: var(--border-color);
-  color: var(--text-secondary);
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
+.td-step-count {
+  color: var(--slate);
 }
 
 /* Summary Truncation */
@@ -143,8 +131,8 @@
 }
 
 .notes-text {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
+  font-size: 14px;
+  color: var(--shade);
   line-height: 1.45;
   display: block;
 }
@@ -157,38 +145,31 @@
 }
 
 /* ==========================================================================
-   2. CELL ELEMENTS (BADGES / PILLS)
+   2. LEVEL AND STEP NUMBERS
    ========================================================================== */
-.dance-badge {
+.level-label {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background-color: var(--row-hover);
-  border: 1px solid var(--border-color);
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 0.8rem;
+  gap: 7px;
   font-weight: 600;
-  color: var(--text-primary);
+  white-space: nowrap;
 }
 
-.dance-badge-icon {
-  font-size: 0.95rem;
+.level-dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  box-sizing: border-box;
+  border: 2px solid;
+  border-radius: 4px;
 }
 
 .step-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-color: var(--accent-light);
-  color: var(--accent-color);
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.8rem;
-  border: 1px solid rgba(79, 70, 229, 0.15);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--ink);
 }
 
 .step-cell {
@@ -198,22 +179,21 @@
 }
 
 /* ==========================================================================
-   3. DESKTOP INLINE EXPANSION: NESTED STEP-BY-STEP TABLE
+   3. INLINE EXPANSION: NESTED STEP-BY-STEP TABLE
    ========================================================================== */
 .figure-child-row td {
   padding: 0;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--hairline);
 }
 
 .expanded-details-cell {
-  background-color: var(--row-zebra);
+  background-color: var(--tint);
   max-width: 0;
 }
 
 .dropdown-details-wrapper {
-  padding: 16px 20px 24px 44px;
-  border-left: 4px solid var(--accent-color);
-  animation: dropdownFadeIn 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 4px 20px 24px 44px;
+  animation: dropdownFadeIn var(--dur-panel) ease;
 }
 
 .dropdown-details-wrapper > .figure-positions {
@@ -234,38 +214,34 @@
 .nested-table-scroll {
   width: 100%;
   overflow-x: auto;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  background-color: var(--container-bg);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+  border-radius: var(--r-field);
+  border: 1px solid var(--rule);
+  background-color: var(--floor);
 }
 
 .nested-steps-table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  font-size: 0.84rem;
+  font-size: 14px;
 }
 
 .nested-steps-table th {
-  background-color: var(--row-hover);
-  color: var(--text-secondary);
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  background-color: var(--floor);
+  color: var(--slate);
+  font-size: 13px;
+  font-weight: 600;
   padding: 10px 14px;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--rule);
   white-space: nowrap;
   position: static;
 }
 
 .nested-steps-table td {
   padding: 10px 14px;
-  border-bottom: 1px solid var(--border-color);
-  color: var(--text-secondary);
-  background-color: var(--container-bg);
+  border-bottom: 1px solid var(--hairline);
+  color: var(--shade);
+  background-color: var(--floor);
   min-width: 120px;
   max-width: 250px;
 }
@@ -287,201 +263,46 @@
   border-bottom: none;
 }
 
-.nested-steps-table tr:nth-child(even) td {
-  background-color: var(--row-zebra);
+.nested-steps-table tbody tr:hover td {
+  background-color: var(--tint);
 }
 
-.nested-steps-table tr:hover td {
-  background-color: var(--row-hover);
+/* Lead and Follow columns are headed in their part colors. */
+.nested-steps-table th.th-lead {
+  color: var(--lead);
+  border-bottom: 2px solid var(--lead);
 }
 
-.th-lead {
-  border-bottom: 2px solid var(--lead-color) !important;
-  color: var(--lead-color) !important;
-}
-
-.td-lead {
-  background-color: var(--lead-light) !important;
-}
-
-.nested-steps-table tr:nth-child(even) td.td-lead {
-  background-color: hsl(192, 54%, 48%, 0.05) !important;
-}
-
-.th-follow {
-  border-bottom: 2px solid var(--follow-color) !important;
-  color: var(--follow-color) !important;
-}
-
-.td-follow {
-  background-color: var(--follow-light) !important;
-}
-
-.nested-steps-table tr:nth-child(even) td.td-follow {
-  background-color: hsl(49, 49%, 59%, 0.05) !important;
+.nested-steps-table th.th-follow {
+  color: var(--follow);
+  border-bottom: 2px solid var(--follow);
 }
 
 /* ==========================================================================
-   4. NO RESULTS & SCREEN ADAPTATION
+   4. NO RESULTS
    ========================================================================== */
 .no-results {
-  text-align: center;
-  padding: 60px 40px;
-  background: var(--container-bg);
-  border-radius: 12px;
-  border: 1px solid var(--border-color);
-  margin-top: 20px;
-  box-shadow: var(--shadow);
+  padding: 28px 24px;
+  background: var(--floor);
+  border-radius: var(--r-field);
+  border: 1px solid var(--rule);
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
-.no-results-icon {
-  font-size: 2.5rem;
-  margin-bottom: 8px;
+  align-items: flex-start;
+  gap: 6px;
 }
 
 .no-results h3 {
   margin: 0;
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  color: var(--text-primary);
-  font-weight: 700;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink);
 }
 
 .no-results p {
   margin: 0;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  max-width: 350px;
-  line-height: 1.5;
-}
-
-.header-text-mobile {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .desktop-only {
-    display: none !important;
-  }
-
-  .header-text-desktop {
-    display: none;
-  }
-
-  .header-text-mobile {
-    display: inline;
-  }
-
-  .dance-table {
-    font-size: 0.8rem;
-  }
-
-  .dance-table th, .dance-table td {
-    padding: 10px 8px;
-  }
-
-  /* Badges keep the row within the viewport: icon-only dance badge, and a
-     bare number for step count instead of "N steps". */
-  .dance-table .dance-badge-name {
-    display: none;
-  }
-
-  .dance-table .dance-badge {
-    padding: 3px 6px;
-  }
-
-  .th-toggle-arrow, .td-toggle-arrow {
-    width: 26px;
-    min-width: 26px !important;
-    max-width: 26px !important;
-  }
-
-  .toggle-arrow-icon {
-    font-size: 1rem;
-  }
-
-  .th-step-count, .td-step-count {
-    width: 40px;
-    min-width: 40px !important;
-    max-width: 40px !important;
-  }
-
-  .step-count-badge {
-    padding: 3px 6px;
-  }
-}
-
-/* ==========================================================================
-   5. LEVEL BADGE STYLING
-   ========================================================================== */
-.level-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  border: 1px solid transparent;
-  white-space: nowrap;
-}
-
-/* Light Theme Level Colors */
-.level-badge.pre-bronze {
-  background-color: hsl(215, 20%, 93%);
-  color: hsl(215, 20%, 35%);
-  border-color: hsl(215, 20%, 85%);
-}
-
-.level-badge.bronze {
-  background-color: hsl(30, 60%, 93%);
-  color: hsl(30, 70%, 25%);
-  border-color: hsl(30, 60%, 85%);
-}
-
-.level-badge.silver {
-  background-color: hsl(200, 20%, 92%);
-  color: hsl(200, 30%, 30%);
-  border-color: hsl(200, 20%, 83%);
-}
-
-.level-badge.gold {
-  background-color: hsl(45, 90%, 92%);
-  color: hsl(45, 90%, 25%);
-  border-color: hsl(45, 90%, 80%);
-}
-
-/* Dark Theme Level Colors */
-[data-theme='dark'] .level-badge.pre-bronze {
-  background-color: hsl(215, 20%, 15%);
-  color: hsl(215, 20%, 80%);
-  border-color: hsl(215, 20%, 25%);
-}
-
-[data-theme='dark'] .level-badge.bronze {
-  background-color: hsl(30, 50%, 15%);
-  color: hsl(30, 80%, 75%);
-  border-color: hsl(30, 50%, 25%);
-}
-
-[data-theme='dark'] .level-badge.silver {
-  background-color: hsl(200, 20%, 16%);
-  color: hsl(200, 40%, 80%);
-  border-color: hsl(200, 20%, 26%);
-}
-
-[data-theme='dark'] .level-badge.gold {
-  background-color: hsl(45, 60%, 15%);
-  color: hsl(45, 90%, 75%);
-  border-color: hsl(45, 60%, 25%);
-}
-
-@media (max-width: 768px) {
-  .level-badge {
-    font-size: 0.7rem;
-    padding: 2px 4px;
-  }
+  color: var(--slate);
+  font-size: 15px;
+  line-height: 1.4;
 }

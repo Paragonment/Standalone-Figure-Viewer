@@ -1,0 +1,74 @@
+.sf {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding-left: 14px;
+  background: var(--floor);
+  border-radius: var(--r-field);
+  box-shadow: inset 0 0 0 1px var(--rule);
+}
+
+.sf:focus-within {
+  box-shadow: inset 0 0 0 2px var(--ink);
+}
+
+.sf-icon {
+  flex: none;
+  color: var(--slate);
+}
+
+.sf-input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0 0 0 10px;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 17px;
+  color: var(--ink);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.sf-input::placeholder {
+  color: var(--slate);
+  opacity: 1;
+}
+
+.sf-input::-webkit-search-cancel-button,
+.sf-input::-webkit-search-decoration {
+  -webkit-appearance: none;
+  display: none;
+}
+
+/* The field draws its own focus ring, so skip the global outline. */
+.sf-input:focus-visible {
+  outline: 0;
+}
+
+.sf-clear {
+  flex: none;
+  width: var(--target);
+  height: var(--target);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.sf-clear-disc {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--rule);
+}

@@ -1,0 +1,166 @@
+.fb {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fb-style {
+  display: flex;
+  align-items: center;
+}
+
+/* 44px target; the negative margin lines the 20px box up with the gutter. */
+.fb-all {
+  flex: none;
+  width: var(--target);
+  height: var(--target);
+  margin-left: -12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.fb-track {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  height: var(--target);
+  border-radius: var(--r-field);
+  background: var(--floor);
+  box-shadow: inset 0 0 0 1px var(--rule);
+}
+
+.fb-seg {
+  flex: 1 1 auto;
+  position: relative;
+  height: var(--target);
+  padding: 0 6px;
+  border: 0;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.fb-seg-on {
+  color: var(--on-ink);
+}
+
+/* The ring follows the track's corners and stays inside it. */
+.fb-seg:focus-visible {
+  border-radius: var(--r-field);
+  outline-offset: -2px;
+}
+
+.fb-all:focus-visible {
+  border-radius: var(--r-field);
+}
+
+/* The hairline between two segments disappears next to a selected one. */
+.fb-divider {
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 1px;
+  height: 16px;
+  background: var(--rule);
+}
+
+.fb-fill {
+  position: absolute;
+  inset: 4px;
+  border-radius: 8px;
+  background: transparent;
+}
+
+.fb-seg-on .fb-fill {
+  background: var(--ink);
+}
+
+.fb-label {
+  position: relative;
+}
+
+.fb-levels {
+  display: flex;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+/* 44px target around a 36px pill. */
+.fb-pill {
+  flex: 1 1 auto;
+  height: var(--target);
+  margin: -4px 0;
+  padding: 4px 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.fb-pill:focus-visible {
+  outline: none;
+}
+
+.fb-pill:focus-visible .fb-pill-body {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.fb-pill-body {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 10px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--rule);
+  background: var(--floor);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.fb-pill-on .fb-pill-body {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--on-ink);
+}
+
+.fb-dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  border: 2px solid;
+}
+
+/* Four pills need about 340px of text and padding; tighten them on the
+   narrowest phones so none runs off the edge. */
+@media (max-width: 389px) {
+  .fb-pill-body {
+    padding: 0 7px;
+  }
+}
+
+@media (max-width: 339px) {
+  .fb-levels {
+    gap: 4px;
+  }
+
+  .fb-pill-body {
+    gap: 4px;
+    padding: 0 5px;
+    font-size: 13px;
+  }
+}

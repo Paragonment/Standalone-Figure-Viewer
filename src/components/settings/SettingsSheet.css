@@ -1,0 +1,154 @@
+.set-group {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.set-legend {
+  padding: 0;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.set-group-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Segmented switches (I dance, Appearance). */
+.set-seg {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 3px;
+  border-radius: var(--r-field);
+  background: var(--mirror);
+}
+
+.set-seg-btn {
+  height: var(--target);
+  padding: 0;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.set-seg-btn[aria-pressed='true'] {
+  font-weight: 700;
+}
+
+.set-seg-lead[aria-pressed='true'] {
+  background: var(--lead);
+  color: var(--on-role);
+}
+
+.set-seg-follow[aria-pressed='true'] {
+  background: var(--follow);
+  color: var(--on-role);
+}
+
+.set-seg-both[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--on-ink);
+}
+
+/* The one shadow in the design: a hairline lift under the chosen theme. */
+.set-seg-theme[aria-pressed='true'] {
+  background: var(--floor);
+  box-shadow: var(--lift);
+}
+
+/* Style tabs. */
+.set-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-bottom: 1px solid var(--rule);
+}
+
+.set-tab {
+  height: var(--target);
+  margin-bottom: -1px;
+  padding: 0;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--slate);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.set-tab[aria-selected='true'] {
+  border-bottom-color: var(--ink);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.set-tab-tally {
+  margin-left: 4px;
+  font-weight: 500;
+  color: var(--slate);
+}
+
+.set-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Checkbox rows. */
+.set-check {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: var(--target);
+  padding: 0 4px;
+  border: 0;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.set-check-master {
+  height: 48px;
+  border-bottom: 1px solid var(--hairline);
+  font-weight: 700;
+}
+
+.set-check-label {
+  flex: 1;
+}
+
+.set-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 12px;
+  /* Room for Standard's four rows, so the tabs above do not move when
+     Latin's three are showing. */
+  min-height: calc(var(--target) * 4);
+  align-content: start;
+}
+
+/* Rings sit inside the controls so the sheet's scroll area does not clip them. */
+.set-check:focus-visible,
+.set-tab:focus-visible,
+.set-seg-btn:focus-visible {
+  border-radius: 10px;
+  outline-offset: -2px;
+}

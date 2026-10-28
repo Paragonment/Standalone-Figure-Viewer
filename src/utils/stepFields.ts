@@ -17,7 +17,7 @@ const field = (key: string, label: string): StepFieldDef => ({
 const FEET = field('Feet Positions', 'Feet');
 const ALIGNMENT = field('Alignment', 'Alignment');
 const TURN = field('Amount of Turn', 'Turn');
-const RISE_AND_FALL = field('Rise and Fall', 'Rise & Fall');
+const RISE_AND_FALL = field('Rise and Fall', 'Rise and fall');
 const FOOTWORK = field('Footwork', 'Footwork');
 const CBM = field('CBM', 'CBM');
 const SWAY = field('Sway', 'Sway');
@@ -37,6 +37,16 @@ export const STEP_FIELDS_BY_STYLE: Record<DanceStyle, StepFieldDef[]> = {
 export const STEP_FIELDS: StepFieldDef[] = [FEET, ALIGNMENT, TURN, RISE_AND_FALL, FOOTWORK, CBM, SWAY, ACTION];
 
 export const getStepFields = (style: DanceStyle): StepFieldDef[] => STEP_FIELDS_BY_STYLE[style];
+
+// Step fields shown by default, per style, as StepFieldDef.key values.
+export const DEFAULT_FIELDS: Record<DanceStyle, string[]> = {
+  Standard: ['Feet Positions', 'Footwork', 'Rise and Fall'],
+  Latin: ['Feet Positions', 'Amount of Turn', 'Footwork', 'Action'],
+};
+
+// The feet line headlines every step, and the partner line is a feet line
+// too, so this one field gates both.
+export const FEET_KEY = 'Feet Positions';
 
 // Figure-level columns: filled on a figure's first step only.
 export const FIGURE_LEVEL_COLUMNS = ['General Notes', 'Starting Position', 'Ending Position'];

@@ -1,0 +1,13 @@
+.ui-menu-btn {
+  flex: none;
+  width: var(--target);
+  height: var(--target);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}

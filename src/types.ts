@@ -11,6 +11,9 @@ export type DanceStep = Record<string, string> & {
 
 export type DanceStyle = 'Standard' | 'Latin';
 
+// Which part of the couple the reader dances.
+export type Role = 'lead' | 'follow';
+
 export interface FigureGroup {
   style: DanceStyle;
   dance: string;

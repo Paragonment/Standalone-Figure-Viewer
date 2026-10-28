@@ -1,450 +1,129 @@
 import React, { useState, useMemo, useEffect, useRef, useCallback } from 'react';
-import type { DanceStyle, FigureGroup } from '../types';
+import type { FigureGroup } from '../types';
 import { useDanceData } from '../hooks/useDanceData';
 import { useFigureGroups } from '../hooks/useFigureGroups';
 import { useDanceFilters } from '../hooks/useDanceFilters';
-import FilterToggle from './FilterToggle';
-import DanceTable from './DanceTable';
-import ColumnToggle from './ColumnToggle';
-import FigureDetail from './FigureDetail';
-import ModeMenu from './ModeMenu';
-import type { DetailMode } from '../utils/detailModes';
-import BottomSheet from './BottomSheet';
-import StepFieldFilter from './StepFieldFilter';
 import { useIsMobile } from '../hooks/useIsMobile';
-import { getStepFields, STEP_FIELDS } from '../utils/stepFields';
-import { describeSelection } from '../utils/danceStyles';
+import DesktopViewer from './desktop/DesktopViewer';
+import HomeScreen from './home/HomeScreen';
+import FigureScreen from './figure/FigureScreen';
+import PracticeScreen from './practice/PracticeScreen';
 import './ViewerContainer.css';
 
-interface FigureHistoryState {
+// The mobile app has three screens, driven by history.state so the phone's
+// back gesture steps Practice -> Figure -> Home and a reload lands on the
+// same screen. The settings sheet is an overlay, not a history entry.
+interface RouteState {
   figureKey: string;
+  practice?: boolean;
 }
 
 const getFigureKey = (figure: FigureGroup) => `${figure.dance}-${figure.name}`;
 
-const readHistoryFigureKey = (): string | null =>
-  (window.history.state as FigureHistoryState | null)?.figureKey ?? null;
+const readRoute = (): RouteState | null => {
+  const state = window.history.state as Partial<RouteState> | null;
+  if (!state || typeof state.figureKey !== 'string') return null;
+  return { figureKey: state.figureKey, practice: state.practice === true };
+};
 
-interface ViewerContainerProps {
-  theme: 'light' | 'dark';
-  toggleTheme: () => void;
-}
-
-const ViewerContainer: React.FC<ViewerContainerProps> = ({ theme, toggleTheme }) => {
+const ViewerContainer: React.FC = () => {
   const { datasets, loading, error } = useDanceData();
   const figureGroups = useFigureGroups(datasets);
-  const {
-    searchTerm,
-    setSearchTerm,
-    selectedDances,
-    setSelectedDances,
-    selectedLevels,
-    setSelectedLevels,
-    danceGroups,
-    levels,
-    filteredFigures,
-    hasActiveFilters,
-    clearFilters,
-  } = useDanceFilters(figureGroups);
-
-  // Column visibility state
-  const [visibleColumns, setVisibleColumns] = useState<string[]>([]);
-  const [searchFocused, setSearchFocused] = useState(false);
-  const searchInputRef = useRef<HTMLInputElement>(null);
-
+  // Filter and search state lives here so it outlives the screens.
+  const filters = useDanceFilters(figureGroups);
   const isMobile = useIsMobile();
 
-  // Figure detail navigation (mobile only - desktop expands the row
-  // in place instead). Opening a figure pushes a history entry, so the
-  // phone's back gesture returns to the list instead of leaving the app;
-  // the open figure is read back from history.state, which also restores
-  // it after a reload. detailMode is lifted here rather than into
-  // FigureDetail so it persists across re-renders of the detail view.
-  const [activeFigureKey, setActiveFigureKey] = useState<string | null>(readHistoryFigureKey);
-  const [detailMode, setDetailMode] = useState<DetailMode>('cards');
+  const [route, setRoute] = useState<RouteState | null>(readRoute);
 
-  // The list's scroll offset survives a round trip through the detail
-  // view, so going back lands where you left off.
+  // The list's scroll offset survives a round trip through a figure, so
+  // going back lands where you left off.
   const listScrollTopRef = useRef(0);
 
   const activeFigure = useMemo<FigureGroup | null>(() => {
-    if (!activeFigureKey) return null;
-    return figureGroups.find((f) => getFigureKey(f) === activeFigureKey) ?? null;
-  }, [figureGroups, activeFigureKey]);
+    if (!route) return null;
+    return figureGroups.find((f) => getFigureKey(f) === route.figureKey) ?? null;
+  }, [figureGroups, route]);
 
-  const view: 'list' | 'detail' = activeFigure ? 'detail' : 'list';
+  const screen: 'home' | 'figure' | 'practice' = !activeFigure ? 'home' : route?.practice ? 'practice' : 'figure';
 
-  const openFigure = (figure: FigureGroup) => {
-    const figureKey = getFigureKey(figure);
-    window.history.pushState({ figureKey } satisfies FigureHistoryState, '');
-    setActiveFigureKey(figureKey);
-    setDetailMode('cards');
-    setShowFilterControl(false);
-    setShowColumnControl(false);
-  };
+  const openFigure = useCallback((figure: FigureGroup) => {
+    const next: RouteState = { figureKey: getFigureKey(figure) };
+    window.history.pushState(next, '');
+    setRoute(next);
+  }, []);
 
-  const closeDetail = useCallback(() => {
-    if (readHistoryFigureKey()) {
-      // The popstate listener below clears activeFigureKey.
+  const openPractice = useCallback(() => {
+    if (!activeFigure) return;
+    const next: RouteState = { figureKey: getFigureKey(activeFigure), practice: true };
+    window.history.pushState(next, '');
+    setRoute(next);
+  }, [activeFigure]);
+
+  const goBack = useCallback(() => {
+    if (readRoute()) {
+      // The popstate listener below updates the route.
       window.history.back();
     } else {
-      setActiveFigureKey(null);
+      setRoute(null);
     }
   }, []);
 
   useEffect(() => {
-    const handlePopState = () => setActiveFigureKey(readHistoryFigureKey());
+    const handlePopState = () => setRoute(readRoute());
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  // Escape returns to the figure list from the detail view.
+  // Escape steps back from Figure and Practice.
   useEffect(() => {
-    if (view !== 'detail') return;
+    if (!isMobile || screen === 'home') return;
     const handleKeyDown = (e: KeyboardEvent) => {
-      // An open sheet handles its own Escape; don't also leave the figure.
-      if (e.key === 'Escape' && !document.querySelector('dialog[open]')) closeDetail();
+      // An open sheet handles its own Escape; don't also leave the screen.
+      if (e.key === 'Escape' && !document.querySelector('dialog[open]')) goBack();
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [view, closeDetail]);
-
-  // Dropdown states
-  const [showFilterControl, setShowFilterControl] = useState(false);
-  const [showColumnControl, setShowColumnControl] = useState(false);
-  const filterBtnRef = useRef<HTMLButtonElement>(null);
-  const filterPanelRef = useRef<HTMLDivElement>(null);
-  const columnBtnRef = useRef<HTMLButtonElement>(null);
-  const columnPanelRef = useRef<HTMLDivElement>(null);
-
-  // Every column any style's CSV has, Standard's first, in CSV order.
-  const allColumns = useMemo(() => {
-    return Array.from(new Set(datasets.flatMap((d) => d.columns)));
-  }, [datasets]);
-
-  // Which styles chart each column, so the column settings can mark the
-  // ones that only apply to Standard or only to Latin figures.
-  const columnStyles = useMemo(() => {
-    const styles: Record<string, DanceStyle[]> = {};
-    datasets.forEach((d) => d.columns.forEach((c) => (styles[c] ??= []).push(d.style)));
-    return styles;
-  }, [datasets]);
-
-  // Initialize visible columns once data is loaded
-  useEffect(() => {
-    if (allColumns.length > 0 && visibleColumns.length === 0) {
-      // Default visible columns - common ones
-      const defaults = [
-        'Dance', 'Figure Name', 'Level', 'Step', 'Timing',
-        'Lead Feet Positions', 'Lead Footwork', 'Follow Feet Positions', 'Follow Footwork',
-        'Starting Position', 'Ending Position',
-      ];
-      setVisibleColumns(allColumns.filter(h => defaults.includes(h)));
-    }
-  }, [allColumns, visibleColumns.length]);
-
-  // Focus search input when user presses the "/" key
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (
-        document.activeElement?.tagName === 'INPUT' ||
-        document.activeElement?.tagName === 'TEXTAREA'
-      ) {
-        return;
-      }
-
-      if (e.key === '/') {
-        e.preventDefault();
-        searchInputRef.current?.focus();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
-
-  // Close an open dropdown panel on outside click or Escape. On mobile the
-  // same controls live in bottom sheets, which dismiss themselves.
-  useEffect(() => {
-    if (isMobile || (!showFilterControl && !showColumnControl)) return;
-
-    const handlePointerDown = (e: MouseEvent) => {
-      const target = e.target as Node;
-      if (
-        showFilterControl &&
-        !filterPanelRef.current?.contains(target) &&
-        !filterBtnRef.current?.contains(target)
-      ) {
-        setShowFilterControl(false);
-      }
-      if (
-        showColumnControl &&
-        !columnPanelRef.current?.contains(target) &&
-        !columnBtnRef.current?.contains(target)
-      ) {
-        setShowColumnControl(false);
-      }
-    };
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setShowFilterControl(false);
-        setShowColumnControl(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handlePointerDown);
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('mousedown', handlePointerDown);
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isMobile, showFilterControl, showColumnControl]);
-
-  // The open figure's style decides which step fields the mobile picker
-  // offers; Latin has no Rise & Fall, CBM or Sway to toggle.
-  const detailStepFields = activeFigure ? getStepFields(activeFigure.style) : STEP_FIELDS;
-  const shownFieldCount = detailStepFields.filter(
-    (f) => visibleColumns.includes(f.leadKey) || visibleColumns.includes(f.followKey)
-  ).length;
-
-  const toggleColumn = (column: string) => {
-    setVisibleColumns(prev => 
-      prev.includes(column) 
-        ? prev.filter(c => c !== column) 
-        : [...prev, column]
-    );
-  };
+  }, [isMobile, screen, goBack]);
 
   if (loading) {
     return (
-      <div className="status-container">
-        <div className="loading-spinner"></div>
-        <div className="status-message">Loading dance technique database...</div>
+      <div className="vc-status" role="status">
+        <p className="vc-status-text">Loading figures</p>
       </div>
     );
   }
-  
+
   if (error) {
     return (
-      <div className="status-container error">
-        <span className="error-icon">⚠️</span>
-        <div className="status-message">Failed to load database: {error}</div>
+      <div className="vc-status" role="alert">
+        <p className="vc-status-title">Could not load the figures</p>
+        <p className="vc-status-text">{error}</p>
+        <button type="button" className="fv-act vc-status-action" onClick={() => window.location.reload()}>
+          Try again
+        </button>
       </div>
     );
+  }
+
+  if (!isMobile) {
+    return <DesktopViewer datasets={datasets} figureGroups={figureGroups} filters={filters} />;
+  }
+
+  if (activeFigure && screen === 'practice') {
+    return <PracticeScreen figure={activeFigure} onBack={goBack} />;
+  }
+
+  if (activeFigure) {
+    return <FigureScreen figure={activeFigure} onBack={goBack} onPractice={openPractice} />;
   }
 
   return (
-    <div className="viewer-layout">
-      <main className="main-content">
-        <header className={`viewer-header ${view === 'list' && (searchFocused || searchTerm) ? 'search-active' : ''}`}>
-          <div className="title-area">
-            {view === 'detail' && activeFigure && (
-              <button
-                type="button"
-                className="detail-back-btn"
-                onClick={closeDetail}
-                aria-label="Back to figures"
-                title="Back to figures"
-              >
-                ‹
-              </button>
-            )}
-            <nav className="breadcrumbs" aria-label="Breadcrumb">
-              {view === 'detail' && activeFigure ? (
-                <>
-                  <button type="button" className="breadcrumb-item linkable detail-root" onClick={closeDetail}>
-                    Dances
-                  </button>
-                  <span className="breadcrumb-separator detail-root">/</span>
-                  <ModeMenu figureName={activeFigure.name} mode={detailMode} setMode={setDetailMode} />
-                </>
-              ) : (
-                <>
-                  <button type="button" className="breadcrumb-item linkable" onClick={() => setSelectedDances([])}>
-                    Dances
-                  </button>
-                  {selectedDances.length > 0 && (
-                    <>
-                      <span className="breadcrumb-separator">/</span>
-                      <span className="breadcrumb-item active" aria-current="page">
-                        {describeSelection(selectedDances, danceGroups)}
-                      </span>
-                    </>
-                  )}
-                </>
-              )}
-            </nav>
-          </div>
-
-          <div className="header-actions">
-            {view === 'list' && hasActiveFilters && (
-              <button
-                className="clear-filters-pill"
-                onClick={clearFilters}
-              >
-                Clear Filters
-              </button>
-            )}
-
-            {view === 'list' && (
-            <button
-              ref={filterBtnRef}
-              className={`header-filter-toggle-btn ${showFilterControl ? 'active' : ''}`}
-              onClick={() => {
-                setShowFilterControl(!showFilterControl);
-                setShowColumnControl(false);
-              }}
-              title={showFilterControl ? "Hide Filters" : "Show Filters"}
-              aria-expanded={showFilterControl}
-            >
-              🪩
-            </button>
-            )}
-
-            {/* On mobile the list has no step columns to configure, so this
-                only appears on a figure, where it picks the step details. */}
-            {(!isMobile || view === 'detail') && (
-            <button
-              ref={columnBtnRef}
-              className={`header-column-toggle-btn ${showColumnControl ? 'active' : ''}`}
-              onClick={() => {
-                setShowColumnControl(!showColumnControl);
-                setShowFilterControl(false);
-              }}
-              title={isMobile ? 'Choose step details' : showColumnControl ? 'Hide Column Settings' : 'Show Column Settings'}
-              aria-label={isMobile ? `Choose step details, ${shownFieldCount} of ${detailStepFields.length} shown` : undefined}
-              aria-expanded={showColumnControl}
-            >
-              ⚙️
-              {isMobile && shownFieldCount < detailStepFields.length && (
-                <span className="header-btn-badge" aria-hidden="true">{shownFieldCount}</span>
-              )}
-            </button>
-            )}
-
-            <button
-              className="header-theme-toggle-btn"
-              onClick={toggleTheme}
-              title={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
-            >
-              {theme === 'light' ? '🌙' : '☀️'}
-            </button>
-
-            {view === 'list' && (
-            <div
-              className={`expandable-search-container ${searchFocused ? 'focused' : ''} ${searchTerm ? 'has-text' : ''}`}
-              onClick={() => searchInputRef.current?.focus()}
-            >
-              <span className="search-icon">🔍</span>
-              <input
-                ref={searchInputRef}
-                type="text"
-                className="search-input"
-                placeholder="Search for anything"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                onFocus={() => setSearchFocused(true)}
-                onBlur={() => setSearchFocused(false)}
-              />
-              {searchTerm && (
-                <button
-                  className="search-clear-btn"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSearchTerm('');
-                  }}
-                >
-                  ×
-                </button>
-              )}
-              {!searchFocused && !searchTerm && (
-                <span className="search-shortcut-hint">/</span>
-              )}
-            </div>
-            )}
-          </div>
-        </header>
-
-        <div className="content-body">
-          {!isMobile && view === 'list' && showFilterControl && (
-            <div ref={filterPanelRef}>
-              <FilterToggle
-                layout="panel"
-                danceGroups={danceGroups}
-                selectedDances={selectedDances}
-                setSelectedDances={setSelectedDances}
-                levels={levels}
-                selectedLevels={selectedLevels}
-                setSelectedLevels={setSelectedLevels}
-                filteredCount={filteredFigures.length}
-              />
-            </div>
-          )}
-
-          {!isMobile && showColumnControl && (
-            <div ref={columnPanelRef}>
-              <ColumnToggle
-                columns={allColumns}
-                columnStyles={columnStyles}
-                visibleColumns={visibleColumns}
-                setVisibleColumns={setVisibleColumns}
-                toggleColumn={toggleColumn}
-              />
-            </div>
-          )}
-
-          {isMobile && (
-            <>
-              <BottomSheet
-                open={view === 'list' && showFilterControl}
-                onClose={() => setShowFilterControl(false)}
-                title="Filter figures"
-                doneLabel={`Show ${filteredFigures.length} figure${filteredFigures.length === 1 ? '' : 's'}`}
-              >
-                <FilterToggle
-                  layout="sheet"
-                  danceGroups={danceGroups}
-                  selectedDances={selectedDances}
-                  setSelectedDances={setSelectedDances}
-                  levels={levels}
-                  selectedLevels={selectedLevels}
-                  setSelectedLevels={setSelectedLevels}
-                  filteredCount={filteredFigures.length}
-                />
-              </BottomSheet>
-
-              <BottomSheet
-                open={view === 'detail' && showColumnControl}
-                onClose={() => setShowColumnControl(false)}
-                title="Show on each step"
-              >
-                <StepFieldFilter
-                  fields={detailStepFields}
-                  visibleColumns={visibleColumns}
-                  setVisibleColumns={setVisibleColumns}
-                />
-              </BottomSheet>
-            </>
-          )}
-
-          {view === 'detail' && activeFigure ? (
-            <FigureDetail
-              figure={activeFigure}
-              visibleColumns={visibleColumns}
-              mode={detailMode}
-            />
-          ) : (
-            <DanceTable
-              data={filteredFigures}
-              visibleColumns={visibleColumns}
-              onSelectFigure={openFigure}
-              scrollTopRef={listScrollTopRef}
-            />
-          )}
-        </div>
-      </main>
-    </div>
+    <HomeScreen
+      figures={figureGroups}
+      filters={filters}
+      onOpenFigure={openFigure}
+      scrollTopRef={listScrollTopRef}
+    />
   );
 };
 

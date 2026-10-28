@@ -5,13 +5,20 @@ export interface DanceStyleDef {
   label: string;
   // Served from public/, resolved against the app's base path.
   dataFile: string;
+  // The style's dances in display order (not alphabetical).
+  dances: string[];
 }
 
 // Display order: Standard's controls come first, Latin's to their right.
 export const DANCE_STYLES: DanceStyleDef[] = [
-  { id: 'Standard', label: 'Standard', dataFile: 'standard.csv' },
-  { id: 'Latin', label: 'Latin', dataFile: 'latin.csv' },
+  { id: 'Standard', label: 'Standard', dataFile: 'standard.csv', dances: ['Waltz', 'Tango', 'Foxtrot', 'Quickstep'] },
+  { id: 'Latin', label: 'Latin', dataFile: 'latin.csv', dances: ['Cha Cha Cha', 'Samba', 'Rumba', 'Paso Doble', 'Jive'] },
 ];
+
+// Shorter names for the narrow segmented controls.
+export const DANCE_SHORT_LABEL: Record<string, string> = { 'Cha Cha Cha': 'Cha Cha', 'Paso Doble': 'Paso' };
+
+export const danceShortLabel = (dance: string): string => DANCE_SHORT_LABEL[dance] ?? dance;
 
 export interface StyleDances {
   style: DanceStyle;
@@ -69,4 +76,29 @@ export const describeSelection = (selected: string[], groups: StyleDances[]): st
   );
   if (whole) return DANCE_STYLES.find((s) => s.id === whole.style)?.label ?? whole.style;
   return `${selected.length} Dances`;
+};
+
+// Mobile selection model. An empty selection means "no filter", and
+// picking every option is stored the same way.
+
+// Selecting every option there is is the same as selecting none.
+export const normalizeSelection = (selected: string[], allDances: string[]): string[] =>
+  allDances.every((d) => selected.includes(d)) ? [] : selected;
+
+// A single segment or pill. From "everything" it narrows to just that
+// item; otherwise it toggles the item.
+export const toggleItem = (selected: string[], item: string, all: string[]): string[] => {
+  if (selected.length === 0) return [item];
+  const next = selected.includes(item) ? selected.filter((d) => d !== item) : [...selected, item];
+  return normalizeSelection(next, all);
+};
+
+// A style's select-all box: when all of the style's dances are selected it
+// removes them, otherwise it adds them.
+export const toggleStyleMobile = (styleDances: string[], selected: string[], allDances: string[]): string[] => {
+  const allSelected = selected.length > 0 && styleDances.every((d) => selected.includes(d));
+  const next = allSelected
+    ? selected.filter((d) => !styleDances.includes(d))
+    : [...new Set([...selected, ...styleDances])];
+  return normalizeSelection(next, allDances);
 };

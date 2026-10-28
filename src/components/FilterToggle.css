@@ -4,20 +4,18 @@
   left: 0;
   right: 0;
   z-index: 100;
-  background: var(--container-bg);
-  padding: 16px 20px;
-  border-radius: 12px;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--border-color);
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  max-height: 80vh;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 20px;
+  background: var(--floor);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-field);
   max-height: 80dvh;
   overflow-x: hidden;
   overflow-y: auto;
-  transition: all 0.3s ease;
-  animation: filterPanelSlideDown 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: filterPanelSlideDown var(--dur-panel) ease;
 }
 
 @keyframes filterPanelSlideDown {
@@ -31,330 +29,164 @@
   }
 }
 
-/* Preset Row & Segmented Control */
-.preset-row {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-/* ColumnToggle shares these class names, so scope the overrides: the
-   style presets wrap among themselves on narrower screens while the
-   figure count stays pinned top right. */
-.filter-control-panel .preset-row {
-  flex-wrap: nowrap;
-  align-items: flex-start;
-}
-
-/* Dances on top, levels always on a row of their own below. */
-.preset-stack {
+.filter-rows {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   min-width: 0;
 }
 
-.preset-group {
+.filter-row {
+  display: grid;
+  grid-template-columns: 132px auto;
+  align-items: center;
+  column-gap: 12px;
+  min-width: 0;
+}
+
+.filter-row-label {
+  padding-left: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* Select-all for a style: the box plus the style's name. */
+.filter-style-btn {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  min-width: 0;
-}
-
-.segmented-control {
-  display: inline-flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  background-color: var(--row-hover);
-  padding: 3px;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  gap: 2px;
-  min-height: 38px;
-  min-width: 0;
-  box-sizing: border-box;
-  box-shadow: var(--shadow);
-}
-
-.preset-btn {
+  gap: 10px;
+  height: 40px;
+  padding: 0;
   background: none;
-  border: none;
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 0 12px;
-  border-radius: 6px;
+  border: 0;
   cursor: pointer;
-  color: var(--text-secondary);
-  display: inline-flex;
+  text-align: left;
+}
+
+.filter-style-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* Segmented track, as on Home: Floor with a Rule edge, ink-filled selection. */
+.filter-track {
+  display: flex;
+  height: 40px;
+  border-radius: var(--r-field);
+  background: var(--floor);
+  box-shadow: inset 0 0 0 1px var(--rule);
+}
+
+.filter-seg {
+  position: relative;
+  height: 40px;
+  padding: 0 16px;
+  background: none;
+  border: 0;
+  border-radius: var(--r-field);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--ink);
+}
+
+.filter-seg-fill {
+  position: absolute;
+  inset: 4px;
+  border-radius: 8px;
+  background: transparent;
+  transition: background-color var(--dur-fast) ease;
+}
+
+.filter-seg-label {
+  position: relative;
+}
+
+.filter-seg:hover .filter-seg-fill {
+  background: var(--mirror);
+}
+
+.filter-seg.on {
+  color: var(--on-ink);
+}
+
+.filter-seg.on .filter-seg-fill,
+.filter-seg.on:hover .filter-seg-fill {
+  background: var(--ink);
+}
+
+/* Hairline between neighbouring unselected segments. */
+.filter-seg.sep::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 1px;
+  height: 16px;
+  background: var(--rule);
+}
+
+.filter-levels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.filter-pill {
+  display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--rule);
+  border-radius: var(--r-pill);
+  background: var(--floor);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 500;
   white-space: nowrap;
-}
-
-.preset-btn:hover {
-  color: var(--text-primary);
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
-[data-theme='dark'] .preset-btn:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-.preset-btn.active {
-  background-color: var(--container-bg);
-  color: var(--accent-color);
-  box-shadow: var(--shadow);
-}
-
-/* Each control picks up its own color, matching the sheet's checklists. */
-.segmented-control.style-latin .preset-btn.active {
-  color: var(--latin-color);
-}
-
-.segmented-control.level-control .preset-btn.active {
-  color: var(--text-primary);
-}
-
-.preset-results-summary {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  height: 38px;
-}
-
-/* Right-aligned so it reads as the row's total, not another preset. */
-.filter-control-panel .preset-results-summary {
-  flex-shrink: 0;
-  margin-left: auto;
-}
-
-.results-count-text {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-}
-
-.results-count-text strong {
-  color: var(--text-primary);
-  font-weight: 700;
-}
-
-.filter-group-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
-}
-
-.filter-group-card {
-  background-color: var(--row-zebra);
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.filter-group-card h5 {
-  margin: 0 0 4px 0;
-  font-family: var(--font-heading);
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 6px;
-}
-
-/* Specific Card Headings styling */
-.filter-group-card.dance-card h5 {
-  color: var(--accent-color);
-}
-
-/* Standard and Latin share the Dances box, one column each. */
-.dance-style-columns {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 8px 16px;
-}
-
-.filter-checkbox-item.style-all {
-  font-weight: 600;
-  color: var(--accent-color);
-}
-
-.style-latin .filter-checkbox-item.style-all {
-  color: var(--latin-color);
-}
-
-.filter-group-card.level-card h5 {
-  color: var(--text-primary);
-}
-
-.filter-checkbox-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-/* Custom Checkboxes */
-.filter-checkbox-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   cursor: pointer;
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  user-select: none;
-  position: relative;
+  transition: background-color var(--dur-fast) ease;
 }
 
-.filter-checkbox-item input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
+.filter-pill:hover {
+  background: var(--mirror);
 }
 
-.checkbox-custom {
-  position: relative;
-  height: 18px;
-  width: 18px;
-  background-color: var(--container-bg);
-  border: 1.5px solid var(--border-color);
-  border-radius: 5px;
-  flex-shrink: 0;
-  transition: all 0.2s ease;
+.filter-pill.on,
+.filter-pill.on:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--on-ink);
 }
 
-.filter-checkbox-item:hover input ~ .checkbox-custom {
-  border-color: var(--text-muted);
-}
-
-.filter-checkbox-item input:checked ~ .checkbox-custom {
-  background-color: var(--accent-color);
-  border-color: var(--accent-color);
-}
-
-.dance-card .filter-checkbox-item input:checked ~ .checkbox-custom {
-  background-color: var(--accent-color);
-  border-color: var(--accent-color);
-}
-
-.dance-card .style-latin .filter-checkbox-item input:checked ~ .checkbox-custom {
-  background-color: var(--latin-color);
-  border-color: var(--latin-color);
-}
-
-.level-card .filter-checkbox-item input:checked ~ .checkbox-custom {
-  background-color: var(--text-primary);
-  border-color: var(--text-primary);
-}
-
-/* --text-primary flips to near-white in dark mode, so a white tick would
-   vanish; draw it in the panel color, which always contrasts. */
-.level-card .filter-checkbox-item input:checked ~ .checkbox-custom:after {
-  border-color: var(--container-bg);
-}
-
-.checkbox-custom:after {
-  content: "";
-  position: absolute;
-  display: none;
-  left: 5px;
-  top: 2px;
-  width: 4px;
+.filter-pill-dot {
+  flex: none;
+  width: 8px;
   height: 8px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+  box-sizing: border-box;
+  border: 2px solid;
+  border-radius: 4px;
 }
 
-.filter-checkbox-item input:checked ~ .checkbox-custom:after {
-  display: block;
-}
-
-.filter-checkbox-item:hover {
-  color: var(--text-primary);
-}
-
-.filter-emoji {
-  margin-right: 6px;
-}
-
-@media (max-width: 600px) {
-  .filter-group-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .preset-row {
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  .segmented-control {
-    min-height: 34px;
-    padding: 3px;
-  }
-
-  .preset-btn {
-    padding: 0 10px;
-    font-size: 0.8rem;
-  }
-
-  .preset-results-summary {
-    height: 34px;
-    gap: 8px;
-  }
-
-  .results-count-text {
-    font-size: 0.8rem;
-  }
-
-  /* Rows sized for a thumb; the list gap shrinks to compensate. */
-  .filter-checkbox-list {
-    gap: 2px;
-  }
-
-  .filter-checkbox-item {
-    min-height: 36px;
-    -webkit-tap-highlight-color: transparent;
-  }
-}
-
-/* Inside the mobile bottom sheet the panel is just content: the sheet
-   provides the surface, the scrolling and the result count (on its
-   button), so drop the dropdown chrome and the nested scroll area. */
-.bottom-sheet .filter-control-panel {
-  position: static;
-  padding: 0;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-  background: transparent;
-  max-height: none;
-  overflow: visible;
-  animation: none;
-}
-
-/* Flat sections instead of boxed cards inside the sheet's own surface. */
-.bottom-sheet .filter-group-grid {
-  gap: 22px;
-}
-
-.bottom-sheet .filter-group-card {
-  padding: 0;
-  background: transparent;
-  border: none;
-  border-radius: 0;
+/* The row's total, pinned top right so it reads apart from the controls. */
+.filter-count {
+  flex: none;
+  margin: 0;
+  height: 40px;
+  display: flex;
+  align-items: center;
   gap: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--slate);
+}
+
+.filter-count strong {
+  color: var(--ink);
+  font-weight: 700;
 }

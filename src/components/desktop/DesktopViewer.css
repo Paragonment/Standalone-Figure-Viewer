@@ -3,10 +3,9 @@
   flex: 1;
   min-height: 0;
   width: 100%;
-  background-color: var(--bg-color);
-  color: var(--text-primary);
+  background-color: var(--mirror);
+  color: var(--ink);
   overflow: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .main-content {
@@ -27,10 +26,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 12px;
   flex-shrink: 0;
-  min-height: 48px;
+  min-height: 56px;
   box-sizing: border-box;
 }
 
@@ -42,25 +43,21 @@
   min-width: 0;
 }
 
-/* Breadcrumbs style */
+/* Breadcrumbs: the root crumb is the screen title, in the display face */
 .breadcrumbs {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  align-items: baseline;
+  gap: 10px;
   flex: 1;
   min-width: 0;
-  font-family: var(--font-heading);
-  font-size: 0.8rem;
+  font-size: 17px;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
+  color: var(--slate);
 }
 
 /* Crumbs truncate rather than push the header actions off screen or
-   slide underneath them; only the root "Dances" crumb keeps its width. */
+   slide underneath them; only the root crumb keeps its width. */
 .breadcrumb-item {
-  transition: color 0.2s;
   white-space: nowrap;
   min-width: 0;
   overflow: hidden;
@@ -69,97 +66,121 @@
 
 .breadcrumb-item:first-child {
   flex-shrink: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 1.2;
 }
 
 .breadcrumb-item.linkable {
   background: none;
   border: none;
   padding: 0;
-  font: inherit;
-  letter-spacing: inherit;
-  text-transform: inherit;
-  color: inherit;
+  color: var(--ink);
   cursor: pointer;
 }
 
-.breadcrumb-item.linkable:hover {
-  color: var(--accent-color);
-}
-
 .breadcrumb-item.active {
-  color: var(--text-primary);
+  color: var(--ink);
 }
 
 .breadcrumb-separator {
-  color: var(--border-color);
+  color: var(--slate);
   flex-shrink: 0;
 }
 
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   z-index: 50;
+  margin-left: auto;
 }
 
-/* Header Toggle Buttons (Column, Filter, Theme) */
-.header-column-toggle-btn,
-.header-filter-toggle-btn,
-.header-theme-toggle-btn {
-  background: var(--container-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 50%;
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  cursor: pointer;
-  box-shadow: var(--shadow);
-  transition: all 0.2s ease;
-  color: var(--text-secondary);
+.header-show-all {
   flex-shrink: 0;
+  height: 40px;
+  padding: 0 8px;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Filters / Columns: outlined buttons, filled while their panel is open */
+.header-panel-btn {
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--rule);
+  border-radius: var(--r-field);
+  background: var(--floor);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color var(--dur-fast) ease, color var(--dur-fast) ease;
+}
+
+.header-panel-btn:hover {
+  background: var(--tint);
+}
+
+.header-panel-btn.active,
+.header-panel-btn.active:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--on-ink);
+}
+
+/* Appearance: System / Light / Dark, on the same track as the dance filters */
+.appearance-control {
+  display: flex;
+  flex-shrink: 0;
+  height: 40px;
+  border-radius: var(--r-field);
+  background: var(--floor);
+  box-shadow: inset 0 0 0 1px var(--rule);
+}
+
+.appearance-seg {
+  position: relative;
+  height: 40px;
+  padding: 0 12px;
+  background: none;
+  border: 0;
+  border-radius: var(--r-field);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--ink);
+}
+
+.appearance-seg-fill {
+  position: absolute;
+  inset: 4px;
+  border-radius: 8px;
+  background: transparent;
+  transition: background-color var(--dur-fast) ease;
+}
+
+.appearance-seg-label {
   position: relative;
 }
 
-.header-column-toggle-btn:hover,
-.header-filter-toggle-btn:hover,
-.header-theme-toggle-btn:hover {
-  background-color: var(--row-hover);
-  color: var(--text-primary);
-  border-color: var(--text-muted);
+.appearance-seg:hover .appearance-seg-fill {
+  background: var(--mirror);
 }
 
-.header-column-toggle-btn.active,
-.header-filter-toggle-btn.active {
-  background-color: var(--accent-light);
-  color: var(--accent-color);
-  border-color: var(--accent-color);
+.appearance-seg.on {
+  color: var(--on-ink);
+  font-weight: 700;
 }
 
-/* Clear Filters Pill in Header Actions */
-.clear-filters-pill {
-  background: var(--container-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 15px;
-  padding: 4px 12px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  cursor: pointer;
-  box-shadow: var(--shadow);
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 32px;
-}
-
-.clear-filters-pill:hover {
-  background-color: var(--row-hover);
-  color: var(--text-primary);
-  border-color: var(--text-muted);
+.appearance-seg.on .appearance-seg-fill,
+.appearance-seg.on:hover .appearance-seg-fill {
+  background: var(--ink);
 }
 
 /* ==========================================================================
@@ -169,79 +190,85 @@
   position: relative;
   display: flex;
   align-items: center;
-  background-color: var(--container-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 20px;
-  padding: 6px 14px;
-  width: 200px;
-  box-shadow: var(--shadow);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 40px;
+  background-color: var(--floor);
+  border-radius: var(--r-field);
+  padding: 0 8px 0 12px;
+  width: 240px;
+  flex-shrink: 0;
+  box-shadow: inset 0 0 0 1px var(--rule);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .expandable-search-container.focused {
   width: 320px;
-  border-color: var(--accent-color);
-  box-shadow: var(--shadow-lg), 0 0 0 3px var(--accent-light);
+  box-shadow: inset 0 0 0 2px var(--ink);
 }
 
 .expandable-search-container.has-text {
   width: 320px;
 }
 
+/* Without room to grow, the field keeps its width so the header never reflows. */
+@media (max-width: 1100px) {
+  .expandable-search-container.focused,
+  .expandable-search-container.has-text {
+    width: 240px;
+  }
+}
+
 .search-icon {
-  font-size: 0.9rem;
-  color: var(--text-muted);
+  flex: none;
+  color: var(--slate);
   margin-right: 8px;
-  display: flex;
-  align-items: center;
 }
 
 .search-input {
+  flex: 1;
+  min-width: 0;
   border: none;
   background: transparent;
   outline: none;
   font-family: var(--font-body);
-  font-size: 0.85rem;
-  color: var(--text-primary);
-  width: 100%;
+  font-size: 15px;
+  color: var(--ink);
   padding: 0;
 }
 
 .search-input::placeholder {
-  color: var(--text-muted);
+  color: var(--slate);
 }
 
 .search-clear-btn {
-  background: none;
-  border: none;
-  font-size: 1.1rem;
-  color: var(--text-muted);
-  cursor: pointer;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
   padding: 0;
   margin-left: 6px;
-  line-height: 1;
-}
-
-.search-clear-btn:hover {
-  color: var(--text-primary);
+  border: 0;
+  border-radius: 50%;
+  background: var(--rule);
+  color: var(--ink);
+  cursor: pointer;
 }
 
 .search-shortcut-hint {
-  font-family: var(--font-heading);
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  background-color: var(--row-hover);
-  border: 1px solid var(--border-color);
-  width: 18px;
-  height: 18px;
-  border-radius: 4px;
+  flex: none;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--slate);
+  border: 1px solid var(--rule);
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   margin-left: 6px;
 }
-
 
 /* ==========================================================================
    3. CONTENT BODY & RESULTS BAR
@@ -254,4 +281,3 @@
   gap: 16px;
   position: relative;
 }
-

@@ -1,20 +1,18 @@
-import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import type { FigureGroup } from '../types';
-import { getDanceEmoji } from '../utils/danceEmoji';
-import { getColumnGroup, getShortHeader } from '../utils/columns';
-import { useIsMobile } from '../hooks/useIsMobile';
+import { getColumnGroup } from '../utils/columns';
+import { displayCount } from '../utils/rhythm';
+import { levelLook } from '../utils/levels';
+import { keepRanges } from '../utils/stepValues';
 import FieldValue from './FieldValue';
 import FigurePositions from './FigurePositions';
+import { RowChevronIcon } from './ui/Icons';
 import { TIMING_COLUMN } from '../utils/stepFields';
 import './DanceTable.css';
 
 interface DanceTableProps {
   data: FigureGroup[];
   visibleColumns?: string[];
-  onSelectFigure: (figure: FigureGroup) => void;
-  // Owned by the parent so the scroll offset outlives this component,
-  // which unmounts while a figure's detail view is open.
-  scrollTopRef?: React.RefObject<number>;
 }
 
 const baseFieldKey = (header: string) => header.replace(/^(Lead|Follow) /, '');
@@ -22,32 +20,16 @@ const baseFieldKey = (header: string) => header.replace(/^(Lead|Follow) /, '');
 // Shown on the figure's own row (or above its steps), not per step.
 const OUTER_COLUMNS = ['Dance', 'Figure Name', 'Level', 'Starting Position', 'Ending Position'];
 
-const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, onSelectFigure, scrollTopRef }) => {
-  const isMobile = useIsMobile();
+// The desktop figure table. A row expands in place to show the figure's
+// steps in a nested table, with one column per chosen step field.
+const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns }) => {
   const [expandedFigures, setExpandedFigures] = useState<Set<string>>(new Set());
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  // Restore before paint so the list never flashes at the top first.
-  useLayoutEffect(() => {
-    if (containerRef.current && scrollTopRef) {
-      containerRef.current.scrollTop = scrollTopRef.current;
-    }
-    // Mount only: afterwards the container's own scroll position is the source of truth.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // A figure open via inline expansion doesn't carry over if the viewport
-  // crosses into mobile, which navigates to the detail view instead.
-  useEffect(() => {
-    if (isMobile) setExpandedFigures(new Set());
-  }, [isMobile]);
 
   if (data.length === 0) {
     return (
       <div className="no-results">
-        <span className="no-results-icon">🔍</span>
-        <h3>No Figures Found</h3>
-        <p>Try adjusting your search criteria, role filters, or selected dances.</p>
+        <h3>No figures match</h3>
+        <p>Try different words, or change the dances and levels in Filters.</p>
       </div>
     );
   }
@@ -70,8 +52,8 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, onSelectF
 
   const renderInnerCell = (header: string, value: string) => {
     if (header === TIMING_COLUMN) {
-      if (!value || value.trim() === '') return <span className="cell-empty">—</span>;
-      return <span className="timing-badge">{value}</span>;
+      if (!value || value.trim() === '') return null;
+      return <span className="timing-badge">{displayCount(value)}</span>;
     }
     if (header === 'Step') {
       return (
@@ -81,17 +63,13 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, onSelectF
       );
     }
     if (header === 'General Notes') {
-      if (!value || value.trim() === '') return <span className="cell-empty">—</span>;
-      return <span className="notes-text">{value}</span>;
+      if (!value || value.trim() === '') return null;
+      return <span className="notes-text">{keepRanges(value)}</span>;
     }
     return <FieldValue field={baseFieldKey(header)} value={value} />;
   };
 
-  const handleRowClick = (fig: FigureGroup) => {
-    if (isMobile) {
-      onSelectFigure(fig);
-      return;
-    }
+  const toggleFigure = (fig: FigureGroup) => {
     const key = `${fig.dance}-${fig.name}`;
     setExpandedFigures(prev => {
       const next = new Set(prev);
@@ -105,92 +83,64 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, onSelectF
   };
 
   return (
-    <div
-      className="table-container"
-      ref={containerRef}
-      onScroll={(e) => {
-        if (scrollTopRef) scrollTopRef.current = e.currentTarget.scrollTop;
-      }}
-    >
+    <div className="table-container">
       <table className="dance-table">
         <thead>
           <tr>
-            <th className="th-toggle-arrow"></th>
+            <th className="th-toggle-arrow"><span className="fv-sr-only">Expand</span></th>
             {showDance && <th>Dance</th>}
-            <th>
-              <span className="header-text-desktop">Figure Name</span>
-              <span className="header-text-mobile">Figure</span>
-            </th>
+            <th>Figure name</th>
             {showLevel && <th>Level</th>}
-            {showStep && (
-              <th className="th-step-count">
-                <span className="header-text-desktop">Steps</span>
-                <span className="header-text-mobile">#</span>
-              </th>
-            )}
-            {showNotes && (
-              <th className="desktop-only">
-                <span className="header-text-desktop">General Notes Summary</span>
-                <span className="header-text-mobile">Notes</span>
-              </th>
-            )}
+            {showStep && <th className="th-step-count">Steps</th>}
+            {showNotes && <th>Notes</th>}
           </tr>
         </thead>
         <tbody>
           {data.map((fig) => {
             const key = `${fig.dance}-${fig.name}`;
-            const isExpanded = !isMobile && expandedFigures.has(key);
+            const isExpanded = expandedFigures.has(key);
+            const look = levelLook(fig.level);
 
             return (
               <React.Fragment key={key}>
                 <tr
                   className={`figure-parent-row ${isExpanded ? 'parent-expanded' : ''}`}
-                  onClick={() => handleRowClick(fig)}
+                  onClick={() => toggleFigure(fig)}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                       e.preventDefault();
-                      handleRowClick(fig);
+                      toggleFigure(fig);
                     }
                   }}
                   tabIndex={0}
-                  aria-expanded={isMobile ? undefined : isExpanded}
+                  aria-expanded={isExpanded}
                 >
                   <td className="td-toggle-arrow">
-                    <span className={`toggle-arrow-icon ${isExpanded ? 'rotated' : ''}`}>
-                      {isMobile ? '›' : '▶'}
-                    </span>
+                    <RowChevronIcon className={`toggle-arrow-icon ${isExpanded ? 'rotated' : ''}`} size={16} />
                   </td>
-                  {showDance && (
-                    <td>
-                      <span className="dance-badge">
-                        <span className="dance-badge-icon">{getDanceEmoji(fig.dance)}</span>
-                        <span className="dance-badge-name">{fig.dance}</span>
-                      </span>
-                    </td>
-                  )}
+                  {showDance && <td className="dance-cell">{fig.dance}</td>}
                   <td className="figure-name-cell">
                     <strong>{fig.name}</strong>
                   </td>
                   {showLevel && (
                     <td>
-                      <span className={`level-badge ${fig.level.toLowerCase().replace(' ', '-')}`}>
+                      <span className="level-label" style={{ color: look.text }}>
+                        <span
+                          className="level-dot"
+                          style={{ borderColor: look.dot, backgroundColor: look.hollow ? 'transparent' : look.dot }}
+                        />
                         {fig.level}
                       </span>
                     </td>
                   )}
                   {showStep && (
                     <td className="td-step-count">
-                      <span className="step-count-badge">
-                        <span className="header-text-desktop">
-                          {fig.steps.length} step{fig.steps.length === 1 ? '' : 's'}
-                        </span>
-                        <span className="header-text-mobile">{fig.steps.length}</span>
-                      </span>
+                      {fig.steps.length} step{fig.steps.length === 1 ? '' : 's'}
                     </td>
                   )}
                   {showNotes && (
-                    <td className="general-notes-summary-cell desktop-only">
-                      <span className="notes-text truncate">{fig.generalNotes || '—'}</span>
+                    <td className="general-notes-summary-cell">
+                      <span className="notes-text truncate">{keepRanges(fig.generalNotes)}</span>
                     </td>
                   )}
                 </tr>
@@ -217,8 +167,7 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, onSelectF
 
                                   return (
                                     <th key={header} className={className}>
-                                      <span className="header-text-desktop">{header}</span>
-                                      <span className="header-text-mobile">{getShortHeader(header)}</span>
+                                      {header}
                                     </th>
                                   );
                                 })}
@@ -231,8 +180,6 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns, onSelectF
                                     let className = '';
                                     if (header === 'Step') className = 'td-step';
                                     else if (header === 'General Notes') className = 'td-notes';
-                                    else if (getColumnGroup(header) === 'lead') className = 'td-lead';
-                                    else if (getColumnGroup(header) === 'follow') className = 'td-follow';
 
                                     return (
                                       <td key={header} className={className}>

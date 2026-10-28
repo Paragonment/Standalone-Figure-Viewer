@@ -1,5 +1,7 @@
 import React from 'react';
 import type { FigureGroup } from '../types';
+import { LeadsToIcon } from './ui/Icons';
+import { keepRanges } from '../utils/stepValues';
 import './FigurePositions.css';
 
 interface FigurePositionsProps {
@@ -21,14 +23,14 @@ const FigurePositions: React.FC<FigurePositionsProps> = ({ figure, showStart = t
       {start && (
         <span className="figure-position">
           <span className="figure-position-label">Starts</span>
-          <span className="figure-position-value">{start}</span>
+          <span className="figure-position-value">{keepRanges(start)}</span>
         </span>
       )}
-      {start && end && <span className="figure-position-arrow" aria-hidden="true">→</span>}
+      {start && end && <LeadsToIcon className="figure-position-arrow" />}
       {end && (
         <span className="figure-position">
           <span className="figure-position-label">Ends</span>
-          <span className="figure-position-value">{end}</span>
+          <span className="figure-position-value">{keepRanges(end)}</span>
         </span>
       )}
     </div>

@@ -6,7 +6,9 @@ import { useSettings } from '../../state/useSettings';
 import FilterToggle from '../FilterToggle';
 import DanceTable from '../DanceTable';
 import ColumnToggle from '../ColumnToggle';
+import { SearchIcon, ClearIcon } from '../ui/Icons';
 import { describeSelection } from '../../utils/danceStyles';
+import type { ThemePreference } from '../../state/settingsContext';
 import './DesktopViewer.css';
 
 export interface DesktopViewerProps {
@@ -17,6 +19,12 @@ export interface DesktopViewerProps {
 
 // Desktop keeps the data-dense table: breadcrumbs, a filter panel, a column
 // panel and rows that expand in place to show their steps.
+const THEME_OPTIONS: { value: ThemePreference; label: string }[] = [
+  { value: 'system', label: 'System' },
+  { value: 'light', label: 'Light' },
+  { value: 'dark', label: 'Dark' },
+];
+
 const DesktopViewer: React.FC<DesktopViewerProps> = ({ datasets, filters }) => {
   const {
     searchTerm,
@@ -31,7 +39,7 @@ const DesktopViewer: React.FC<DesktopViewerProps> = ({ datasets, filters }) => {
     hasActiveFilters,
     clearFilters,
   } = filters;
-  const { resolvedTheme, setTheme } = useSettings();
+  const { theme, setTheme } = useSettings();
 
   // Column visibility state
   const [visibleColumns, setVisibleColumns] = useState<string[]>([]);
@@ -144,7 +152,7 @@ const DesktopViewer: React.FC<DesktopViewerProps> = ({ datasets, filters }) => {
           <div className="title-area">
             <nav className="breadcrumbs" aria-label="Breadcrumb">
               <button type="button" className="breadcrumb-item linkable" onClick={() => setSelectedDances([])}>
-                Dances
+                Figures
               </button>
               {selectedDances.length > 0 && (
                 <>
@@ -159,58 +167,66 @@ const DesktopViewer: React.FC<DesktopViewerProps> = ({ datasets, filters }) => {
 
           <div className="header-actions">
             {hasActiveFilters && (
-              <button
-                className="clear-filters-pill"
-                onClick={clearFilters}
-              >
-                Clear Filters
+              <button type="button" className="fv-act header-show-all" onClick={clearFilters}>
+                Show all
               </button>
             )}
 
             <button
               ref={filterBtnRef}
-              className={`header-filter-toggle-btn ${showFilterControl ? 'active' : ''}`}
+              type="button"
+              className={`header-panel-btn ${showFilterControl ? 'active' : ''}`}
               onClick={() => {
                 setShowFilterControl(!showFilterControl);
                 setShowColumnControl(false);
               }}
-              title={showFilterControl ? "Hide Filters" : "Show Filters"}
               aria-expanded={showFilterControl}
             >
-              🪩
+              Filters
             </button>
 
             <button
               ref={columnBtnRef}
-              className={`header-column-toggle-btn ${showColumnControl ? 'active' : ''}`}
+              type="button"
+              className={`header-panel-btn ${showColumnControl ? 'active' : ''}`}
               onClick={() => {
                 setShowColumnControl(!showColumnControl);
                 setShowFilterControl(false);
               }}
-              title={showColumnControl ? 'Hide Column Settings' : 'Show Column Settings'}
               aria-expanded={showColumnControl}
             >
-              ⚙️
+              Columns
             </button>
 
-            <button
-              className="header-theme-toggle-btn"
-              onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
-              title={resolvedTheme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-            >
-              {resolvedTheme === 'dark' ? '☀️' : '🌙'}
-            </button>
+            <div className="appearance-control" role="group" aria-label="Appearance">
+              {THEME_OPTIONS.map((option) => (
+                <button
+                  key={option.value}
+                  type="button"
+                  className={`appearance-seg ${theme === option.value ? 'on' : ''}`}
+                  aria-pressed={theme === option.value}
+                  onClick={() => setTheme(option.value)}
+                >
+                  <span className="appearance-seg-fill" />
+                  <span className="appearance-seg-label">{option.label}</span>
+                </button>
+              ))}
+            </div>
 
             <div
               className={`expandable-search-container ${searchFocused ? 'focused' : ''} ${searchTerm ? 'has-text' : ''}`}
+              role="search"
               onClick={() => searchInputRef.current?.focus()}
             >
-              <span className="search-icon">🔍</span>
+              <SearchIcon className="search-icon" />
               <input
                 ref={searchInputRef}
                 type="text"
                 className="search-input"
                 placeholder="Search for anything"
+                aria-label="Search for anything"
+                autoComplete="off"
+                spellCheck={false}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onFocus={() => setSearchFocused(true)}
@@ -218,17 +234,20 @@ const DesktopViewer: React.FC<DesktopViewerProps> = ({ datasets, filters }) => {
               />
               {searchTerm && (
                 <button
+                  type="button"
                   className="search-clear-btn"
+                  aria-label="Clear search"
                   onClick={(e) => {
                     e.stopPropagation();
                     setSearchTerm('');
+                    searchInputRef.current?.focus();
                   }}
                 >
-                  ×
+                  <ClearIcon />
                 </button>
               )}
               {!searchFocused && !searchTerm && (
-                <span className="search-shortcut-hint">/</span>
+                <span className="search-shortcut-hint" aria-hidden="true">/</span>
               )}
             </div>
           </div>
@@ -238,7 +257,6 @@ const DesktopViewer: React.FC<DesktopViewerProps> = ({ datasets, filters }) => {
           {showFilterControl && (
             <div ref={filterPanelRef}>
               <FilterToggle
-                layout="panel"
                 danceGroups={danceGroups}
                 selectedDances={selectedDances}
                 setSelectedDances={setSelectedDances}
@@ -263,11 +281,7 @@ const DesktopViewer: React.FC<DesktopViewerProps> = ({ datasets, filters }) => {
           )}
 
           {/* Rows expand in place; there is no separate figure screen. */}
-          <DanceTable
-            data={filteredFigures}
-            visibleColumns={visibleColumns}
-            onSelectFigure={() => {}}
-          />
+          <DanceTable data={filteredFigures} visibleColumns={visibleColumns} />
         </div>
       </main>
     </div>

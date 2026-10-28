@@ -4,23 +4,20 @@
   left: 0;
   right: 0;
   z-index: 100;
-  background: var(--container-bg);
-  padding: 16px 20px;
-  border-radius: 12px;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
   gap: 16px;
-  max-height: 80vh;
+  padding: 16px 20px;
+  background: var(--floor);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-field);
   max-height: 80dvh;
   overflow-x: hidden;
   overflow-y: auto;
-  transition: all 0.3s ease;
-  animation: panelSlideDown 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: columnPanelSlideDown var(--dur-panel) ease;
 }
 
-@keyframes panelSlideDown {
+@keyframes columnPanelSlideDown {
   from {
     opacity: 0;
     transform: translateY(-8px);
@@ -31,289 +28,142 @@
   }
 }
 
-/* Preset Row & Segmented Control */
-.preset-row {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.preset-group {
+.column-preset-row {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 12px;
-  min-width: 0;
+  gap: 12px 16px;
 }
 
-.segmented-control {
+/* Preset track: Mirror ground, the chosen preset filled. Lead and Follow
+   take their part colors since they mean a part. */
+.column-presets {
   display: inline-flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  background-color: var(--row-hover);
   padding: 3px;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  gap: 2px;
-  min-height: 38px;
-  min-width: 0;
-  box-sizing: border-box;
-  box-shadow: var(--shadow);
+  border-radius: var(--r-field);
+  background: var(--track);
+  box-shadow: inset 0 0 0 1px var(--rule);
 }
 
-.preset-btn {
-  background: none;
-  border: none;
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 0 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  color: var(--text-secondary);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
+.column-preset {
+  height: 34px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 500;
   white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) ease, color var(--dur-fast) ease;
 }
 
-.preset-btn:hover {
-  color: var(--text-primary);
-  background-color: rgba(0, 0, 0, 0.05);
+.column-preset:hover {
+  background: var(--floor);
 }
 
-[data-theme='dark'] .preset-btn:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-.preset-btn.active {
-  background-color: var(--container-bg);
-  color: var(--accent-color);
-  box-shadow: var(--shadow);
-}
-
-.preset-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--accent-color);
-  background-color: var(--accent-light);
-  padding: 0 8px;
-  border-radius: 6px;
-  margin: 0 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.preset-results-summary {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  height: 38px;
-}
-
-.results-count-text {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-}
-
-.results-count-text strong {
-  color: var(--text-primary);
+.column-preset.on,
+.column-preset.on:hover {
+  background: var(--ink);
+  color: var(--on-ink);
   font-weight: 700;
 }
 
-/* Keyboard accessibility focus styling */
-.preset-btn:focus-visible {
-  outline: 2px solid var(--accent-color);
-  outline-offset: 2px;
+.column-preset.lead.on,
+.column-preset.lead.on:hover {
+  background: var(--lead);
+  color: var(--on-role);
 }
 
-/* Granular Checklist */
-.granular-columns-container {
-  padding-top: 16px;
-  border-top: 1px dashed var(--border-color);
-  animation: slideDown 0.2s ease-out;
+.column-preset.follow.on,
+.column-preset.follow.on:hover {
+  background: var(--follow);
+  color: var(--on-role);
 }
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.column-custom {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--slate);
+}
+
+.column-count {
+  margin: 0 0 0 auto;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--slate);
+}
+
+.column-count strong {
+  color: var(--ink);
+  font-weight: 700;
 }
 
 .column-group-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
+  gap: 16px 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
 }
 
-.column-group-card {
-  background-color: var(--row-zebra);
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  padding: 14px;
+.column-group {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 4px;
+  min-width: 0;
 }
 
-.column-group-card h5 {
+.column-group h5 {
   margin: 0 0 4px 0;
-  font-family: var(--font-heading);
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
-  border-bottom: 1px solid var(--border-color);
   padding-bottom: 6px;
+  border-bottom: 1px solid var(--hairline);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
 }
 
-/* Specific Card Headings styling */
-.column-group-card.lead-card h5 {
-  color: var(--lead-color);
+/* The two part groups are headed in their part colors. */
+.column-group.lead-group h5 {
+  color: var(--lead);
 }
 
-.column-group-card.follow-card h5 {
-  color: var(--follow-color);
+.column-group.follow-group h5 {
+  color: var(--follow);
 }
 
 .column-checkbox-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
-/* Custom Checkboxes */
 .column-checkbox-item {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 10px;
+  min-height: 34px;
   cursor: pointer;
-  font-size: 0.85rem;
-  color: var(--text-secondary);
+  font-size: 14px;
+  color: var(--shade);
   user-select: none;
-  position: relative;
-}
-
-.column-checkbox-item input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-.checkbox-custom {
-  position: relative;
-  height: 18px;
-  width: 18px;
-  background-color: var(--container-bg);
-  border: 1.5px solid var(--border-color);
-  border-radius: 5px;
-  transition: all 0.2s ease;
-}
-
-.column-checkbox-item:hover input ~ .checkbox-custom {
-  border-color: var(--text-muted);
-}
-
-.column-checkbox-item input:checked ~ .checkbox-custom {
-  background-color: var(--accent-color);
-  border-color: var(--accent-color);
-}
-
-/* Color codes for Lead/Follow checkboxes */
-.lead-card .column-checkbox-item input:checked ~ .checkbox-custom {
-  background-color: var(--lead-color);
-  border-color: var(--lead-color);
-}
-
-.follow-card .column-checkbox-item input:checked ~ .checkbox-custom {
-  background-color: var(--follow-color);
-  border-color: var(--follow-color);
-}
-
-.checkbox-custom:after {
-  content: "";
-  position: absolute;
-  display: none;
-  left: 5px;
-  top: 2px;
-  width: 4px;
-  height: 8px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-
-.column-checkbox-item input:checked ~ .checkbox-custom:after {
-  display: block;
 }
 
 .column-checkbox-item:hover {
-  color: var(--text-primary);
+  color: var(--ink);
 }
 
-@media (max-width: 600px) {
-  .column-group-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .preset-row {
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  .segmented-control {
-    min-height: 34px;
-    padding: 3px;
-  }
-
-  .preset-btn {
-    padding: 0 10px;
-    font-size: 0.8rem;
-  }
-
-  .preset-results-summary {
-    height: 34px;
-    gap: 8px;
-  }
-
-  .results-count-text {
-    font-size: 0.8rem;
-  }
+.column-checkbox-item:has(input:focus-visible) .ui-check {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
 }
 
 /* Marks a column only one style's book charts, e.g. Standard's Sway or
    Latin's Timing, so it's clear why it's empty for the other style. */
 .column-style-tag {
   margin-left: auto;
-  font-family: var(--font-heading);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  padding: 1px 6px;
-  border-radius: 4px;
-  background-color: var(--accent-light);
-  color: var(--accent-color);
-}
-
-.column-style-tag.latin {
-  background-color: var(--latin-light);
-  color: var(--latin-color);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--slate);
 }

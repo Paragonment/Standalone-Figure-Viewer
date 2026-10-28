@@ -12,7 +12,7 @@ export interface Beat {
 }
 
 // "1/2" -> 0.5, "1 3/4" -> 1.75, "" -> 1.
-export const parseBeatValue = (value: string): number => {
+const parseBeatValue = (value: string): number => {
   const parts = value.trim().split(/\s+/).filter(Boolean);
   if (parts.length === 0) return 1;
   let total = 0;

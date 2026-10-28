@@ -1,73 +1,38 @@
-# React + TypeScript + Vite
+# Figure Viewer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A reference and practice tool for ballroom figures: International Standard (Waltz, Tango, Foxtrot,
+Quickstep) and International Latin (Cha Cha Cha, Samba, Rumba, Paso Doble, Jive), at Pre-Bronze,
+Bronze, Silver and Gold level. Built with React 19, TypeScript and Vite.
 
-Currently, two official plugins are available:
+## Screens
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+On a phone (768px wide or less) the app has three screens and a settings sheet:
 
-## React Compiler
+- **Home** - search, always-visible dance and level filters, and the figure list. Searching ranks
+  figure names first, then figures whose notes mention the query.
+- **Figure** - the steps, with the positions, a rhythm strip and the Lead/Follow switch frozen above
+  them. Tap a beat to jump to its step. An About band holds the notes. Side by side shows both parts.
+- **Practice** - one step at a time, large. Back and Next, swipe, the arrow keys or the rhythm strip
+  move between steps, and the next step is previewed at the bottom.
+- **Settings** - which part you dance, which details each style shows on every step, and the theme
+  (system, light or dark). Settings are stored in the browser.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+On wider screens the app shows a dense table with expandable rows, per-part columns, and the same
+filters and theme choice.
 
-## Expanding the ESLint configuration
+## Data
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+The figures live in `public/standard.csv` and `public/latin.csv`. Where the Latin charts come from is
+recorded in [`docs/latin-sources`](docs/latin-sources/README.md).
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Development
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+npm install
+npm run dev      # start the dev server
+npm run lint     # eslint
+npm run build    # type-check and build to dist/
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+The design tokens (colors, type, motion) are CSS variables in `src/index.css`; both themes are
+defined there. Shared building blocks are in `src/components/ui`, user settings in `src/state`.

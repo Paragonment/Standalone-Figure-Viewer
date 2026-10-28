@@ -40,34 +40,6 @@
   --dur-panel: 200ms;
   --gutter: 16px;
   --target: 44px;
-
-  /* Legacy aliases for the desktop CSS that has not been re-skinned yet */
-  --font-heading: var(--font-body);
-  --bg-color: var(--mirror);
-  --container-bg: var(--floor);
-  --sidebar-bg: var(--mirror);
-  --rail-bg: var(--mirror);
-  --text-primary: var(--ink);
-  --text-secondary: var(--shade);
-  --text-muted: var(--slate);
-  --border-color: var(--rule);
-  --accent-color: var(--ink);
-  --accent-hover: var(--shade);
-  --accent-light: color-mix(in srgb, var(--ink) 8%, transparent);
-  --row-hover: var(--tint);
-  --row-zebra: var(--floor);
-  --header-bg: var(--mirror);
-  --input-bg: var(--floor);
-  --shadow: none;
-  --shadow-lg: none;
-  --glass-bg: var(--floor);
-  --glass-border: var(--rule);
-  --lead-color: var(--lead);
-  --lead-light: color-mix(in srgb, var(--lead) 10%, transparent);
-  --follow-color: var(--follow);
-  --follow-light: color-mix(in srgb, var(--follow) 10%, transparent);
-  --latin-color: var(--ink);
-  --latin-light: var(--tint);
 }
 
 [data-theme='dark'] {

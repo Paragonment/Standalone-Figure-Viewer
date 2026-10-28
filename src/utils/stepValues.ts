@@ -2,7 +2,7 @@ import type { DanceStep, Role } from '../types';
 import type { StepFieldDef } from './stepFields';
 
 // Word joiner: an invisible character that forbids a line break.
-export const WJ = '⁠';
+const WJ = '⁠';
 
 // Number ranges like "3-5" must never break across lines, so a hyphen
 // between digits gets a word joiner on both sides.
@@ -31,7 +31,7 @@ const FOOTWORK_WORDS: Record<string, string> = {
   THT: 'Toe heel toe',
 };
 
-export const expandFootwork = (value: string): string => FOOTWORK_WORDS[value.trim()] ?? value;
+const expandFootwork = (value: string): string => FOOTWORK_WORDS[value.trim()] ?? value;
 
 const SWAY_WORDS: Record<string, string> = { L: 'Left', R: 'Right', S: 'Straight' };
 

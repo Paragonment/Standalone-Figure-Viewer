@@ -95,3 +95,8 @@
   border-color: var(--on-role);
   background: var(--on-role);
 }
+
+.ui-part-half:focus-visible {
+  border-radius: var(--r-field);
+  outline-offset: -2px;
+}

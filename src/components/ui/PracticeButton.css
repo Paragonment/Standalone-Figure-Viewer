@@ -23,3 +23,13 @@
   font-size: 15px;
   font-weight: 600;
 }
+
+/* The ring wraps the visible pill, not the 44px target around it. */
+.ui-practice-btn:focus-visible {
+  outline: none;
+}
+
+.ui-practice-btn:focus-visible .ui-practice-pill {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}

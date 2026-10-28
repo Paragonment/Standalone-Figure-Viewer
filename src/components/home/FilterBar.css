@@ -52,6 +52,16 @@
   color: var(--on-ink);
 }
 
+/* The ring follows the track's corners and stays inside it. */
+.fb-seg:focus-visible {
+  border-radius: var(--r-field);
+  outline-offset: -2px;
+}
+
+.fb-all:focus-visible {
+  border-radius: var(--r-field);
+}
+
 /* The hairline between two segments disappears next to a selected one. */
 .fb-divider {
   position: absolute;
@@ -96,6 +106,15 @@
   cursor: pointer;
 }
 
+.fb-pill:focus-visible {
+  outline: none;
+}
+
+.fb-pill:focus-visible .fb-pill-body {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
 .fb-pill-body {
   height: 36px;
   display: flex;
@@ -124,4 +143,24 @@
   height: 8px;
   border-radius: 4px;
   border: 2px solid;
+}
+
+/* Four pills need about 340px of text and padding; tighten them on the
+   narrowest phones so none runs off the edge. */
+@media (max-width: 389px) {
+  .fb-pill-body {
+    padding: 0 7px;
+  }
+}
+
+@media (max-width: 339px) {
+  .fb-levels {
+    gap: 4px;
+  }
+
+  .fb-pill-body {
+    gap: 4px;
+    padding: 0 5px;
+    font-size: 13px;
+  }
 }

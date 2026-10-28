@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 40px;
+  min-height: 41px; /* 40px of content plus the hairline, as in the design */
   padding: 0 8px 0 var(--gutter);
   border-bottom: 1px solid var(--hairline);
 }
@@ -166,4 +166,9 @@
   .fl-empty-act:hover {
     color: var(--shade);
   }
+}
+
+/* Inside the row: the scroller would clip a ring drawn outside it. */
+.fl-row:focus-visible {
+  outline-offset: -2px;
 }

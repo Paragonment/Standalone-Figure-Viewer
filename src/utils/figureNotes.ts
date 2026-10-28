@@ -73,10 +73,10 @@ export function parseFigureNotes(notes: string): FigureNotes {
   });
   outside.push(text.slice(cursor));
 
-  const rows = ROW_ORDER.filter((label) => values.has(label)).map((label) => ({
-    label,
-    value: (values.get(label) ?? []).join('; '),
-  }));
+  const rows = ROW_ORDER.filter((label) => values.has(label)).map((label) => {
+    const value = (values.get(label) ?? []).join('; ');
+    return { label, value: value.charAt(0).toUpperCase() + value.slice(1) };
+  });
   const description = outside
     .map((part) => part.trim())
     .filter(Boolean)

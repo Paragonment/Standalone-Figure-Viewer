@@ -21,6 +21,7 @@
   --tint: #f6f8fb;
   --chevron: #9aa2b2;
   --scrim: rgba(18, 26, 51, 0.5);
+  --lift: 0 1px 2px rgba(18, 26, 51, 0.14);
   --bronze: #8b5a2b;
   --bronze-dot: #a8703a;
   --silver: #5c6878;
@@ -62,6 +63,7 @@
   --tint: #101629;
   --chevron: #6e7893;
   --scrim: rgba(0, 0, 0, 0.6);
+  --lift: inset 0 0 0 1px var(--edge);
   --bronze: #d9a066;
   --bronze-dot: #c98a4b;
   --silver: #b4bfd0;

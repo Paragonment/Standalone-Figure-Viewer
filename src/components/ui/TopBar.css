@@ -54,3 +54,7 @@
 .ui-topbar-title-hidden {
   opacity: 0;
 }
+
+.ui-topbar-back:focus-visible {
+  border-radius: var(--r-field);
+}

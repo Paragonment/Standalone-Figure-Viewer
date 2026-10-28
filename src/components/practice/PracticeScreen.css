@@ -114,7 +114,7 @@
 .pr-details {
   margin: 20px 0 0;
   display: grid;
-  grid-template-columns: 82px minmax(0, 1fr);
+  grid-template-columns: var(--pr-label-w, 82px) minmax(0, 1fr);
   column-gap: 10px;
   row-gap: 7px;
   align-items: baseline;

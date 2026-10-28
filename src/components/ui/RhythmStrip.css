@@ -42,3 +42,9 @@
   font-weight: 800;
   color: var(--accent);
 }
+
+/* Inside the beat's box, so it does not overlap the positions line. */
+.ui-strip-beat:focus-visible {
+  border-radius: 8px;
+  outline-offset: -2px;
+}

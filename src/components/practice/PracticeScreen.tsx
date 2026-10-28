@@ -104,6 +104,8 @@ export default function PracticeScreen({ figure, onBack }: PracticeScreenProps) 
   const enabled = fields[style];
   const feetOn = enabled.includes(FEET_KEY);
   const detailFields = getStepFields(style).filter((f) => f.key !== FEET_KEY && enabled.includes(f.key));
+  // "Rise and fall" does not fit the 82px label column on one line.
+  const labelWidth = detailFields.some((f) => f.label.length > 10) ? '100px' : '82px';
 
   const detailsFor = (s: DanceStep, r: Role): DetailRow[] =>
     detailFields.flatMap((f) => {
@@ -229,7 +231,7 @@ export default function PracticeScreen({ figure, onBack }: PracticeScreenProps) 
             key={index}
             ref={slideRef}
             className={`pr-slide${from ? ` pr-enter-${from}` : ''}`}
-            style={{ '--pr-accent': accent } as CSSProperties}
+            style={{ '--pr-accent': accent, '--pr-label-w': labelWidth } as CSSProperties}
           >
             <p className="pr-count">
               <span className="pr-when">
@@ -237,7 +239,8 @@ export default function PracticeScreen({ figure, onBack }: PracticeScreenProps) 
                 <span className="pr-numeral fv-display">{timed ? beat.count : index + 1}</span>
               </span>
               {timed && <span className="pr-meta">{formatBeats(beat.value)}</span>}
-              <span className="pr-meta pr-of">{stepOf}</span>
+              {/* Standard has no count, so the number already says which step. */}
+              <span className="pr-meta pr-of">{timed ? stepOf : `${total} ${total === 1 ? 'step' : 'steps'}`}</span>
             </p>
 
             {sideBySide ? renderBoth(step) : renderSingle(step)}

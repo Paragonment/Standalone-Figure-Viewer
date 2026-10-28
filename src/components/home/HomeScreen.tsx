@@ -4,6 +4,7 @@ import type { FigureGroup } from '../../types';
 import type { useDanceFilters } from '../../hooks/useDanceFilters';
 import { buildSections, normalizeQuery } from '../../utils/search';
 import MenuButton from '../ui/MenuButton';
+import DevFlag from '../ui/DevFlag';
 import SearchField from './SearchField';
 import FilterBar from './FilterBar';
 import FigureList from './FigureList';
@@ -46,7 +47,10 @@ export default function HomeScreen({ figures, filters, onOpenFigure, scrollTopRe
     <div className="home">
       <header className="home-header">
         <div className="home-title-row">
-          <h1 className="fv-display home-title">Figures</h1>
+          <div className="home-title-group">
+            <h1 className="fv-display home-title">Figures</h1>
+            <DevFlag />
+          </div>
           <MenuButton className="home-menu" />
         </div>
         <div className="home-search">

@@ -7,6 +7,7 @@ import FilterToggle from '../FilterToggle';
 import DanceTable from '../DanceTable';
 import ColumnToggle from '../ColumnToggle';
 import { SearchIcon, ClearIcon } from '../ui/Icons';
+import DevFlag from '../ui/DevFlag';
 import { describeSelection } from '../../utils/danceStyles';
 import type { ThemePreference } from '../../state/settingsContext';
 import './DesktopViewer.css';
@@ -154,6 +155,7 @@ const DesktopViewer: React.FC<DesktopViewerProps> = ({ datasets, filters }) => {
               <button type="button" className="breadcrumb-item linkable" onClick={() => setSelectedDances([])}>
                 Figures
               </button>
+              <DevFlag />
               {selectedDances.length > 0 && (
                 <>
                   <span className="breadcrumb-separator">/</span>

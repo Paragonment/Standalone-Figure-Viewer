@@ -1,0 +1,169 @@
+/* The Floor panel under the filters: count bar, then the scrolling list. */
+.fl {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--floor);
+  border-top: 1px solid var(--rule);
+}
+
+.fl-count {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 40px;
+  padding: 0 8px 0 var(--gutter);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.fl-count-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--slate);
+}
+
+/* 44px target inside the 40px bar. */
+.fl-act {
+  height: var(--target);
+  margin: -2px 0;
+  padding: 0 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.fl-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.fl-section {
+  background: var(--floor);
+}
+
+.fl-section-tint {
+  background: var(--tint);
+}
+
+.fl-heading {
+  margin: 0;
+  padding: 14px var(--gutter) 6px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 700;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.fl-heading-count {
+  font-weight: 500;
+  color: var(--slate);
+}
+
+.fl-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fl-item {
+  border-bottom: 1px solid var(--hairline);
+}
+
+.fl-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 64px;
+  padding: 8px 12px 8px var(--gutter);
+  border: 0;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.fl-row-short {
+  min-height: 52px;
+}
+
+.fl-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.fl-name {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.fl-sub {
+  font-size: 14px;
+  color: var(--slate);
+}
+
+.fl-level {
+  margin-left: 6px;
+  font-weight: 600;
+}
+
+.fl-snippet {
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--shade);
+}
+
+.fl-steps {
+  font-size: 14px;
+  color: var(--slate);
+  white-space: nowrap;
+}
+
+.fl-chevron {
+  flex: none;
+  color: var(--chevron);
+}
+
+.fl-empty {
+  padding: 28px var(--gutter);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.fl-empty-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.fl-empty-hint {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--slate);
+}
+
+.fl-empty-act {
+  height: var(--target);
+  margin: 4px 0 0 -8px;
+  padding: 0 8px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+@media (hover: hover) {
+  .fl-act:hover,
+  .fl-empty-act:hover {
+    color: var(--shade);
+  }
+}

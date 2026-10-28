@@ -1,7 +1,13 @@
+import { useMemo } from 'react';
 import type { RefObject } from 'react';
 import type { FigureGroup } from '../../types';
 import type { useDanceFilters } from '../../hooks/useDanceFilters';
+import { buildSections, normalizeQuery } from '../../utils/search';
 import MenuButton from '../ui/MenuButton';
+import SearchField from './SearchField';
+import FilterBar from './FilterBar';
+import FigureList from './FigureList';
+import './HomeScreen.css';
 
 export interface HomeScreenProps {
   figures: FigureGroup[];
@@ -10,21 +16,66 @@ export interface HomeScreenProps {
   scrollTopRef: RefObject<number>;
 }
 
-// STUB (Phase 0): WS-A replaces this with the real Home screen.
-export default function HomeScreen({ figures, onOpenFigure }: HomeScreenProps) {
+export default function HomeScreen({ figures, filters, onOpenFigure, scrollTopRef }: HomeScreenProps) {
+  const {
+    searchTerm,
+    setSearchTerm,
+    selectedDances,
+    setSelectedDances,
+    selectedLevels,
+    setSelectedLevels,
+    danceGroups,
+    levels,
+  } = filters;
+
+  const { sections, total, scope, grouped } = useMemo(
+    () => buildSections({ figures, dances: selectedDances, levels: selectedLevels, query: searchTerm }),
+    [figures, selectedDances, selectedLevels, searchTerm],
+  );
+
+  const needle = normalizeQuery(searchTerm);
+  const filtered = selectedDances.length > 0 || selectedLevels.length > 0;
+  const placeholder = `Search ${scope} ${scope === 1 ? 'figure' : 'figures'}`;
+
+  const clearFilters = () => {
+    setSelectedDances([]);
+    setSelectedLevels([]);
+  };
+
   return (
-    <div style={{ flex: 1, minHeight: 0, overflow: 'auto', padding: 16 }}>
-      <MenuButton />
-      <h1 className="fv-display">HomeScreen</h1>
-      <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
-        {figures.slice(0, 40).map((figure) => (
-          <li key={`${figure.dance}-${figure.name}`}>
-            <button type="button" onClick={() => onOpenFigure(figure)}>
-              {figure.name} ({figure.dance})
-            </button>
-          </li>
-        ))}
-      </ul>
+    <div className="home">
+      <header className="home-header">
+        <div className="home-title-row">
+          <h1 className="fv-display home-title">Figures</h1>
+          <MenuButton className="home-menu" />
+        </div>
+        <div className="home-search">
+          <SearchField value={searchTerm} onChange={setSearchTerm} placeholder={placeholder} />
+        </div>
+        <div className="home-filters">
+          <FilterBar
+            danceGroups={danceGroups}
+            levels={levels}
+            selectedDances={selectedDances}
+            onDancesChange={setSelectedDances}
+            selectedLevels={selectedLevels}
+            onLevelsChange={setSelectedLevels}
+          />
+        </div>
+      </header>
+      <FigureList
+        sections={sections}
+        total={total}
+        allCount={figures.length}
+        grouped={grouped}
+        query={searchTerm}
+        searching={needle.length > 0}
+        filtered={filtered}
+        onClearFilters={clearFilters}
+        onOpenFigure={onOpenFigure}
+        scrollTopRef={scrollTopRef}
+        resetKey={`${selectedDances.join('|')}#${selectedLevels.join('|')}#${needle}`}
+      />
     </div>
   );
 }

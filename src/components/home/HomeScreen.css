@@ -1,0 +1,39 @@
+.home {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--mirror);
+  color: var(--ink);
+}
+
+.home-header {
+  flex: none;
+  padding: max(20px, env(safe-area-inset-top)) var(--gutter) 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home-title {
+  margin: 0;
+  font-size: 40px;
+  line-height: 1;
+}
+
+.home-menu {
+  margin-right: -10px;
+}
+
+.home-search {
+  margin-top: 12px;
+}
+
+.home-filters {
+  margin-top: 12px;
+}

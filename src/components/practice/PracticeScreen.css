@@ -1,0 +1,307 @@
+/* Practice: the frozen block, one step, and a Back/Next footer. The screen's
+   children sit directly in .app (a flex column), so each is a flex item. */
+
+.pr-frozen {
+  flex: none;
+  padding: 7px 16px 8px;
+  display: flex;
+  flex-direction: column;
+  background: var(--floor);
+  border-bottom: 1px solid var(--hairline);
+}
+
+/* pan-y: the browser keeps vertical scrolling; horizontal movement is left
+   to the swipe handler. */
+.pr-main {
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  background: var(--floor);
+}
+
+.pr-slide {
+  min-height: 100%;
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pr-enter-next {
+  animation: pr-enter-next 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.pr-enter-prev {
+  animation: pr-enter-prev 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes pr-enter-next {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pr-enter-prev {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Count row */
+
+.pr-count {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.pr-when {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  color: var(--pr-accent);
+}
+
+.pr-on {
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.pr-numeral {
+  font-size: 40px;
+  line-height: 0.9;
+}
+
+.pr-meta {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--slate);
+}
+
+.pr-of {
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* Single part */
+
+.pr-single {
+  display: flex;
+  flex-direction: column;
+}
+
+.pr-feet {
+  margin: 10px 0 0;
+  font-size: 33px;
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -0.3px;
+}
+
+.pr-details {
+  margin: 20px 0 0;
+  display: grid;
+  grid-template-columns: 82px minmax(0, 1fr);
+  column-gap: 10px;
+  row-gap: 7px;
+  align-items: baseline;
+}
+
+.pr-details dt {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--slate);
+}
+
+.pr-details dd {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.pr-details .pr-partner-label {
+  margin-top: 12px;
+  font-weight: 700;
+}
+
+.pr-details .pr-partner-feet {
+  margin: 12px 0 0;
+  font-size: 18px;
+  line-height: 1.35;
+  color: var(--shade);
+}
+
+/* Side by side */
+
+.pr-both {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 16px;
+}
+
+.pr-part {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.pr-part-label {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.pr-part-feet {
+  margin: 4px 0 0;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.22;
+  letter-spacing: -0.2px;
+}
+
+.pr-part-details {
+  margin: 14px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.pr-part-details div {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.pr-part-details dt {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--slate);
+}
+
+.pr-part-details dd {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+/* Then / Ends in, pinned to the bottom of the step */
+
+.pr-ahead {
+  margin-top: auto;
+  padding-top: 28px;
+}
+
+.pr-ahead-inner {
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pr-ahead-label {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--slate);
+}
+
+.pr-ahead-label b {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.pr-ahead-feet {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: 16px;
+}
+
+.pr-ahead-both {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.pr-ahead-feet span {
+  min-width: 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--shade);
+}
+
+.pr-ahead-both span {
+  font-size: 16px;
+}
+
+/* Footer */
+
+.pr-foot {
+  flex: none;
+  padding: 0 16px max(28px, env(safe-area-inset-bottom));
+  background: var(--floor);
+  border-top: 1px solid transparent;
+  transition: border-color var(--dur) ease;
+}
+
+.pr-foot-rule {
+  border-top-color: var(--rule);
+}
+
+.pr-foot-row {
+  padding-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.pr-btn {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: var(--r-step-btn);
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pr-btn-back {
+  border: 1px solid var(--edge);
+  background: var(--floor);
+  color: var(--ink);
+}
+
+.pr-btn-next {
+  border: 0;
+  background: var(--ink);
+  color: var(--on-ink);
+}
+
+.pr-btn-done {
+  gap: 8px;
+}
+
+.pr-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pr-enter-next,
+  .pr-enter-prev {
+    animation: none;
+  }
+}

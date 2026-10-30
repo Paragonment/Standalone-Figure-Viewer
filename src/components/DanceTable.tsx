@@ -3,6 +3,8 @@ import type { FigureGroup } from '../types';
 import { getColumnGroup } from '../utils/columns';
 import { displayCount } from '../utils/rhythm';
 import { levelLook } from '../utils/levels';
+import { useDisplaySettings } from '../hooks/useDisplaySettings';
+import { expandAbbreviations } from '../utils/abbreviations';
 import { keepRanges } from '../utils/stepValues';
 import FieldValue from './FieldValue';
 import FigurePositions from './FigurePositions';
@@ -24,6 +26,8 @@ const OUTER_COLUMNS = ['Dance', 'Figure Name', 'Level', 'Starting Position', 'En
 // steps in a nested table, with one column per chosen step field.
 const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns }) => {
   const [expandedFigures, setExpandedFigures] = useState<Set<string>>(new Set());
+  const { spellOutAbbreviations } = useDisplaySettings();
+  const notesText = (text: string) => keepRanges(spellOutAbbreviations ? expandAbbreviations(text) : text);
 
   if (data.length === 0) {
     return (
@@ -64,7 +68,7 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns }) => {
     }
     if (header === 'General Notes') {
       if (!value || value.trim() === '') return null;
-      return <span className="notes-text">{keepRanges(value)}</span>;
+      return <span className="notes-text">{notesText(value)}</span>;
     }
     return <FieldValue field={baseFieldKey(header)} value={value} />;
   };
@@ -140,7 +144,7 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns }) => {
                   )}
                   {showNotes && (
                     <td className="general-notes-summary-cell">
-                      <span className="notes-text truncate">{keepRanges(fig.generalNotes)}</span>
+                      <span className="notes-text truncate">{notesText(fig.generalNotes)}</span>
                     </td>
                   )}
                 </tr>

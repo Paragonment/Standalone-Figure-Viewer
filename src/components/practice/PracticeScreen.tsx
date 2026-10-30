@@ -3,6 +3,7 @@ import type { CSSProperties } from 'react';
 import type { DanceStep, FigureGroup, Role } from '../../types';
 import { useSettings } from '../../state/useSettings';
 import { useStepSwipe } from '../../hooks/useStepSwipe';
+import { useDisplaySettings } from '../../hooks/useDisplaySettings';
 import { buildBeats, formatBeats, hasTiming, spokenCount } from '../../utils/rhythm';
 import { FEET_KEY, getStepFields } from '../../utils/stepFields';
 import { feetText, keepRanges, partValue } from '../../utils/stepValues';
@@ -37,6 +38,7 @@ const ROLE_LABEL: Record<Role, string> = { lead: 'Lead', follow: 'Follow' };
 
 export default function PracticeScreen({ figure, onBack }: PracticeScreenProps) {
   const { role, sideBySide, fields, setRole, setSideBySide } = useSettings();
+  const { spellOutAbbreviations: spellOut } = useDisplaySettings();
   const total = figure.steps.length;
 
   // Practice starts at step 1, and a different figure starts over rather
@@ -109,7 +111,7 @@ export default function PracticeScreen({ figure, onBack }: PracticeScreenProps) 
 
   const detailsFor = (s: DanceStep, r: Role): DetailRow[] =>
     detailFields.flatMap((f) => {
-      const value = partValue(s, r, f);
+      const value = partValue(s, r, f, spellOut);
       return value === null ? [] : [{ label: f.label, value }];
     });
 
@@ -135,7 +137,7 @@ export default function PracticeScreen({ figure, onBack }: PracticeScreenProps) 
     : `Then, ${timed ? `on ${spokenCount(nextBeat?.count ?? '')}` : `step ${index + 2}`}`;
   const aheadFeet: string[] = next
     ? feetOn
-      ? (sideBySide ? parts : [role]).map((r) => feetText(next, r)).filter(Boolean)
+      ? (sideBySide ? parts : [role]).map((r) => feetText(next, r, spellOut)).filter(Boolean)
       : []
     : endText
       ? [endText]
@@ -143,8 +145,8 @@ export default function PracticeScreen({ figure, onBack }: PracticeScreenProps) 
   const showAhead = next !== undefined || endText !== '';
 
   const renderSingle = (s: DanceStep) => {
-    const feet = feetOn ? feetText(s, role) : '';
-    const partnerFeet = feetOn ? feetText(s, partner) : '';
+    const feet = feetOn ? feetText(s, role, spellOut) : '';
+    const partnerFeet = feetOn ? feetText(s, partner, spellOut) : '';
     const details = detailsFor(s, role);
     return (
       <div className="pr-single">
@@ -174,7 +176,7 @@ export default function PracticeScreen({ figure, onBack }: PracticeScreenProps) 
   const renderBoth = (s: DanceStep) => (
     <div className="pr-both">
       {parts.map((r) => {
-        const feet = feetOn ? feetText(s, r) : '';
+        const feet = feetOn ? feetText(s, r, spellOut) : '';
         const details = detailsFor(s, r);
         return (
           <div key={r} role="group" aria-label={ROLE_LABEL[r]} className="pr-part">

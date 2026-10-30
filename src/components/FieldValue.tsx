@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDisplaySettings } from '../hooks/useDisplaySettings';
 import { formatStepValue } from '../utils/stepValues';
 import './FieldValue.css';
 
@@ -10,7 +11,8 @@ interface FieldValueProps {
 // One step value in a table cell. Empty and "Nil" values render nothing
 // (no placeholder dashes); footwork shorthand is spelled out.
 const FieldValue: React.FC<FieldValueProps> = ({ field, value }) => {
-  const text = formatStepValue(field, value);
+  const { spellOutAbbreviations } = useDisplaySettings();
+  const text = formatStepValue(field, value, spellOutAbbreviations);
   if (text === null) return null;
 
   switch (field) {

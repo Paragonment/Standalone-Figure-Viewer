@@ -44,6 +44,6 @@ export const DEFAULT_FIELDS: Record<DanceStyle, string[]> = {
 // too, so this one field gates both.
 export const FEET_KEY = 'Feet Positions';
 
-// Shared (not per-role) timing columns, charted for Latin only.
+// Shared (not per-role) timing columns.
 export const TIMING_COLUMN = 'Timing';
 export const BEAT_VALUE_COLUMN = 'Beat Value';

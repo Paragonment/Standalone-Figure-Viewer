@@ -15,6 +15,13 @@ export const DANCE_STYLES: DanceStyleDef[] = [
   { id: 'Latin', label: 'Latin', dataFile: 'latin.csv', dances: ['Cha Cha Cha', 'Samba', 'Rumba', 'Paso Doble', 'Jive'] },
 ];
 
+// Beats in a bar of each dance's music, in the units its book's Beat
+// Values use: Waltz is 3/4, Tango, Samba and Paso Doble are 2/4, the
+// rest 4/4.
+const BEATS_PER_BAR: Record<string, number> = { Waltz: 3, Tango: 2, Samba: 2, 'Paso Doble': 2 };
+
+export const beatsPerBar = (dance: string): number => BEATS_PER_BAR[dance] ?? 4;
+
 // Shorter names for the narrow segmented controls.
 const DANCE_SHORT_LABEL: Record<string, string> = { 'Cha Cha Cha': 'Cha Cha', 'Paso Doble': 'Paso' };
 

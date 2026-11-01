@@ -1,4 +1,5 @@
 import type { FigureGroup } from '../types';
+import { beatsPerBar } from './danceStyles';
 import { BEAT_VALUE_COLUMN, TIMING_COLUMN } from './stepFields';
 import { keepRanges } from './stepValues';
 
@@ -37,7 +38,10 @@ export const displayCount = (timing: string): string => {
   return keepRanges(text);
 };
 
-export const spokenCount = (count: string): string => count.replace(/&/g, 'and');
+// Standard's S and Q counts are read as words.
+const SPOKEN_COUNT: Record<string, string> = { S: 'slow', Q: 'quick' };
+
+export const spokenCount = (count: string): string => SPOKEN_COUNT[count] ?? count.replace(/&/g, 'and');
 
 const FRACTIONS: Record<number, string> = { 0.25: '¼', 0.5: '½', 0.75: '¾' };
 
@@ -50,11 +54,11 @@ export const formatBeats = (value: number): string => {
   return `${text} ${value > 1 ? 'beats' : 'beat'}`;
 };
 
-// Only Latin charts Timing; Standard figures have none.
+// Whether every step of the figure has a count.
 export const hasTiming = (figure: FigureGroup): boolean =>
   figure.steps.length > 0 && figure.steps.every((s) => (s[TIMING_COLUMN] ?? '').trim() !== '');
 
-// One beat per step. Without timing (Standard) each step is an equal bar
+// One beat per step. A figure without timing gets an equal bar per step,
 // labelled with its step number.
 export const buildBeats = (figure: FigureGroup): Beat[] => {
   const timed = hasTiming(figure);
@@ -69,20 +73,27 @@ export const buildBeats = (figure: FigureGroup): Beat[] => {
   });
 };
 
-// Length of the figure in bars of four beats, or null when it has no beat values.
+// Length of the figure in bars of its dance's music, or null when it has
+// no beat values.
 export const barCount = (figure: FigureGroup): number | null => {
   if (!hasTiming(figure)) return null;
   const beats = figure.steps.reduce((sum, s) => sum + parseBeatValue(s[BEAT_VALUE_COLUMN] ?? ''), 0);
-  return beats / 4;
+  return beats / beatsPerBar(figure.dance);
 };
 
-const BAR_FRACTIONS = ['', '1/4', '1/2', '3/4'];
+// Beat values are charted to the quarter beat and a bar holds 2, 3 or 4
+// beats, so every bar count is a whole number of 48ths.
+const BAR_PARTS = 48;
 
-// Rounded to the nearest quarter: "1 bar", "2 bars", "2 1/2 bars", "1/2 bar".
+const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b));
+
+// "1 bar", "2 bars", "1 1/2 bars", "1 1/3 bars", "1/2 bar".
 export const formatBars = (bars: number): string => {
-  const quarters = Math.round(bars * 4);
-  const whole = Math.floor(quarters / 4);
-  const frac = BAR_FRACTIONS[quarters % 4];
+  const parts = Math.round(bars * BAR_PARTS);
+  const whole = Math.floor(parts / BAR_PARTS);
+  const rest = parts % BAR_PARTS;
+  const divisor = gcd(rest, BAR_PARTS);
+  const frac = rest > 0 ? `${rest / divisor}/${BAR_PARTS / divisor}` : '';
   const text = [whole > 0 ? String(whole) : '', frac].filter(Boolean).join(' ') || '0';
-  return `${text} ${quarters <= 4 ? 'bar' : 'bars'}`;
+  return `${text} ${parts <= BAR_PARTS ? 'bar' : 'bars'}`;
 };

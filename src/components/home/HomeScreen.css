@@ -5,11 +5,23 @@
   flex-direction: column;
   background: var(--mirror);
   color: var(--ink);
+  /* Under a notch, the scroller and its stuck count bar start below it. */
+  padding-top: env(safe-area-inset-top);
+}
+
+/* Title, search, filters, the count bar and the list scroll as one, so the
+   header makes way for the figures. */
+.home-scroll {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
 }
 
 .home-header {
   flex: none;
-  padding: max(20px, env(safe-area-inset-top)) var(--gutter) 12px;
+  padding: calc(max(20px, env(safe-area-inset-top)) - env(safe-area-inset-top)) var(--gutter) 12px;
   display: flex;
   flex-direction: column;
 }

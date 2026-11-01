@@ -22,7 +22,7 @@ export interface SettingsApi extends Settings {
   setStyleFields(style: DanceStyle, keys: string[]): void;
   isFieldOn(style: DanceStyle, key: string): boolean;
   settingsOpen: boolean;
-  // The style tab the settings sheet opens on.
+  // The style tab the settings page opens on.
   settingsStyle: DanceStyle;
   openSettings(styleHint?: DanceStyle): void;
   closeSettings(): void;

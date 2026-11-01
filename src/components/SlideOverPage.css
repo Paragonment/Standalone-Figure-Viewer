@@ -1,0 +1,99 @@
+/* The dialog covers the window; the panel inside it is the page. --swipe
+   (set by useSwipeBack) is how far the page has slid off to the right. */
+.slide-page {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  overflow: hidden;
+}
+
+/* The scrim below stands in for the backdrop so it can follow the swipe. */
+.slide-page::backdrop {
+  background: transparent;
+}
+
+.slide-page-scrim {
+  position: absolute;
+  inset: 0;
+  background: var(--scrim);
+  opacity: calc(1 - var(--swipe, 0));
+}
+
+.slide-page-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--floor);
+  font-family: var(--font-body);
+  transform: translateX(calc(var(--swipe, 0) * 100%));
+  /* pan-y: the browser keeps vertical scrolling; horizontal movement is
+     left to the swipe. */
+  touch-action: pan-y pinch-zoom;
+}
+
+/* Full width on a phone; a column at the right edge past the mobile
+   breakpoint (useIsMobile). */
+@media (min-width: 769px) {
+  .slide-page-panel {
+    width: 480px;
+    box-shadow: -1px 0 0 var(--rule);
+  }
+}
+
+/* A hairline marks the page's left edge while the screen beneath shows. */
+.slide-page[data-swipe] .slide-page-panel {
+  box-shadow: -1px 0 0 var(--rule);
+}
+
+.slide-page[data-swipe='settle'] .slide-page-panel {
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.slide-page[data-swipe='settle'] .slide-page-scrim {
+  transition: opacity 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Focused programmatically on open; the page arriving is indication
+   enough, so no ring around the whole panel. */
+.slide-page-panel:focus {
+  outline: none;
+}
+
+.slide-page .ui-topbar {
+  background: var(--floor);
+}
+
+.slide-page-body {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 3px var(--gutter) max(24px, env(safe-area-inset-bottom));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y pinch-zoom;
+}
+
+.slide-page-title {
+  flex: none;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--ink);
+}

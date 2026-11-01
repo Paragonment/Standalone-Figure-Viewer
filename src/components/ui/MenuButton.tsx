@@ -8,7 +8,7 @@ interface MenuButtonProps {
   className?: string;
 }
 
-// The three dots that open the Settings sheet from any screen.
+// The three dots that open the Settings page from any screen.
 export default function MenuButton({ styleHint, className }: MenuButtonProps) {
   const { openSettings } = useSettings();
   return (

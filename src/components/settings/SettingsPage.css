@@ -145,7 +145,7 @@
   align-content: start;
 }
 
-/* Rings sit inside the controls so the sheet's scroll area does not clip them. */
+/* Rings sit inside the controls so the page's scroll area does not clip them. */
 .set-check:focus-visible,
 .set-tab:focus-visible,
 .set-seg-btn:focus-visible {

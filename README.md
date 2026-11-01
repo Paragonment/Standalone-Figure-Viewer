@@ -6,16 +6,18 @@ Bronze, Silver and Gold level. Built with React 19, TypeScript and Vite.
 
 ## Screens
 
-On a phone (768px wide or less) the app has three screens and a settings sheet:
+On a phone (768px wide or less) the app has three screens and a settings page:
 
 - **Home** - search, always-visible dance and level filters, and the figure list. Searching ranks
   figure names first, then figures whose notes mention the query.
 - **Figure** - the steps, with the positions, a rhythm strip and the Lead/Follow switch frozen above
   them. Tap a beat to jump to its step. An About band holds the notes. Side by side shows both parts.
+  Swipe right anywhere to go back to the list.
 - **Practice** - one step at a time, large. Back and Next, swipe, the arrow keys or the rhythm strip
   move between steps, and the next step is previewed at the bottom.
 - **Settings** - which part you dance, which details each style shows on every step, and the theme
-  (system, light or dark). Settings are stored in the browser.
+  (system, light or dark). It slides in from the right from the menu on any screen; Back or a swipe
+  right closes it. Settings are stored in the browser.
 
 On wider screens the app shows a dense table with expandable rows, per-part columns, and the same
 filters and theme choice.

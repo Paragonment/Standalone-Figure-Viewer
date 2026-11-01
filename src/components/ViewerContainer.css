@@ -33,3 +33,55 @@
   font-size: 15px;
   font-weight: 600;
 }
+
+/* Mobile screens: Home underneath, Figure or Practice on top. --swipe (set
+   by useSwipeBack) is how far the top screen has slid off to the right. */
+.vc-stack {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.vc-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--mirror);
+}
+
+/* visibility, not display, so the list keeps its scroll position. */
+.vc-covered {
+  visibility: hidden;
+}
+
+/* While a swipe is under way the list shows, starting a little to the left
+   and dimmed, and comes level as the screen on top slides off. */
+.vc-stack[data-swipe] .vc-under {
+  visibility: visible;
+  transform: translateX(calc((var(--swipe) - 1) * 25%));
+}
+
+.vc-stack[data-swipe] .vc-under::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--scrim);
+  opacity: calc((1 - var(--swipe)) * 0.5);
+  pointer-events: none;
+}
+
+.vc-stack[data-swipe] .vc-top {
+  transform: translateX(calc(var(--swipe) * 100%));
+  box-shadow: -1px 0 0 var(--rule);
+}
+
+.vc-stack[data-swipe='settle'] .vc-under,
+.vc-stack[data-swipe='settle'] .vc-top {
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.vc-stack[data-swipe='settle'] .vc-under::after {
+  transition: opacity 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}

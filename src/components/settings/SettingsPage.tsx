@@ -1,12 +1,12 @@
 import { useId, useRef, useState } from 'react';
-import BottomSheet from '../BottomSheet';
+import SlideOverPage from '../SlideOverPage';
 import CheckBox from '../ui/CheckBox';
 import { useSettings } from '../../state/useSettings';
 import type { ThemePreference } from '../../state/settingsContext';
 import type { DanceStyle } from '../../types';
 import { DANCE_STYLES } from '../../utils/danceStyles';
 import { getStepFields } from '../../utils/stepFields';
-import './SettingsSheet.css';
+import './SettingsPage.css';
 
 type RoleChoice = 'lead' | 'follow' | 'both';
 
@@ -22,15 +22,21 @@ const THEME_CHOICES: { id: ThemePreference; label: string }[] = [
   { id: 'dark', label: 'Dark' },
 ];
 
-// Settings opens as a modal sheet over whichever screen you are on. It is
-// not a history entry: Escape, the backdrop or Done closes it.
-export default function SettingsSheet() {
+// Settings slides in from the right over whichever screen you are on. It is
+// a history entry (see SettingsProvider), so the phone's back gesture closes
+// it as well as Back, a swipe right or Escape.
+export default function SettingsPage() {
   const { settingsOpen, settingsStyle, closeSettings } = useSettings();
+  // Counts openings. The body is mounted fresh for each, so the tab always
+  // starts on the style that opened it, and stays put while the page slides out.
+  const [opening, setOpening] = useState({ open: settingsOpen, count: 0 });
+  if (opening.open !== settingsOpen) {
+    setOpening({ open: settingsOpen, count: opening.count + (settingsOpen ? 1 : 0) });
+  }
   return (
-    <BottomSheet open={settingsOpen} onClose={closeSettings} title="Settings">
-      {/* Mounted only while open so the tab always starts on the style that opened it. */}
-      {settingsOpen && <SettingsBody initialStyle={settingsStyle} />}
-    </BottomSheet>
+    <SlideOverPage open={settingsOpen} onClose={closeSettings} title="Settings">
+      <SettingsBody key={opening.count} initialStyle={settingsStyle} />
+    </SlideOverPage>
   );
 }
 

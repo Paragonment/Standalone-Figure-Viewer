@@ -1,5 +1,5 @@
 /* Practice: the frozen block, one step, and a Back/Next footer. The screen's
-   children sit directly in .app (a flex column), so each is a flex item. */
+   children sit directly in a .vc-layer (a flex column), so each is a flex item. */
 
 .pr-frozen {
   flex: none;

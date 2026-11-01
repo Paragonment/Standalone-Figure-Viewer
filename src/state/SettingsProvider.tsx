@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import type { DanceStyle } from '../types';
 import { DANCE_STYLES } from '../utils/danceStyles';
 import { DEFAULT_FIELDS, getStepFields } from '../utils/stepFields';
@@ -60,12 +60,34 @@ const readTheme = (): ThemePreference => {
 
 const systemPrefersDark = () => window.matchMedia(DARK_QUERY).matches;
 
+// Open settings is a history entry of its own: the screen's state plus the
+// style tab it opened on. Back closes it, forward and reload bring it back.
+const readSettingsEntry = (): DanceStyle | null => {
+  const state = window.history.state as { settings?: unknown } | null;
+  const style = DANCE_STYLES.find(({ id }) => id === state?.settings);
+  return style ? style.id : null;
+};
+
 export default function SettingsProvider({ children }: { children: ReactNode }) {
   const [stored, setStored] = useState<StoredSettings>(readStored);
   const [theme, setThemeState] = useState<ThemePreference>(readTheme);
   const [systemDark, setSystemDark] = useState(systemPrefersDark);
-  const [settingsOpen, setSettingsOpen] = useState(false);
-  const [settingsStyle, setSettingsStyle] = useState<DanceStyle>('Latin');
+  const [settingsOpen, setSettingsOpen] = useState(() => readSettingsEntry() !== null);
+  const [settingsStyle, setSettingsStyle] = useState<DanceStyle>(() => readSettingsEntry() ?? 'Latin');
+  // Set between asking the browser to go back and it doing so, so a second
+  // close in that gap can't also go back past the screen underneath.
+  const leavingSettings = useRef(false);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      leavingSettings.current = false;
+      const entry = readSettingsEntry();
+      setSettingsOpen(entry !== null);
+      if (entry) setSettingsStyle(entry);
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   // 'system' follows the OS live.
   useEffect(() => {
@@ -112,11 +134,26 @@ export default function SettingsProvider({ children }: { children: ReactNode }) 
       setStored((s) => ({ ...s, fields: { ...s.fields, [style]: canonicalFields(style, keys) } })),
     [],
   );
-  const openSettings = useCallback((styleHint?: DanceStyle) => {
-    if (styleHint) setSettingsStyle(styleHint);
-    setSettingsOpen(true);
+  const openSettings = useCallback(
+    (styleHint?: DanceStyle) => {
+      if (readSettingsEntry()) return;
+      const style = styleHint ?? settingsStyle;
+      window.history.pushState({ ...(window.history.state as object | null), settings: style }, '');
+      setSettingsStyle(style);
+      setSettingsOpen(true);
+    },
+    [settingsStyle],
+  );
+  const closeSettings = useCallback(() => {
+    if (leavingSettings.current) return;
+    if (readSettingsEntry()) {
+      // The popstate listener above closes the page.
+      leavingSettings.current = true;
+      window.history.back();
+    } else {
+      setSettingsOpen(false);
+    }
   }, []);
-  const closeSettings = useCallback(() => setSettingsOpen(false), []);
 
   const value = useMemo<SettingsApi>(
     () => ({

@@ -1,9 +1,12 @@
+/* pan-y: the browser keeps vertical scrolling; horizontal movement is left
+   to the swipe back to the figure list. */
 .fig-scroll {
   flex: 1;
   min-height: 0;
   position: relative;
   overflow-y: auto;
   overflow-anchor: none;
+  touch-action: pan-y pinch-zoom;
 }
 
 .fig-header {

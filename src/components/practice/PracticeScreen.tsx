@@ -239,7 +239,7 @@ export default function PracticeScreen({ figure, onBack }: PracticeScreenProps) 
                 <span className="pr-numeral fv-display">{timed ? beat.count : index + 1}</span>
               </span>
               {timed && <span className="pr-meta">{formatBeats(beat.value)}</span>}
-              {/* Standard has no count, so the number already says which step. */}
+              {/* Without a count, the number already says which step. */}
               <span className="pr-meta pr-of">{timed ? stepOf : `${total} ${total === 1 ? 'step' : 'steps'}`}</span>
             </p>
 

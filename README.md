@@ -22,8 +22,9 @@ filters and theme choice.
 
 ## Data
 
-The figures live in `public/standard.csv` and `public/latin.csv`. Where the Latin charts come from is
-recorded in [`docs/latin-sources`](docs/latin-sources/README.md).
+The figures live in `public/standard.csv` and `public/latin.csv`. Where the charts come from is
+recorded in [`docs/standard-sources`](docs/standard-sources/README.md) and
+[`docs/latin-sources`](docs/latin-sources/README.md).
 
 ## Development
 

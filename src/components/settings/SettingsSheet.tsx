@@ -2,19 +2,12 @@ import { useId, useRef, useState } from 'react';
 import BottomSheet from '../BottomSheet';
 import CheckBox from '../ui/CheckBox';
 import { useSettings } from '../../state/useSettings';
+import { useDisplaySettings } from '../../hooks/useDisplaySettings';
 import type { ThemePreference } from '../../state/settingsContext';
 import type { DanceStyle } from '../../types';
 import { DANCE_STYLES } from '../../utils/danceStyles';
 import { getStepFields } from '../../utils/stepFields';
 import './SettingsSheet.css';
-
-type RoleChoice = 'lead' | 'follow' | 'both';
-
-const ROLE_CHOICES: { id: RoleChoice; label: string }[] = [
-  { id: 'lead', label: 'Lead' },
-  { id: 'follow', label: 'Follow' },
-  { id: 'both', label: 'Both' },
-];
 
 const THEME_CHOICES: { id: ThemePreference; label: string }[] = [
   { id: 'system', label: 'System' },
@@ -35,16 +28,11 @@ export default function SettingsSheet() {
 }
 
 function SettingsBody({ initialStyle }: { initialStyle: DanceStyle }) {
-  const { role, sideBySide, theme, fields, setRole, setSideBySide, setTheme, setStyleFields } = useSettings();
+  const { theme, fields, setTheme, setStyleFields } = useSettings();
+  const { spellOutAbbreviations, setSpellOutAbbreviations } = useDisplaySettings();
   const [tab, setTab] = useState<DanceStyle>(initialStyle);
   const tabRefs = useRef<Partial<Record<DanceStyle, HTMLButtonElement | null>>>({});
   const tabId = useId();
-
-  const selectedRole: RoleChoice = sideBySide ? 'both' : role;
-  const pickRole = (choice: RoleChoice) => {
-    if (choice === 'both') setSideBySide(true);
-    else setRole(choice);
-  };
 
   const defs = getStepFields(tab);
   const picked = fields[tab];
@@ -72,23 +60,6 @@ function SettingsBody({ initialStyle }: { initialStyle: DanceStyle }) {
 
   return (
     <>
-      <fieldset className="set-group">
-        <legend className="set-legend">I dance</legend>
-        <div className="set-seg">
-          {ROLE_CHOICES.map(({ id, label }) => (
-            <button
-              key={id}
-              type="button"
-              className={`set-seg-btn set-seg-${id}`}
-              aria-pressed={selectedRole === id}
-              onClick={() => pickRole(id)}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-      </fieldset>
-
       <fieldset className="set-group set-group-fields">
         <legend className="set-legend">Show on each step</legend>
         <div role="tablist" aria-label="Dance style" className="set-tabs">
@@ -149,9 +120,22 @@ function SettingsBody({ initialStyle }: { initialStyle: DanceStyle }) {
         </div>
       </fieldset>
 
-      <fieldset className="set-group">
-        <legend className="set-legend">Appearance</legend>
-        <div className="set-seg">
+      <fieldset className="set-group set-group-display">
+        <legend className="set-legend">Display</legend>
+        <button
+          type="button"
+          role="switch"
+          aria-checked={spellOutAbbreviations}
+          className="set-switch-row"
+          onClick={() => setSpellOutAbbreviations(!spellOutAbbreviations)}
+        >
+          <span className="set-switch-text">
+            <span className="set-switch-label">Spell out abbreviations</span>
+            <span className="set-switch-sub">Show &lsquo;forward&rsquo; instead of &lsquo;fwd&rsquo;</span>
+          </span>
+          <span className="set-switch" aria-hidden="true" />
+        </button>
+        <div role="group" aria-label="Appearance" className="set-seg">
           {THEME_CHOICES.map(({ id, label }) => (
             <button
               key={id}

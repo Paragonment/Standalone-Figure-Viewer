@@ -1,0 +1,12 @@
+.fig-meta {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 14px;
+  font-size: 15px;
+  color: var(--slate);
+}
+
+.fig-level {
+  font-weight: 600;
+}

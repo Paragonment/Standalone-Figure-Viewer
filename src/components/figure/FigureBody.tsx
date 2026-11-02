@@ -6,8 +6,7 @@ import { usePartChoice } from '../../hooks/usePartChoice';
 import { useRouteStep } from '../../hooks/useRouteStep';
 import { useSettings } from '../../state/useSettings';
 import { hasNotes, parseFigureNotes } from '../../utils/figureNotes';
-import { levelLook } from '../../utils/levels';
-import { barCount, buildBeats, formatBars, hasTiming } from '../../utils/rhythm';
+import { buildBeats, hasTiming } from '../../utils/rhythm';
 import PositionsLine from '../ui/PositionsLine';
 import RhythmStrip from '../ui/RhythmStrip';
 import PartControls from '../ui/PartControls';
@@ -33,8 +32,6 @@ export interface FigureBodyProps {
   layout?: 'list' | 'adaptive';
 }
 
-const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? '' : 's'}`;
-
 // Everything of an open figure but the screen's own top bar: header, About
 // band, frozen block (positions, rhythm strip, part controls) and the steps.
 // The host keys it (and the scroll hook's owner) by figure so scroll position
@@ -47,9 +44,7 @@ export default function FigureBody({ figure, scroll, headerSlot, layout = 'list'
   const beats = useMemo(() => buildBeats(figure), [figure]);
   const notes = useMemo(() => parseFigureNotes(figure.generalNotes), [figure]);
   const timed = hasTiming(figure);
-  const bars = barCount(figure);
   const accent = accentFor(role, sideBySide);
-  const level = levelLook(figure.level);
   const aside = layout === 'adaptive' && hasNotes(notes);
 
   // Switching part or side by side must not move the reader's place.
@@ -73,16 +68,6 @@ export default function FigureBody({ figure, scroll, headerSlot, layout = 'list'
         <h1 ref={titleRef} className="fig-title" tabIndex={-1}>
           {figure.name}
         </h1>
-        <p className="fig-meta">
-          <span>{figure.dance}</span>
-          <span className="fig-level" style={{ color: level.text }}>
-            {figure.level}
-          </span>
-          <span>
-            {plural(figure.steps.length, 'step')}
-            {bars !== null && `, ${formatBars(bars)}`}
-          </span>
-        </p>
         <AboutBand figure={figure} notes={notes} />
       </header>
 

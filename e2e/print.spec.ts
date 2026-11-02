@@ -48,9 +48,9 @@ for (const scheme of ['light', 'dark'] as const) {
       await print(page);
     });
 
-    test('is the title, meta line, chart and About notes alone', async ({ page }) => {
+    test('is the title, chart and About notes, meta line included, alone', async ({ page }) => {
       await expect(page.getByRole('heading', { name: FIGURE.name, level: 1 })).toBeVisible();
-      await expect(page.locator('.fig-meta')).toContainText('Waltz');
+      await expect(page.locator('.about-aside .fig-meta')).toContainText(/Waltz\s*Bronze\s*5 steps/);
       await expect(stepsTable(page)).toBeVisible();
       await expect(stepsTable(page).getByRole('row')).toHaveCount(1 + 5 * 2);
       await expect(page.getByRole('heading', { name: 'About', level: 2 })).toBeVisible();

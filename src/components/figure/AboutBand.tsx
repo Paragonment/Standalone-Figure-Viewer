@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { FigureGroup } from '../../types';
 import { hasNotes, type FigureNotes } from '../../utils/figureNotes';
 import { ExpandIcon } from '../ui/Icons';
+import FigureMeta from './FigureMeta';
 import AboutNotes from './AboutNotes';
 import './AboutBand.css';
 
@@ -10,7 +11,7 @@ interface AboutBandProps {
   notes: FigureNotes;
 }
 
-// "About this figure": the description and the labelled endings, what
+// "About this figure": what the figure is (always in view), the description and the labelled endings, what
 // comes before and what follows. Closed until the reader opens it.
 export default function AboutBand({ figure, notes }: AboutBandProps) {
   const [open, setOpen] = useState(false);
@@ -28,6 +29,7 @@ export default function AboutBand({ figure, notes }: AboutBandProps) {
         About this figure
         <ExpandIcon className={`about-chevron${open ? ' about-chevron-open' : ''}`} />
       </button>
+      <FigureMeta figure={figure} />
       {open && (
         <div id="about-panel" className="about-panel">
           <AboutNotes figure={figure} notes={notes} />

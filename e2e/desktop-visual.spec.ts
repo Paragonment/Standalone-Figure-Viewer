@@ -27,6 +27,13 @@ for (const viewport of DESKTOPS) {
         await shot(page, 'desktop-figure', width, scheme);
       });
 
+      // Shorter than the window: the Floor runs to the bottom of the pane.
+      test('Foxtrot, a short figure open', async ({ page }) => {
+        await filterByDance(page, 'Foxtrot');
+        await openFigure(page, 'Change of Direction');
+        await shot(page, 'desktop-figure-short', width, scheme);
+      });
+
       test('settings open', async ({ page }) => {
         await filterByDance(page, FIGURE.dance);
         await openFigure(page, FIGURE.name);

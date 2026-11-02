@@ -1,15 +1,27 @@
 /* pan-y: the browser keeps vertical scrolling; horizontal movement is left
-   to the swipe back to the figure list. */
+   to the swipe back to the figure list. The scroller is the Floor, so a
+   short figure never shows the Mirror below it; the header (and the pane's
+   pinned bar) put the Mirror back on top. The children keep their own
+   height, and the main block takes what is left, so the aside's divider
+   runs to the bottom. */
 .fig-scroll {
   flex: 1;
   min-height: 0;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--floor);
   overflow-y: auto;
   overflow-anchor: none;
   touch-action: pan-y pinch-zoom;
 }
 
+.fig-scroll > * {
+  flex: none;
+}
+
 .fig-header {
+  background: var(--mirror);
   padding: 3px var(--gutter) 0;
   display: flex;
   flex-direction: column;
@@ -27,19 +39,6 @@
 
 .fig-title:focus-visible {
   outline-offset: 4px;
-}
-
-.fig-meta {
-  margin: 8px 0 0;
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 14px;
-  font-size: 15px;
-  color: var(--slate);
-}
-
-.fig-level {
-  font-weight: 600;
 }
 
 /* Positions, rhythm strip and part switch stay above the steps. The
@@ -64,6 +63,10 @@
 
 /* The chart replaces the step list once its column is 640px wide, with or
    without an aside beside it. */
+.fig-scroll > .fig-main {
+  flex: 1 0 auto;
+}
+
 .fig-main-steps {
   min-width: 0;
   container: fig-main / inline-size;
@@ -96,6 +99,10 @@
 
   .fig-has-aside .fig-bar {
     padding-right: calc(var(--gutter) + var(--fig-aside-w));
+  }
+
+  .fig-has-aside .fig-header {
+    padding-bottom: 14px;
   }
 
   .fig-has-aside .about-band {

@@ -22,6 +22,12 @@
   cursor: pointer;
 }
 
+/* The meta line sits under the toggle's label, in view when closed too. */
+.about-band .fig-meta {
+  margin-top: -8px;
+  padding-bottom: 12px;
+}
+
 .about-chevron {
   flex: none;
   color: var(--slate);

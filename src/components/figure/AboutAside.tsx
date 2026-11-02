@@ -1,5 +1,6 @@
 import type { FigureGroup } from '../../types';
 import type { FigureNotes } from '../../utils/figureNotes';
+import FigureMeta from './FigureMeta';
 import AboutNotes from './AboutNotes';
 import './AboutAside.css';
 
@@ -11,6 +12,7 @@ export default function AboutAside({ figure, notes }: { figure: FigureGroup; not
       <h2 id="about-aside-title" className="about-aside-title">
         About
       </h2>
+      <FigureMeta figure={figure} />
       <AboutNotes figure={figure} notes={notes} />
     </aside>
   );

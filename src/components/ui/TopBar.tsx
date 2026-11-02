@@ -13,10 +13,11 @@ interface TopBarProps {
   titleVisible?: boolean;
   ruleVisible?: boolean;
   action?: ReactNode;
+  showMenu?: boolean;
   styleHint?: DanceStyle;
 }
 
-// Back, figure name, optional action and the menu, on the Mirror ground.
+// Back, the screen's name, an optional action and the menu, on the Mirror ground.
 export default function TopBar({
   backLabel,
   backAriaLabel,
@@ -26,6 +27,7 @@ export default function TopBar({
   titleVisible = true,
   ruleVisible = true,
   action,
+  showMenu = true,
   styleHint,
 }: TopBarProps) {
   return (
@@ -46,7 +48,7 @@ export default function TopBar({
         {title}
       </span>
       {action}
-      <MenuButton styleHint={styleHint} />
+      {showMenu && <MenuButton styleHint={styleHint} />}
     </div>
   );
 }

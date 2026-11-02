@@ -3,18 +3,21 @@ import type { DanceStyle } from '../types';
 export interface StepFieldDef {
   key: string;
   label: string;
+  // Said under the label in Settings, for a field the step shows without it.
+  hint?: string;
   leadKey: string;
   followKey: string;
 }
 
-const field = (key: string, label: string): StepFieldDef => ({
+const field = (key: string, label: string, hint?: string): StepFieldDef => ({
   key,
   label,
+  hint,
   leadKey: `Lead ${key}`,
   followKey: `Follow ${key}`,
 });
 
-const FEET = field('Feet Positions', 'Feet');
+const FEET = field('Feet Positions', 'Feet', "The step itself, with your partner's underneath");
 const ALIGNMENT = field('Alignment', 'Alignment');
 const TURN = field('Amount of Turn', 'Turn');
 const RISE_AND_FALL = field('Rise and Fall', 'Rise and fall');

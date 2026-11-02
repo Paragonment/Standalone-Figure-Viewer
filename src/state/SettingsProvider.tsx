@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import type { DanceStyle } from '../types';
 import { DANCE_STYLES } from '../utils/danceStyles';
 import { DEFAULT_FIELDS, getStepFields } from '../utils/stepFields';
@@ -60,12 +60,46 @@ const readTheme = (): ThemePreference => {
 
 const systemPrefersDark = () => window.matchMedia(DARK_QUERY).matches;
 
+// Open settings is a history entry of its own, and so is each page opened
+// on top of it: the screen's state plus `settings`, saying which figure
+// style it was opened from and which page is up. Back steps out one level,
+// forward and reload bring it back.
+interface SettingsEntry {
+  style: DanceStyle | null;
+  page: string | null;
+}
+
+const readSettingsEntry = (): SettingsEntry | null => {
+  const state = window.history.state as { settings?: unknown } | null;
+  const entry = state?.settings;
+  if (typeof entry !== 'object' || entry === null) return null;
+  const { style, page } = entry as Record<string, unknown>;
+  return {
+    style: DANCE_STYLES.find(({ id }) => id === style)?.id ?? null,
+    page: typeof page === 'string' ? page : null,
+  };
+};
+
+const pushSettingsEntry = (entry: SettingsEntry) =>
+  window.history.pushState({ ...(window.history.state as object | null), settings: entry }, '');
+
 export default function SettingsProvider({ children }: { children: ReactNode }) {
   const [stored, setStored] = useState<StoredSettings>(readStored);
   const [theme, setThemeState] = useState<ThemePreference>(readTheme);
   const [systemDark, setSystemDark] = useState(systemPrefersDark);
-  const [settingsOpen, setSettingsOpen] = useState(false);
-  const [settingsStyle, setSettingsStyle] = useState<DanceStyle>('Latin');
+  const [entry, setEntry] = useState<SettingsEntry | null>(readSettingsEntry);
+  // Set between asking the browser to go back and it doing so, so a second
+  // close in that gap can't also go back past the screen underneath.
+  const leavingSettings = useRef(false);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      leavingSettings.current = false;
+      setEntry(readSettingsEntry());
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   // 'system' follows the OS live.
   useEffect(() => {
@@ -113,10 +147,36 @@ export default function SettingsProvider({ children }: { children: ReactNode }) 
     [],
   );
   const openSettings = useCallback((styleHint?: DanceStyle) => {
-    if (styleHint) setSettingsStyle(styleHint);
-    setSettingsOpen(true);
+    if (readSettingsEntry()) return;
+    const next = { style: styleHint ?? null, page: null };
+    pushSettingsEntry(next);
+    setEntry(next);
   }, []);
-  const closeSettings = useCallback(() => setSettingsOpen(false), []);
+  // Goes back `steps` entries; the popstate listener above then closes
+  // whatever they had open.
+  const goBack = useCallback((steps: number) => {
+    if (leavingSettings.current) return;
+    leavingSettings.current = true;
+    window.history.go(-steps);
+  }, []);
+  const closeSettings = useCallback(() => {
+    const current = readSettingsEntry();
+    if (current) goBack(current.page ? 2 : 1);
+    else setEntry(null);
+  }, [goBack]);
+  // One page deep: a page opens from Settings itself, never from another page.
+  const openSettingsPage = useCallback((page: string) => {
+    const current = readSettingsEntry();
+    if (!current || current.page) return;
+    const next = { ...current, page };
+    pushSettingsEntry(next);
+    setEntry(next);
+  }, []);
+  const closeSettingsPage = useCallback(() => {
+    const current = readSettingsEntry();
+    if (current?.page) goBack(1);
+    else setEntry((e) => (e ? { ...e, page: null } : e));
+  }, [goBack]);
 
   const value = useMemo<SettingsApi>(
     () => ({
@@ -130,12 +190,28 @@ export default function SettingsProvider({ children }: { children: ReactNode }) 
       setTheme,
       setStyleFields,
       isFieldOn: (style, key) => stored.fields[style].includes(key),
-      settingsOpen,
-      settingsStyle,
+      settingsOpen: entry !== null,
+      settingsStyle: entry?.style ?? null,
+      settingsPage: entry?.page ?? null,
       openSettings,
       closeSettings,
+      openSettingsPage,
+      closeSettingsPage,
     }),
-    [stored, theme, resolvedTheme, setRole, setSideBySide, setTheme, setStyleFields, settingsOpen, settingsStyle, openSettings, closeSettings],
+    [
+      stored,
+      theme,
+      resolvedTheme,
+      setRole,
+      setSideBySide,
+      setTheme,
+      setStyleFields,
+      entry,
+      openSettings,
+      closeSettings,
+      openSettingsPage,
+      closeSettingsPage,
+    ],
   );
 
   return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>;

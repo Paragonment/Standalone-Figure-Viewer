@@ -1,0 +1,10 @@
+/* The preview is one step of the Figure screen's list, sitting in a band:
+   the band draws the edges, and the list's end-of-screen room goes. */
+.set-example .fig-steps {
+  min-height: 0;
+  padding-bottom: 0;
+}
+
+.set-example .fig-step {
+  border-bottom: 0;
+}

@@ -1,6 +1,6 @@
 import SettingsProvider from './state/SettingsProvider'
 import ViewerContainer from './components/ViewerContainer'
-import SettingsSheet from './components/settings/SettingsSheet'
+import SettingsPage from './components/settings/SettingsPage'
 import './App.css'
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <SettingsProvider>
       <div className="app">
         <ViewerContainer />
-        <SettingsSheet />
+        <SettingsPage />
       </div>
     </SettingsProvider>
   )

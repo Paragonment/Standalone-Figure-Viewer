@@ -1,9 +1,9 @@
 import type { CSSProperties } from 'react';
-import type { DanceStep, FigureGroup, Role } from '../../types';
+import type { FigureGroup, Role } from '../../types';
 import type { Beat } from '../../utils/rhythm';
-import { FEET_KEY, getStepFields, type StepFieldDef } from '../../utils/stepFields';
 import { useDisplaySettings } from '../../hooks/useDisplaySettings';
-import { feetText, partValue } from '../../utils/stepValues';
+import { feetText } from '../../utils/stepValues';
+import { partDetails, stepColumns } from '../../utils/stepView';
 import { accentColor, type Accent } from '../ui/accent';
 import './StepList.css';
 
@@ -24,18 +24,6 @@ interface StepListProps {
 const ROLE_LABEL: Record<Role, string> = { lead: 'Lead', follow: 'Follow' };
 const ROLES: Role[] = ['lead', 'follow'];
 
-interface Detail {
-  label: string;
-  value: string;
-}
-
-// The enabled detail rows of one part's step; empty values are left out.
-const detailsFor = (step: DanceStep, role: Role, defs: StepFieldDef[], spell: boolean): Detail[] =>
-  defs.flatMap((def) => {
-    const value = partValue(step, role, def, spell);
-    return value === null ? [] : [{ label: def.label, value }];
-  });
-
 interface NumberProps {
   n: number;
   count: string | null;
@@ -55,8 +43,7 @@ function StepNumber({ n, count }: NumberProps) {
 // a field with nothing to say is skipped, not dashed.
 export default function StepList({ figure, role, sideBySide, fields, beats, timed, current, accent }: StepListProps) {
   const { spellOutAbbreviations: spell } = useDisplaySettings();
-  const feetOn = fields.includes(FEET_KEY);
-  const defs = getStepFields(figure.style).filter((def) => def.key !== FEET_KEY && fields.includes(def.key));
+  const { feetOn, defs } = stepColumns(figure.style, fields);
   const partner: Role = role === 'lead' ? 'follow' : 'lead';
   // "Rise and fall" does not fit the 66px label column on one line.
   const wideLabels = defs.some((def) => def.label.length > 10);
@@ -78,7 +65,7 @@ export default function StepList({ figure, role, sideBySide, fields, beats, time
                 <StepNumber n={n} count={count} />
                 {ROLES.map((r) => {
                   const feet = feetOn ? feetText(step, r, spell) : '';
-                  const details = detailsFor(step, r, defs, spell);
+                  const details = partDetails(step, r, defs, spell);
                   return (
                     <div key={r} role="group" aria-label={ROLE_LABEL[r]} className="fig-part">
                       {feet && <span className="fig-feet">{feet}</span>}
@@ -100,7 +87,7 @@ export default function StepList({ figure, role, sideBySide, fields, beats, time
 
           const feet = feetOn ? feetText(step, role, spell) : '';
           const partnerFeet = feetOn ? feetText(step, partner, spell) : '';
-          const details = detailsFor(step, role, defs, spell);
+          const details = partDetails(step, role, defs, spell);
           return (
             <li key={n} data-n={n} className={`fig-step${n === current ? ' fig-step-current' : ''}`}>
               <StepNumber n={n} count={count} />

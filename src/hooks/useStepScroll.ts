@@ -19,7 +19,9 @@ interface Pin {
 const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // Scroll behavior of the Figure screen: one scroll container holds the
-// header, the sticky frozen block and the step rows (`li[data-n]`).
+// header, the sticky frozen block and the steps (`[data-n]`: an `li` of the
+// phone's list, a `tbody` of the desktop chart). The layout that is not shown
+// has no boxes, so only steps with a box count.
 //
 // - `current` is the first step still clearly showing below the frozen block.
 // - `scrolled` turns true once the big title has scrolled away.
@@ -39,7 +41,11 @@ export function useStepScroll(layoutKey: string) {
   const [current, setCurrent] = useState(1);
   const [scrolled, setScrolled] = useState(false);
 
-  const rowFor = useCallback((n: number) => listRef.current?.querySelector<HTMLElement>(`li[data-n="${n}"]`) ?? null, []);
+  const stepsShown = useCallback(
+    () => Array.from(listRef.current?.querySelectorAll<HTMLElement>('[data-n]') ?? []).filter((el) => el.getClientRects().length > 0),
+    [],
+  );
+  const rowFor = useCallback((n: number) => stepsShown().find((el) => el.dataset.n === String(n)) ?? null, [stepsShown]);
 
   // The first step whose bottom is more than `slack` below the frozen block.
   const firstVisible = useCallback((slack: number): Anchor | null => {
@@ -47,12 +53,12 @@ export function useStepScroll(layoutKey: string) {
     const bar = barRef.current;
     if (!list || !bar) return null;
     const line = bar.getBoundingClientRect().bottom;
-    for (const row of list.querySelectorAll<HTMLElement>('li[data-n]')) {
+    for (const row of stepsShown()) {
       const box = row.getBoundingClientRect();
       if (box.bottom > line + slack) return { n: Number(row.dataset.n), top: box.top };
     }
     return null;
-  }, []);
+  }, [stepsShown]);
 
   const onScroll = useCallback(() => {
     const list = listRef.current;
@@ -83,7 +89,9 @@ export function useStepScroll(layoutKey: string) {
       const row = rowFor(n);
       if (!list || !bar || !row) return;
       const max = list.scrollHeight - list.clientHeight;
-      const top = Math.max(0, Math.min(max, row.offsetTop - (bar.offsetHeight - 1)));
+      // Not offsetTop: a chart's tbody is offset from its table, not the scroller.
+      const rowTop = list.scrollTop + row.getBoundingClientRect().top - list.getBoundingClientRect().top;
+      const top = Math.max(0, Math.min(max, rowTop - (bar.offsetHeight - 1)));
       if (prefersReducedMotion()) list.scrollTop = top;
       else list.scrollTo({ top, behavior: 'smooth' });
       pinRef.current = { n, top, until: Date.now() + PIN_MS };

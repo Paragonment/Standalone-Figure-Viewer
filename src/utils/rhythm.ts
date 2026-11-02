@@ -87,13 +87,33 @@ const BAR_PARTS = 48;
 
 const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b));
 
-// "1 bar", "2 bars", "1 1/2 bars", "1 1/3 bars", "1/2 bar".
+// Fractions with a glyph of their own; they sit against the whole number
+// ("1⅓") the way formatBeats writes quarters. The rest are written out
+// after an en space, so "1 5/12" cannot be misread as "15/12".
+const BAR_FRACTIONS: Record<string, string> = {
+  '1/2': '½',
+  '1/3': '⅓',
+  '2/3': '⅔',
+  '1/4': '¼',
+  '3/4': '¾',
+  '1/6': '⅙',
+  '5/6': '⅚',
+  '1/8': '⅛',
+  '3/8': '⅜',
+  '5/8': '⅝',
+  '7/8': '⅞',
+};
+
+// "1 bar", "2 bars", "1½ bars", "1⅓ bars", "½ bar".
 export const formatBars = (bars: number): string => {
   const parts = Math.round(bars * BAR_PARTS);
   const whole = Math.floor(parts / BAR_PARTS);
   const rest = parts % BAR_PARTS;
   const divisor = gcd(rest, BAR_PARTS);
   const frac = rest > 0 ? `${rest / divisor}/${BAR_PARTS / divisor}` : '';
-  const text = [whole > 0 ? String(whole) : '', frac].filter(Boolean).join(' ') || '0';
-  return `${text} ${parts <= BAR_PARTS ? 'bar' : 'bars'}`;
+  const glyph = BAR_FRACTIONS[frac];
+  const fracText = glyph ?? frac;
+  const wholeText = whole > 0 ? String(whole) : '';
+  const text = glyph || !wholeText || !frac ? wholeText + fracText : `${wholeText}${EN_SPACE}${fracText}`;
+  return `${text || '0'} ${parts <= BAR_PARTS ? 'bar' : 'bars'}`;
 };

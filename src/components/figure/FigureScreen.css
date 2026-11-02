@@ -49,3 +49,48 @@
   border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--hairline);
 }
+
+/* The wide pane. The chart replaces the step list once the pane is 640px
+   wide; the container is the pane, whether or not an aside takes part of it. */
+.fig-main {
+  container: fig-main / inline-size;
+}
+
+.fig-main-steps {
+  min-width: 0;
+}
+
+@container fig-main (min-width: 640px) {
+  .fig-main .fig-steps {
+    display: none;
+  }
+
+  .fig-main .sc {
+    display: block;
+  }
+}
+
+/* From a 1280px window the About content is open beside the chart, and the
+   frozen block gives up the aside's width so the strip spans the chart. */
+@media (min-width: 1280px) {
+  .fig-has-aside {
+    --fig-aside-w: clamp(320px, 25vw, 360px);
+  }
+
+  .fig-has-aside .fig-main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--fig-aside-w);
+  }
+
+  .fig-has-aside .fig-bar {
+    padding-right: calc(var(--gutter) + var(--fig-aside-w));
+  }
+
+  .fig-has-aside .about-band {
+    display: none;
+  }
+
+  .fig-has-aside .about-aside {
+    display: flex;
+  }
+}

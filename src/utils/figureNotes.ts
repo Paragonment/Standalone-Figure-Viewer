@@ -14,6 +14,9 @@ export interface FigureNotes {
   rows: NoteRow[];
 }
 
+// Whether there is anything to show for a figure.
+export const hasNotes = (notes: FigureNotes): boolean => notes.description !== '' || notes.rows.length > 0;
+
 const ROW_ORDER: NoteLabel[] = ['Endings', 'Preceded by', 'Followed by'];
 
 const LABEL_WORD = /^(?:ISTD alternative endings?|Alternative endings?|Endings?|Precedes?|Follows?)/;

@@ -38,32 +38,3 @@
   flex-direction: column;
   gap: 12px;
 }
-
-.about-description {
-  margin: 0;
-  font-size: 15px;
-  line-height: 1.45;
-  color: var(--shade);
-}
-
-.about-rows {
-  margin: 0;
-  display: grid;
-  grid-template-columns: 84px minmax(0, 1fr);
-  column-gap: 8px;
-  row-gap: 6px;
-  align-items: baseline;
-}
-
-.about-rows dt {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--slate);
-}
-
-.about-rows dd {
-  margin: 0;
-  font-size: 15px;
-  line-height: 1.4;
-  color: var(--shade);
-}

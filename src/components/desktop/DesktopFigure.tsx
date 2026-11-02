@@ -19,6 +19,7 @@ export default function DesktopFigure({ figure, filters }: DesktopFigureProps) {
     <FigureBody
       figure={figure}
       scroll={scroll}
+      layout="adaptive"
       headerSlot={
         <DetailBar>
           <FigureCrumb figure={figure} filters={filters} />

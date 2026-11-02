@@ -53,3 +53,40 @@ for (const viewport of DESKTOPS) {
     });
   }
 }
+
+// The tightest chart: every Standard field in Both mode at 1024px. Nothing
+// may spill out sideways, neither the page nor the chart's own scroller.
+const ALL_STANDARD_FIELDS = ['Feet Positions', 'Alignment', 'Amount of Turn', 'Rise and Fall', 'Footwork', 'CBM', 'Sway'];
+
+for (const scheme of SCHEMES) {
+  test.describe(`1024px ${scheme}, all Standard fields`, () => {
+    test.use({ viewport: { width: 1024, height: 768 }, colorScheme: scheme });
+
+    test.beforeEach(async ({ page }) => {
+      await page.addInitScript((fields) => {
+        localStorage.setItem(
+          'fv-settings',
+          JSON.stringify({ v: 1, role: 'lead', sideBySide: true, partChosen: true, fields: { Standard: fields } }),
+        );
+      }, ALL_STANDARD_FIELDS);
+      await openApp(page, scheme);
+      await filterByDance(page, FIGURE.dance);
+      await openFigure(page, FIGURE.name);
+    });
+
+    test('chart', async ({ page }) => {
+      await shot(page, 'desktop-chart-all-fields', 1024, scheme);
+    });
+
+    test('no horizontal scroll', async ({ page }) => {
+      const overflow = await page.evaluate(() => {
+        const chart = document.querySelector('.sc');
+        return [
+          document.documentElement.scrollWidth - document.documentElement.clientWidth,
+          chart ? chart.scrollWidth - chart.clientWidth : -1,
+        ];
+      });
+      expect(overflow).toEqual([0, 0]);
+    });
+  });
+}

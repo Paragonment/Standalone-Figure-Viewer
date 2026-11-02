@@ -57,3 +57,57 @@
 .ds-detail .fig-header {
   padding-top: 0;
 }
+
+/* The list pane's header is one Mirror surface, like the figure pane's
+   header band. Its controls are recessed fields cut into the Mirror, not
+   white boxes on it; Ink still marks what is selected. */
+.ds-list .sf,
+.ds-list .fb-track,
+.ds-list .fb-pill-body {
+  background: var(--field);
+  box-shadow: none;
+  border: 1px solid var(--field-line);
+}
+
+.ds-list .fb-track {
+  box-sizing: border-box;
+}
+
+.ds-list .sf {
+  box-sizing: border-box;
+  transition: background-color var(--dur) ease;
+}
+
+/* Focus lifts the field onto the Floor and rings it in Ink. */
+.ds-list .sf:focus-within {
+  background: var(--floor);
+  border-color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--ink);
+}
+
+.ds-list .fb-pill-on .fb-pill-body {
+  border-color: var(--ink);
+  background: var(--ink);
+}
+
+.ds-list .fb-divider {
+  background: var(--field-line);
+}
+
+.ds-list .home-header .ui-check:not(.ui-check-on) {
+  background: var(--field);
+}
+
+.ds-list .home-header .ui-dev-flag {
+  background: transparent;
+}
+
+@media (hover: hover) {
+  .ds-list .fb-seg:not(.fb-seg-on):hover .fb-fill {
+    background: var(--match);
+  }
+
+  .ds-list .fb-pill:not(.fb-pill-on):hover .fb-pill-body {
+    background: var(--match);
+  }
+}

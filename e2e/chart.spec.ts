@@ -45,8 +45,9 @@ test('a click on the rhythm strip makes that step current', async ({ page }) => 
 });
 
 test('switching Lead, Follow and Both keeps the reader in place', async ({ page }) => {
-  // A short window, so there is room to scroll in every part.
-  await page.setViewportSize({ width: 1280, height: 520 });
+  // A short window, so there is room to scroll in every part; the About
+  // aside opens at this width and gives the pane the height to keep a step in place.
+  await page.setViewportSize({ width: 1440, height: 520 });
   await openFigure(page, 'Basic Weave');
   await strip(page).nth(3).click();
   const step = page.locator('tbody[data-n="4"]');
@@ -63,10 +64,12 @@ test('switching Lead, Follow and Both keeps the reader in place', async ({ page 
   }
 });
 
-test('the About content is open beside the chart from 1280px and folds below', async ({ page }) => {
+test('the About content is open beside the chart while the pane has room and folds below', async ({ page }) => {
+  // The pane is the window less the 380px list: 1040px of it keeps the chart at 640px.
+  await page.setViewportSize({ width: 1440, height: 800 });
   await expect(page.getByRole('complementary')).toBeVisible();
   await expect(page.getByRole('button', { name: 'About this figure' })).toBeHidden();
-  await page.setViewportSize({ width: 1100, height: 800 });
+  await page.setViewportSize({ width: 1280, height: 800 });
   await expect(page.getByRole('complementary')).toBeHidden();
   await expect(page.getByRole('button', { name: 'About this figure' })).toBeVisible();
 });

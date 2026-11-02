@@ -54,6 +54,7 @@ export default function DesktopShell({ figures, built, filters, figure, onOpenFi
           onOpenFigure={onOpenFigure}
           scrollTopRef={listScrollTopRef}
           showMenu={false}
+          pinHeader
           selectedKey={figure ? figureKey(figure) : undefined}
           searchRef={searchRef}
         />

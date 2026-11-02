@@ -56,14 +56,17 @@
   border-bottom: 1px solid var(--hairline);
 }
 
-/* The wide pane. The chart replaces the step list once the pane is 640px
-   wide; the container is the pane, whether or not an aside takes part of it. */
-.fig-main {
-  container: fig-main / inline-size;
+/* The figure pane is the container for the About aside: it opens only when
+   the chart keeps about 640px beside it (see the query below). */
+.fig-scroll {
+  container: fig-pane / inline-size;
 }
 
+/* The chart replaces the step list once its column is 640px wide, with or
+   without an aside beside it. */
 .fig-main-steps {
   min-width: 0;
+  container: fig-main / inline-size;
 }
 
 @container fig-main (min-width: 640px) {
@@ -76,11 +79,14 @@
   }
 }
 
-/* From a 1280px window the About content is open beside the chart, and the
-   frozen block gives up the aside's width so the strip spans the chart. */
-@media (min-width: 1280px) {
-  .fig-has-aside {
-    --fig-aside-w: clamp(320px, 25vw, 360px);
+/* From a pane of 1040px the About content is open beside the chart (320px,
+   360px from 1280px), leaving the chart 640px or more, and the frozen block
+   gives up the aside's width so the strip spans the chart. Narrower, the
+   About band above it does the job. */
+@container fig-pane (min-width: 1040px) {
+  .fig-has-aside .fig-main,
+  .fig-has-aside .fig-bar {
+    --fig-aside-w: 320px;
   }
 
   .fig-has-aside .fig-main {
@@ -98,5 +104,12 @@
 
   .fig-has-aside .about-aside {
     display: flex;
+  }
+}
+
+@container fig-pane (min-width: 1280px) {
+  .fig-has-aside .fig-main,
+  .fig-has-aside .fig-bar {
+    --fig-aside-w: 360px;
   }
 }

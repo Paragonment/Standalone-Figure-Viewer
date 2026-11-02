@@ -22,6 +22,9 @@ export interface HomeScreenProps {
   showMenu?: boolean;
   // The open figure's key (see figureKey), marked in the list.
   selectedKey?: string;
+  // Keep the title, search and filters in place with only the list scrolling
+  // beneath them (the desktop pane); otherwise they scroll away with it.
+  pinHeader?: boolean;
   // The search field, when the host needs to focus it.
   searchRef?: RefObject<HTMLInputElement | null>;
   // Said quietly above the list, e.g. that a link's figure is not there.
@@ -35,6 +38,7 @@ export default function HomeScreen({
   onOpenFigure,
   scrollTopRef,
   showMenu = true,
+  pinHeader = false,
   selectedKey,
   searchRef: hostSearchRef,
   notice,
@@ -54,7 +58,7 @@ export default function HomeScreen({
   const filtered = selectedDances.length > 0 || selectedLevels.length > 0;
   const placeholder = `Search ${scope} ${scope === 1 ? 'figure' : 'figures'}`;
   const resetKey = `${selectedDances.join('|')}#${selectedLevels.join('|')}#${needle}`;
-  const { scrollRef, headerRef, stuck, onScroll, scrollToTop } = useHomeScroll(scrollTopRef, resetKey);
+  const { scrollRef, headerRef, stuck, onScroll, scrollToTop } = useHomeScroll(scrollTopRef, resetKey, pinHeader);
   const ownSearchRef = useRef<HTMLInputElement>(null);
   const searchRef = hostSearchRef ?? ownSearchRef;
 
@@ -71,16 +75,15 @@ export default function HomeScreen({
     scrollToTop();
   };
 
+  const header = (
+    <HomeHeader ref={headerRef} filters={filters} placeholder={placeholder} searchRef={searchRef} menu={showMenu} />
+  );
+
   return (
     <div className="home">
+      {pinHeader && header}
       <div ref={scrollRef} className="home-scroll" onScroll={onScroll}>
-        <HomeHeader
-          ref={headerRef}
-          filters={filters}
-          placeholder={placeholder}
-          searchRef={searchRef}
-          menu={showMenu}
-        />
+        {!pinHeader && header}
         <HomeBar
           total={total}
           searching={needle.length > 0}

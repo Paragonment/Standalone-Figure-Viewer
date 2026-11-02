@@ -53,7 +53,9 @@ function PartCells({ step, role, feetOn, defs, spell, showPartner }: CellsProps)
         </td>
       )}
       {partCells(step, role, defs, spell).map((value, i) => (
-        <td key={defs[i].key}>{value}</td>
+        <td key={defs[i].key} className={defs[i].short ? 'sc-short' : undefined}>
+          {value}
+        </td>
       ))}
     </>
   );
@@ -92,7 +94,7 @@ export default function StepChart({ figure, role, sideBySide, fields, beats, tim
               </th>
             )}
             {defs.map((def) => (
-              <th key={def.key} scope="col">
+              <th key={def.key} scope="col" className={def.short ? 'sc-short' : undefined}>
                 {def.label}
               </th>
             ))}

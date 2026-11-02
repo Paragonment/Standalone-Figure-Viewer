@@ -1,4 +1,4 @@
-/* Hidden until the figure pane is wide enough (see .fig-main). */
+/* Hidden until the figure pane is wide enough (see .fig-main-steps). */
 .sc {
   display: none;
   background: var(--floor);
@@ -94,6 +94,13 @@
 
 .sc-partner-follow {
   color: var(--follow);
+}
+
+/* Short values: just wide enough for a word or two, so "Toe heel" stays on
+   one line; a long value still wraps. */
+.sc-table .sc-short {
+  width: 1%;
+  min-width: 8ch;
 }
 
 /* Feet is the headline: it asks for the most of the width, so a typical

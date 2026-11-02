@@ -12,7 +12,9 @@ const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: r
 //   lands where the reader left off.
 // - Whenever `resetKey` changes (filters, query) the list starts again from
 //   its first row; the header stays where it is.
-export function useHomeScroll(scrollTopRef: RefObject<number>, resetKey: string) {
+// - `pinned`: the header sits outside the scroller, so nothing scrolls away
+//   and the bar never turns into the compact banner.
+export function useHomeScroll(scrollTopRef: RefObject<number>, resetKey: string, pinned = false) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLElement>(null);
   const lastResetKey = useRef(resetKey);
@@ -21,15 +23,15 @@ export function useHomeScroll(scrollTopRef: RefObject<number>, resetKey: string)
   // The scroll offset at which the count bar reaches the top.
   const listTop = useCallback(() => {
     const header = headerRef.current;
-    return header ? header.offsetTop + header.offsetHeight : 0;
-  }, []);
+    return header && !pinned ? header.offsetTop + header.offsetHeight : 0;
+  }, [pinned]);
 
   const onScroll = useCallback(() => {
     const scroller = scrollRef.current;
     if (!scroller) return;
     scrollTopRef.current = scroller.scrollTop;
-    setStuck(scroller.scrollTop >= listTop());
-  }, [scrollTopRef, listTop]);
+    setStuck(!pinned && scroller.scrollTop >= listTop());
+  }, [scrollTopRef, listTop, pinned]);
 
   useLayoutEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollTop = scrollTopRef.current;

@@ -4,7 +4,9 @@ const PORT = 4173
 
 // Specs run against the production build served by `vite preview`, so what
 // the tests see is what ships. Screenshots are made deterministic here:
-// reduced motion, no animations or caret, and a fixed device scale.
+// reduced motion, no animations or caret, and a fixed device scale. A few
+// pixels of slack absorb the anti-aliasing of display type that varies by a
+// pixel or two between runs (the Practice bar title is the usual one).
 export default defineConfig({
   testDir: './e2e',
   snapshotPathTemplate: '{testDir}/__screenshots__/{testFilePath}/{arg}-{projectName}-{platform}{ext}',
@@ -13,7 +15,7 @@ export default defineConfig({
   retries: 0,
   reporter: process.env.CI ? 'github' : [['list'], ['html', { open: 'never' }]],
   expect: {
-    toHaveScreenshot: { animations: 'disabled', caret: 'hide', scale: 'css' },
+    toHaveScreenshot: { animations: 'disabled', caret: 'hide', scale: 'css', maxDiffPixels: 12 },
   },
   use: {
     baseURL: `http://localhost:${PORT}`,

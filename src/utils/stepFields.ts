@@ -7,12 +7,16 @@ export interface StepFieldDef {
   hint?: string;
   leadKey: string;
   followKey: string;
+  // Its values are a word or two ("Toe heel"), so the chart's column takes
+  // just what they need and leaves the rest to the long-text columns.
+  short?: boolean;
 }
 
-const field = (key: string, label: string, hint?: string): StepFieldDef => ({
+const field = (key: string, label: string, hint?: string, short?: boolean): StepFieldDef => ({
   key,
   label,
   hint,
+  short,
   leadKey: `Lead ${key}`,
   followKey: `Follow ${key}`,
 });
@@ -21,7 +25,7 @@ const FEET = field('Feet Positions', 'Feet', "The step itself, with your partner
 const ALIGNMENT = field('Alignment', 'Alignment');
 const TURN = field('Amount of Turn', 'Turn');
 const RISE_AND_FALL = field('Rise and Fall', 'Rise and fall');
-const FOOTWORK = field('Footwork', 'Footwork');
+const FOOTWORK = field('Footwork', 'Footwork', undefined, true);
 const CBM = field('CBM', 'CBM');
 const SWAY = field('Sway', 'Sway');
 const ACTION = field('Action', 'Action');

@@ -23,7 +23,7 @@
   justify-content: space-between;
   font-size: 15px;
   font-weight: 700;
-  background: var(--mirror);
+  background: var(--floor);
   border-bottom: 1px solid var(--rule);
 }
 

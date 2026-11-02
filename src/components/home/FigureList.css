@@ -133,6 +133,13 @@
   }
 }
 
+/* The open figure: tint and an ink bar that hover does not hide. */
+.fl-row-selected,
+.fl-row-selected:hover {
+  background: var(--tint);
+  box-shadow: inset 3px 0 0 var(--ink);
+}
+
 /* Inside the row: the scroller would clip a ring drawn outside it. */
 .fl-row:focus-visible {
   outline-offset: -2px;

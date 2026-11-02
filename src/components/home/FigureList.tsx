@@ -1,5 +1,6 @@
 import type { FigureGroup } from '../../types';
 import type { FigureRow, ResultSection } from '../../utils/search';
+import { figureKey } from '../../utils/figureKey';
 import { levelLook } from '../../utils/levels';
 import { keepRanges } from '../../utils/stepValues';
 import { RowChevronIcon } from '../ui/Icons';
@@ -19,16 +20,30 @@ interface FigureListProps {
   filtered: boolean;
   onClearFilters(): void;
   onOpenFigure(figure: FigureGroup): void;
+  // The open figure's key (see figureKey): its row is marked as current.
+  selectedKey?: string;
 }
 
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
 
-function Row({ row, grouped, onOpen }: { row: FigureRow; grouped: boolean; onOpen(figure: FigureGroup): void }) {
+interface RowProps {
+  row: FigureRow;
+  grouped: boolean;
+  selected: boolean;
+  onOpen(figure: FigureGroup): void;
+}
+
+function Row({ row, grouped, selected, onOpen }: RowProps) {
   const { figure, nameMatch, snippet } = row;
   const look = levelLook(figure.level);
   return (
     <li className="fl-item">
-      <button type="button" className={grouped ? 'fl-row fl-row-short' : 'fl-row'} onClick={() => onOpen(figure)}>
+      <button
+        type="button"
+        className={['fl-row', grouped && 'fl-row-short', selected && 'fl-row-selected'].filter(Boolean).join(' ')}
+        aria-current={selected ? 'true' : undefined}
+        onClick={() => onOpen(figure)}
+      >
         <span className="fl-text">
           <span className="fl-name">
             {nameMatch ? (
@@ -71,6 +86,7 @@ export default function FigureList({
   filtered,
   onClearFilters,
   onOpenFigure,
+  selectedKey,
 }: FigureListProps) {
   return (
     <div className="fl">
@@ -101,7 +117,13 @@ export default function FigureList({
           )}
           <ul className="fl-list">
             {section.rows.map((row) => (
-              <Row key={`${row.figure.dance}-${row.figure.name}`} row={row} grouped={grouped} onOpen={onOpenFigure} />
+              <Row
+                key={figureKey(row.figure)}
+                row={row}
+                grouped={grouped}
+                selected={figureKey(row.figure) === selectedKey}
+                onOpen={onOpenFigure}
+              />
             ))}
           </ul>
         </section>

@@ -3,12 +3,9 @@ import type { RefObject } from 'react';
 import type { FigureGroup } from '../../types';
 import type { useDanceFilters } from '../../hooks/useDanceFilters';
 import { useHomeScroll } from '../../hooks/useHomeScroll';
-import { describeSelection } from '../../utils/danceStyles';
+import { summarizeFilters } from '../../utils/filterSummary';
 import { buildSections, normalizeQuery } from '../../utils/search';
-import MenuButton from '../ui/MenuButton';
-import DevFlag from '../ui/DevFlag';
-import SearchField from './SearchField';
-import FilterBar from './FilterBar';
+import HomeHeader from './HomeHeader';
 import HomeBar from './HomeBar';
 import FigureList from './FigureList';
 import './HomeScreen.css';
@@ -18,20 +15,21 @@ export interface HomeScreenProps {
   filters: ReturnType<typeof useDanceFilters>;
   onOpenFigure(figure: FigureGroup): void;
   scrollTopRef: RefObject<number>;
+  // The menu button beside the title and in the compact banner. The desktop
+  // shell turns it off: its menu sits at the far right of the figure pane.
+  showMenu?: boolean;
+  // The open figure's key (see figureKey), marked in the list.
+  selectedKey?: string;
 }
 
-const describeLevels = (levels: string[]) => (levels.length <= 2 ? levels.join(', ') : `${levels.length} Levels`);
-
-export default function HomeScreen({ figures, filters, onOpenFigure, scrollTopRef }: HomeScreenProps) {
+export default function HomeScreen({ figures, filters, onOpenFigure, scrollTopRef, showMenu = true, selectedKey }: HomeScreenProps) {
   const {
     searchTerm,
-    setSearchTerm,
     selectedDances,
     setSelectedDances,
     selectedLevels,
     setSelectedLevels,
     danceGroups,
-    levels,
   } = filters;
 
   const { sections, total, scope, grouped } = useMemo(
@@ -46,11 +44,7 @@ export default function HomeScreen({ figures, filters, onOpenFigure, scrollTopRe
   const { scrollRef, headerRef, stuck, onScroll, scrollToTop } = useHomeScroll(scrollTopRef, resetKey);
   const searchRef = useRef<HTMLInputElement>(null);
 
-  const summary = [
-    selectedDances.length > 0 ? describeSelection(selectedDances, danceGroups) : '',
-    selectedLevels.length > 0 ? describeLevels(selectedLevels) : '',
-    needle.length > 0 ? `“${searchTerm.trim()}”` : '',
-  ].filter(Boolean);
+  const summary = summarizeFilters(selectedDances, selectedLevels, searchTerm, danceGroups);
 
   const clearFilters = () => {
     setSelectedDances([]);
@@ -66,34 +60,20 @@ export default function HomeScreen({ figures, filters, onOpenFigure, scrollTopRe
   return (
     <div className="home">
       <div ref={scrollRef} className="home-scroll" onScroll={onScroll}>
-        <header ref={headerRef} className="home-header">
-          <div className="home-title-row">
-            <div className="home-title-group">
-              <h1 className="fv-display home-title">Figures</h1>
-              <DevFlag />
-            </div>
-            <MenuButton className="home-menu" />
-          </div>
-          <div className="home-search">
-            <SearchField inputRef={searchRef} value={searchTerm} onChange={setSearchTerm} placeholder={placeholder} />
-          </div>
-          <div className="home-filters">
-            <FilterBar
-              danceGroups={danceGroups}
-              levels={levels}
-              selectedDances={selectedDances}
-              onDancesChange={setSelectedDances}
-              selectedLevels={selectedLevels}
-              onLevelsChange={setSelectedLevels}
-            />
-          </div>
-        </header>
+        <HomeHeader
+          ref={headerRef}
+          filters={filters}
+          placeholder={placeholder}
+          searchRef={searchRef}
+          menu={showMenu}
+        />
         <HomeBar
           total={total}
           searching={needle.length > 0}
           filtered={filtered}
           summary={summary}
           stuck={stuck}
+          menu={showMenu}
           onClearFilters={clearFilters}
           onShowFilters={scrollToTop}
           onSearch={search}
@@ -108,6 +88,7 @@ export default function HomeScreen({ figures, filters, onOpenFigure, scrollTopRe
           filtered={filtered}
           onClearFilters={clearFilters}
           onOpenFigure={onOpenFigure}
+          selectedKey={selectedKey}
         />
       </div>
     </div>

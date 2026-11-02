@@ -26,3 +26,41 @@
   line-height: 1.4;
   color: var(--shade);
 }
+
+.about-rows dd p {
+  margin: 0;
+}
+
+.about-rows dd p + p {
+  margin-top: 2px;
+}
+
+/* The level a line is about, in its metal, ahead of the text. */
+.about-levels {
+  margin-right: 6px;
+  font-weight: 600;
+}
+
+/* A figure named in the text: the app's underlined text action, quiet until hovered. */
+.about-link {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--slate);
+}
+
+@media (hover: hover) {
+  .about-link:hover {
+    text-decoration-color: var(--ink);
+  }
+}
+
+/* A fingertip needs more than a line of text: the link's hit area grows
+   without changing the line it sits in. */
+@media (pointer: coarse) {
+  .about-link {
+    padding: 8px 2px;
+    margin: -8px -2px;
+  }
+}

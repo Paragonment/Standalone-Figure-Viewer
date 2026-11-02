@@ -1,10 +1,9 @@
-import type { MouseEvent } from 'react';
 import type { CSSProperties } from 'react';
 import type { FigureGroup } from '../../types';
 import { figureKey } from '../../utils/figureKey';
 import type { IndexTable as IndexTableData } from '../../utils/figureIndex';
 import { levelLook } from '../../utils/levels';
-import { figureRoute, formatRoute } from '../../utils/route';
+import FigureLink from '../ui/FigureLink';
 import LevelDot from '../ui/LevelDot';
 import './IndexTable.css';
 
@@ -21,12 +20,6 @@ interface IndexTableProps {
 export default function IndexTable({ table, onOpenFigure, onPickDance, onPickLevel }: IndexTableProps) {
   const { style, label, columns, rows } = table;
   const headingId = `ix-${style}`;
-
-  const open = (event: MouseEvent<HTMLAnchorElement>, figure: FigureGroup) => {
-    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    event.preventDefault();
-    onOpenFigure(figure);
-  };
 
   return (
     <section aria-labelledby={headingId} className="ix">
@@ -67,9 +60,9 @@ export default function IndexTable({ table, onOpenFigure, onPickDance, onPickLev
                     <ul className="ix-names">
                       {figures.map((figure) => (
                         <li key={figureKey(figure)}>
-                          <a href={formatRoute(figureRoute(figure))} onClick={(event) => open(event, figure)}>
+                          <FigureLink figure={figure} onOpen={onOpenFigure}>
                             {figure.name}
-                          </a>
+                          </FigureLink>
                         </li>
                       ))}
                     </ul>

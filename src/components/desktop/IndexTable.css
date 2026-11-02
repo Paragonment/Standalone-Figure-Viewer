@@ -108,12 +108,23 @@
   line-height: 1.55;
 }
 
+/* A name that wraps hangs its continuation lines under the first, so each
+   entry reads as one figure; a little air between entries keeps them apart. */
+.ix-names li {
+  padding-left: 14px;
+  text-indent: -14px;
+}
+
+.ix-names li + li {
+  margin-top: 4px;
+}
+
 .ix-names a {
   color: var(--ink);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
-  text-decoration-color: var(--slate);
+  text-decoration-color: var(--rule);
   overflow-wrap: break-word;
 }
 

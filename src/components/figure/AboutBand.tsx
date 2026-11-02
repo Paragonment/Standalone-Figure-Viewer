@@ -1,16 +1,18 @@
 import { useState } from 'react';
+import type { FigureGroup } from '../../types';
 import { hasNotes, type FigureNotes } from '../../utils/figureNotes';
 import { ExpandIcon } from '../ui/Icons';
 import AboutNotes from './AboutNotes';
 import './AboutBand.css';
 
 interface AboutBandProps {
+  figure: FigureGroup;
   notes: FigureNotes;
 }
 
 // "About this figure": the description and the labelled endings, what
 // comes before and what follows. Closed until the reader opens it.
-export default function AboutBand({ notes }: AboutBandProps) {
+export default function AboutBand({ figure, notes }: AboutBandProps) {
   const [open, setOpen] = useState(false);
   if (!hasNotes(notes)) return null;
 
@@ -28,7 +30,7 @@ export default function AboutBand({ notes }: AboutBandProps) {
       </button>
       {open && (
         <div id="about-panel" className="about-panel">
-          <AboutNotes notes={notes} />
+          <AboutNotes figure={figure} notes={notes} />
         </div>
       )}
     </div>

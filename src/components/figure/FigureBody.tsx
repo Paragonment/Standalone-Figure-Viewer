@@ -83,7 +83,7 @@ export default function FigureBody({ figure, scroll, headerSlot, layout = 'list'
             {bars !== null && `, ${formatBars(bars)}`}
           </span>
         </p>
-        <AboutBand notes={notes} />
+        <AboutBand figure={figure} notes={notes} />
       </header>
 
       <div ref={barRef} className="fig-bar">
@@ -100,7 +100,7 @@ export default function FigureBody({ figure, scroll, headerSlot, layout = 'list'
             <StepList {...stepProps} />
             <StepChart {...stepProps} />
           </div>
-          {aside && <AboutAside notes={notes} />}
+          {aside && <AboutAside figure={figure} notes={notes} />}
         </div>
       )}
     </div>

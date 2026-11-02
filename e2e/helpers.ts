@@ -33,10 +33,15 @@ export const SCHEMES: ColorScheme[] = ['light', 'dark'];
 // The figure the visual specs are built around.
 export const FIGURE = { dance: 'Waltz', name: 'Back Lock' };
 
-// Waits for something real instead of a timeout: fonts decoded and the
-// layout settled (two frames with no change).
+// Waits for something real instead of a timeout: every font face loaded
+// (`fonts.ready` alone resolves at once when nothing has asked for a face
+// yet, and a screenshot would catch the fallback font) and the layout
+// settled (two frames with no change).
 export const settle = async (page: Page) => {
-  await page.evaluate(() => document.fonts.ready);
+  await page.evaluate(async () => {
+    await Promise.all([...document.fonts].map((face) => face.load()));
+    await document.fonts.ready;
+  });
   await page.evaluate(
     () => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))),
   );

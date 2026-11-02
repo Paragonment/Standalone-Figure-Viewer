@@ -9,6 +9,7 @@ import { useRouteFilters } from '../hooks/useRouteFilters';
 import { useRoutePart } from '../hooks/useRoutePart';
 import { useIsMobile } from '../hooks/useIsMobile';
 import { clearSwipe, useSwipeBack } from '../hooks/useSwipeBack';
+import { FigureLinksContext } from '../state/figureLinksContext';
 import { figureRoute, resolveRoute } from '../utils/route';
 import DesktopShell from './desktop/DesktopShell';
 import HomeScreen from './home/HomeScreen';
@@ -43,6 +44,7 @@ const ViewerContainer: React.FC = () => {
 
   const openFigure = useCallback((target: FigureGroup) => open(figureRoute(target)), [open]);
   const goBack = useCallback(() => goBackTo(home), [goBackTo, home]);
+  const figureLinks = useMemo(() => ({ figures: figureGroups, openFigure }), [figureGroups, openFigure]);
 
   // The tab says where you are, so a bookmark or a history entry reads well.
   useEffect(() => {
@@ -94,33 +96,39 @@ const ViewerContainer: React.FC = () => {
   }
 
   if (!isMobile) {
-    return <DesktopShell figures={figureGroups} built={built} filters={filters} figure={activeFigure} onOpenFigure={openFigure} notice={notice} />;
+    return (
+      <FigureLinksContext.Provider value={figureLinks}>
+        <DesktopShell figures={figureGroups} built={built} filters={filters} figure={activeFigure} onOpenFigure={openFigure} notice={notice} />
+      </FigureLinksContext.Provider>
+    );
   }
 
   const covered = activeFigure !== null;
 
   return (
-    <div ref={stackRef} className="vc-stack">
-      <div className={covered ? 'vc-layer vc-under vc-covered' : 'vc-layer vc-under'} inert={covered}>
-        <HomeScreen
-          figures={figureGroups}
-          built={built}
-          filters={filters}
-          onOpenFigure={openFigure}
-          scrollTopRef={listScrollTopRef}
-          notice={notice}
-        />
-      </div>
-      {activeFigure && (
-        <div className="vc-layer vc-top" {...swipeBack.handlers}>
-          {screen === 'practice' ? (
-            <PracticeScreen figure={activeFigure} onBack={goBack} />
-          ) : (
-            <FigureScreen figure={activeFigure} onBack={goBack} onPractice={openPractice} />
-          )}
+    <FigureLinksContext.Provider value={figureLinks}>
+      <div ref={stackRef} className="vc-stack">
+        <div className={covered ? 'vc-layer vc-under vc-covered' : 'vc-layer vc-under'} inert={covered}>
+          <HomeScreen
+            figures={figureGroups}
+            built={built}
+            filters={filters}
+            onOpenFigure={openFigure}
+            scrollTopRef={listScrollTopRef}
+            notice={notice}
+          />
         </div>
-      )}
-    </div>
+        {activeFigure && (
+          <div className="vc-layer vc-top" {...swipeBack.handlers}>
+            {screen === 'practice' ? (
+              <PracticeScreen figure={activeFigure} onBack={goBack} />
+            ) : (
+              <FigureScreen figure={activeFigure} onBack={goBack} onPractice={openPractice} />
+            )}
+          </div>
+        )}
+      </div>
+    </FigureLinksContext.Provider>
   );
 };
 

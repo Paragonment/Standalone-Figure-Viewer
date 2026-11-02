@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import type { DanceStyle } from '../types';
 import { DANCE_STYLES } from '../utils/danceStyles';
+import { useIsMobile } from '../hooks/useIsMobile';
 import { DEFAULT_FIELDS, getStepFields } from '../utils/stepFields';
 import { SettingsContext, type Role, type SettingsApi, type ThemePreference } from './settingsContext';
 
@@ -11,6 +12,9 @@ const DARK_QUERY = '(prefers-color-scheme: dark)';
 interface StoredSettings {
   role: Role;
   sideBySide: boolean;
+  // The reader has picked a part or side by side themselves. Until then the
+  // layout decides (see the resolved `sideBySide` below).
+  partChosen: boolean;
   fields: Record<DanceStyle, string[]>;
 }
 
@@ -26,13 +30,16 @@ const canonicalFields = (style: DanceStyle, keys: string[]): string[] =>
     .filter((key) => keys.includes(key));
 
 const readStored = (): StoredSettings => {
-  const stored: StoredSettings = { role: 'lead', sideBySide: false, fields: defaultFields() };
+  const stored: StoredSettings = { role: 'lead', sideBySide: false, partChosen: false, fields: defaultFields() };
   try {
     const parsed: unknown = JSON.parse(localStorage.getItem(SETTINGS_KEY) ?? 'null');
     if (typeof parsed !== 'object' || parsed === null) return stored;
     const data = parsed as Record<string, unknown>;
     if (data.role === 'lead' || data.role === 'follow') stored.role = data.role;
     if (typeof data.sideBySide === 'boolean') stored.sideBySide = data.sideBySide;
+    // Saved before the flag existed: anything but the defaults was a choice.
+    stored.partChosen =
+      typeof data.partChosen === 'boolean' ? data.partChosen : stored.role !== 'lead' || stored.sideBySide;
     if (typeof data.fields === 'object' && data.fields !== null) {
       const fields = data.fields as Record<string, unknown>;
       for (const { id } of DANCE_STYLES) {
@@ -85,6 +92,7 @@ const pushSettingsEntry = (entry: SettingsEntry) =>
 
 export default function SettingsProvider({ children }: { children: ReactNode }) {
   const [stored, setStored] = useState<StoredSettings>(readStored);
+  const isMobile = useIsMobile();
   const [theme, setThemeState] = useState<ThemePreference>(readTheme);
   const [systemDark, setSystemDark] = useState(systemPrefersDark);
   const [entry, setEntry] = useState<SettingsEntry | null>(readSettingsEntry);
@@ -138,8 +146,11 @@ export default function SettingsProvider({ children }: { children: ReactNode }) 
     }
   }, [stored]);
 
-  const setRole = useCallback((role: Role) => setStored((s) => ({ ...s, role, sideBySide: false })), []);
-  const setSideBySide = useCallback((on: boolean) => setStored((s) => ({ ...s, sideBySide: on })), []);
+  const setRole = useCallback((role: Role) => setStored((s) => ({ ...s, role, sideBySide: false, partChosen: true })), []);
+  const setSideBySide = useCallback(
+    (on: boolean) => setStored((s) => ({ ...s, sideBySide: on, partChosen: true })),
+    [],
+  );
   const setTheme = useCallback((next: ThemePreference) => setThemeState(next), []);
   const setStyleFields = useCallback(
     (style: DanceStyle, keys: string[]) =>
@@ -178,10 +189,16 @@ export default function SettingsProvider({ children }: { children: ReactNode }) 
     else setEntry((e) => (e ? { ...e, page: null } : e));
   }, [goBack]);
 
+  // The one place the default part is decided: until the reader chooses,
+  // a wide window shows both parts and a phone the stored Lead. The stored
+  // value is never rewritten by the window's size, so crossing the
+  // breakpoint can't make the layouts fight over it.
+  const sideBySide = stored.partChosen ? stored.sideBySide : !isMobile;
+
   const value = useMemo<SettingsApi>(
     () => ({
       role: stored.role,
-      sideBySide: stored.sideBySide,
+      sideBySide,
       theme,
       fields: stored.fields,
       resolvedTheme,
@@ -200,6 +217,7 @@ export default function SettingsProvider({ children }: { children: ReactNode }) 
     }),
     [
       stored,
+      sideBySide,
       theme,
       resolvedTheme,
       setRole,

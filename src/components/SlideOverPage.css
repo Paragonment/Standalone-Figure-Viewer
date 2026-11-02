@@ -47,7 +47,7 @@
    breakpoint (useIsMobile). */
 @media (min-width: 769px) {
   .slide-page-panel {
-    width: 480px;
+    width: 360px;
     box-shadow: -1px 0 0 var(--rule);
   }
 }

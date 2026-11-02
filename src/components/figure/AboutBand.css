@@ -1,5 +1,5 @@
 .about-band {
-  margin: 14px -16px 0;
+  margin: 14px calc(-1 * var(--gutter)) 0;
   padding: 0 var(--gutter);
   background: var(--floor);
   border-top: 1px solid var(--rule);

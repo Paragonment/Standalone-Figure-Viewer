@@ -5,7 +5,7 @@ import { useDanceFilters } from '../hooks/useDanceFilters';
 import { useFigureRoute } from '../hooks/useFigureRoute';
 import { useIsMobile } from '../hooks/useIsMobile';
 import { clearSwipe, useSwipeBack } from '../hooks/useSwipeBack';
-import DesktopViewer from './desktop/DesktopViewer';
+import DesktopShell from './desktop/DesktopShell';
 import HomeScreen from './home/HomeScreen';
 import FigureScreen from './figure/FigureScreen';
 import PracticeScreen from './practice/PracticeScreen';
@@ -70,7 +70,7 @@ const ViewerContainer: React.FC = () => {
   }
 
   if (!isMobile) {
-    return <DesktopViewer datasets={datasets} figureGroups={figureGroups} filters={filters} />;
+    return <DesktopShell figures={figureGroups} filters={filters} figure={activeFigure} onOpenFigure={openFigure} />;
   }
 
   const covered = activeFigure !== null;

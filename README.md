@@ -22,8 +22,8 @@ On a phone (768px wide or less) the app has three screens and a settings page:
   over it; Back, a swipe right or the phone's back gesture steps back one level. Settings are stored
   in the browser.
 
-On wider screens the app shows a dense table with expandable rows, per-part columns, and the same
-filters and theme choice.
+On wider screens the app is a two-pane reference: the figure list with its search and filters stays
+on the left, and the open figure fills the right, with both parts side by side until you pick one.
 
 ## Data
 

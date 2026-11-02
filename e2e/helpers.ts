@@ -19,6 +19,15 @@ export const PHONES: Viewport[] = [
   { width: 430, height: 932 },
 ];
 
+// Windows past the phone breakpoint, widest first: a large and a small
+// laptop, and a tablet in landscape and portrait.
+export const DESKTOPS: Viewport[] = [
+  { width: 1440, height: 900 },
+  { width: 1280, height: 800 },
+  { width: 1024, height: 768 },
+  { width: 834, height: 1194 },
+];
+
 export const SCHEMES: ColorScheme[] = ['light', 'dark'];
 
 // The figure the visual specs are built around.
@@ -48,7 +57,8 @@ export const openApp = async (page: Page, scheme?: ColorScheme) => {
 };
 
 export const filterByDance = async (page: Page, dance: string) => {
-  const button = page.getByRole('button', { name: dance, exact: true });
+  // Only the filter buttons are toggles; a breadcrumb may carry the same name.
+  const button = page.locator('button[aria-pressed]').and(page.getByRole('button', { name: dance, exact: true }));
   await button.click();
   await expect(button).toHaveAttribute('aria-pressed', 'true');
 };
@@ -97,7 +107,8 @@ export const openSettings = async (page: Page) => {
   const dialog = page.getByRole('dialog', { name: 'Settings' });
   await expect(dialog).toBeVisible();
   // The slide-over has reached its resting place when the panel stops moving.
-  const panelLeft = () => dialog.locator('.slide-page-panel').evaluate((el) => el.getBoundingClientRect().left);
-  await expect.poll(panelLeft).toBe(0);
+  const panelRight = () =>
+    dialog.locator('.slide-page-panel').evaluate((el) => window.innerWidth - el.getBoundingClientRect().right);
+  await expect.poll(panelRight).toBe(0);
   await settle(page);
 };

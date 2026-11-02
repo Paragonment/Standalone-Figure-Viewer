@@ -38,7 +38,18 @@ npm install
 npm run dev      # start the dev server
 npm run lint     # eslint
 npm run build    # type-check and build to dist/
+npm test         # unit tests (Vitest), run once
+npm run test:e2e # end-to-end and visual tests (Playwright, Chromium)
 ```
+
+Unit tests sit next to the code they cover as `*.test.ts` (for example
+`src/utils/stepValues.test.ts`). End-to-end specs are in `e2e/`; `e2e/helpers.ts` holds the
+navigation steps (open a figure, pick a part, open Settings) for specs to share. They run against
+the production build, and the first run needs `npx playwright install chromium`.
+
+`e2e/mobile-visual.spec.ts` compares screenshots at 320, 360, 390 and 430px wide, light and dark,
+against baselines in `e2e/__screenshots__/` (named per platform; the committed ones are macOS).
+After an intended visual change, review the diff and run `npm run test:e2e:update`.
 
 The design tokens (colors, type, motion) are CSS variables in `src/index.css`; both themes are
 defined there. Shared building blocks are in `src/components/ui`, user settings in `src/state`.

@@ -1,0 +1,153 @@
+/* Hidden until the figure pane is wide enough (see .fig-main-steps). */
+.sc {
+  display: none;
+  background: var(--floor);
+  min-height: 100%;
+  padding: 0 var(--gutter) 32px;
+  /* A safety net for a figure wider than the pane; the page never scrolls. */
+  overflow-x: auto;
+}
+
+.sc-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sc-table th,
+.sc-table td {
+  padding: 14px 6px 15px;
+  vertical-align: top;
+  text-align: left;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--shade);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.sc-table thead th {
+  padding: 14px 6px 8px;
+  vertical-align: bottom;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--slate);
+  border-bottom-color: var(--rule);
+}
+
+/* Text and rules start on the gutter, in line with the title. */
+.sc-table .sc-n {
+  padding-left: 0;
+}
+
+/* The number, count and part columns hug their content (a 1% width with
+   no wrapping is the table's way of asking for the least it can have), so
+   what they leave goes to Feet and then to the text columns. */
+.sc-table .sc-n,
+.sc-table .sc-count,
+.sc-table .sc-part {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.sc-table tbody .sc-n {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 0.9;
+  /* Its cap height meets the cap height of the feet beside it. */
+  padding-top: 17px;
+  color: var(--ink);
+  transition: color var(--dur-fast) ease;
+}
+
+.sc-table tbody .sc-count {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.sc-table .sc-step-current .sc-n {
+  color: var(--accent);
+}
+
+.sc-table tbody .sc-feet {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.sc-partner {
+  display: block;
+  margin-top: 4px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.sc-partner-lead {
+  color: var(--lead);
+}
+
+.sc-partner-follow {
+  color: var(--follow);
+}
+
+/* Short values: just wide enough for a word or two, so "Toe heel" stays on
+   one line; a long value still wraps. */
+.sc-table .sc-short {
+  width: 1%;
+  min-width: 8ch;
+}
+
+/* Feet is the headline: it asks for the most of the width, so a typical
+   value stays on one line and the text columns beside it wrap first. */
+.sc-table thead .sc-feet {
+  width: 34%;
+}
+
+/* Both parts: a tighter pair under one number, a hairline between the two
+   and a rule between steps. */
+.sc-step-both td,
+.sc-step-both th {
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+
+.sc-table .sc-step-both .sc-n {
+  padding-top: 12px;
+}
+
+.sc-step-both .sc-n,
+.sc-step-both .sc-count,
+.sc-step-both .sc-row-follow td {
+  border-bottom-color: var(--rule);
+}
+
+.sc-table tbody .sc-part {
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sc-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 6px;
+  border-radius: 4px;
+  border: 2px solid var(--role);
+  background: var(--role);
+  vertical-align: 1px;
+}
+
+.sc-row-lead {
+  --role: var(--lead);
+}
+
+.sc-row-follow {
+  --role: var(--follow);
+}

@@ -11,6 +11,8 @@ interface HomeBarProps {
   summary: string[];
   // The header has scrolled away and the bar rests at the top.
   stuck: boolean;
+  // Show the menu button in the compact banner.
+  menu: boolean;
   onClearFilters(): void;
   onShowFilters(): void;
   onSearch(): void;
@@ -27,6 +29,7 @@ export default function HomeBar({
   filtered,
   summary,
   stuck,
+  menu,
   onClearFilters,
   onShowFilters,
   onSearch,
@@ -64,7 +67,7 @@ export default function HomeBar({
         <button type="button" className="hb-icon" aria-label="Search" onClick={onSearch}>
           <SearchIcon />
         </button>
-        <MenuButton />
+        {menu && <MenuButton />}
       </div>
     </div>
   );

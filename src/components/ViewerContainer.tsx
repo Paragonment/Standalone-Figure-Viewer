@@ -1,77 +1,62 @@
-import React, { useState, useMemo, useEffect, useLayoutEffect, useRef, useCallback } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 import type { FigureGroup } from '../types';
 import { useDanceData } from '../hooks/useDanceData';
 import { useFigureGroups } from '../hooks/useFigureGroups';
 import { useDanceFilters } from '../hooks/useDanceFilters';
+import { useFigureSections } from '../hooks/useFigureSections';
+import { useRoute } from '../hooks/useRoute';
+import { useRouteFilters } from '../hooks/useRouteFilters';
+import { useRoutePart } from '../hooks/useRoutePart';
 import { useIsMobile } from '../hooks/useIsMobile';
+import { usePracticeEnabled } from '../hooks/usePracticeEnabled';
 import { clearSwipe, useSwipeBack } from '../hooks/useSwipeBack';
-import DesktopViewer from './desktop/DesktopViewer';
+import { FigureLinksContext } from '../state/figureLinksContext';
+import { figureRoute, resolveRoute } from '../utils/route';
+import DesktopShell from './desktop/DesktopShell';
 import HomeScreen from './home/HomeScreen';
 import FigureScreen from './figure/FigureScreen';
 import PracticeScreen from './practice/PracticeScreen';
 import './ViewerContainer.css';
 
-// The mobile app has three screens, driven by history.state so the phone's
-// back gesture steps Practice -> Figure -> Home and a reload lands on the
-// same screen. Settings adds its own entry on top (see SettingsProvider).
+const APP_NAME = 'Figure Viewer';
+
+// The mobile app has three screens (see useRoute): the phone's back
+// gesture steps Practice -> Figure -> Home.
 //
 // Home stays mounted, hidden, under Figure and Practice, so swiping right
 // on a figure slides it away to show the list beneath.
-interface RouteState {
-  figureKey: string;
-  practice?: boolean;
-}
-
-const getFigureKey = (figure: FigureGroup) => `${figure.dance}-${figure.name}`;
-
-const readRoute = (): RouteState | null => {
-  const state = window.history.state as Partial<RouteState> | null;
-  if (!state || typeof state.figureKey !== 'string') return null;
-  return { figureKey: state.figureKey, practice: state.practice === true };
-};
-
 const ViewerContainer: React.FC = () => {
   const { datasets, loading, error } = useDanceData();
   const figureGroups = useFigureGroups(datasets);
   // Filter and search state lives here so it outlives the screens.
   const filters = useDanceFilters(figureGroups);
   const isMobile = useIsMobile();
+  const practiceEnabled = usePracticeEnabled();
+  // The phone's list stays one run of figures with their dance and level on
+  // each; the wide pane has room for dance and level headings.
+  const built = useFigureSections(figureGroups, filters, !isMobile);
 
-  const [route, setRoute] = useState<RouteState | null>(readRoute);
+  const { route, open, openPractice, goBack: goBackTo } = useRoute();
+  const { figure: activeFigure, screen, missing } = useMemo(() => resolveRoute(figureGroups, route), [figureGroups, route]);
+  const home = useRouteFilters(filters);
+  useRoutePart();
+
+  // What a link asked for that is not there, said quietly where the list is.
+  const notice = missing === null ? undefined : `No figure called “${missing}”`;
+
+  const openFigure = useCallback((target: FigureGroup) => open(figureRoute(target)), [open]);
+  const goBack = useCallback(() => goBackTo(home), [goBackTo, home]);
+  const figureLinks = useMemo(() => ({ figures: figureGroups, openFigure }), [figureGroups, openFigure]);
+
+  // The tab says where you are, so a bookmark or a history entry reads well.
+  useEffect(() => {
+    document.title = activeFigure ? `${activeFigure.name}, ${activeFigure.dance} - ${APP_NAME}` : APP_NAME;
+  }, [activeFigure]);
 
   // The list's scroll offset survives a round trip through a figure, so
   // going back lands where you left off.
   const listScrollTopRef = useRef(0);
   const stackRef = useRef<HTMLDivElement>(null);
-
-  const activeFigure = useMemo<FigureGroup | null>(() => {
-    if (!route) return null;
-    return figureGroups.find((f) => getFigureKey(f) === route.figureKey) ?? null;
-  }, [figureGroups, route]);
-
-  const screen: 'home' | 'figure' | 'practice' = !activeFigure ? 'home' : route?.practice ? 'practice' : 'figure';
-
-  const openFigure = useCallback((figure: FigureGroup) => {
-    const next: RouteState = { figureKey: getFigureKey(figure) };
-    window.history.pushState(next, '');
-    setRoute(next);
-  }, []);
-
-  const openPractice = useCallback(() => {
-    if (!activeFigure) return;
-    const next: RouteState = { figureKey: getFigureKey(activeFigure), practice: true };
-    window.history.pushState(next, '');
-    setRoute(next);
-  }, [activeFigure]);
-
-  const goBack = useCallback(() => {
-    if (readRoute()) {
-      // The popstate listener below updates the route.
-      window.history.back();
-    } else {
-      setRoute(null);
-    }
-  }, []);
 
   const swipeBack = useSwipeBack({ ref: stackRef, onBack: goBack, enabled: screen === 'figure' });
 
@@ -80,12 +65,6 @@ const ViewerContainer: React.FC = () => {
   useLayoutEffect(() => {
     if (stackRef.current) clearSwipe(stackRef.current);
   }, [screen]);
-
-  useEffect(() => {
-    const handlePopState = () => setRoute(readRoute());
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
-  }, []);
 
   // Escape steps back from Figure and Practice.
   useEffect(() => {
@@ -119,31 +98,48 @@ const ViewerContainer: React.FC = () => {
   }
 
   if (!isMobile) {
-    return <DesktopViewer datasets={datasets} figureGroups={figureGroups} filters={filters} />;
+    return (
+      <FigureLinksContext.Provider value={figureLinks}>
+        <DesktopShell
+          figures={figureGroups}
+          built={built}
+          filters={filters}
+          figure={activeFigure}
+          onOpenFigure={openFigure}
+          practiceOpen={screen === 'practice' && practiceEnabled}
+          onClosePractice={goBack}
+          notice={notice}
+        />
+      </FigureLinksContext.Provider>
+    );
   }
 
   const covered = activeFigure !== null;
 
   return (
-    <div ref={stackRef} className="vc-stack">
-      <div className={covered ? 'vc-layer vc-under vc-covered' : 'vc-layer vc-under'} inert={covered}>
-        <HomeScreen
-          figures={figureGroups}
-          filters={filters}
-          onOpenFigure={openFigure}
-          scrollTopRef={listScrollTopRef}
-        />
-      </div>
-      {activeFigure && (
-        <div className="vc-layer vc-top" {...swipeBack.handlers}>
-          {screen === 'practice' ? (
-            <PracticeScreen figure={activeFigure} onBack={goBack} />
-          ) : (
-            <FigureScreen figure={activeFigure} onBack={goBack} onPractice={openPractice} />
-          )}
+    <FigureLinksContext.Provider value={figureLinks}>
+      <div ref={stackRef} className="vc-stack">
+        <div className={covered ? 'vc-layer vc-under vc-covered' : 'vc-layer vc-under'} inert={covered}>
+          <HomeScreen
+            figures={figureGroups}
+            built={built}
+            filters={filters}
+            onOpenFigure={openFigure}
+            scrollTopRef={listScrollTopRef}
+            notice={notice}
+          />
         </div>
-      )}
-    </div>
+        {activeFigure && (
+          <div className="vc-layer vc-top" {...swipeBack.handlers}>
+            {screen === 'practice' ? (
+              <PracticeScreen figure={activeFigure} onBack={goBack} />
+            ) : (
+              <FigureScreen figure={activeFigure} onBack={goBack} onPractice={openPractice} />
+            )}
+          </div>
+        )}
+      </div>
+    </FigureLinksContext.Provider>
   );
 };
 

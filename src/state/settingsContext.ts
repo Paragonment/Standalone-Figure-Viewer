@@ -1,5 +1,6 @@
 import { createContext } from 'react';
 import type { DanceStyle, Role } from '../types';
+import type { PartParam } from '../utils/route';
 
 export type { Role };
 
@@ -9,16 +10,24 @@ export interface Settings {
   role: Role;
   sideBySide: boolean;
   theme: ThemePreference;
+  // Practice on a wide window, where it is off until asked for. A phone
+  // always has it.
+  showPractice: boolean;
   // StepFieldDef.key values per style, in canonical order.
   fields: Record<DanceStyle, string[]>;
 }
 
 export interface SettingsApi extends Settings {
   resolvedTheme: 'light' | 'dark';
+  // Shows this part for the open view only, without touching the saved one
+  // (a link's part); null goes back to the saved part. Choosing a part below
+  // ends it.
+  setViewPart(part: PartParam | null): void;
   // Choosing a part also leaves side by side.
   setRole(role: Role): void;
   setSideBySide(on: boolean): void;
   setTheme(theme: ThemePreference): void;
+  setShowPractice(on: boolean): void;
   setStyleFields(style: DanceStyle, keys: string[]): void;
   isFieldOn(style: DanceStyle, key: string): boolean;
   settingsOpen: boolean;

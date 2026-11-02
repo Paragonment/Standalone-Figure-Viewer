@@ -40,39 +40,6 @@ export const useDanceFilters = (figureGroups: FigureGroup[]) => {
     return sortLevels(Array.from(new Set(figureGroups.map((g) => g.level))));
   }, [figureGroups]);
 
-  const filteredFigures = useMemo(() => {
-    const searchLower = searchTerm.trim().toLowerCase();
-
-    return figureGroups.filter((group) => {
-      const matchesDance = selectedDances.length === 0 || selectedDances.includes(group.dance);
-      const matchesLevel = selectedLevels.length === 0 || selectedLevels.includes(group.level);
-
-      if (!matchesDance || !matchesLevel) return false;
-      if (!searchLower) return true;
-
-      return (
-        group.dance.toLowerCase().includes(searchLower) ||
-        group.style.toLowerCase().includes(searchLower) ||
-        group.name.toLowerCase().includes(searchLower) ||
-        group.generalNotes.toLowerCase().includes(searchLower) ||
-        group.steps.some((step) =>
-          Object.values(step).some((val) => String(val).toLowerCase().includes(searchLower))
-        )
-      );
-    });
-  }, [figureGroups, searchTerm, selectedDances, selectedLevels]);
-
-  const hasActiveFilters =
-    selectedDances.length > 0 ||
-    selectedLevels.length > 0 ||
-    searchTerm.length > 0;
-
-  const clearFilters = () => {
-    setSelectedDances([]);
-    setSelectedLevels([]);
-    setSearchTerm('');
-  };
-
   return {
     searchTerm,
     setSearchTerm,
@@ -82,8 +49,5 @@ export const useDanceFilters = (figureGroups: FigureGroup[]) => {
     setSelectedLevels,
     danceGroups,
     levels,
-    filteredFigures,
-    hasActiveFilters,
-    clearFilters,
   };
 };

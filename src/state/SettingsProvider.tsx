@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import type { DanceStyle } from '../types';
 import { DANCE_STYLES } from '../utils/danceStyles';
+import { useIsMobile } from '../hooks/useIsMobile';
+import type { PartParam } from '../utils/route';
 import { DEFAULT_FIELDS, getStepFields } from '../utils/stepFields';
 import { SettingsContext, type Role, type SettingsApi, type ThemePreference } from './settingsContext';
 
@@ -11,6 +13,10 @@ const DARK_QUERY = '(prefers-color-scheme: dark)';
 interface StoredSettings {
   role: Role;
   sideBySide: boolean;
+  // The reader has picked a part or side by side themselves. Until then the
+  // layout decides (see the resolved `sideBySide` below).
+  partChosen: boolean;
+  showPractice: boolean;
   fields: Record<DanceStyle, string[]>;
 }
 
@@ -26,13 +32,17 @@ const canonicalFields = (style: DanceStyle, keys: string[]): string[] =>
     .filter((key) => keys.includes(key));
 
 const readStored = (): StoredSettings => {
-  const stored: StoredSettings = { role: 'lead', sideBySide: false, fields: defaultFields() };
+  const stored: StoredSettings = { role: 'lead', sideBySide: false, partChosen: false, showPractice: false, fields: defaultFields() };
   try {
     const parsed: unknown = JSON.parse(localStorage.getItem(SETTINGS_KEY) ?? 'null');
     if (typeof parsed !== 'object' || parsed === null) return stored;
     const data = parsed as Record<string, unknown>;
     if (data.role === 'lead' || data.role === 'follow') stored.role = data.role;
     if (typeof data.sideBySide === 'boolean') stored.sideBySide = data.sideBySide;
+    // Saved before the flag existed: anything but the defaults was a choice.
+    stored.partChosen =
+      typeof data.partChosen === 'boolean' ? data.partChosen : stored.role !== 'lead' || stored.sideBySide;
+    if (typeof data.showPractice === 'boolean') stored.showPractice = data.showPractice;
     if (typeof data.fields === 'object' && data.fields !== null) {
       const fields = data.fields as Record<string, unknown>;
       for (const { id } of DANCE_STYLES) {
@@ -85,8 +95,10 @@ const pushSettingsEntry = (entry: SettingsEntry) =>
 
 export default function SettingsProvider({ children }: { children: ReactNode }) {
   const [stored, setStored] = useState<StoredSettings>(readStored);
+  const isMobile = useIsMobile();
   const [theme, setThemeState] = useState<ThemePreference>(readTheme);
   const [systemDark, setSystemDark] = useState(systemPrefersDark);
+  const [viewPart, setViewPart] = useState<PartParam | null>(null);
   const [entry, setEntry] = useState<SettingsEntry | null>(readSettingsEntry);
   // Set between asking the browser to go back and it doing so, so a second
   // close in that gap can't also go back past the screen underneath.
@@ -138,9 +150,16 @@ export default function SettingsProvider({ children }: { children: ReactNode }) 
     }
   }, [stored]);
 
-  const setRole = useCallback((role: Role) => setStored((s) => ({ ...s, role, sideBySide: false })), []);
-  const setSideBySide = useCallback((on: boolean) => setStored((s) => ({ ...s, sideBySide: on })), []);
+  const setRole = useCallback((role: Role) => {
+    setViewPart(null);
+    setStored((s) => ({ ...s, role, sideBySide: false, partChosen: true }));
+  }, []);
+  const setSideBySide = useCallback((on: boolean) => {
+    setViewPart(null);
+    setStored((s) => ({ ...s, sideBySide: on, partChosen: true }));
+  }, []);
   const setTheme = useCallback((next: ThemePreference) => setThemeState(next), []);
+  const setShowPractice = useCallback((on: boolean) => setStored((s) => ({ ...s, showPractice: on })), []);
   const setStyleFields = useCallback(
     (style: DanceStyle, keys: string[]) =>
       setStored((s) => ({ ...s, fields: { ...s.fields, [style]: canonicalFields(style, keys) } })),
@@ -178,16 +197,28 @@ export default function SettingsProvider({ children }: { children: ReactNode }) 
     else setEntry((e) => (e ? { ...e, page: null } : e));
   }, [goBack]);
 
+  // The one place the default part is decided: until the reader chooses,
+  // a wide window shows both parts and a phone the stored Lead. The stored
+  // value is never rewritten by the window's size, so crossing the
+  // breakpoint can't make the layouts fight over it.
+  const savedSideBySide = stored.partChosen ? stored.sideBySide : !isMobile;
+  // A link's part wins over the saved one while its view is open.
+  const sideBySide = viewPart ? viewPart === 'both' : savedSideBySide;
+  const role: Role = viewPart === 'lead' || viewPart === 'follow' ? viewPart : stored.role;
+
   const value = useMemo<SettingsApi>(
     () => ({
-      role: stored.role,
-      sideBySide: stored.sideBySide,
+      role,
+      sideBySide,
       theme,
+      showPractice: stored.showPractice,
       fields: stored.fields,
       resolvedTheme,
+      setViewPart,
       setRole,
       setSideBySide,
       setTheme,
+      setShowPractice,
       setStyleFields,
       isFieldOn: (style, key) => stored.fields[style].includes(key),
       settingsOpen: entry !== null,
@@ -200,11 +231,15 @@ export default function SettingsProvider({ children }: { children: ReactNode }) 
     }),
     [
       stored,
+      role,
+      sideBySide,
       theme,
       resolvedTheme,
+      setViewPart,
       setRole,
       setSideBySide,
       setTheme,
+      setShowPractice,
       setStyleFields,
       entry,
       openSettings,

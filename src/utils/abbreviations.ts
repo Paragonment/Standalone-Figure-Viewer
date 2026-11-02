@@ -81,11 +81,13 @@ const PATTERN = new RegExp(
 
 const SENTENCE_START = /(?:^|[.!?]\s+)$/;
 
-export function expandAbbreviations(text: string): string {
+// `preceding` is the text that came before this piece in the same passage,
+// so a piece that starts mid-sentence is not taken for the start of one.
+export function expandAbbreviations(text: string, preceding = ''): string {
   return text.replace(PATTERN, (token, offset: number) => {
     const entry = LOOKUP.get(token);
     if (!entry) return token;
-    const atStart = SENTENCE_START.test(text.slice(0, offset));
+    const atStart = SENTENCE_START.test(preceding + text.slice(0, offset));
     const capitalised = atStart || (entry.word === true && token !== entry.short);
     return capitalised ? capitalise(entry.long) : entry.long;
   });

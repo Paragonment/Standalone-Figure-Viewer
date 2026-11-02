@@ -1,0 +1,36 @@
+/* A row of the dialog is a settings row with no action: the shortcut in words
+   at the left, its keys at the right. */
+.kb-row {
+  min-height: 48px;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.kb-text {
+  min-width: 0;
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.kb-keys {
+  flex: none;
+  display: flex;
+  gap: 6px;
+}
+
+.kb-key {
+  min-width: 28px;
+  height: 28px;
+  padding: 0 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--rule);
+  border-radius: var(--r-small);
+  background: var(--mirror);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--ink);
+}

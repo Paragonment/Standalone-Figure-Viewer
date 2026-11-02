@@ -1,7 +1,7 @@
 import { DANCE_STYLES, danceShortLabel, toggleItem, toggleStyleMobile } from '../../utils/danceStyles';
 import type { StyleDances } from '../../utils/danceStyles';
-import { levelLook } from '../../utils/levels';
 import CheckBox from '../ui/CheckBox';
+import LevelDot from '../ui/LevelDot';
 import './FilterBar.css';
 
 interface FilterBarProps {
@@ -69,7 +69,6 @@ export default function FilterBar({
       <div role="group" aria-label="Level" className="fb-levels">
         {levels.map((level) => {
           const on = selectedLevels.includes(level);
-          const look = levelLook(level);
           return (
             <button
               key={level}
@@ -79,11 +78,7 @@ export default function FilterBar({
               onClick={() => onLevelsChange(toggleItem(selectedLevels, level, levels))}
             >
               <span className="fb-pill-body">
-                <span
-                  className="fb-dot"
-                  aria-hidden="true"
-                  style={{ borderColor: look.dot, background: look.hollow ? 'transparent' : look.dot }}
-                />
+                <LevelDot level={level} />
                 {level}
               </span>
             </button>

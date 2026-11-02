@@ -17,42 +17,24 @@
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  /* Keeps a row scrolled into view clear of the stuck count bar. */
+  scroll-padding-top: 42px;
+  /* ... and clear of a dance's heading stuck under it. */
+  --fl-group-h: 36px;
 }
 
-.home-header {
+.home-scroll:has(.fl-group-head) {
+  scroll-padding-top: calc(42px + var(--fl-group-h));
+}
+
+/* A quiet line on the Floor between the count bar and the figures. */
+.home-notice {
   flex: none;
-  padding: calc(max(20px, env(safe-area-inset-top)) - env(safe-area-inset-top)) var(--gutter) 12px;
-  display: flex;
-  flex-direction: column;
-}
-
-.home-title-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.home-title-group {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-width: 0;
-}
-
-.home-title {
   margin: 0;
-  font-size: 40px;
-  line-height: 1;
-}
-
-.home-menu {
-  margin-right: -10px;
-}
-
-.home-search {
-  margin-top: 12px;
-}
-
-.home-filters {
-  margin-top: 12px;
+  padding: 14px var(--gutter);
+  background: var(--floor);
+  border-bottom: 1px solid var(--hairline);
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--slate);
 }

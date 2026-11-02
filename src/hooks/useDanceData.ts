@@ -6,9 +6,6 @@ import { DANCE_STYLES } from '../utils/danceStyles';
 export interface DanceDataset {
   style: DanceStyle;
   rows: DanceStep[];
-  // In CSV order, so column controls list a style's fields the way its
-  // book charts them.
-  columns: string[];
 }
 
 const loadDataset = async (style: DanceStyle, file: string): Promise<DanceDataset> => {
@@ -27,7 +24,7 @@ const loadDataset = async (style: DanceStyle, file: string): Promise<DanceDatase
     const first = results.errors[0];
     throw new Error(`${file} row ${first.row}: ${first.message}`);
   }
-  return { style, rows: results.data, columns: results.meta.fields ?? [] };
+  return { style, rows: results.data };
 };
 
 export const useDanceData = () => {

@@ -27,6 +27,19 @@ const DANCE_SHORT_LABEL: Record<string, string> = { 'Cha Cha Cha': 'Cha Cha', 'P
 
 export const danceShortLabel = (dance: string): string => DANCE_SHORT_LABEL[dance] ?? dance;
 
+// Sorts dances into display order: each style's own, styles in DANCE_STYLES
+// order, then any dance the order doesn't list, alphabetically.
+const DANCE_ORDER: readonly string[] = DANCE_STYLES.flatMap((s) => s.dances);
+
+export const compareDances = (a: string, b: string): number => {
+  const ai = DANCE_ORDER.indexOf(a);
+  const bi = DANCE_ORDER.indexOf(b);
+  if (ai === -1 && bi === -1) return a.localeCompare(b);
+  if (ai === -1) return 1;
+  if (bi === -1) return -1;
+  return ai - bi;
+};
+
 export interface StyleDances {
   style: DanceStyle;
   dances: string[];

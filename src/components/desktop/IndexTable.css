@@ -1,0 +1,135 @@
+.ix {
+  --ix-level-w: 112px;
+  /* Narrower than this a name wraps into slivers, so the table scrolls. */
+  --ix-column-min: 112px;
+  padding-top: 10px;
+}
+
+.ix-style {
+  margin: 0;
+  padding: 14px 0 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--slate);
+}
+
+/* A pane too narrow for the columns scrolls them under the level names. */
+.ix-scroll {
+  overflow-x: auto;
+}
+
+.ix-table {
+  width: 100%;
+  min-width: calc(var(--ix-level-w) + var(--ix-columns) * var(--ix-column-min));
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.ix-table th,
+.ix-table td {
+  text-align: left;
+  vertical-align: top;
+  font-weight: 400;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.ix-table thead th {
+  padding: 10px 14px 8px 0;
+  border-bottom-color: var(--rule);
+}
+
+.ix-corner {
+  width: var(--ix-level-w);
+  border-bottom: 1px solid var(--rule);
+}
+
+.ix-table tbody th,
+.ix-table tbody td {
+  padding: 10px 14px 12px 0;
+}
+
+/* The level names stay put while the columns scroll. */
+.ix-level {
+  position: sticky;
+  left: 0;
+  background: var(--floor);
+}
+
+.ix-pick {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.ix-dance .ix-pick {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.ix-count {
+  /* A narrow column wraps the count under the name, whole. */
+  margin-left: 2px;
+  white-space: nowrap;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--slate);
+}
+
+.ix-level .ix-pick {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.55;
+  white-space: nowrap;
+}
+
+@media (hover: hover) {
+  .ix-pick:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+}
+
+.ix-names {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+/* A name that wraps hangs its continuation lines under the first, so each
+   entry reads as one figure; a little air between entries keeps them apart. */
+.ix-names li {
+  padding-left: 14px;
+  text-indent: -14px;
+}
+
+.ix-names li + li {
+  margin-top: 4px;
+}
+
+.ix-names a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--rule);
+  overflow-wrap: break-word;
+}
+
+@media (hover: hover) {
+  .ix-names a:hover {
+    text-decoration-color: var(--ink);
+  }
+}

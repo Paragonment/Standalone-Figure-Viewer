@@ -9,6 +9,24 @@
   background: var(--floor);
 }
 
+/* A dance's levels under its heading, which sticks beneath the count bar
+   (42px, with its top border under the scroller's edge) until the next
+   dance's heading takes its place. */
+.fl-group-head {
+  position: sticky;
+  top: 41px;
+  margin: 0;
+  height: var(--fl-group-h);
+  padding: 0 var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: 700;
+  background: var(--floor);
+  border-bottom: 1px solid var(--rule);
+}
+
 .fl-section-tint {
   background: var(--tint);
 }
@@ -131,6 +149,13 @@
   .fl-empty-act:hover {
     color: var(--shade);
   }
+}
+
+/* The open figure: tint and an ink bar that hover does not hide. */
+.fl-row-selected,
+.fl-row-selected:hover {
+  background: var(--tint);
+  box-shadow: inset 3px 0 0 var(--ink);
 }
 
 /* Inside the row: the scroller would clip a ring drawn outside it. */

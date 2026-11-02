@@ -4,15 +4,26 @@
 
 export type NoteLabel = 'Endings' | 'Preceded by' | 'Followed by';
 
+// One line of a row. The books give what precedes or follows by level
+// ("Bronze - Natural Turn; Silver, Gold - Wing"); `levels` is that prefix,
+// empty when the line is not about a level.
+export interface NoteEntry {
+  levels: string[];
+  text: string;
+}
+
 export interface NoteRow {
   label: NoteLabel;
-  value: string;
+  entries: NoteEntry[];
 }
 
 export interface FigureNotes {
   description: string;
   rows: NoteRow[];
 }
+
+// Whether there is anything to show for a figure.
+export const hasNotes = (notes: FigureNotes): boolean => notes.description !== '' || notes.rows.length > 0;
 
 const ROW_ORDER: NoteLabel[] = ['Endings', 'Preceded by', 'Followed by'];
 
@@ -44,6 +55,40 @@ const valueEnd = (text: string, from: number, limit: number): number => {
   return limit;
 };
 
+const LEVEL_NAME = 'Pre-Bronze|Bronze|Silver|Gold';
+// "Bronze - ", "Silver, Gold - ", "Bronze and Silver - ": levels, then a dash.
+const LEVEL_PREFIX = new RegExp(`^((?:${LEVEL_NAME})(?:\\s*(?:,|&|and)\\s*(?:${LEVEL_NAME}))*)\\s+-\\s+(?=\\S)`);
+
+const capitalise = (text: string): string => text.charAt(0).toUpperCase() + text.slice(1);
+
+// Cuts a value at the semicolons outside parentheses.
+const splitLines = (value: string): string[] => {
+  const lines: string[] = [];
+  let depth = 0;
+  let start = 0;
+  [...value].forEach((ch, i) => {
+    if (ch === '(') depth++;
+    else if (ch === ')') depth = Math.max(0, depth - 1);
+    else if (ch === ';' && depth === 0) {
+      lines.push(value.slice(start, i));
+      start = i + 1;
+    }
+  });
+  lines.push(value.slice(start));
+  return lines.map((line) => line.trim()).filter(Boolean);
+};
+
+const entryOf = (line: string): NoteEntry => {
+  const prefix = LEVEL_PREFIX.exec(line);
+  if (!prefix) return { levels: [], text: capitalise(line) };
+  return { levels: prefix[1].split(/\s*(?:,|&|and)\s*/), text: line.slice(prefix[0].length) };
+};
+
+// What precedes and follows is told level by level, a line each; the other
+// rows stay whole.
+const entriesOf = (label: NoteLabel, value: string): NoteEntry[] =>
+  label === 'Endings' ? [{ levels: [], text: capitalise(value) }] : splitLines(value).map(entryOf);
+
 const clean = (text: string): string => text.trim().replace(/[.;,]+$/, '').trim();
 
 // Never drops text: whatever is not a labelled row stays in the description.
@@ -74,8 +119,7 @@ export function parseFigureNotes(notes: string): FigureNotes {
   outside.push(text.slice(cursor));
 
   const rows = ROW_ORDER.filter((label) => values.has(label)).map((label) => {
-    const value = (values.get(label) ?? []).join('; ');
-    return { label, value: value.charAt(0).toUpperCase() + value.slice(1) };
+    return { label, entries: entriesOf(label, (values.get(label) ?? []).join('; ')) };
   });
   const description = outside
     .map((part) => part.trim())

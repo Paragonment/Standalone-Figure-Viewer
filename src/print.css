@@ -1,0 +1,171 @@
+/* The printed sheet: a figure as a reference chart, or the contents page as
+   an index. Everything that exists to operate the app is left off, the
+   panes and scrollers open up to the height of their content, and the text
+   is black on white. It lives in one file so the whole sheet reads in one
+   place, and is imported after the components so it wins ties. */
+
+@media print {
+  @page {
+    margin: 14mm;
+  }
+
+  /* Light tokens always (see index.css), with the Mirror and Floor grounds
+     and the ink at their plainest. */
+  :root {
+    --mirror: #fff;
+    --floor: #fff;
+    --ink: #000;
+    --shade: #1f2430;
+    --slate: #3d4559;
+    --rule: #8a91a0;
+    --hairline: #c3c8d2;
+  }
+
+  html[data-theme] {
+    color-scheme: light;
+  }
+
+  /* Not operated: no list, menus, filters, controls, dialogs or Practice. */
+  .ds-list,
+  .dp,
+  .db,
+  .ui-topbar,
+  .vc-under,
+  .slide-page,
+  .about-band,
+  .fig-steps,
+  .ui-strip,
+  .ui-part,
+  .pr-frozen {
+    display: none !important;
+  }
+
+  /* The app is a fixed-height shell of scrollers; a page is as tall as its
+     content, and nothing pins or clips. */
+  body,
+  .app,
+  .ds,
+  .ds-detail,
+  .vc-stack,
+  .vc-layer,
+  .fig-scroll,
+  .fi,
+  .fi-body,
+  .ix-scroll {
+    display: block;
+    position: static;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    transform: none;
+  }
+
+  body,
+  .app {
+    background: #fff;
+    color: var(--ink);
+  }
+
+  .ds-detail {
+    --gutter: 0px;
+    border-left: 0;
+  }
+
+  /* A figure */
+  .fig-scroll .fig-header {
+    padding: 0;
+  }
+
+  .fig-scroll .fig-title {
+    font-size: 30pt;
+  }
+
+  .fig-scroll .fig-meta {
+    font-size: 11pt;
+  }
+
+  /* The positions stay with the title; the rest of the frozen block is controls. */
+  .fig-scroll .fig-bar {
+    position: static;
+    padding: 10px 0 0;
+    border: 0;
+  }
+
+  .fig-scroll .fig-main,
+  .fig-has-aside .fig-main {
+    display: block;
+  }
+
+  .fig-scroll .sc {
+    display: block;
+    min-height: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .sc-table .sc-step-current .sc-n {
+    color: var(--ink);
+  }
+
+  /* A step stays whole, and a table that runs on repeats its heading. */
+  .sc-table thead {
+    display: table-header-group;
+  }
+
+  .sc-table tbody,
+  .sc-table tr {
+    break-inside: avoid;
+  }
+
+  /* The partner's part is named in words, not only by color. */
+  .sc-partner .fv-sr-only {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    clip: auto;
+    overflow: visible;
+  }
+
+  .fig-scroll .about-aside {
+    display: flex;
+    margin-top: 18px;
+    padding: 12px 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* The contents page */
+  .fi-header {
+    padding: 0 0 12px;
+    border-bottom-color: var(--rule);
+  }
+
+  .fi-body {
+    padding: 0;
+  }
+
+  .ix-table {
+    min-width: 0;
+  }
+
+  .ix-level {
+    position: static;
+  }
+
+  .ix-table tr {
+    break-inside: avoid;
+  }
+
+  .ix-style {
+    break-after: avoid;
+  }
+
+  /* Names are text on paper, not links. */
+  a,
+  .about-link,
+  .ix-names a {
+    color: inherit;
+    text-decoration: none;
+  }
+}

@@ -19,13 +19,17 @@ interface Pin {
 const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // Scroll behavior of the Figure screen: one scroll container holds the
-// header, the sticky frozen block and the step rows (`li[data-n]`).
+// header, the sticky frozen block and the steps (`[data-n]`: an `li` of the
+// phone's list, a `tbody` of the desktop chart). The layout that is not shown
+// has no boxes, so only steps with a box count.
 //
 // - `current` is the first step still clearly showing below the frozen block.
 // - `scrolled` turns true once the big title has scrolled away.
 // - `goToStep` scrolls a step to just under the frozen block and pins it as
 //   current while the jump runs and while the list rests there (near the end
-//   the last steps cannot reach the top).
+//   the last steps cannot reach the top). `instant` skips the animation.
+// - `revealStep` makes a step the current one and scrolls only as far as it
+//   takes to show it clear of the frozen block: not at all when it already is.
 // - `keepPlace` is called right before a change that reflows the steps
 //   (part, side by side); once `layoutKey` has changed the step that was at
 //   the top is put back where it was.
@@ -39,7 +43,11 @@ export function useStepScroll(layoutKey: string) {
   const [current, setCurrent] = useState(1);
   const [scrolled, setScrolled] = useState(false);
 
-  const rowFor = useCallback((n: number) => listRef.current?.querySelector<HTMLElement>(`li[data-n="${n}"]`) ?? null, []);
+  const stepsShown = useCallback(
+    () => Array.from(listRef.current?.querySelectorAll<HTMLElement>('[data-n]') ?? []).filter((el) => el.getClientRects().length > 0),
+    [],
+  );
+  const rowFor = useCallback((n: number) => stepsShown().find((el) => el.dataset.n === String(n)) ?? null, [stepsShown]);
 
   // The first step whose bottom is more than `slack` below the frozen block.
   const firstVisible = useCallback((slack: number): Anchor | null => {
@@ -47,11 +55,18 @@ export function useStepScroll(layoutKey: string) {
     const bar = barRef.current;
     if (!list || !bar) return null;
     const line = bar.getBoundingClientRect().bottom;
-    for (const row of list.querySelectorAll<HTMLElement>('li[data-n]')) {
+    for (const row of stepsShown()) {
       const box = row.getBoundingClientRect();
       if (box.bottom > line + slack) return { n: Number(row.dataset.n), top: box.top };
     }
     return null;
+  }, [stepsShown]);
+
+  // Where the frozen block rests once stuck: -1px on a phone, below the
+  // pinned bar on a wide pane.
+  const stickyTop = useCallback(() => {
+    const bar = barRef.current;
+    return bar ? parseFloat(window.getComputedStyle(bar).top) || 0 : 0;
   }, []);
 
   const onScroll = useCallback(() => {
@@ -59,7 +74,8 @@ export function useStepScroll(layoutKey: string) {
     if (!list) return;
     const title = titleRef.current;
     const edge = title ? title.offsetTop + title.offsetHeight : 48;
-    setScrolled(list.scrollTop >= edge);
+    // The title is gone once it is under whatever is pinned above the steps.
+    setScrolled(list.scrollTop + Math.max(0, stickyTop()) >= edge);
 
     let next = currentRef.current;
     const pin = pinRef.current;
@@ -72,21 +88,41 @@ export function useStepScroll(layoutKey: string) {
     }
     currentRef.current = next;
     setCurrent(next);
-  }, [firstVisible]);
+  }, [firstVisible, stickyTop]);
 
-  // The frozen block is stuck at top: -1px, so its bottom edge sits at
-  // offsetHeight - 1 inside the scroller.
+  // The frozen block's bottom edge, once stuck, sits at stickyTop plus its
+  // height inside the scroller.
   const goToStep = useCallback(
-    (n: number) => {
+    (n: number, instant = false) => {
       const list = listRef.current;
       const bar = barRef.current;
       const row = rowFor(n);
       if (!list || !bar || !row) return;
       const max = list.scrollHeight - list.clientHeight;
-      const top = Math.max(0, Math.min(max, row.offsetTop - (bar.offsetHeight - 1)));
-      if (prefersReducedMotion()) list.scrollTop = top;
+      // Not offsetTop: a chart's tbody is offset from its table, not the scroller.
+      const rowTop = list.scrollTop + row.getBoundingClientRect().top - list.getBoundingClientRect().top;
+      const top = Math.max(0, Math.min(max, rowTop - (stickyTop() + bar.offsetHeight)));
+      if (instant || prefersReducedMotion()) list.scrollTop = top;
       else list.scrollTo({ top, behavior: 'smooth' });
       pinRef.current = { n, top, until: Date.now() + PIN_MS };
+      currentRef.current = n;
+      setCurrent(n);
+    },
+    [rowFor, stickyTop],
+  );
+
+  const revealStep = useCallback(
+    (n: number) => {
+      const list = listRef.current;
+      const bar = barRef.current;
+      const row = rowFor(n);
+      if (!list || !bar || !row) return;
+      const view = list.getBoundingClientRect();
+      const box = row.getBoundingClientRect();
+      const line = bar.getBoundingClientRect().bottom;
+      if (box.top < line) list.scrollTop += box.top - line;
+      else if (box.bottom > view.bottom) list.scrollTop += Math.min(box.bottom - view.bottom, box.top - line);
+      pinRef.current = { n, top: list.scrollTop, until: Date.now() + PIN_MS };
       currentRef.current = n;
       setCurrent(n);
     },
@@ -109,5 +145,5 @@ export function useStepScroll(layoutKey: string) {
     if (pinRef.current) pinRef.current = { n: pinRef.current.n, top: list.scrollTop, until: 0 };
   }, [layoutKey, rowFor]);
 
-  return { listRef, barRef, titleRef, current, scrolled, onScroll, goToStep, keepPlace };
+  return { listRef, barRef, titleRef, current, scrolled, onScroll, goToStep, revealStep, keepPlace };
 }

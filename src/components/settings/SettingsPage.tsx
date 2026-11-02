@@ -2,6 +2,8 @@ import { useState, type ReactNode } from 'react';
 import SlideOverPage from '../SlideOverPage';
 import { useSettings } from '../../state/useSettings';
 import { useDisplaySettings } from '../../hooks/useDisplaySettings';
+import { useIsMobile } from '../../hooks/useIsMobile';
+import { useShortcutsDialog } from '../../hooks/useShortcutsDialog';
 import type { ThemePreference } from '../../state/settingsContext';
 import type { DanceStyle } from '../../types';
 import { DANCE_STYLES } from '../../utils/danceStyles';
@@ -71,8 +73,10 @@ export default function SettingsPage() {
 
 // figureStyle: the style of the figure Settings was opened from, if any.
 function SettingsHome({ figureStyle }: { figureStyle: DanceStyle | null }) {
-  const { theme, fields, setTheme, openSettingsPage } = useSettings();
+  const { theme, fields, showPractice, setTheme, setShowPractice, openSettingsPage } = useSettings();
   const { spellOutAbbreviations, setSpellOutAbbreviations } = useDisplaySettings();
+  const isMobile = useIsMobile();
+  const shortcuts = useShortcutsDialog();
 
   return (
     <>
@@ -115,6 +119,24 @@ function SettingsHome({ figureStyle }: { figureStyle: DanceStyle | null }) {
           onChange={setTheme}
         />
       </SettingsSection>
+
+      {/* A phone always has Practice; only a wide window chooses. */}
+      {!isMobile && (
+        <SettingsSection title="Practice">
+          <SwitchRow
+            label="Show Practice"
+            description="Adds a Practice button to each figure, and the P key."
+            checked={showPractice}
+            onChange={setShowPractice}
+          />
+        </SettingsSection>
+      )}
+
+      {!isMobile && (
+        <SettingsSection title="Keyboard">
+          <NavRow label="Keyboard shortcuts" summary="Keys for the list, steps and parts" onOpen={shortcuts.show} />
+        </SettingsSection>
+      )}
     </>
   );
 }

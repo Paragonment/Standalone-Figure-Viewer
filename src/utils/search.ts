@@ -1,4 +1,5 @@
 import type { FigureGroup } from '../types';
+import { compareDances } from './danceStyles';
 import { LEVELS, levelLook } from './levels';
 
 export interface FigureRow {
@@ -11,6 +12,9 @@ export interface FigureRow {
 
 export interface ResultSection {
   key: 'all' | 'names' | 'notes' | 'level';
+  // The dance a level section belongs to, when the list is grouped by dance
+  // (its sections follow one another, so a change of group starts a new one).
+  group?: string;
   heading?: string;
   headingColor?: string;
   count: number;
@@ -24,7 +28,8 @@ export interface BuiltSections {
   total: number;
   // Figures inside the picked dances and levels, before any query.
   scope: number;
-  // One dance, no query: rows are grouped by level and drop their sub line.
+  // Rows are grouped by level (and by dance, see `group`), no query: they
+  // drop their sub line.
   grouped: boolean;
 }
 
@@ -63,20 +68,41 @@ const buildSnippet = (text: string, at: number, length: number): NonNullable<Fig
   };
 };
 
+// The figures inside the picked dances and levels; none picked is all.
+export const filterScope = (figures: FigureGroup[], dances: string[], levels: string[]): FigureGroup[] =>
+  figures.filter(
+    (f) => (dances.length === 0 || dances.includes(f.dance)) && (levels.length === 0 || levels.includes(f.level)),
+  );
+
+// One section per level the figures are in: the known levels in order, then
+// any other alphabetically.
+const levelSections = (figures: FigureGroup[], group?: string): ResultSection[] => {
+  const known: readonly string[] = LEVELS;
+  const extra = [...new Set(figures.map((f) => f.level))].filter((l) => !known.includes(l)).sort();
+  return [...known, ...extra]
+    .map((level): ResultSection => {
+      const rows = figures.filter((f) => f.level === level).map((figure) => ({ figure }));
+      return { key: 'level', group, heading: level, headingColor: levelLook(level).text, count: rows.length, rows };
+    })
+    .filter((s) => s.rows.length > 0);
+};
+
 export function buildSections({
   figures,
   dances,
   levels,
   query,
+  groupByDance = false,
 }: {
   figures: FigureGroup[];
   dances: string[];
   levels: string[];
   query: string;
+  // With no single dance picked and no query, group by dance, then level,
+  // instead of listing every figure in one run.
+  groupByDance?: boolean;
 }): BuiltSections {
-  const inScope = figures.filter(
-    (f) => (dances.length === 0 || dances.includes(f.dance)) && (levels.length === 0 || levels.includes(f.level)),
-  );
+  const inScope = filterScope(figures, dances, levels);
   const scope = inScope.length;
   const needle = normalizeQuery(query);
 
@@ -122,14 +148,17 @@ export function buildSections({
   }
 
   if (dances.length === 1) {
-    const known: readonly string[] = LEVELS;
-    const extra = [...new Set(inScope.map((f) => f.level))].filter((l) => !known.includes(l)).sort();
-    const sections: ResultSection[] = [...known, ...extra]
-      .map((level): ResultSection => {
-        const rows = inScope.filter((f) => f.level === level).map((figure) => ({ figure }));
-        return { key: 'level', heading: level, headingColor: levelLook(level).text, count: rows.length, rows };
-      })
-      .filter((s) => s.rows.length > 0);
+    return { sections: levelSections(inScope), total: inScope.length, scope, grouped: true };
+  }
+
+  if (groupByDance) {
+    const inOrder = [...new Set(inScope.map((f) => f.dance))].sort(compareDances);
+    const sections = inOrder.flatMap((dance) =>
+      levelSections(
+        inScope.filter((f) => f.dance === dance),
+        dance,
+      ),
+    );
     return { sections, total: inScope.length, scope, grouped: true };
   }
 

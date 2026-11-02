@@ -1,5 +1,5 @@
 .about-band {
-  margin: 14px -16px 0;
+  margin: 14px calc(-1 * var(--gutter)) 0;
   padding: 0 var(--gutter);
   background: var(--floor);
   border-top: 1px solid var(--rule);
@@ -22,6 +22,12 @@
   cursor: pointer;
 }
 
+/* The meta line sits under the toggle's label, in view when closed too. */
+.about-band .fig-meta {
+  margin-top: -8px;
+  padding-bottom: 12px;
+}
+
 .about-chevron {
   flex: none;
   color: var(--slate);
@@ -37,33 +43,4 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-}
-
-.about-description {
-  margin: 0;
-  font-size: 15px;
-  line-height: 1.45;
-  color: var(--shade);
-}
-
-.about-rows {
-  margin: 0;
-  display: grid;
-  grid-template-columns: 84px minmax(0, 1fr);
-  column-gap: 8px;
-  row-gap: 6px;
-  align-items: baseline;
-}
-
-.about-rows dt {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--slate);
-}
-
-.about-rows dd {
-  margin: 0;
-  font-size: 15px;
-  line-height: 1.4;
-  color: var(--shade);
 }

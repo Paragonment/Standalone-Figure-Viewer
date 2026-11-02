@@ -93,7 +93,12 @@ export default function FigureBody({ figure, scroll, headerSlot, layout = 'list'
       </div>
 
       {layout === 'list' ? (
-        <StepList {...stepProps} />
+        <>
+          <StepList {...stepProps} />
+          {/* Only the printed sheet shows these (see print.css). */}
+          <StepChart {...stepProps} />
+          {hasNotes(notes) && <AboutAside figure={figure} notes={notes} />}
+        </>
       ) : (
         <div className="fig-main">
           <div className="fig-main-steps">

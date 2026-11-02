@@ -10,7 +10,7 @@ import './ShortcutsDialog.css';
 export default function ShortcutsDialog() {
   const { open, hide } = useShortcutsDialog();
   const practiceEnabled = usePracticeEnabled();
-  const sections = shortcutSections({ hasFigure: true, practiceEnabled });
+  const sections = shortcutSections({ hasFigure: true, practiceEnabled, practiceOpen: false });
 
   return (
     <SlideOverPage open={open} onClose={hide} title="Keyboard shortcuts" intro="Keys work anywhere except while typing.">

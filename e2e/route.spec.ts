@@ -1,5 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
-import { FIGURE, figureRow, filterByDance, openApp, openFigure, openSettings, searchFor, settle } from './helpers';
+import { FIGURE, figureRow, filterByDance, openApp, openFigure, openSettings, searchFor, settle, startWithPractice } from './helpers';
 
 // Deep links and history: the address says what is open, and Back, Forward
 // and a reload bring the same thing back. The same on a phone and on a desktop.
@@ -147,7 +147,7 @@ for (const layout of LAYOUTS) {
     });
 
     test('Practice has its own address and Back returns to the steps', async ({ page }) => {
-      test.skip(layout.name === 'desktop', 'Practice is hidden on desktop for now');
+      await startWithPractice(page);
       await openLink(page, `${BACK_LOCK}/practice?part=follow`);
       await expect(page.getByRole('button', { name: 'Back to steps' })).toBeVisible();
       await page.getByRole('button', { name: 'Back to steps' }).click();

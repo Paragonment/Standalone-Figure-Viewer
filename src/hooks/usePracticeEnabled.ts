@@ -1,3 +1,10 @@
-// Whether Practice is on offer on a wide window. It stays off until it has a
-// setting that turns it on; the `p` shortcut and its listing follow this.
-export const usePracticeEnabled = () => false;
+import { useSettings } from '../state/useSettings';
+import { useIsMobile } from './useIsMobile';
+
+// Whether Practice is on offer. A phone always has it; a wide window only
+// once Settings turns it on. The Practice button, the `p` shortcut and the
+// shortcut's listing all follow this.
+export const usePracticeEnabled = () => {
+  const { showPractice } = useSettings();
+  return useIsMobile() || showPractice;
+};

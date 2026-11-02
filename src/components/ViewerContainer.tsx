@@ -8,6 +8,7 @@ import { useRoute } from '../hooks/useRoute';
 import { useRouteFilters } from '../hooks/useRouteFilters';
 import { useRoutePart } from '../hooks/useRoutePart';
 import { useIsMobile } from '../hooks/useIsMobile';
+import { usePracticeEnabled } from '../hooks/usePracticeEnabled';
 import { clearSwipe, useSwipeBack } from '../hooks/useSwipeBack';
 import { FigureLinksContext } from '../state/figureLinksContext';
 import { figureRoute, resolveRoute } from '../utils/route';
@@ -30,6 +31,7 @@ const ViewerContainer: React.FC = () => {
   // Filter and search state lives here so it outlives the screens.
   const filters = useDanceFilters(figureGroups);
   const isMobile = useIsMobile();
+  const practiceEnabled = usePracticeEnabled();
   // The phone's list stays one run of figures with their dance and level on
   // each; the wide pane has room for dance and level headings.
   const built = useFigureSections(figureGroups, filters, !isMobile);
@@ -98,7 +100,16 @@ const ViewerContainer: React.FC = () => {
   if (!isMobile) {
     return (
       <FigureLinksContext.Provider value={figureLinks}>
-        <DesktopShell figures={figureGroups} built={built} filters={filters} figure={activeFigure} onOpenFigure={openFigure} notice={notice} />
+        <DesktopShell
+          figures={figureGroups}
+          built={built}
+          filters={filters}
+          figure={activeFigure}
+          onOpenFigure={openFigure}
+          practiceOpen={screen === 'practice' && practiceEnabled}
+          onClosePractice={goBack}
+          notice={notice}
+        />
       </FigureLinksContext.Provider>
     );
   }

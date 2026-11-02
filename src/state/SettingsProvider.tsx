@@ -16,6 +16,7 @@ interface StoredSettings {
   // The reader has picked a part or side by side themselves. Until then the
   // layout decides (see the resolved `sideBySide` below).
   partChosen: boolean;
+  showPractice: boolean;
   fields: Record<DanceStyle, string[]>;
 }
 
@@ -31,7 +32,7 @@ const canonicalFields = (style: DanceStyle, keys: string[]): string[] =>
     .filter((key) => keys.includes(key));
 
 const readStored = (): StoredSettings => {
-  const stored: StoredSettings = { role: 'lead', sideBySide: false, partChosen: false, fields: defaultFields() };
+  const stored: StoredSettings = { role: 'lead', sideBySide: false, partChosen: false, showPractice: false, fields: defaultFields() };
   try {
     const parsed: unknown = JSON.parse(localStorage.getItem(SETTINGS_KEY) ?? 'null');
     if (typeof parsed !== 'object' || parsed === null) return stored;
@@ -41,6 +42,7 @@ const readStored = (): StoredSettings => {
     // Saved before the flag existed: anything but the defaults was a choice.
     stored.partChosen =
       typeof data.partChosen === 'boolean' ? data.partChosen : stored.role !== 'lead' || stored.sideBySide;
+    if (typeof data.showPractice === 'boolean') stored.showPractice = data.showPractice;
     if (typeof data.fields === 'object' && data.fields !== null) {
       const fields = data.fields as Record<string, unknown>;
       for (const { id } of DANCE_STYLES) {
@@ -157,6 +159,7 @@ export default function SettingsProvider({ children }: { children: ReactNode }) 
     setStored((s) => ({ ...s, sideBySide: on, partChosen: true }));
   }, []);
   const setTheme = useCallback((next: ThemePreference) => setThemeState(next), []);
+  const setShowPractice = useCallback((on: boolean) => setStored((s) => ({ ...s, showPractice: on })), []);
   const setStyleFields = useCallback(
     (style: DanceStyle, keys: string[]) =>
       setStored((s) => ({ ...s, fields: { ...s.fields, [style]: canonicalFields(style, keys) } })),
@@ -208,12 +211,14 @@ export default function SettingsProvider({ children }: { children: ReactNode }) 
       role,
       sideBySide,
       theme,
+      showPractice: stored.showPractice,
       fields: stored.fields,
       resolvedTheme,
       setViewPart,
       setRole,
       setSideBySide,
       setTheme,
+      setShowPractice,
       setStyleFields,
       isFieldOn: (style, key) => stored.fields[style].includes(key),
       settingsOpen: entry !== null,
@@ -234,6 +239,7 @@ export default function SettingsProvider({ children }: { children: ReactNode }) 
       setRole,
       setSideBySide,
       setTheme,
+      setShowPractice,
       setStyleFields,
       entry,
       openSettings,

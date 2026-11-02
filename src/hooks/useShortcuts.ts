@@ -25,6 +25,9 @@ export interface ShortcutsHost {
   figures: FigureGroup[];
   // The open figure, if any.
   figure: FigureGroup | null;
+  // Practice is open over the window; Escape closes it.
+  practiceOpen: boolean;
+  closePractice(): void;
   searchRef: RefObject<HTMLInputElement | null>;
   listRef: RefObject<HTMLElement | null>;
   figureControlsRef: RefObject<FigureControls | null>;
@@ -82,6 +85,10 @@ export function useShortcuts(host: ShortcutsHost) {
       host.searchRef.current?.select();
     },
     escape: () => {
+      if (host.practiceOpen) {
+        host.closePractice();
+        return;
+      }
       const input = host.searchRef.current;
       if (input && document.activeElement === input && input.value) {
         host.setSearchTerm('');
@@ -106,7 +113,7 @@ export function useShortcuts(host: ShortcutsHost) {
   };
 
   // The listener is added once and reads the latest of everything through this.
-  const context: ShortcutContext = { hasFigure: figure !== null, practiceEnabled };
+  const context: ShortcutContext = { hasFigure: figure !== null, practiceEnabled, practiceOpen: host.practiceOpen };
   const latest = useRef({ actions, context });
   useEffect(() => {
     latest.current = { actions, context };

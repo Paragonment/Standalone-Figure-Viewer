@@ -1,5 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
-import { DESKTOPS, FIGURE, SCHEMES, filterByDance, openApp, openFigure, openSettings, openShortcuts, settle } from './helpers';
+import { DESKTOPS, FIGURE, SCHEMES, filterByDance, openApp, openFigure, openSettings, openShortcuts, settle, turnOnPractice } from './helpers';
 
 // Visual baselines for the two-pane layout at each desktop width, in both
 // color schemes. Update on purpose with `npm run test:e2e:update`.
@@ -32,6 +32,23 @@ for (const viewport of DESKTOPS) {
         await openFigure(page, FIGURE.name);
         await openSettings(page);
         await shot(page, 'desktop-settings', width, scheme);
+      });
+
+      test('Practice on, Back Lock open', async ({ page }) => {
+        await turnOnPractice(page);
+        await filterByDance(page, FIGURE.dance);
+        await openFigure(page, FIGURE.name);
+        await shot(page, 'desktop-figure-practice-on', width, scheme);
+      });
+
+      test('Practice open', async ({ page }) => {
+        await turnOnPractice(page);
+        await filterByDance(page, FIGURE.dance);
+        await openFigure(page, FIGURE.name);
+        await page.getByRole('button', { name: 'Practice' }).click();
+        await expect(page.getByRole('main', { name: /step 1/i })).toBeVisible();
+        await settle(page);
+        await shot(page, 'desktop-practice', width, scheme);
       });
 
       test('settings, Standard steps page', async ({ page }) => {

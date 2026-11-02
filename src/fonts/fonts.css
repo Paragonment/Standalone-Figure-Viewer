@@ -1,7 +1,8 @@
 /* The app's two typefaces, served with the app (Google Fonts, OFL) instead of
    fetched from Google: no request to wait on, so the first paint, the
    screenshots and an offline visit all use the same glyphs. Both files are
-   variable fonts, so one file covers every weight in the range. */
+   variable fonts, so one file covers every weight in the range. Their licences
+   sit beside them: OFL-big-shoulders.txt and OFL-instrument-sans.txt. */
 
 @font-face {
   font-family: 'Big Shoulders';

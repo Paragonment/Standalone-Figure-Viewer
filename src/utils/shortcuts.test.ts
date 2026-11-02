@@ -13,8 +13,9 @@ const press = (key: string, extra: Partial<KeyPress> = {}): KeyPress => ({
   ...extra,
 });
 
-const open: ShortcutContext = { hasFigure: true, practiceEnabled: false };
-const none: ShortcutContext = { hasFigure: false, practiceEnabled: false };
+const open: ShortcutContext = { hasFigure: true, practiceEnabled: false, practiceOpen: false };
+const practiceOn: ShortcutContext = { ...open, practiceEnabled: true };
+const none: ShortcutContext = { hasFigure: false, practiceEnabled: false, practiceOpen: false };
 
 const idOf = (key: string, extra: Partial<KeyPress> = {}, context = open) => matchShortcut(press(key, extra), context)?.id;
 
@@ -90,8 +91,17 @@ describe('matchShortcut', () => {
 
   it('offers Practice only when it is enabled', () => {
     expect(idOf('p')).toBeUndefined();
-    expect(idOf('p', {}, { hasFigure: true, practiceEnabled: true })).toBe('practice');
-    expect(idOf('p', {}, { hasFigure: false, practiceEnabled: true })).toBeUndefined();
+    expect(idOf('p', {}, practiceOn)).toBe('practice');
+    expect(idOf('p', {}, { ...practiceOn, hasFigure: false })).toBeUndefined();
+  });
+
+  it('leaves only the few that say so while Practice is open', () => {
+    const inPractice = { ...practiceOn, practiceOpen: true };
+    for (const key of ['/', '[', 'j', '3', 'p', 'Enter', 'ArrowUp']) expect(idOf(key, { inList: true }, inPractice)).toBeUndefined();
+    expect(idOf('Escape', { typing: true }, inPractice)).toBe('escape');
+    expect(idOf('f', {}, inPractice)).toBe('follow');
+    expect(idOf(',', {}, inPractice)).toBe('settings');
+    expect(idOf('?', {}, inPractice)).toBe('help');
   });
 });
 
@@ -101,8 +111,6 @@ describe('shortcutSections', () => {
     expect(sections.map((s) => s.group)).toEqual(['Find', 'Figures', 'Steps', 'Part', 'General']);
     const ids = sections.flatMap((s) => s.shortcuts.map((x) => x.id));
     expect(ids).not.toContain('practice');
-    expect(shortcutSections({ hasFigure: true, practiceEnabled: true }).flatMap((s) => s.shortcuts.map((x) => x.id))).toContain(
-      'practice',
-    );
+    expect(shortcutSections(practiceOn).flatMap((s) => s.shortcuts.map((x) => x.id))).toContain('practice');
   });
 });

@@ -43,34 +43,37 @@
   --target: 44px;
 }
 
-[data-theme='dark'] {
-  /* Dark theme: Night ground, Floor surfaces, Chalk ink */
-  --mirror: #0d1224;
-  --floor: #151b30;
-  --ink: #e8ebf4;
-  --on-ink: #0d1224;
-  --shade: #c3c9d8;
-  --slate: #9aa3b8;
-  --lead: #86a5ff;
-  --follow: #ff9b66;
-  --on-role: #0d1224;
-  --rule: #2a3350;
-  --hairline: #232b45;
-  --edge: #3a4466;
-  --idle: #3a4466;
-  --track: #0d1224;
-  --match: #2a3350;
-  --tint: #101629;
-  --chevron: #6e7893;
-  --scrim: rgba(0, 0, 0, 0.6);
-  --lift: inset 0 0 0 1px var(--edge);
-  --bronze: #d9a066;
-  --bronze-dot: #c98a4b;
-  --silver: #b4bfd0;
-  --silver-dot: #8c97a7;
-  --gold: #e3bc3c;
-  --gold-dot: #c9a227;
-  --pre-bronze-dot: #c98a4b;
+/* A printed page is always the light theme, whatever the screen shows. */
+@media not print {
+  [data-theme='dark'] {
+    /* Dark theme: Night ground, Floor surfaces, Chalk ink */
+    --mirror: #0d1224;
+    --floor: #151b30;
+    --ink: #e8ebf4;
+    --on-ink: #0d1224;
+    --shade: #c3c9d8;
+    --slate: #9aa3b8;
+    --lead: #86a5ff;
+    --follow: #ff9b66;
+    --on-role: #0d1224;
+    --rule: #2a3350;
+    --hairline: #232b45;
+    --edge: #3a4466;
+    --idle: #3a4466;
+    --track: #0d1224;
+    --match: #2a3350;
+    --tint: #101629;
+    --chevron: #6e7893;
+    --scrim: rgba(0, 0, 0, 0.6);
+    --lift: inset 0 0 0 1px var(--edge);
+    --bronze: #d9a066;
+    --bronze-dot: #c98a4b;
+    --silver: #b4bfd0;
+    --silver-dot: #8c97a7;
+    --gold: #e3bc3c;
+    --gold-dot: #c9a227;
+    --pre-bronze-dot: #c98a4b;
+  }
 }
 
 html {

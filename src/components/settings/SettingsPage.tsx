@@ -73,7 +73,7 @@ export default function SettingsPage() {
 
 // figureStyle: the style of the figure Settings was opened from, if any.
 function SettingsHome({ figureStyle }: { figureStyle: DanceStyle | null }) {
-  const { theme, fields, setTheme, openSettingsPage } = useSettings();
+  const { theme, fields, showPractice, setTheme, setShowPractice, openSettingsPage } = useSettings();
   const { spellOutAbbreviations, setSpellOutAbbreviations } = useDisplaySettings();
   const isMobile = useIsMobile();
   const shortcuts = useShortcutsDialog();
@@ -119,6 +119,18 @@ function SettingsHome({ figureStyle }: { figureStyle: DanceStyle | null }) {
           onChange={setTheme}
         />
       </SettingsSection>
+
+      {/* A phone always has Practice; only a wide window chooses. */}
+      {!isMobile && (
+        <SettingsSection title="Practice">
+          <SwitchRow
+            label="Show Practice"
+            description="Adds a Practice button to each figure, and the P key."
+            checked={showPractice}
+            onChange={setShowPractice}
+          />
+        </SettingsSection>
+      )}
 
       {!isMobile && (
         <SettingsSection title="Keyboard">

@@ -1,5 +1,6 @@
 /* Two panes split by one rule. Each scrolls on its own. */
 .ds {
+  position: relative;
   flex: 1;
   min-height: 0;
   display: grid;

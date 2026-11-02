@@ -1,0 +1,28 @@
+/* Covers the panes. Each band of the phone's screen keeps its full width and
+   ground; what is in it lines up in one centered column of --dp-column. */
+.dp {
+  --dp-column: 640px;
+  /* The space each side of the column, never less than the gutter. */
+  --dp-inset: max(var(--gutter), calc((100% - var(--dp-column)) / 2));
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  background: var(--mirror);
+}
+
+/* The bar's Back and menu buttons carry their own padding, so they start
+   inside the column's edge by that much. */
+.dp .ui-topbar {
+  padding-inline: calc(var(--dp-inset) - 12px);
+}
+
+.dp .pr-frozen,
+.dp .pr-foot {
+  padding-inline: var(--dp-inset);
+}
+
+.dp .pr-slide {
+  padding-inline: var(--dp-inset);
+}

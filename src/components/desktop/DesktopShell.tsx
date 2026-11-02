@@ -6,6 +6,7 @@ import { figureKey } from '../../utils/figureKey';
 import type { BuiltSections } from '../../utils/search';
 import HomeScreen from '../home/HomeScreen';
 import DesktopFigure from './DesktopFigure';
+import DesktopPractice from './DesktopPractice';
 import FigureIndex from './FigureIndex';
 import './DesktopShell.css';
 
@@ -17,6 +18,9 @@ export interface DesktopShellProps {
   // The open figure; null shows the empty state.
   figure: FigureGroup | null;
   onOpenFigure(figure: FigureGroup): void;
+  // Practice is open for the figure, over both panes; closing it returns to the figure.
+  practiceOpen: boolean;
+  onClosePractice(): void;
   // Said in the empty state, e.g. that a link's figure is not there.
   notice?: string;
 }
@@ -24,7 +28,7 @@ export interface DesktopShellProps {
 // The wide layout: the figure list on the left, the open figure on the
 // right. The list stays mounted, so its scroll position, filters and
 // selection are still there whichever figure is open.
-export default function DesktopShell({ figures, built, filters, figure, onOpenFigure, notice }: DesktopShellProps) {
+export default function DesktopShell({ figures, built, filters, figure, onOpenFigure, practiceOpen, onClosePractice, notice }: DesktopShellProps) {
   const listScrollTopRef = useRef(0);
   const listRef = useRef<HTMLElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
@@ -37,6 +41,8 @@ export default function DesktopShell({ figures, built, filters, figure, onOpenFi
   useShortcuts({
     figures: shown,
     figure,
+    practiceOpen,
+    closePractice: onClosePractice,
     searchRef,
     listRef,
     figureControlsRef,
@@ -46,7 +52,7 @@ export default function DesktopShell({ figures, built, filters, figure, onOpenFi
 
   return (
     <div className="ds">
-      <section ref={listRef} className="ds-list" aria-label="Figure list">
+      <section ref={listRef} className="ds-list" aria-label="Figure list" inert={practiceOpen}>
         <HomeScreen
           figures={figures}
           built={built}
@@ -59,13 +65,14 @@ export default function DesktopShell({ figures, built, filters, figure, onOpenFi
           searchRef={searchRef}
         />
       </section>
-      <main className="ds-detail">
+      <main className="ds-detail" inert={practiceOpen}>
         {figure ? (
           <DesktopFigure key={figureKey(figure)} figure={figure} filters={filters} controlsRef={figureControlsRef} />
         ) : (
           <FigureIndex figures={figures} filters={filters} onOpenFigure={onOpenFigure} notice={notice} />
         )}
       </main>
+      {practiceOpen && figure && <DesktopPractice figure={figure} onBack={onClosePractice} />}
       <div className="fv-sr-only" aria-live="polite" aria-atomic="true">
         {announcement}
       </div>

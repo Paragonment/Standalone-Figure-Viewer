@@ -3,9 +3,12 @@ import type { FigureGroup } from '../../types';
 import type { useDanceFilters } from '../../hooks/useDanceFilters';
 import { useFigureScroll } from '../../hooks/useFigureScroll';
 import type { FigureControls } from '../../hooks/useShortcuts';
+import { usePracticeEnabled } from '../../hooks/usePracticeEnabled';
+import { useRoute } from '../../hooks/useRoute';
 import { useSettings } from '../../state/useSettings';
 import { figureRoute, linkTo } from '../../utils/route';
 import FigureBody from '../figure/FigureBody';
+import PracticeButton from '../ui/PracticeButton';
 import CopyLink from './CopyLink';
 import DetailBar from './DetailBar';
 import FigureCrumb from './FigureCrumb';
@@ -22,6 +25,8 @@ interface DesktopFigureProps {
 export default function DesktopFigure({ figure, filters, controlsRef }: DesktopFigureProps) {
   const scroll = useFigureScroll();
   const { role, sideBySide } = useSettings();
+  const { openPractice } = useRoute();
+  const practiceEnabled = usePracticeEnabled();
   const { current, goToStep, keepPlace, titleRef } = scroll;
   const stepCount = figure.steps.length;
 
@@ -48,7 +53,16 @@ export default function DesktopFigure({ figure, filters, controlsRef }: DesktopF
       scroll={scroll}
       layout="adaptive"
       headerSlot={
-        <DetailBar actions={<CopyLink getUrl={getUrl} />} title={figure.name} scrolled={scroll.scrolled}>
+        <DetailBar
+          actions={
+            <>
+              {practiceEnabled && <PracticeButton onClick={openPractice} />}
+              <CopyLink getUrl={getUrl} />
+            </>
+          }
+          title={figure.name}
+          scrolled={scroll.scrolled}
+        >
           <FigureCrumb figure={figure} filters={filters} />
         </DetailBar>
       }

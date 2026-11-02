@@ -29,6 +29,8 @@ export const SHORTCUT_GROUPS: ShortcutGroup[] = ['Find', 'Figures', 'Steps', 'Pa
 export interface ShortcutContext {
   hasFigure: boolean;
   practiceEnabled: boolean;
+  // Practice covers the window, so only what says `duringPractice` applies.
+  practiceOpen: boolean;
 }
 
 export interface Shortcut {
@@ -45,6 +47,8 @@ export interface Shortcut {
   whileTyping?: boolean;
   // Not while a button or link has focus, which the key would press.
   yieldsToControls?: boolean;
+  // Still works with Practice open; the rest wait until it is closed.
+  duringPractice?: boolean;
   // Offered only when this holds; always, if absent.
   when?(context: ShortcutContext): boolean;
 }
@@ -60,6 +64,7 @@ export const SHORTCUTS: readonly Shortcut[] = [
     description: 'Clear search, then back to the list',
     group: 'Find',
     whileTyping: true,
+    duringPractice: true,
   },
   {
     id: 'listPrevious',
@@ -97,11 +102,11 @@ export const SHORTCUTS: readonly Shortcut[] = [
     group: 'Steps',
     when: hasFigure,
   },
-  { id: 'lead', keys: ['l'], description: 'Show Lead', group: 'Part', when: hasFigure },
-  { id: 'follow', keys: ['f'], description: 'Show Follow', group: 'Part', when: hasFigure },
-  { id: 'both', keys: ['b'], description: 'Show both side by side', group: 'Part', when: hasFigure },
-  { id: 'settings', keys: [','], description: 'Open Settings', group: 'General' },
-  { id: 'help', keys: ['?'], description: 'Show the keyboard shortcuts', group: 'General' },
+  { id: 'lead', keys: ['l'], description: 'Show Lead', group: 'Part', when: hasFigure, duringPractice: true },
+  { id: 'follow', keys: ['f'], description: 'Show Follow', group: 'Part', when: hasFigure, duringPractice: true },
+  { id: 'both', keys: ['b'], description: 'Show both side by side', group: 'Part', when: hasFigure, duringPractice: true },
+  { id: 'settings', keys: [','], description: 'Open Settings', group: 'General', duringPractice: true },
+  { id: 'help', keys: ['?'], description: 'Show the keyboard shortcuts', group: 'General', duringPractice: true },
   {
     id: 'practice',
     keys: ['p'],
@@ -132,7 +137,7 @@ const normalizeKey = (key: string) => (key.length === 1 ? key.toLowerCase() : ke
 
 // The shortcut a key press triggers, if any: none while a modifier is held,
 // while a dialog is open, while typing (bar the few that say so), or when
-// the shortcut is not on offer.
+// the shortcut is not on offer, or with Practice open (bar the few that say so).
 export function matchShortcut(press: KeyPress, context: ShortcutContext): Shortcut | null {
   if (press.ctrlKey || press.metaKey || press.altKey || press.overlayOpen) return null;
   const key = normalizeKey(press.key);
@@ -141,6 +146,7 @@ export function matchShortcut(press: KeyPress, context: ShortcutContext): Shortc
   if (press.typing && !shortcut.whileTyping) return null;
   if (shortcut.inList && !press.inList) return null;
   if (shortcut.yieldsToControls && press.onControl) return null;
+  if (context.practiceOpen && !shortcut.duringPractice) return null;
   if (shortcut.when && !shortcut.when(context)) return null;
   return shortcut;
 }

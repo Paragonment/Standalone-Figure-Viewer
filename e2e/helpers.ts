@@ -100,6 +100,22 @@ export const openAbout = async (page: Page) => {
   await settle(page);
 };
 
+// Starts the app with Show Practice on, as if it had been turned on in a
+// visit before: for specs that need Practice but are not about the switch.
+export const startWithPractice = (page: Page) =>
+  page.addInitScript(() => localStorage.setItem('fv-settings', JSON.stringify({ v: 1, showPractice: true })));
+
+// Turns Show Practice on in Settings, as a reader on a wide window does, and
+// closes Settings again.
+export const turnOnPractice = async (page: Page) => {
+  await openSettings(page);
+  const practiceSwitch = page.getByRole('dialog', { name: 'Settings' }).getByRole('switch', { name: 'Show Practice' });
+  await practiceSwitch.click();
+  await expect(practiceSwitch).toHaveAttribute('aria-checked', 'true');
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('dialog', { name: 'Settings' })).toBeHidden();
+};
+
 export const openPractice = async (page: Page) => {
   await page.getByRole('button', { name: 'Practice' }).click();
   await expect(page.getByRole('button', { name: 'Back to steps' })).toBeVisible();

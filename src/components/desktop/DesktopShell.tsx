@@ -63,7 +63,7 @@ export default function DesktopShell({ figures, built, filters, figure, onOpenFi
         {figure ? (
           <DesktopFigure key={figureKey(figure)} figure={figure} filters={filters} controlsRef={figureControlsRef} />
         ) : (
-          <FigureIndex count={figures.length} notice={notice} />
+          <FigureIndex figures={figures} filters={filters} onOpenFigure={onOpenFigure} notice={notice} />
         )}
       </main>
       <div className="fv-sr-only" aria-live="polite" aria-atomic="true">

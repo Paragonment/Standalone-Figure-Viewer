@@ -1,0 +1,8 @@
+.ui-level-dot {
+  flex: none;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  border: 2px solid;
+}

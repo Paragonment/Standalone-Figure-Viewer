@@ -89,13 +89,11 @@ test('a deep link scrolls the list to the open figure', async ({ page }) => {
 test('clicking a row that is only partly in view does not move the list', async ({ page }) => {
   await openLink(page, '#/waltz/back-lock');
   const scroller = page.locator('.home-scroll');
-  await scroller.evaluate((el) => {
-    el.scrollTop = 600;
-  });
+  // Scroll so a row far down the list is cut by the bottom edge, 20px of it showing.
   const point = await scroller.evaluate((el) => {
     const view = el.getBoundingClientRect();
-    const rows = Array.from(el.querySelectorAll<HTMLElement>('.fl-row'));
-    const row = rows.find((r) => r.getBoundingClientRect().bottom > view.bottom + 8)!;
+    const row = el.querySelectorAll<HTMLElement>('.fl-row')[20];
+    el.scrollTop += row.getBoundingClientRect().top - (view.bottom - 20);
     return { x: row.getBoundingClientRect().left + 40, y: view.bottom - 6 };
   });
   const before = await scroller.evaluate((el) => el.scrollTop);

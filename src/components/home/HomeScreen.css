@@ -19,6 +19,12 @@
   overflow-y: auto;
   /* Keeps a row scrolled into view clear of the stuck count bar. */
   scroll-padding-top: 42px;
+  /* ... and clear of a dance's heading stuck under it. */
+  --fl-group-h: 36px;
+}
+
+.home-scroll:has(.fl-group-head) {
+  scroll-padding-top: calc(42px + var(--fl-group-h));
 }
 
 /* A quiet line on the Floor between the count bar and the figures. */

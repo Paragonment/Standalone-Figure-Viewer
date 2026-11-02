@@ -73,7 +73,7 @@ for (const layout of LAYOUTS) {
       await openApp(page);
       const entries = await page.evaluate(() => window.history.length);
       await filterByDance(page, FIGURE.dance);
-      await page.getByRole('button', { name: 'Bronze', exact: true }).click();
+      await page.getByRole('group', { name: 'Level' }).getByRole('button', { name: 'Bronze', exact: true }).click();
       await searchFor(page, 'lock');
       await expect.poll(() => hashOf(page)).toBe('#/?dance=waltz&level=bronze&q=lock');
       expect(await page.evaluate(() => window.history.length)).toBe(entries);
@@ -81,7 +81,7 @@ for (const layout of LAYOUTS) {
       await page.reload();
       await expect(page.locator('.fl-row').first()).toBeVisible();
       await expect(page.getByRole('button', { name: FIGURE.dance, exact: true })).toHaveAttribute('aria-pressed', 'true');
-      await expect(page.getByRole('button', { name: 'Bronze', exact: true })).toHaveAttribute('aria-pressed', 'true');
+      await expect(page.getByRole('group', { name: 'Level' }).getByRole('button', { name: 'Bronze', exact: true })).toHaveAttribute('aria-pressed', 'true');
       await expect(page.getByRole('searchbox')).toHaveValue('lock');
       await expect(figureRow(page, FIGURE.name)).toBeVisible();
     });

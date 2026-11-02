@@ -28,8 +28,10 @@ const ViewerContainer: React.FC = () => {
   const figureGroups = useFigureGroups(datasets);
   // Filter and search state lives here so it outlives the screens.
   const filters = useDanceFilters(figureGroups);
-  const built = useFigureSections(figureGroups, filters);
   const isMobile = useIsMobile();
+  // The phone's list stays one run of figures with their dance and level on
+  // each; the wide pane has room for dance and level headings.
+  const built = useFigureSections(figureGroups, filters, !isMobile);
 
   const { route, open, openPractice, goBack: goBackTo } = useRoute();
   const { figure: activeFigure, screen, missing } = useMemo(() => resolveRoute(figureGroups, route), [figureGroups, route]);

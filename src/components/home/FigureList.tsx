@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { Fragment, useEffect, useRef } from 'react';
 import type { FigureGroup } from '../../types';
 import type { FigureRow, ResultSection } from '../../utils/search';
 import { figureKey } from '../../utils/figureKey';
@@ -26,6 +26,56 @@ interface FigureListProps {
 }
 
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
+
+interface SectionRun {
+  // The dance the sections belong to; none for ungrouped sections.
+  group?: string;
+  sections: ResultSection[];
+}
+
+// Neighbouring sections of one dance, so a dance's heading can stick over
+// all of its levels.
+const runsOf = (sections: ResultSection[]): SectionRun[] => {
+  const runs: SectionRun[] = [];
+  for (const section of sections) {
+    const last = runs[runs.length - 1];
+    if (last && last.group === section.group) last.sections.push(section);
+    else runs.push({ group: section.group, sections: [section] });
+  }
+  return runs;
+};
+
+function Section({ section, grouped, selectedKey, onOpen }: SectionProps) {
+  const Heading = section.group === undefined ? 'h2' : 'h3';
+  return (
+    <section className={section.tinted ? 'fl-section fl-section-tint' : 'fl-section'}>
+      {section.heading && (
+        <Heading className="fl-heading" style={{ color: section.headingColor }}>
+          <span>{section.heading}</span>
+          <span className="fl-heading-count">{section.count}</span>
+        </Heading>
+      )}
+      <ul className="fl-list">
+        {section.rows.map((row) => (
+          <Row
+            key={figureKey(row.figure)}
+            row={row}
+            grouped={grouped}
+            selected={figureKey(row.figure) === selectedKey}
+            onOpen={onOpen}
+          />
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+interface SectionProps {
+  section: ResultSection;
+  grouped: boolean;
+  selectedKey?: string;
+  onOpen(figure: FigureGroup): void;
+}
 
 interface RowProps {
   row: FigureRow;
@@ -143,27 +193,27 @@ export default function FigureList({
           )}
         </div>
       )}
-      {sections.map((section) => (
-        <section key={section.heading ?? section.key} className={section.tinted ? 'fl-section fl-section-tint' : 'fl-section'}>
-          {section.heading && (
-            <h2 className="fl-heading" style={{ color: section.headingColor }}>
-              <span>{section.heading}</span>
-              <span className="fl-heading-count">{section.count}</span>
+      {runsOf(sections).map(({ group, sections: run }) => {
+        const body = run.map((section) => (
+          <Section
+            key={section.heading ?? section.key}
+            section={section}
+            grouped={grouped}
+            selectedKey={selectedKey}
+            onOpen={open}
+          />
+        ));
+        if (group === undefined) return <Fragment key="ungrouped">{body}</Fragment>;
+        return (
+          <div key={group} className="fl-group">
+            <h2 className="fl-group-head">
+              <span>{group}</span>
+              <span className="fl-heading-count">{run.reduce((n, section) => n + section.count, 0)}</span>
             </h2>
-          )}
-          <ul className="fl-list">
-            {section.rows.map((row) => (
-              <Row
-                key={figureKey(row.figure)}
-                row={row}
-                grouped={grouped}
-                selected={figureKey(row.figure) === selectedKey}
-                onOpen={open}
-              />
-            ))}
-          </ul>
-        </section>
-      ))}
+            {body}
+          </div>
+        );
+      })}
     </div>
   );
 }

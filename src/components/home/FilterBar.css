@@ -138,14 +138,6 @@
   color: var(--on-ink);
 }
 
-.fb-dot {
-  flex: none;
-  width: 8px;
-  height: 8px;
-  border-radius: 4px;
-  border: 2px solid;
-}
-
 /* Four pills need about 340px of text and padding; tighten them when the
    bar is narrow (a phone, or the desktop list) so none runs off the edge.
    The widths are those of a 389px and a 339px screen less the gutters. */

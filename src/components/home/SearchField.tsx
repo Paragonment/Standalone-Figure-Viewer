@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import type { RefObject } from 'react';
 import { ClearIcon, SearchIcon } from '../ui/Icons';
 import './SearchField.css';
 
@@ -7,10 +7,10 @@ interface SearchFieldProps {
   onChange(value: string): void;
   // Doubles as the accessible name, e.g. "Search 310 figures".
   placeholder: string;
+  inputRef: RefObject<HTMLInputElement | null>;
 }
 
-export default function SearchField({ value, onChange, placeholder }: SearchFieldProps) {
-  const inputRef = useRef<HTMLInputElement>(null);
+export default function SearchField({ value, onChange, placeholder, inputRef }: SearchFieldProps) {
   return (
     <div role="search" className="sf">
       <SearchIcon className="sf-icon" />

@@ -1,42 +1,8 @@
-/* The Floor panel under the filters: count bar, then the scrolling list. */
+/* The Floor panel under the count bar; it fills the rest of the screen
+   when the list is short. */
 .fl {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
+  flex: 1 0 auto;
   background: var(--floor);
-  border-top: 1px solid var(--rule);
-}
-
-.fl-count {
-  flex: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 41px; /* 40px of content plus the hairline, as in the design */
-  padding: 0 8px 0 var(--gutter);
-  border-bottom: 1px solid var(--hairline);
-}
-
-.fl-count-text {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--slate);
-}
-
-/* 44px target inside the 40px bar. */
-.fl-act {
-  height: var(--target);
-  margin: -2px 0;
-  padding: 0 8px;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.fl-scroll {
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
 }
 
 .fl-section {
@@ -162,7 +128,6 @@
 }
 
 @media (hover: hover) {
-  .fl-act:hover,
   .fl-empty-act:hover {
     color: var(--shade);
   }

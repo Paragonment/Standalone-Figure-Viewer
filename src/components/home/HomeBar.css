@@ -1,0 +1,137 @@
+/* The top edge of the Floor panel. Stuck at top: -1px, so its top border
+   hides at the scroller's edge and the bar reads as the Mirror top bar. */
+.hb {
+  position: sticky;
+  top: -1px;
+  z-index: 1;
+  flex: none;
+  display: grid;
+  height: 42px; /* 40px of content between the two borders, as in the design */
+  background: var(--floor);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--hairline);
+  transition:
+    background-color var(--dur) ease,
+    border-color var(--dur) ease;
+}
+
+.hb-stuck {
+  background: var(--mirror);
+  border-bottom-color: var(--rule);
+}
+
+/* The resting count bar and the compact banner share the bar and cross-fade. */
+.hb-rest,
+.hb-compact {
+  grid-area: 1 / 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  opacity: 1;
+  transition: opacity var(--dur) ease;
+}
+
+.hb-hidden {
+  opacity: 0;
+}
+
+.hb-rest {
+  justify-content: space-between;
+  padding: 0 8px 0 var(--gutter);
+}
+
+.hb-count {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--slate);
+}
+
+/* 44px targets inside the 40px bar. */
+.hb-act {
+  height: var(--target);
+  margin: -2px 0;
+  padding: 0 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* The menu lines up with the one beside the big title. */
+.hb-compact {
+  padding: 0 6px 0 var(--gutter);
+}
+
+.hb-jump {
+  flex: 1;
+  min-width: 0;
+  height: var(--target);
+  margin: -2px 0;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 11px 0 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.hb-title {
+  flex: none;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 21px;
+  line-height: 1;
+}
+
+.hb-summary {
+  min-width: 0;
+  display: flex;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--slate);
+  white-space: pre;
+}
+
+.hb-picked {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hb-tally {
+  flex: none;
+}
+
+.hb-icon {
+  flex: none;
+  width: var(--target);
+  height: var(--target);
+  margin: -2px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.hb-compact .ui-menu-btn {
+  margin: -2px 0;
+}
+
+/* Inside the bar: the scroller would clip a ring drawn above it. */
+.hb-jump:focus-visible,
+.hb-icon:focus-visible,
+.hb-compact .ui-menu-btn:focus-visible {
+  border-radius: var(--r-field);
+  outline-offset: -2px;
+}
+
+@media (hover: hover) {
+  .hb-act:hover {
+    color: var(--shade);
+  }
+}

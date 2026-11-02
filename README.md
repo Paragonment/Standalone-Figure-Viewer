@@ -8,8 +8,9 @@ Bronze, Silver and Gold level. Built with React 19, TypeScript and Vite.
 
 On a phone (768px wide or less) the app has three screens and a settings page:
 
-- **Home** - search, always-visible dance and level filters, and the figure list. Searching ranks
-  figure names first, then figures whose notes mention the query.
+- **Home** - search, dance and level filters, and the figure list. Scrolling the list tucks the
+  filters into a compact top banner that sums up what is picked; tap it to bring them back.
+  Searching ranks figure names first, then figures whose notes mention the query.
 - **Figure** - the steps, with the positions, a rhythm strip and the Lead/Follow switch frozen above
   them. Tap a beat to jump to its step. An About band holds the notes. Side by side shows both parts.
   Swipe right anywhere to go back to the list.

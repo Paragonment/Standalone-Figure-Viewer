@@ -36,16 +36,17 @@
 
 /* Text and rules start on the gutter, in line with the title. */
 .sc-table .sc-n {
-  width: 46px;
   padding-left: 0;
 }
 
-.sc-table .sc-count {
-  width: 56px;
-}
-
+/* The number, count and part columns hug their content (a 1% width with
+   no wrapping is the table's way of asking for the least it can have), so
+   what they leave goes to Feet and then to the text columns. */
+.sc-table .sc-n,
+.sc-table .sc-count,
 .sc-table .sc-part {
-  width: 76px;
+  width: 1%;
+  white-space: nowrap;
 }
 
 .sc-table tbody .sc-n {
@@ -95,9 +96,10 @@
   color: var(--follow);
 }
 
-/* Feet is the headline; it takes the most of what the other columns leave. */
+/* Feet is the headline: it asks for the most of the width, so a typical
+   value stays on one line and the text columns beside it wrap first. */
 .sc-table thead .sc-feet {
-  width: 24%;
+  width: 34%;
 }
 
 /* Both parts: a tighter pair under one number, a hairline between the two

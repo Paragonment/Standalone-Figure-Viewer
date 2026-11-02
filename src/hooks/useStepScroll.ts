@@ -27,7 +27,7 @@ const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: r
 // - `scrolled` turns true once the big title has scrolled away.
 // - `goToStep` scrolls a step to just under the frozen block and pins it as
 //   current while the jump runs and while the list rests there (near the end
-//   the last steps cannot reach the top).
+//   the last steps cannot reach the top). `instant` skips the animation.
 // - `keepPlace` is called right before a change that reflows the steps
 //   (part, side by side); once `layoutKey` has changed the step that was at
 //   the top is put back where it was.
@@ -83,7 +83,7 @@ export function useStepScroll(layoutKey: string) {
   // The frozen block is stuck at top: -1px, so its bottom edge sits at
   // offsetHeight - 1 inside the scroller.
   const goToStep = useCallback(
-    (n: number) => {
+    (n: number, instant = false) => {
       const list = listRef.current;
       const bar = barRef.current;
       const row = rowFor(n);
@@ -92,7 +92,7 @@ export function useStepScroll(layoutKey: string) {
       // Not offsetTop: a chart's tbody is offset from its table, not the scroller.
       const rowTop = list.scrollTop + row.getBoundingClientRect().top - list.getBoundingClientRect().top;
       const top = Math.max(0, Math.min(max, rowTop - (bar.offsetHeight - 1)));
-      if (prefersReducedMotion()) list.scrollTop = top;
+      if (instant || prefersReducedMotion()) list.scrollTop = top;
       else list.scrollTo({ top, behavior: 'smooth' });
       pinRef.current = { n, top, until: Date.now() + PIN_MS };
       currentRef.current = n;

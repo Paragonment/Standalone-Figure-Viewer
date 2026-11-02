@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } fro
 import type { DanceStyle } from '../types';
 import { DANCE_STYLES } from '../utils/danceStyles';
 import { useIsMobile } from '../hooks/useIsMobile';
+import type { PartParam } from '../utils/route';
 import { DEFAULT_FIELDS, getStepFields } from '../utils/stepFields';
 import { SettingsContext, type Role, type SettingsApi, type ThemePreference } from './settingsContext';
 
@@ -95,6 +96,7 @@ export default function SettingsProvider({ children }: { children: ReactNode }) 
   const isMobile = useIsMobile();
   const [theme, setThemeState] = useState<ThemePreference>(readTheme);
   const [systemDark, setSystemDark] = useState(systemPrefersDark);
+  const [viewPart, setViewPart] = useState<PartParam | null>(null);
   const [entry, setEntry] = useState<SettingsEntry | null>(readSettingsEntry);
   // Set between asking the browser to go back and it doing so, so a second
   // close in that gap can't also go back past the screen underneath.
@@ -146,11 +148,14 @@ export default function SettingsProvider({ children }: { children: ReactNode }) 
     }
   }, [stored]);
 
-  const setRole = useCallback((role: Role) => setStored((s) => ({ ...s, role, sideBySide: false, partChosen: true })), []);
-  const setSideBySide = useCallback(
-    (on: boolean) => setStored((s) => ({ ...s, sideBySide: on, partChosen: true })),
-    [],
-  );
+  const setRole = useCallback((role: Role) => {
+    setViewPart(null);
+    setStored((s) => ({ ...s, role, sideBySide: false, partChosen: true }));
+  }, []);
+  const setSideBySide = useCallback((on: boolean) => {
+    setViewPart(null);
+    setStored((s) => ({ ...s, sideBySide: on, partChosen: true }));
+  }, []);
   const setTheme = useCallback((next: ThemePreference) => setThemeState(next), []);
   const setStyleFields = useCallback(
     (style: DanceStyle, keys: string[]) =>
@@ -193,15 +198,19 @@ export default function SettingsProvider({ children }: { children: ReactNode }) 
   // a wide window shows both parts and a phone the stored Lead. The stored
   // value is never rewritten by the window's size, so crossing the
   // breakpoint can't make the layouts fight over it.
-  const sideBySide = stored.partChosen ? stored.sideBySide : !isMobile;
+  const savedSideBySide = stored.partChosen ? stored.sideBySide : !isMobile;
+  // A link's part wins over the saved one while its view is open.
+  const sideBySide = viewPart ? viewPart === 'both' : savedSideBySide;
+  const role: Role = viewPart === 'lead' || viewPart === 'follow' ? viewPart : stored.role;
 
   const value = useMemo<SettingsApi>(
     () => ({
-      role: stored.role,
+      role,
       sideBySide,
       theme,
       fields: stored.fields,
       resolvedTheme,
+      setViewPart,
       setRole,
       setSideBySide,
       setTheme,
@@ -217,9 +226,11 @@ export default function SettingsProvider({ children }: { children: ReactNode }) 
     }),
     [
       stored,
+      role,
       sideBySide,
       theme,
       resolvedTheme,
+      setViewPart,
       setRole,
       setSideBySide,
       setTheme,

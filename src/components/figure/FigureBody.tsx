@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import type { ReactNode } from 'react';
 import type { FigureGroup, Role } from '../../types';
 import type { FigureScroll } from '../../hooks/useFigureScroll';
+import { useRouteStep } from '../../hooks/useRouteStep';
 import { useSettings } from '../../state/useSettings';
 import { hasNotes, parseFigureNotes } from '../../utils/figureNotes';
 import { levelLook } from '../../utils/levels';
@@ -39,6 +40,7 @@ const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? '' : 's'}`;
 export default function FigureBody({ figure, scroll, headerSlot, layout = 'list' }: FigureBodyProps) {
   const { role, sideBySide, fields, setRole, setSideBySide } = useSettings();
   const { listRef, barRef, titleRef, current, onScroll, goToStep, keepPlace } = scroll;
+  useRouteStep(scroll);
 
   const beats = useMemo(() => buildBeats(figure), [figure]);
   const notes = useMemo(() => parseFigureNotes(figure.generalNotes), [figure]);

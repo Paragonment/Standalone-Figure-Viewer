@@ -25,6 +25,16 @@ On a phone (768px wide or less) the app has three screens and a settings page:
 On wider screens the app is a two-pane reference: the figure list with its search and filters stays
 on the left, and the open figure fills the right, with both parts side by side until you pick one.
 
+## Links
+
+The address says what is open, on a phone and on a desktop alike (`src/utils/route.ts`,
+`src/hooks/useRoute.ts`): `#/waltz/back-lock?part=follow&step=3` is a figure at a part and step,
+`#/waltz/back-lock/practice` is its Practice, and `#/?dance=waltz&level=bronze&q=lock` is the list
+with its filters and search. Opening a figure or Practice adds a history entry, so Back and Forward
+retrace what was read; filters, search, part and step rewrite the current entry instead. A part in
+a link applies to that view only and never replaces the saved one. A link to a figure that is not
+there opens the list with a note. On a desktop, Copy link puts the current address on the clipboard.
+
 ## Data
 
 The figures live in `public/standard.csv` and `public/latin.csv`. Where the charts come from is

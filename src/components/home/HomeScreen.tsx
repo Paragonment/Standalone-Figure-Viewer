@@ -20,9 +20,11 @@ export interface HomeScreenProps {
   showMenu?: boolean;
   // The open figure's key (see figureKey), marked in the list.
   selectedKey?: string;
+  // Said quietly above the list, e.g. that a link's figure is not there.
+  notice?: string;
 }
 
-export default function HomeScreen({ figures, filters, onOpenFigure, scrollTopRef, showMenu = true, selectedKey }: HomeScreenProps) {
+export default function HomeScreen({ figures, filters, onOpenFigure, scrollTopRef, showMenu = true, selectedKey, notice }: HomeScreenProps) {
   const {
     searchTerm,
     selectedDances,
@@ -78,6 +80,11 @@ export default function HomeScreen({ figures, filters, onOpenFigure, scrollTopRe
           onShowFilters={scrollToTop}
           onSearch={search}
         />
+        {notice && (
+          <p role="status" className="home-notice">
+            {notice}
+          </p>
+        )}
         <FigureList
           sections={sections}
           total={total}

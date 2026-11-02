@@ -1,5 +1,6 @@
 import { createContext } from 'react';
 import type { DanceStyle, Role } from '../types';
+import type { PartParam } from '../utils/route';
 
 export type { Role };
 
@@ -15,6 +16,10 @@ export interface Settings {
 
 export interface SettingsApi extends Settings {
   resolvedTheme: 'light' | 'dark';
+  // Shows this part for the open view only, without touching the saved one
+  // (a link's part); null goes back to the saved part. Choosing a part below
+  // ends it.
+  setViewPart(part: PartParam | null): void;
   // Choosing a part also leaves side by side.
   setRole(role: Role): void;
   setSideBySide(on: boolean): void;

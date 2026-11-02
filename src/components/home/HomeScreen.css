@@ -18,3 +18,15 @@
   flex-direction: column;
   overflow-y: auto;
 }
+
+/* A quiet line on the Floor between the count bar and the figures. */
+.home-notice {
+  flex: none;
+  margin: 0;
+  padding: 14px var(--gutter);
+  background: var(--floor);
+  border-bottom: 1px solid var(--hairline);
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--slate);
+}

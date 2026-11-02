@@ -28,3 +28,9 @@
   font-size: 15px;
   color: var(--slate);
 }
+
+.fi-notice {
+  margin: 12px 0 0;
+  font-size: 15px;
+  color: var(--slate);
+}

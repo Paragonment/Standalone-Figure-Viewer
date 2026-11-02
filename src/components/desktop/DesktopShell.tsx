@@ -13,12 +13,14 @@ export interface DesktopShellProps {
   // The open figure; null shows the empty state.
   figure: FigureGroup | null;
   onOpenFigure(figure: FigureGroup): void;
+  // Said in the empty state, e.g. that a link's figure is not there.
+  notice?: string;
 }
 
 // The wide layout: the figure list on the left, the open figure on the
 // right. The list stays mounted, so its scroll position, filters and
 // selection are still there whichever figure is open.
-export default function DesktopShell({ figures, filters, figure, onOpenFigure }: DesktopShellProps) {
+export default function DesktopShell({ figures, filters, figure, onOpenFigure, notice }: DesktopShellProps) {
   const listScrollTopRef = useRef(0);
 
   return (
@@ -37,7 +39,7 @@ export default function DesktopShell({ figures, filters, figure, onOpenFigure }:
         {figure ? (
           <DesktopFigure key={figureKey(figure)} figure={figure} filters={filters} />
         ) : (
-          <FigureIndex count={figures.length} />
+          <FigureIndex count={figures.length} notice={notice} />
         )}
       </main>
     </div>

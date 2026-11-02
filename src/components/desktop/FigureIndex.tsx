@@ -2,7 +2,7 @@ import DetailBar from './DetailBar';
 import './FigureIndex.css';
 
 // The right pane with nothing open.
-export default function FigureIndex({ count }: { count: number }) {
+export default function FigureIndex({ count, notice }: { count: number; notice?: string }) {
   return (
     <div className="fi">
       <header className="fi-header">
@@ -11,6 +11,11 @@ export default function FigureIndex({ count }: { count: number }) {
         <p className="fi-meta">
           {count} {count === 1 ? 'figure' : 'figures'}
         </p>
+        {notice && (
+          <p role="status" className="fi-notice">
+            {notice}
+          </p>
+        )}
       </header>
     </div>
   );

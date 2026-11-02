@@ -1,160 +1,120 @@
-import { useId, useRef, useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import SlideOverPage from '../SlideOverPage';
-import CheckBox from '../ui/CheckBox';
 import { useSettings } from '../../state/useSettings';
 import { useDisplaySettings } from '../../hooks/useDisplaySettings';
 import type { ThemePreference } from '../../state/settingsContext';
 import type { DanceStyle } from '../../types';
 import { DANCE_STYLES } from '../../utils/danceStyles';
 import { getStepFields } from '../../utils/stepFields';
-import './SettingsPage.css';
+import { ChoiceRow, NavRow, SettingsSection, SwitchRow, type Choice } from './SettingsRows';
+import StepFieldsPage from './StepFieldsPage';
 
-const THEME_CHOICES: { id: ThemePreference; label: string }[] = [
-  { id: 'system', label: 'System' },
-  { id: 'light', label: 'Light' },
-  { id: 'dark', label: 'Dark' },
+const THEME_CHOICES: Choice<ThemePreference>[] = [
+  { value: 'system', label: 'System' },
+  { value: 'light', label: 'Light' },
+  { value: 'dark', label: 'Dark' },
 ];
 
-// Settings slides in from the right over whichever screen you are on. It is
-// a history entry (see SettingsProvider), so the phone's back gesture closes
-// it as well as Back, a swipe right or Escape.
-export default function SettingsPage() {
-  const { settingsOpen, settingsStyle, closeSettings } = useSettings();
-  // Counts openings. The body is mounted fresh for each, so the tab always
-  // starts on the style that opened it, and stays put while the page slides out.
-  const [opening, setOpening] = useState({ open: settingsOpen, count: 0 });
-  if (opening.open !== settingsOpen) {
-    setOpening({ open: settingsOpen, count: opening.count + (settingsOpen ? 1 : 0) });
-  }
-  return (
-    <SlideOverPage open={settingsOpen} onClose={closeSettings} title="Settings">
-      <SettingsBody key={opening.count} initialStyle={settingsStyle} />
-    </SlideOverPage>
-  );
+// A page that opens on top of Settings from one of its rows, for settings
+// with more choices than fit in a row. Keyed by an id kept in the history
+// entry (see SettingsProvider), so Back and reload know which one is up.
+interface SubPage {
+  title: string;
+  intro?: ReactNode;
+  content: ReactNode;
 }
 
-function SettingsBody({ initialStyle }: { initialStyle: DanceStyle }) {
-  const { theme, fields, setTheme, setStyleFields } = useSettings();
-  const { spellOutAbbreviations, setSpellOutAbbreviations } = useDisplaySettings();
-  const [tab, setTab] = useState<DanceStyle>(initialStyle);
-  const tabRefs = useRef<Partial<Record<DanceStyle, HTMLButtonElement | null>>>({});
-  const tabId = useId();
+const stepsPageId = (style: DanceStyle) => `steps-${style}`;
 
-  const defs = getStepFields(tab);
-  const picked = fields[tab];
-  const allOn = defs.every((f) => picked.includes(f.key));
-  const noneOn = picked.length === 0;
-  const masterState = allOn ? 'on' : noneOn ? 'off' : 'mixed';
+const SUB_PAGES: Record<string, SubPage> = Object.fromEntries(
+  DANCE_STYLES.map(({ id, label }): [string, SubPage] => [
+    stepsPageId(id),
+    {
+      title: `${label} steps`,
+      intro: `Choose what each step of a ${label} figure shows.`,
+      content: <StepFieldsPage style={id} />,
+    },
+  ]),
+);
 
-  const toggleField = (key: string) =>
-    setStyleFields(tab, picked.includes(key) ? picked.filter((k) => k !== key) : [...picked, key]);
+// Settings slides in from the right over whichever screen you are on, and
+// its pages slide in over it in turn. Each is a history entry, so the
+// phone's back gesture steps back one level, as do Back, a swipe right and
+// Escape.
+export default function SettingsPage() {
+  const { settingsOpen, settingsStyle, settingsPage, closeSettings, closeSettingsPage } = useSettings();
+  const page = settingsPage !== null ? SUB_PAGES[settingsPage] : undefined;
 
-  // Arrow keys move between the style tabs, selecting the one they land on.
-  const onTabKeyDown = (e: React.KeyboardEvent, index: number) => {
-    const count = DANCE_STYLES.length;
-    let next: number;
-    if (e.key === 'ArrowRight') next = (index + 1) % count;
-    else if (e.key === 'ArrowLeft') next = (index - 1 + count) % count;
-    else if (e.key === 'Home') next = 0;
-    else if (e.key === 'End') next = count - 1;
-    else return;
-    e.preventDefault();
-    const id = DANCE_STYLES[next].id;
-    setTab(id);
-    tabRefs.current[id]?.focus();
-  };
+  // What was last open stays on screen while it slides out.
+  const [shown, setShown] = useState({ style: settingsStyle, page });
+  if (settingsOpen && settingsStyle !== shown.style) setShown({ ...shown, style: settingsStyle });
+  if (page && page !== shown.page) setShown({ ...shown, page });
 
   return (
     <>
-      <fieldset className="set-group set-group-fields">
-        <legend className="set-legend">Show on each step</legend>
-        <div role="tablist" aria-label="Dance style" className="set-tabs">
-          {DANCE_STYLES.map(({ id, label }, i) => {
-            const selected = tab === id;
-            return (
-              <button
-                key={id}
-                ref={(el) => {
-                  tabRefs.current[id] = el;
-                }}
-                type="button"
-                role="tab"
-                id={`${tabId}-tab-${id}`}
-                aria-selected={selected}
-                aria-controls={`${tabId}-panel`}
-                tabIndex={selected ? 0 : -1}
-                className="set-tab"
-                onClick={() => setTab(id)}
-                onKeyDown={(e) => onTabKeyDown(e, i)}
-              >
-                {label} <span className="set-tab-tally">{fields[id].length} of {getStepFields(id).length}</span>
-              </button>
-            );
-          })}
-        </div>
+      <SlideOverPage open={settingsOpen} onClose={closeSettings} title="Settings">
+        <SettingsHome figureStyle={shown.style} />
+      </SlideOverPage>
+      {/* After Settings, so on a reload with both open it opens on top. */}
+      <SlideOverPage
+        open={settingsOpen && page !== undefined}
+        onClose={closeSettingsPage}
+        title={shown.page?.title ?? ''}
+        intro={shown.page?.intro}
+        backLabel="Settings"
+      >
+        {shown.page?.content}
+      </SlideOverPage>
+    </>
+  );
+}
 
-        <div role="tabpanel" id={`${tabId}-panel`} aria-labelledby={`${tabId}-tab-${tab}`} className="set-panel">
-          <button
-            type="button"
-            role="checkbox"
-            aria-checked={masterState === 'on' ? 'true' : masterState === 'off' ? 'false' : 'mixed'}
-            className="set-check set-check-master"
-            onClick={() => setStyleFields(tab, allOn ? [] : defs.map((f) => f.key))}
-          >
-            <CheckBox state={masterState} size={22} />
-            <span className="set-check-label">{allOn ? 'Deselect all' : 'Select all'}</span>
-          </button>
+// figureStyle: the style of the figure Settings was opened from, if any.
+function SettingsHome({ figureStyle }: { figureStyle: DanceStyle | null }) {
+  const { theme, fields, setTheme, openSettingsPage } = useSettings();
+  const { spellOutAbbreviations, setSpellOutAbbreviations } = useDisplaySettings();
 
-          <div role="group" aria-label={`${tab} step details`} className="set-fields">
-            {defs.map((f) => {
-              const on = picked.includes(f.key);
-              return (
-                <button
-                  key={f.key}
-                  type="button"
-                  role="checkbox"
-                  aria-checked={on}
-                  className="set-check"
-                  onClick={() => toggleField(f.key)}
-                >
-                  <CheckBox state={on ? 'on' : 'off'} size={22} />
-                  <span>{f.label}</span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      </fieldset>
-
-      <fieldset className="set-group set-group-display">
-        <legend className="set-legend">Display</legend>
-        <button
-          type="button"
-          role="switch"
-          aria-checked={spellOutAbbreviations}
-          className="set-switch-row"
-          onClick={() => setSpellOutAbbreviations(!spellOutAbbreviations)}
-        >
-          <span className="set-switch-text">
-            <span className="set-switch-label">Spell out abbreviations</span>
-            <span className="set-switch-sub">Show &lsquo;forward&rsquo; instead of &lsquo;fwd&rsquo;</span>
-          </span>
-          <span className="set-switch" aria-hidden="true" />
-        </button>
-        <div role="group" aria-label="Appearance" className="set-seg">
-          {THEME_CHOICES.map(({ id, label }) => (
-            <button
+  return (
+    <>
+      <SettingsSection title="Steps" description="Choose what each step of a figure shows, separately for Standard and Latin.">
+        {DANCE_STYLES.map(({ id, label }) => {
+          const defs = getStepFields(id);
+          // No-break spaces: a wrapped list breaks between names, not inside one.
+          const shownLabels = defs.filter((f) => fields[id].includes(f.key)).map((f) => f.label.replace(/ /g, '\u00a0'));
+          const summary =
+            shownLabels.length === defs.length
+              ? 'All details'
+              : shownLabels.length > 0
+                ? shownLabels.join(', ')
+                : 'Step numbers only';
+          return (
+            <NavRow
               key={id}
-              type="button"
-              className="set-seg-btn set-seg-theme"
-              aria-pressed={theme === id}
-              onClick={() => setTheme(id)}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-      </fieldset>
+              label={label}
+              badge={id === figureStyle ? 'This figure' : undefined}
+              summary={summary}
+              value={`${shownLabels.length} of ${defs.length}`}
+              onOpen={() => openSettingsPage(stepsPageId(id))}
+            />
+          );
+        })}
+        <SwitchRow
+          label="Spell out abbreviations"
+          description={<>Show &lsquo;forward&rsquo; instead of &lsquo;fwd&rsquo;</>}
+          checked={spellOutAbbreviations}
+          onChange={setSpellOutAbbreviations}
+        />
+      </SettingsSection>
+
+      <SettingsSection title="Appearance">
+        <ChoiceRow
+          label="Theme"
+          description="System matches your phone's light or dark setting."
+          value={theme}
+          choices={THEME_CHOICES}
+          onChange={setTheme}
+        />
+      </SettingsSection>
     </>
   );
 }

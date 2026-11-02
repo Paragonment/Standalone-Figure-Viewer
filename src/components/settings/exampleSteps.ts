@@ -1,0 +1,69 @@
+import type { DanceStyle, FigureGroup } from '../../types';
+
+// One step per style for the preview on its Settings page, copied from the
+// data (public/*.csv). Each charts every detail its style has, so turning
+// any of them on always shows something.
+export const EXAMPLE_FIGURES: Record<DanceStyle, FigureGroup> = {
+  Standard: {
+    style: 'Standard',
+    dance: 'Waltz',
+    name: 'Natural Turn',
+    level: 'Pre-Bronze',
+    generalNotes: '',
+    startingPosition: '',
+    endingPosition: '',
+    steps: [
+      {
+        Dance: 'Waltz',
+        'Figure Name': 'Natural Turn',
+        Level: 'Pre-Bronze',
+        Step: '1',
+        Timing: '1',
+        'Beat Value': '1',
+        'Lead Feet Positions': 'RF fwd',
+        'Lead Alignment': 'Facing DW',
+        'Lead Amount of Turn': 'Com to turn R',
+        'Lead Rise and Fall': 'Com to rise e/o 1',
+        'Lead Footwork': 'HT',
+        'Lead CBM': 'true',
+        'Lead Sway': 'S',
+        'Follow Feet Positions': 'LF back',
+        'Follow Alignment': 'Backing DW',
+        'Follow Amount of Turn': 'Com to turn R',
+        'Follow Rise and Fall': 'Com to rise e/o 1 NFR',
+        'Follow Footwork': 'TH',
+        'Follow CBM': 'true',
+        'Follow Sway': 'S',
+      },
+    ],
+  },
+  Latin: {
+    style: 'Latin',
+    dance: 'Samba',
+    name: 'Natural Basic Movement',
+    level: 'Bronze',
+    generalNotes: '',
+    startingPosition: 'Closed Position',
+    endingPosition: 'Closed Position',
+    steps: [
+      {
+        Dance: 'Samba',
+        'Figure Name': 'Natural Basic Movement',
+        Level: 'Bronze',
+        Step: '1',
+        Timing: '1',
+        'Beat Value': '3/4',
+        'Lead Feet Positions': 'RF fwd',
+        'Lead Alignment': 'Facing LOD',
+        'Lead Amount of Turn': 'No turn or up to 1/4 to R over 1-6',
+        'Lead Footwork': 'BF',
+        'Lead Action': 'Bounce action',
+        'Follow Feet Positions': 'LF back',
+        'Follow Alignment': 'Backing LOD',
+        'Follow Amount of Turn': 'No turn or up to 1/4 to R over 1-6',
+        'Follow Footwork': 'BF',
+        'Follow Action': 'Bounce action',
+      },
+    ],
+  },
+};

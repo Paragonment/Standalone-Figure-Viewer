@@ -7,7 +7,10 @@ interface SlideOverPageProps {
   open: boolean;
   onClose: () => void;
   title: string;
+  // A line or two under the title saying what the page is for.
+  intro?: React.ReactNode;
   backLabel?: string;
+  // Full width: content keeps to the gutter itself (see SettingsSection).
   children: React.ReactNode;
 }
 
@@ -16,10 +19,11 @@ interface SlideOverPageProps {
 // or a tap on the dimmed screen beside it where the window is wide.
 // Built on a native modal <dialog>: focus trapping and rendering above
 // everything else come from the browser instead of hand-rolled code.
-const SlideOverPage: React.FC<SlideOverPageProps> = ({ open, onClose, title, backLabel = 'Back', children }) => {
+const SlideOverPage: React.FC<SlideOverPageProps> = ({ open, onClose, title, intro, backLabel = 'Back', children }) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const bodyRef = useRef<HTMLDivElement>(null);
   const titleId = useId();
   const [scrolled, setScrolled] = useState(false);
 
@@ -45,6 +49,9 @@ const SlideOverPage: React.FC<SlideOverPageProps> = ({ open, onClose, title, bac
       slide(0, true);
     } else if (dialog.open) {
       const away = () => {
+        // Opens at the top next time, with the title back in place. Set
+        // while still shown: a closed dialog's content has no scroll.
+        if (bodyRef.current) bodyRef.current.scrollTop = 0;
         dialog.close();
         clearSwipe(dialog);
         setScrolled(false);
@@ -83,6 +90,7 @@ const SlideOverPage: React.FC<SlideOverPageProps> = ({ open, onClose, title, bac
           showMenu={false}
         />
         <div
+          ref={bodyRef}
           className="slide-page-body"
           onScroll={(e) => {
             const heading = titleRef.current;
@@ -90,9 +98,12 @@ const SlideOverPage: React.FC<SlideOverPageProps> = ({ open, onClose, title, bac
             setScrolled(e.currentTarget.scrollTop >= edge);
           }}
         >
-          <h2 ref={titleRef} className="slide-page-title" id={titleId}>
-            {title}
-          </h2>
+          <div className="slide-page-header">
+            <h2 ref={titleRef} className="slide-page-title" id={titleId}>
+              {title}
+            </h2>
+            {intro && <p className="slide-page-intro">{intro}</p>}
+          </div>
           {children}
         </div>
       </div>

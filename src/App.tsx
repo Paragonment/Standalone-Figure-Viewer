@@ -1,6 +1,7 @@
 import SettingsProvider from './state/SettingsProvider'
 import ViewerContainer from './components/ViewerContainer'
 import SettingsPage from './components/settings/SettingsPage'
+import ShortcutsDialog from './components/shortcuts/ShortcutsDialog'
 import './App.css'
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <div className="app">
         <ViewerContainer />
         <SettingsPage />
+        <ShortcutsDialog />
       </div>
     </SettingsProvider>
   )

@@ -5,7 +5,8 @@ import { formatRoute, homeRoute, parseRoute, type FigureRoute, type HomeRoute, t
 // utils/route for its shape).
 //
 // - Opening a figure or Practice pushes a history entry, so Back and Forward
-//   retrace what was read.
+//   retrace what was read. Browsing from one figure to the next with the
+//   keyboard replaces it instead.
 // - Everything the reader adjusts in place (filters, search, part, step)
 //   replaces the current entry instead, a moment after the last change.
 // - Settings adds entries of its own on top (see SettingsProvider); they keep
@@ -116,6 +117,17 @@ const actions = {
     flush();
     const now = current();
     if (now.screen === 'figure') push({ ...now, screen: 'practice', step: undefined });
+  },
+  // Moves to another figure while browsing (the arrow keys, [ and ]): the
+  // first move from the contents is a new entry, the rest replace it, so
+  // stepping through the list is one stop in history, not hundreds.
+  browse: (next: FigureRoute) => {
+    if (current().screen === 'home') {
+      push(next);
+      return;
+    }
+    cancel();
+    writeReplace(next);
   },
   // One step back: the previous entry when the app pushed this one, else (a
   // link opened here, or a reload with nothing before it) the screen above

@@ -102,13 +102,22 @@ export const openPractice = async (page: Page) => {
   await settle(page);
 };
 
-export const openSettings = async (page: Page) => {
-  await page.getByRole('button', { name: 'Menu' }).click();
-  const dialog = page.getByRole('dialog', { name: 'Settings' });
+// The slide-over has reached its resting place when the panel stops moving.
+const slideOverRests = async (page: Page, dialog: Locator) => {
   await expect(dialog).toBeVisible();
-  // The slide-over has reached its resting place when the panel stops moving.
   const panelRight = () =>
     dialog.locator('.slide-page-panel').evaluate((el) => window.innerWidth - el.getBoundingClientRect().right);
   await expect.poll(panelRight).toBe(0);
   await settle(page);
+};
+
+export const openSettings = async (page: Page) => {
+  await page.getByRole('button', { name: 'Menu' }).click();
+  await slideOverRests(page, page.getByRole('dialog', { name: 'Settings' }));
+};
+
+// The shortcuts dialog, opened with the key a desktop reader would press.
+export const openShortcuts = async (page: Page) => {
+  await page.keyboard.press('?');
+  await slideOverRests(page, page.getByRole('dialog', { name: 'Keyboard shortcuts' }));
 };

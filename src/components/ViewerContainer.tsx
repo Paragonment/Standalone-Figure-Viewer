@@ -3,6 +3,7 @@ import type { FigureGroup } from '../types';
 import { useDanceData } from '../hooks/useDanceData';
 import { useFigureGroups } from '../hooks/useFigureGroups';
 import { useDanceFilters } from '../hooks/useDanceFilters';
+import { useFigureSections } from '../hooks/useFigureSections';
 import { useRoute } from '../hooks/useRoute';
 import { useRouteFilters } from '../hooks/useRouteFilters';
 import { useRoutePart } from '../hooks/useRoutePart';
@@ -27,6 +28,7 @@ const ViewerContainer: React.FC = () => {
   const figureGroups = useFigureGroups(datasets);
   // Filter and search state lives here so it outlives the screens.
   const filters = useDanceFilters(figureGroups);
+  const built = useFigureSections(figureGroups, filters);
   const isMobile = useIsMobile();
 
   const { route, open, openPractice, goBack: goBackTo } = useRoute();
@@ -90,7 +92,7 @@ const ViewerContainer: React.FC = () => {
   }
 
   if (!isMobile) {
-    return <DesktopShell figures={figureGroups} filters={filters} figure={activeFigure} onOpenFigure={openFigure} notice={notice} />;
+    return <DesktopShell figures={figureGroups} built={built} filters={filters} figure={activeFigure} onOpenFigure={openFigure} notice={notice} />;
   }
 
   const covered = activeFigure !== null;
@@ -100,6 +102,7 @@ const ViewerContainer: React.FC = () => {
       <div className={covered ? 'vc-layer vc-under vc-covered' : 'vc-layer vc-under'} inert={covered}>
         <HomeScreen
           figures={figureGroups}
+          built={built}
           filters={filters}
           onOpenFigure={openFigure}
           scrollTopRef={listScrollTopRef}

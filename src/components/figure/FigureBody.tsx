@@ -1,7 +1,8 @@
 import { useMemo } from 'react';
 import type { ReactNode } from 'react';
-import type { FigureGroup, Role } from '../../types';
+import type { FigureGroup } from '../../types';
 import type { FigureScroll } from '../../hooks/useFigureScroll';
+import { usePartChoice } from '../../hooks/usePartChoice';
 import { useRouteStep } from '../../hooks/useRouteStep';
 import { useSettings } from '../../state/useSettings';
 import { hasNotes, parseFigureNotes } from '../../utils/figureNotes';
@@ -39,7 +40,7 @@ const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? '' : 's'}`;
 // The host keys it (and the scroll hook's owner) by figure so scroll position
 // and the About band start fresh.
 export default function FigureBody({ figure, scroll, headerSlot, layout = 'list' }: FigureBodyProps) {
-  const { role, sideBySide, fields, setRole, setSideBySide } = useSettings();
+  const { role, sideBySide, fields } = useSettings();
   const { listRef, barRef, titleRef, current, onScroll, goToStep, keepPlace } = scroll;
   useRouteStep(scroll);
 
@@ -52,16 +53,7 @@ export default function FigureBody({ figure, scroll, headerSlot, layout = 'list'
   const aside = layout === 'adaptive' && hasNotes(notes);
 
   // Switching part or side by side must not move the reader's place.
-  const pickRole = (next: Role) => {
-    if (next === role && !sideBySide) return;
-    keepPlace();
-    setRole(next);
-  };
-  const pickSideBySide = (on: boolean) => {
-    if (on === sideBySide) return;
-    keepPlace();
-    setSideBySide(on);
-  };
+  const { pickRole, pickSideBySide } = usePartChoice(keepPlace);
 
   const stepProps = {
     figure,
@@ -78,7 +70,7 @@ export default function FigureBody({ figure, scroll, headerSlot, layout = 'list'
     <div ref={listRef} className={`fig-scroll${aside ? ' fig-has-aside' : ''}`} onScroll={onScroll}>
       {headerSlot}
       <header className="fig-header">
-        <h1 ref={titleRef} className="fig-title">
+        <h1 ref={titleRef} className="fig-title" tabIndex={-1}>
           {figure.name}
         </h1>
         <p className="fig-meta">

@@ -1,5 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
-import { DESKTOPS, FIGURE, SCHEMES, filterByDance, openApp, openFigure, openSettings, settle } from './helpers';
+import { DESKTOPS, FIGURE, SCHEMES, filterByDance, openApp, openFigure, openSettings, openShortcuts, settle } from './helpers';
 
 // Visual baselines for the two-pane layout at each desktop width, in both
 // color schemes. Update on purpose with `npm run test:e2e:update`.
@@ -41,6 +41,16 @@ for (const viewport of DESKTOPS) {
         await settle(page);
         await shot(page, 'desktop-settings-standard', width, scheme);
       });
+
+      // One width is enough for the dialog.
+      if (width === 1440) {
+        test('keyboard shortcuts open', async ({ page }) => {
+          await filterByDance(page, FIGURE.dance);
+          await openFigure(page, FIGURE.name);
+          await openShortcuts(page);
+          await shot(page, 'desktop-shortcuts', width, scheme);
+        });
+      }
 
       test('no horizontal scroll', async ({ page }) => {
         await filterByDance(page, FIGURE.dance);

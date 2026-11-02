@@ -25,6 +25,14 @@ On a phone (768px wide or less) the app has three screens and a settings page:
 On wider screens the app is a two-pane reference: the figure list with its search and filters stays
 on the left, and the open figure fills the right, with both parts side by side until you pick one.
 
+## Keyboard
+
+On a desktop, `?` lists the shortcuts (also under Keyboard in Settings): `/` searches, the arrow keys,
+`[` and `]` step through the list, `j` `k` and `1`-`9` move between steps, `l` `f` `b` pick the
+part, `,` opens Settings. They are one table in `src/utils/shortcuts.ts`, so a new shortcut is one
+entry there and its action in `src/hooks/useShortcuts.ts`. Stepping through the list with the keys
+replaces the current history entry rather than adding one for every figure.
+
 ## Links
 
 The address says what is open, on a phone and on a desktop alike (`src/utils/route.ts`,

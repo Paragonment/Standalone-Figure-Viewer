@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import type { FigureGroup } from '../../types';
 import type { FigureRow, ResultSection } from '../../utils/search';
 import { figureKey } from '../../utils/figureKey';
@@ -88,8 +89,43 @@ export default function FigureList({
   onOpenFigure,
   selectedKey,
 }: FigureListProps) {
+  const listRef = useRef<HTMLDivElement>(null);
+  // The key of a row the reader just clicked: it is under their pointer, so
+  // it stays where it is.
+  const clickedRef = useRef<string | null>(null);
+
+  // The open figure's row comes into view, scrolling only as far as it must,
+  // when the figure changes any other way (a link, the keyboard). Focus that
+  // was on a row follows the selection.
+  useEffect(() => {
+    if (!selectedKey) return;
+    if (clickedRef.current === selectedKey) {
+      clickedRef.current = null;
+      return;
+    }
+    const reveal = () => {
+      listRef.current?.querySelector<HTMLElement>('.fl-row[aria-current="true"]')?.scrollIntoView({ block: 'nearest' });
+    };
+    const row = listRef.current?.querySelector<HTMLElement>('.fl-row[aria-current="true"]');
+    if (row && listRef.current?.contains(document.activeElement)) row.focus({ preventScroll: true });
+    reveal();
+    // The page's fonts arriving change the rows' heights, and with them where this one is.
+    let cancelled = false;
+    void document.fonts.ready.then(() => {
+      if (!cancelled) reveal();
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedKey]);
+
+  const open = (figure: FigureGroup) => {
+    clickedRef.current = figureKey(figure);
+    onOpenFigure(figure);
+  };
+
   return (
-    <div className="fl">
+    <div ref={listRef} className="fl">
       {total === 0 && (
         <div className="fl-empty">
           <p className="fl-empty-title">{searching ? `No figures match “${query.trim()}”` : 'No figures match'}</p>
@@ -122,7 +158,7 @@ export default function FigureList({
                 row={row}
                 grouped={grouped}
                 selected={figureKey(row.figure) === selectedKey}
-                onOpen={onOpenFigure}
+                onOpen={open}
               />
             ))}
           </ul>

@@ -22,8 +22,9 @@ export interface FigureBodyProps {
   // From useFigureScroll(), called by the host. FigureBody renders the scroll
   // container and attaches it; the host keeps the state (`scrolled`, ...).
   scroll: FigureScroll;
-  // Rendered above the title, inside the header (desktop: breadcrumb, Copy
-  // link, menu). Nothing on mobile, whose top bar sits outside the body.
+  // Rendered first in the scroller, ahead of the header, so it can pin to the
+  // top of it (desktop: breadcrumb, Copy link, menu). Nothing on mobile,
+  // whose top bar sits outside the body.
   headerSlot?: ReactNode;
   // 'list' is the phone's step list. 'adaptive' is for a wide pane: the
   // chart when the pane is 640px or wider (the list below that), and the
@@ -75,8 +76,8 @@ export default function FigureBody({ figure, scroll, headerSlot, layout = 'list'
 
   return (
     <div ref={listRef} className={`fig-scroll${aside ? ' fig-has-aside' : ''}`} onScroll={onScroll}>
+      {headerSlot}
       <header className="fig-header">
-        {headerSlot}
         <h1 ref={titleRef} className="fig-title">
           {figure.name}
         </h1>

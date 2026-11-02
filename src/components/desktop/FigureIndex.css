@@ -8,7 +8,7 @@
 
 .fi-header {
   flex: none;
-  padding: 3px var(--gutter) 18px;
+  padding: 0 var(--gutter) 18px;
   display: flex;
   flex-direction: column;
   background: var(--mirror);

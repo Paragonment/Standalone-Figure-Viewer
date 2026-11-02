@@ -25,6 +25,8 @@
 .ds-detail {
   --gutter: 24px;
   --ds-title-size: 44px;
+  /* The pinned bar's height; the frozen block sticks under it. */
+  --db-h: 48px;
   min-width: 0;
   min-height: 0;
   display: flex;
@@ -43,4 +45,14 @@
 
 .ds-detail .fig-title {
   font-size: var(--ds-title-size);
+}
+
+/* Over the bar's last pixel, which is the rule while both are pinned. */
+.ds-detail .fig-bar {
+  top: calc(var(--db-h) - 1px);
+}
+
+/* The pinned bar already clears the title's top. */
+.ds-detail .fig-header {
+  padding-top: 0;
 }

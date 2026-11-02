@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import type { DanceStyle } from '../../types';
 import { BackIcon } from './Icons';
+import BarTitle from './BarTitle';
 import MenuButton from './MenuButton';
 import './TopBar.css';
 
@@ -41,12 +42,7 @@ export default function TopBar({
         <BackIcon />
         {showBackLabel && <span>{backLabel}</span>}
       </button>
-      <span
-        aria-hidden="true"
-        className={`ui-topbar-title${title !== undefined && titleVisible ? '' : ' ui-topbar-title-hidden'}`}
-      >
-        {title}
-      </span>
+      <BarTitle title={title} visible={titleVisible} />
       {action}
       {showMenu && <MenuButton styleHint={styleHint} />}
     </div>

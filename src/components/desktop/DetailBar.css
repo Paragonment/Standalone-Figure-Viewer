@@ -1,15 +1,33 @@
+/* Pinned to the top of the figure pane's scroller. Its last pixel is the
+   rule once the title is gone; the frozen block sticks over that pixel
+   (see DesktopShell.css), so the two never draw a double rule. */
 .db {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  height: var(--db-h);
   display: flex;
   align-items: center;
   gap: 16px;
-  min-height: var(--target);
+  padding: 3px var(--gutter) 0;
+  background: var(--mirror);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur) ease;
+}
+
+.db-rule {
+  border-bottom-color: var(--rule);
 }
 
 .db-main {
-  flex: 1;
-  min-width: 0;
+  flex: none;
   display: flex;
   align-items: center;
+}
+
+/* The small title takes the room between the breadcrumb and the actions. */
+.db .ui-topbar-title {
+  padding: 0;
 }
 
 .db-menu {

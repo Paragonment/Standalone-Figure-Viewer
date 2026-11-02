@@ -29,7 +29,7 @@ export default function DesktopFigure({ figure, filters }: DesktopFigureProps) {
       scroll={scroll}
       layout="adaptive"
       headerSlot={
-        <DetailBar actions={<CopyLink getUrl={getUrl} />}>
+        <DetailBar actions={<CopyLink getUrl={getUrl} />} title={figure.name} scrolled={scroll.scrolled}>
           <FigureCrumb figure={figure} filters={filters} />
         </DetailBar>
       }

@@ -8,6 +8,8 @@ import { expandAbbreviations } from '../utils/abbreviations';
 import { keepRanges } from '../utils/stepValues';
 import FieldValue from './FieldValue';
 import FigurePositions from './FigurePositions';
+import TransitionLines from './TransitionLines';
+import { useFigureTransitions } from '../state/useTransitions';
 import { RowChevronIcon } from './ui/Icons';
 import { TIMING_COLUMN } from '../utils/stepFields';
 import './DanceTable.css';
@@ -18,6 +20,23 @@ interface DanceTableProps {
 }
 
 const baseFieldKey = (header: string) => header.replace(/^(Lead|Follow) /, '');
+
+// What the expanded figure can follow and lead into, side by side.
+const FigureTransitionsBlock: React.FC<{ figure: FigureGroup }> = ({ figure }) => {
+  const { precededBy, followedBy } = useFigureTransitions(figure);
+  const lists = [precededBy, followedBy].filter((list) => list.lines.length > 0);
+  if (lists.length === 0) return null;
+  return (
+    <div className="figure-transitions">
+      {lists.map((list) => (
+        <section key={list.relation} className="figure-transitions-list">
+          <h4 className="figure-transitions-label">{list.label}</h4>
+          <TransitionLines list={list} />
+        </section>
+      ))}
+    </div>
+  );
+};
 
 // Shown on the figure's own row (or above its steps), not per step.
 const OUTER_COLUMNS = ['Dance', 'Figure Name', 'Level', 'Starting Position', 'Ending Position'];
@@ -158,6 +177,7 @@ const DanceTable: React.FC<DanceTableProps> = ({ data, visibleColumns }) => {
                           showStart={isVisible('Starting Position')}
                           showEnd={isVisible('Ending Position')}
                         />
+                        <FigureTransitionsBlock figure={fig} />
                         <div className="nested-table-scroll">
                           <table className="nested-steps-table">
                             <thead>

@@ -12,6 +12,7 @@ export const EXAMPLE_FIGURES: Record<DanceStyle, FigureGroup> = {
     generalNotes: '',
     startingPosition: '',
     endingPosition: '',
+    links: [],
     steps: [
       {
         Dance: 'Waltz',
@@ -45,6 +46,7 @@ export const EXAMPLE_FIGURES: Record<DanceStyle, FigureGroup> = {
     generalNotes: '',
     startingPosition: 'Closed Position',
     endingPosition: 'Closed Position',
+    links: [],
     steps: [
       {
         Dance: 'Samba',

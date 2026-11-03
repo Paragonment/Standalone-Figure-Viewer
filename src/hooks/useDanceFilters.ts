@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import type { FigureGroup } from '../types';
 import { DANCE_STYLES, type StyleDances } from '../utils/danceStyles';
+import { searchableNotes, type TransitionBook } from '../utils/transitions';
 
 // Known syllabus levels in pedagogical (not alphabetical) order. Any level
 // found in the data but not listed here is appended alphabetically, so a
@@ -19,7 +20,7 @@ const sortLevels = (levels: string[]): string[] => {
   });
 };
 
-export const useDanceFilters = (figureGroups: FigureGroup[]) => {
+export const useDanceFilters = (figureGroups: FigureGroup[], transitions: TransitionBook) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDances, setSelectedDances] = useState<string[]>([]);
   const [selectedLevels, setSelectedLevels] = useState<string[]>([]);
@@ -54,13 +55,13 @@ export const useDanceFilters = (figureGroups: FigureGroup[]) => {
         group.dance.toLowerCase().includes(searchLower) ||
         group.style.toLowerCase().includes(searchLower) ||
         group.name.toLowerCase().includes(searchLower) ||
-        group.generalNotes.toLowerCase().includes(searchLower) ||
+        searchableNotes(group, transitions).toLowerCase().includes(searchLower) ||
         group.steps.some((step) =>
           Object.values(step).some((val) => String(val).toLowerCase().includes(searchLower))
         )
       );
     });
-  }, [figureGroups, searchTerm, selectedDances, selectedLevels]);
+  }, [figureGroups, transitions, searchTerm, selectedDances, selectedLevels]);
 
   const hasActiveFilters =
     selectedDances.length > 0 ||

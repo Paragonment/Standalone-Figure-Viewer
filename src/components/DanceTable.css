@@ -196,8 +196,9 @@
   animation: dropdownFadeIn var(--dur-panel) ease;
 }
 
-.dropdown-details-wrapper > .figure-positions {
-  margin-bottom: 12px;
+.dropdown-details-wrapper > .figure-positions,
+.dropdown-details-wrapper > .figure-transitions {
+  margin-bottom: 16px;
 }
 
 @keyframes dropdownFadeIn {
@@ -305,4 +306,17 @@
   color: var(--slate);
   font-size: 15px;
   line-height: 1.4;
+}
+
+.figure-transitions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px 24px;
+}
+
+.figure-transitions-label {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--slate);
 }

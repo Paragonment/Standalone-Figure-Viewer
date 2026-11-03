@@ -21,4 +21,5 @@ followed by LF back on step 23 with no weight change in between.
 
 Timing and Beat Value are per step and shared by both partners. Feet Positions, Alignment,
 Amount of Turn, Footwork and Action are per role (Lead/Follow). Starting Position,
-Ending Position and General Notes are figure-level and set on step 1 only.
+Ending Position and General Notes are figure-level and set on step 1 only. The Precede and
+Follow lists are in `public/latin-transitions.csv`, one link per row (see the main README).

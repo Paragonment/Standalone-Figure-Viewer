@@ -5,6 +5,8 @@ import { useFigureGroups } from '../hooks/useFigureGroups';
 import { useDanceFilters } from '../hooks/useDanceFilters';
 import { useIsMobile } from '../hooks/useIsMobile';
 import { clearSwipe, useSwipeBack } from '../hooks/useSwipeBack';
+import { TransitionsContext } from '../state/transitionsContext';
+import { createTransitionBook } from '../utils/transitions';
 import DesktopViewer from './desktop/DesktopViewer';
 import HomeScreen from './home/HomeScreen';
 import FigureScreen from './figure/FigureScreen';
@@ -33,8 +35,10 @@ const readRoute = (): RouteState | null => {
 const ViewerContainer: React.FC = () => {
   const { datasets, loading, error } = useDanceData();
   const figureGroups = useFigureGroups(datasets);
+  // Each figure's Precede and Follow text is built on first use and kept.
+  const transitions = useMemo(() => createTransitionBook(figureGroups), [figureGroups]);
   // Filter and search state lives here so it outlives the screens.
-  const filters = useDanceFilters(figureGroups);
+  const filters = useDanceFilters(figureGroups, transitions);
   const isMobile = useIsMobile();
 
   const [route, setRoute] = useState<RouteState | null>(readRoute);
@@ -119,31 +123,37 @@ const ViewerContainer: React.FC = () => {
   }
 
   if (!isMobile) {
-    return <DesktopViewer datasets={datasets} figureGroups={figureGroups} filters={filters} />;
+    return (
+      <TransitionsContext.Provider value={transitions}>
+        <DesktopViewer datasets={datasets} figureGroups={figureGroups} filters={filters} />
+      </TransitionsContext.Provider>
+    );
   }
 
   const covered = activeFigure !== null;
 
   return (
-    <div ref={stackRef} className="vc-stack">
-      <div className={covered ? 'vc-layer vc-under vc-covered' : 'vc-layer vc-under'} inert={covered}>
-        <HomeScreen
-          figures={figureGroups}
-          filters={filters}
-          onOpenFigure={openFigure}
-          scrollTopRef={listScrollTopRef}
-        />
-      </div>
-      {activeFigure && (
-        <div className="vc-layer vc-top" {...swipeBack.handlers}>
-          {screen === 'practice' ? (
-            <PracticeScreen figure={activeFigure} onBack={goBack} />
-          ) : (
-            <FigureScreen figure={activeFigure} onBack={goBack} onPractice={openPractice} />
-          )}
+    <TransitionsContext.Provider value={transitions}>
+      <div ref={stackRef} className="vc-stack">
+        <div className={covered ? 'vc-layer vc-under vc-covered' : 'vc-layer vc-under'} inert={covered}>
+          <HomeScreen
+            figures={figureGroups}
+            filters={filters}
+            onOpenFigure={openFigure}
+            scrollTopRef={listScrollTopRef}
+          />
         </div>
-      )}
-    </div>
+        {activeFigure && (
+          <div className="vc-layer vc-top" {...swipeBack.handlers}>
+            {screen === 'practice' ? (
+              <PracticeScreen figure={activeFigure} onBack={goBack} />
+            ) : (
+              <FigureScreen figure={activeFigure} onBack={goBack} onPractice={openPractice} />
+            )}
+          </div>
+        )}
+      </div>
+    </TransitionsContext.Provider>
   );
 };
 

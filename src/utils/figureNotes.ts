@@ -1,8 +1,9 @@
 // A figure's General Notes are free text. The books label some sentences
-// ("Precede: ...", "Follow: ...", "Alternative endings: ..."); the About
-// band shows those as their own rows and everything else as the description.
+// ("Alternative endings: ..."); the About band shows those as their own
+// rows and everything else as the description. The Precede and Follow
+// lists are not notes: they live in the transitions CSVs.
 
-export type NoteLabel = 'Endings' | 'Preceded by' | 'Followed by';
+export type NoteLabel = 'Endings';
 
 export interface NoteRow {
   label: NoteLabel;
@@ -14,18 +15,18 @@ export interface FigureNotes {
   rows: NoteRow[];
 }
 
-const ROW_ORDER: NoteLabel[] = ['Endings', 'Preceded by', 'Followed by'];
+const ROW_ORDER: NoteLabel[] = ['Endings'];
 
-const LABEL_WORD = /^(?:ISTD alternative endings?|Alternative endings?|Endings?|Precedes?|Follows?)/;
+const LABEL_WORD = /^(?:ISTD alternative endings?|Alternative endings?|Endings?)/;
 
-// A label word, an optional qualifier ("ending A", "(ending in Open CPP)"
-// or "LF Cuban Rock") and a colon, at the start of a sentence.
+// A label word, an optional qualifier ("A (charted)" or "(ISTD)") and a
+// colon, at the start of a sentence.
 const LABEL =
-  /(?<=^|[.;!?]\s+)(?:ISTD alternative endings?|Alternative endings?|Endings?|Precedes?|Follows?)(?:\s+[A-Za-z0-9][A-Za-z0-9 ]{0,30})?(?:\s*\([^()]{0,60}\))?\s*:/g;
+  /(?<=^|[.;!?]\s+)(?:ISTD alternative endings?|Alternative endings?|Endings?)(?:\s+[A-Za-z0-9][A-Za-z0-9 ]{0,30})?(?:\s*\([^()]{0,60}\))?\s*:/g;
 
 const labelFor = (head: string): { label: NoteLabel; qualifier: string } => {
   const word = LABEL_WORD.exec(head)?.[0] ?? '';
-  const label: NoteLabel = word.startsWith('Precede') ? 'Preceded by' : word.startsWith('Follow') ? 'Followed by' : 'Endings';
+  const label: NoteLabel = 'Endings';
   // Anything between the label word and the colon qualifies the value.
   const qualifier = head.slice(word.length).replace(/:$/, '').trim();
   return { label, qualifier };

@@ -46,8 +46,9 @@ cell. Every remaining difference was settled against the page image.
 - **CBM:** true, false or Slight.
 - **Amount of Turn:** a turn "between 1-2" goes on step 2, matching the book's charted
   dances. Where the Tango charts give one total with no step named, it is in General Notes.
-- **Notes:** the book's notes, and its Precede and Follow lists graded by level, are on
-  step 1. Man and Lady are written as Lead and Follow.
+- **Notes:** the book's notes are on step 1. Man and Lady are written as Lead and Follow.
+- **Precede and Follow:** the book's lists, graded by level, are in
+  `public/standard-transitions.csv`, one link per row (see the main README).
 
 ## Figures charted by reference
 

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Papa from 'papaparse';
 import type { DanceStep, DanceStyle } from '../types';
 import { DANCE_STYLES } from '../utils/danceStyles';
+import { readTransitionRows, type TransitionRecord } from '../utils/transitions';
 
 export interface DanceDataset {
   style: DanceStyle;
@@ -9,9 +10,10 @@ export interface DanceDataset {
   // In CSV order, so column controls list a style's fields the way its
   // book charts them.
   columns: string[];
+  transitions: TransitionRecord[];
 }
 
-const loadDataset = async (style: DanceStyle, file: string): Promise<DanceDataset> => {
+const loadCsv = async <T>(file: string): Promise<Papa.ParseResult<T>> => {
   // Resolve against the app's base path, not the domain root: GitHub
   // Pages serves the app from /Standalone-Figure-Viewer/, where
   // "/standard.csv" is a 404.
@@ -22,12 +24,25 @@ const loadDataset = async (style: DanceStyle, file: string): Promise<DanceDatase
     throw new Error(`${file} request failed (${response.status} ${response.statusText})`);
   }
   const csvText = await response.text();
-  const results = Papa.parse<DanceStep>(csvText, { header: true, skipEmptyLines: true });
+  const results = Papa.parse<T>(csvText, { header: true, skipEmptyLines: true });
   if (results.errors.length > 0) {
     const first = results.errors[0];
     throw new Error(`${file} row ${first.row}: ${first.message}`);
   }
-  return { style, rows: results.data, columns: results.meta.fields ?? [] };
+  return results;
+};
+
+const loadDataset = async (style: DanceStyle, dataFile: string, transitionsFile: string): Promise<DanceDataset> => {
+  const [figures, transitions] = await Promise.all([
+    loadCsv<DanceStep>(dataFile),
+    loadCsv<Record<string, string>>(transitionsFile),
+  ]);
+  return {
+    style,
+    rows: figures.data,
+    columns: figures.meta.fields ?? [],
+    transitions: readTransitionRows(transitions.data, transitions.meta.fields ?? [], transitionsFile),
+  };
 };
 
 export const useDanceData = () => {
@@ -36,7 +51,7 @@ export const useDanceData = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    Promise.all(DANCE_STYLES.map((s) => loadDataset(s.id, s.dataFile)))
+    Promise.all(DANCE_STYLES.map((s) => loadDataset(s.id, s.dataFile, s.transitionsFile)))
       .then(setDatasets)
       .catch((err) => setError(err instanceof Error ? err.message : 'Failed to fetch data'))
       .finally(() => setLoading(false));

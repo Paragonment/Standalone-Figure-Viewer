@@ -1,5 +1,7 @@
 import { Fragment, useState } from 'react';
 import type { FigureNotes } from '../../utils/figureNotes';
+import type { FigureTransitions } from '../../utils/transitions';
+import TransitionLines from '../TransitionLines';
 import { useDisplaySettings } from '../../hooks/useDisplaySettings';
 import { expandAbbreviations } from '../../utils/abbreviations';
 import { keepRanges } from '../../utils/stepValues';
@@ -8,15 +10,17 @@ import './AboutBand.css';
 
 interface AboutBandProps {
   notes: FigureNotes;
+  transitions: FigureTransitions;
 }
 
 // "About this figure": the description and the labelled endings, what
 // comes before and what follows. Closed until the reader opens it.
-export default function AboutBand({ notes }: AboutBandProps) {
+export default function AboutBand({ notes, transitions }: AboutBandProps) {
   const [open, setOpen] = useState(false);
   const { spellOutAbbreviations } = useDisplaySettings();
   const show = (text: string) => keepRanges(spellOutAbbreviations ? expandAbbreviations(text) : text);
-  if (!notes.description && notes.rows.length === 0) return null;
+  const lists = [transitions.precededBy, transitions.followedBy].filter((list) => list.lines.length > 0);
+  if (!notes.description && notes.rows.length === 0 && lists.length === 0) return null;
 
   return (
     <div className="about-band">
@@ -33,12 +37,20 @@ export default function AboutBand({ notes }: AboutBandProps) {
       {open && (
         <div id="about-panel" className="about-panel">
           {notes.description && <p className="about-description">{show(notes.description)}</p>}
-          {notes.rows.length > 0 && (
+          {(notes.rows.length > 0 || lists.length > 0) && (
             <dl className="about-rows">
               {notes.rows.map((row) => (
                 <Fragment key={row.label}>
                   <dt>{row.label}</dt>
                   <dd>{show(row.value)}</dd>
+                </Fragment>
+              ))}
+              {lists.map((list) => (
+                <Fragment key={list.relation}>
+                  <dt>{list.label}</dt>
+                  <dd>
+                    <TransitionLines list={list} />
+                  </dd>
                 </Fragment>
               ))}
             </dl>

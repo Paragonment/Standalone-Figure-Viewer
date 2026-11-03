@@ -5,14 +5,28 @@ export interface DanceStyleDef {
   label: string;
   // Served from public/, resolved against the app's base path.
   dataFile: string;
+  // The style's Precede and Follow lists, one row per link.
+  transitionsFile: string;
   // The style's dances in display order (not alphabetical).
   dances: string[];
 }
 
 // Display order: Standard's controls come first, Latin's to their right.
 export const DANCE_STYLES: DanceStyleDef[] = [
-  { id: 'Standard', label: 'Standard', dataFile: 'standard.csv', dances: ['Waltz', 'Tango', 'Foxtrot', 'Quickstep'] },
-  { id: 'Latin', label: 'Latin', dataFile: 'latin.csv', dances: ['Cha Cha Cha', 'Samba', 'Rumba', 'Paso Doble', 'Jive'] },
+  {
+    id: 'Standard',
+    label: 'Standard',
+    dataFile: 'standard.csv',
+    transitionsFile: 'standard-transitions.csv',
+    dances: ['Waltz', 'Tango', 'Foxtrot', 'Quickstep'],
+  },
+  {
+    id: 'Latin',
+    label: 'Latin',
+    dataFile: 'latin.csv',
+    transitionsFile: 'latin-transitions.csv',
+    dances: ['Cha Cha Cha', 'Samba', 'Rumba', 'Paso Doble', 'Jive'],
+  },
 ];
 
 // Beats in a bar of each dance's music, in the units its book's Beat

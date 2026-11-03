@@ -3,6 +3,7 @@ import type { FigureGroup, Role } from '../../types';
 import { useStepScroll } from '../../hooks/useStepScroll';
 import { useSettings } from '../../state/useSettings';
 import { parseFigureNotes } from '../../utils/figureNotes';
+import { useFigureTransitions } from '../../state/useTransitions';
 import { levelLook } from '../../utils/levels';
 import { barCount, buildBeats, formatBars, hasTiming } from '../../utils/rhythm';
 import TopBar from '../ui/TopBar';
@@ -30,6 +31,7 @@ function FigureView({ figure, onBack, onPractice }: FigureScreenProps) {
 
   const beats = useMemo(() => buildBeats(figure), [figure]);
   const notes = useMemo(() => parseFigureNotes(figure.generalNotes), [figure]);
+  const transitions = useFigureTransitions(figure);
   const timed = hasTiming(figure);
   const bars = barCount(figure);
   const accent = accentFor(role, sideBySide);
@@ -74,7 +76,7 @@ function FigureView({ figure, onBack, onPractice }: FigureScreenProps) {
               {bars !== null && `, ${formatBars(bars)}`}
             </span>
           </p>
-          <AboutBand notes={notes} />
+          <AboutBand notes={notes} transitions={transitions} />
         </header>
 
         <div ref={barRef} className="fig-bar">

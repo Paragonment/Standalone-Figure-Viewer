@@ -1,0 +1,44 @@
+.tr-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tr-level {
+  margin: 6px 0 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.tr-level:first-child {
+  margin-top: 0;
+}
+
+.tr-level-dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  box-sizing: border-box;
+  border: 2px solid;
+  border-radius: 4px;
+}
+
+.tr-line {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--shade);
+}
+
+.tr-when {
+  font-style: italic;
+  color: var(--slate);
+}
+
+.tr-name {
+  font-weight: 500;
+  color: var(--ink);
+}

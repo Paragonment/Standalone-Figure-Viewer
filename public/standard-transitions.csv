@@ -1,0 +1,1244 @@
+Dance,Figure Name,Relation,Level,Condition,Steps,Linked Figure,Linked Steps,Same As,Details
+Waltz,Closed Change Natural to Reverse,Preceded By,Bronze,,,Natural Turn,,,
+Waltz,Closed Change Natural to Reverse,Preceded By,Bronze,,,Natural Turn,4-6,,after Back Lock or Progressive Chasse to R
+Waltz,Closed Change Natural to Reverse,Preceded By,Silver,,,Outside Spin,,,taken after Open Impetus and Cross Hesitation making a full turn to end facing DC
+Waltz,Closed Change Natural to Reverse,Followed By,,,,,,,Any Reverse figure
+Waltz,Closed Change Reverse to Natural,Preceded By,Bronze,,,Reverse Turn,,,
+Waltz,Closed Change Reverse to Natural,Preceded By,Bronze,,,Reverse Turn,4-6,,after Natural Spin Turn
+Waltz,Closed Change Reverse to Natural,Preceded By,Bronze,,,Double Reverse Spin,,,
+Waltz,Closed Change Reverse to Natural,Preceded By,Bronze,At corner,,Reverse Turn,4-6,,after underturned Natural Spin Turn or Closed Impetus
+Waltz,Closed Change Reverse to Natural,Preceded By,Bronze,At corner,,Hesitation Change,,,
+Waltz,Closed Change Reverse to Natural,Preceded By,Silver,,,Reverse Turn,4-6,,after underturned Outside Spin
+Waltz,Closed Change Reverse to Natural,Followed By,,,,,,,Any Natural figure
+Waltz,Natural Turn,Preceded By,Bronze,,,Closed Change Reverse to Natural,,,
+Waltz,Natural Turn,Preceded By,Bronze,,,Chasse from PP,,,
+Waltz,Natural Turn,Preceded By,Bronze,,,Outside Change,,,
+Waltz,Natural Turn,Preceded By,Bronze,,,Basic Weave,,,
+Waltz,Natural Turn,Preceded By,Bronze,At corner,,Natural Turn,,,
+Waltz,Natural Turn,Preceded By,Bronze,,4-6,Reverse Corte,,,
+Waltz,Natural Turn,Preceded By,Silver,,,Weave from PP,,,
+Waltz,Natural Turn,Preceded By,Silver,,,Closed Telemark,,,
+Waltz,Natural Turn,Preceded By,Silver,,,Outside Spin,,,
+Waltz,Natural Turn,Preceded By,Silver,,,Turning Lock,,,
+Waltz,Natural Turn,Preceded By,Silver,,4-6,Cross Hesitation,,,
+Waltz,Natural Turn,Followed By,Bronze,,,Closed Change Natural to Reverse,,,
+Waltz,Natural Turn,Followed By,Bronze,At corner,,,,,Any Natural figure
+Waltz,Natural Turn,Followed By,Bronze,If ended facing DC,,Natural Turn,1-3,,"to end backing centre, then Outside Change turning 1/8 to L"
+Waltz,Natural Turn,Followed By,Silver,,1-3,Back Whisk,,,
+Waltz,Reverse Turn,Preceded By,Bronze,,,Closed Change Natural to Reverse,,,
+Waltz,Reverse Turn,Preceded By,Bronze,,,Reverse Turn,4-6,,after underturned Natural Spin Turn or Closed Impetus
+Waltz,Reverse Turn,Preceded By,Bronze,,,Hesitation Change,,,
+Waltz,Reverse Turn,Preceded By,Bronze,,,Double Reverse Spin,,,ended DC
+Waltz,Reverse Turn,Preceded By,Bronze,,,Reverse Pivot,,,
+Waltz,Reverse Turn,Preceded By,Silver,,,Wing,,,
+Waltz,Reverse Turn,Preceded By,Gold,,,Closed Wing,,,
+Waltz,Reverse Turn,Preceded By,Gold,At corner,,Fallaway Reverse and Slip Pivot,,,
+Waltz,Reverse Turn,Followed By,Bronze,,,Closed Change Reverse to Natural,,,
+Waltz,Reverse Turn,Followed By,Bronze,,,Whisk,,,
+Waltz,Reverse Turn,Followed By,Bronze,,,Double Reverse Spin,,,
+Waltz,Reverse Turn,Followed By,Bronze,If ended DC after underturned Natural Spin Turn or Closed Impetus,4-6,Progressive Chasse to Right,,,
+Waltz,Reverse Turn,Followed By,Bronze,,1-3,Reverse Corte,,,
+Waltz,Reverse Turn,Followed By,Silver,If ended DC after underturned Natural Spin Turn or Closed Impetus,4-6,Closed Telemark,,,
+Waltz,Reverse Turn,Followed By,Silver,If ended DC after underturned Natural Spin Turn or Closed Impetus,4-6,Open Telemark,,,
+Waltz,Reverse Turn,Followed By,Gold,,,Contra Check,,,
+Waltz,Reverse Turn,Followed By,Gold,,1-3,Hover Corte,,,
+Waltz,Natural Spin Turn,Preceded By,,,,,,Natural Turn,
+Waltz,Natural Spin Turn,Followed By,Bronze,,,Reverse Turn,4-6,,
+Waltz,Natural Spin Turn,Followed By,Bronze,,,Reverse Corte,,,
+Waltz,Natural Spin Turn,Followed By,Bronze,,,Reverse Pivot,,,
+Waltz,Natural Spin Turn,Followed By,Silver,,,Turning Lock,,,
+Waltz,Natural Spin Turn,Followed By,Silver,Approaching a corner,,Basic Weave,,,
+Waltz,Natural Spin Turn,Followed By,Gold,,,Left Whisk,,,commenced with RF back
+Waltz,Natural Spin Turn,Followed By,Gold,,,Turning Lock to Right,,,after overturned Natural Spin Turn
+Waltz,Natural Spin Turn,Followed By,Gold,,,Hover Corte,,,
+Waltz,Whisk,Preceded By,Bronze,,,Reverse Turn,,,
+Waltz,Whisk,Preceded By,Bronze,,,Reverse Turn,4-6,,after Natural Spin Turn
+Waltz,Whisk,Preceded By,Bronze,,,Double Reverse Spin,,,
+Waltz,Whisk,Preceded By,Bronze,,,Reverse Pivot,,,
+Waltz,Whisk,Preceded By,Bronze,At corner,,Reverse Turn,4-6,,after underturned Natural Spin Turn or Closed Impetus
+Waltz,Whisk,Preceded By,Bronze,At corner,,Hesitation Change,,,
+Waltz,Whisk,Preceded By,Gold,,,Closed Wing,,,facing DW
+Waltz,Whisk,Preceded By,Gold,,,Fallaway Reverse and Slip Pivot,,,
+Waltz,Whisk,Followed By,Bronze,,,Chasse from PP,,,
+Waltz,Whisk,Followed By,Silver,,,Weave from PP,,,"(steps 1-2 moving to centre after Whisk turned to face DC, or steps 1-2 moving DC after Whisk turned to face LOD)"
+Waltz,Whisk,Followed By,Silver,,,Cross Hesitation,,,
+Waltz,Whisk,Followed By,Silver,,,Wing,,,
+Waltz,Whisk,Followed By,Gold,,,Left Whisk,,,
+Waltz,Whisk,Followed By,Gold,,,Chasse from PP,,,moving DC to follow with Closed Wing
+Waltz,Whisk When Lead Turns 1/4,Preceded By,Bronze,,,Reverse Turn,,,
+Waltz,Whisk When Lead Turns 1/4,Preceded By,Bronze,,,Reverse Turn,4-6,,after Natural Spin Turn
+Waltz,Whisk When Lead Turns 1/4,Preceded By,Bronze,,,Double Reverse Spin,,,
+Waltz,Whisk When Lead Turns 1/4,Preceded By,Bronze,,,Reverse Pivot,,,
+Waltz,Whisk When Lead Turns 1/4,Preceded By,Bronze,At corner,,Reverse Turn,4-6,,after underturned Natural Spin Turn or Closed Impetus
+Waltz,Whisk When Lead Turns 1/4,Preceded By,Bronze,At corner,,Hesitation Change,,,
+Waltz,Whisk When Lead Turns 1/4,Preceded By,Gold,,,Closed Wing,,,facing DW
+Waltz,Whisk When Lead Turns 1/4,Preceded By,Gold,,,Fallaway Reverse and Slip Pivot,,,
+Waltz,Whisk When Lead Turns 1/4,Followed By,Bronze,,,Chasse from PP,,,
+Waltz,Whisk When Lead Turns 1/4,Followed By,Silver,,,Weave from PP,,,"(steps 1-2 moving to centre after Whisk turned to face DC, or steps 1-2 moving DC after Whisk turned to face LOD)"
+Waltz,Whisk When Lead Turns 1/4,Followed By,Silver,,,Cross Hesitation,,,
+Waltz,Whisk When Lead Turns 1/4,Followed By,Silver,,,Wing,,,
+Waltz,Whisk When Lead Turns 1/4,Followed By,Gold,,,Left Whisk,,,
+Waltz,Whisk When Lead Turns 1/4,Followed By,Gold,,,Chasse from PP,,,moving DC to follow with Closed Wing
+Waltz,Whisk When Lead Turns 1/8,Preceded By,Bronze,,,Reverse Turn,,,
+Waltz,Whisk When Lead Turns 1/8,Preceded By,Bronze,,,Reverse Turn,4-6,,after Natural Spin Turn
+Waltz,Whisk When Lead Turns 1/8,Preceded By,Bronze,,,Double Reverse Spin,,,
+Waltz,Whisk When Lead Turns 1/8,Preceded By,Bronze,,,Reverse Pivot,,,
+Waltz,Whisk When Lead Turns 1/8,Preceded By,Bronze,At corner,,Reverse Turn,4-6,,after underturned Natural Spin Turn or Closed Impetus
+Waltz,Whisk When Lead Turns 1/8,Preceded By,Bronze,At corner,,Hesitation Change,,,
+Waltz,Whisk When Lead Turns 1/8,Preceded By,Gold,,,Closed Wing,,,facing DW
+Waltz,Whisk When Lead Turns 1/8,Preceded By,Gold,,,Fallaway Reverse and Slip Pivot,,,
+Waltz,Whisk When Lead Turns 1/8,Followed By,Bronze,,,Chasse from PP,,,
+Waltz,Whisk When Lead Turns 1/8,Followed By,Silver,,,Weave from PP,,,"(steps 1-2 moving to centre after Whisk turned to face DC, or steps 1-2 moving DC after Whisk turned to face LOD)"
+Waltz,Whisk When Lead Turns 1/8,Followed By,Silver,,,Cross Hesitation,,,
+Waltz,Whisk When Lead Turns 1/8,Followed By,Silver,,,Wing,,,
+Waltz,Whisk When Lead Turns 1/8,Followed By,Gold,,,Left Whisk,,,
+Waltz,Whisk When Lead Turns 1/8,Followed By,Gold,,,Chasse from PP,,,moving DC to follow with Closed Wing
+Waltz,Chasse from PP,Preceded By,Bronze,,,Whisk,,,
+Waltz,Chasse from PP,Preceded By,Bronze,,,Outside Change Ended in PP,,,
+Waltz,Chasse from PP,Preceded By,Bronze,,,Back Whisk,,,
+Waltz,Chasse from PP,Preceded By,Bronze,,,Basic Weave,,,ended in PP
+Waltz,Chasse from PP,Preceded By,Silver,,,Open Telemark,,,
+Waltz,Chasse from PP,Preceded By,Silver,,,Weave from PP,,,ended in PP
+Waltz,Chasse from PP,Preceded By,Silver,,,Turning Lock,,,ended in PP
+Waltz,Chasse from PP,Preceded By,Silver,At corner,,Open Impetus,,,
+Waltz,Chasse from PP,Preceded By,Gold,,,Open Impetus,,,(side of room)
+Waltz,Chasse from PP,Preceded By,Gold,,,Contra Check,,,
+Waltz,Chasse from PP,Preceded By,Gold,,,Turning Lock to Right,,,
+Waltz,Chasse from PP,Followed By,Bronze,,,,,,Any Natural figure
+Waltz,Chasse from PP,Followed By,Gold,,,Closed Wing,,,
+Waltz,Closed Impetus,Preceded By,Bronze,,,Natural Turn,1-3,,
+Waltz,Closed Impetus,Preceded By,Bronze,,,Reverse Corte,,,turning 1/2 to end backing DW after underturned Natural Spin Turn or Closed Impetus at side of room
+Waltz,Closed Impetus,Preceded By,Bronze,,,Back Lock,,,
+Waltz,Closed Impetus,Preceded By,Bronze,,,Progressive Chasse to Right,,,
+Waltz,Closed Impetus,Preceded By,Silver,,,Cross Hesitation,,,turned to L to back DW
+Waltz,Closed Impetus,Followed By,Bronze,,,Reverse Turn,4-6,,
+Waltz,Closed Impetus,Followed By,Bronze,,,Reverse Corte,,,
+Waltz,Closed Impetus,Followed By,Bronze,,,Reverse Pivot,,,
+Waltz,Closed Impetus,Followed By,Silver,At corner,,Turning Lock,,,
+Waltz,Closed Impetus,Followed By,Gold,,,Left Whisk,,,commenced with RF back
+Waltz,Closed Impetus,Followed By,Gold,,,Hover Corte,,,
+Waltz,Hesitation Change,Preceded By,,,,,,Natural Turn,
+Waltz,Hesitation Change,Followed By,Bronze,,,Reverse Turn,,,
+Waltz,Hesitation Change,Followed By,Bronze,,,Double Reverse Spin,,,
+Waltz,Hesitation Change,Followed By,Bronze,,,Progressive Chasse to Right,,,
+Waltz,Hesitation Change,Followed By,Bronze,Facing DW of new LOD,,Closed Change Reverse to Natural,,,
+Waltz,Hesitation Change,Followed By,Bronze,Facing DW of new LOD,,Whisk,,,
+Waltz,Hesitation Change,Followed By,Bronze,Facing new LOD,,Reverse Turn,1-3,,to back DW then Basic Weave
+Waltz,Hesitation Change,Followed By,Silver,,,Closed Telemark,,,
+Waltz,Hesitation Change,Followed By,Silver,,,Open Telemark,,,
+Waltz,Hesitation Change,Followed By,Gold,,,Fallaway Reverse and Slip Pivot,,,
+Waltz,Hesitation Change,Followed By,Gold,At corner,,Contra Check,,,
+Waltz,Outside Change,Preceded By,Bronze,,,Natural Turn,1-3,,to end backing DC (either underturned or commenced facing LOD)
+Waltz,Outside Change,Preceded By,Bronze,At corner,,Reverse Corte,,,(step 1 of Outside Change in CBMP Follow OP)
+Waltz,Outside Change,Preceded By,Silver,,,Progressive Chasse to Right,,,to end backing DC
+Waltz,Outside Change,Preceded By,Silver,At corner,,Cross Hesitation,,,
+Waltz,Outside Change,Preceded By,Gold,,,Left Whisk,,,releasing LF on step 3
+Waltz,Outside Change,Preceded By,Gold,,,Hover Corte,,,with Outside Change ended DC into Closed Wing
+Waltz,Outside Change,Followed By,Bronze,,,,,,Any Natural figure
+Waltz,Outside Change,Followed By,Gold,,,Closed Wing,,,
+Waltz,Outside Change Ended in PP,Followed By,Bronze,,,Chasse from PP,,,
+Waltz,Outside Change Ended in PP,Followed By,Silver,,,Cross Hesitation,,,"(the foot position of step 3 of the Outside Change will be the same as step 3 of the Open Telemark relevant to the follow to be used, pages 31/32)"
+Waltz,Outside Change Ended in PP,Followed By,Silver,,,Wing,,,"(the foot position of step 3 of the Outside Change will be the same as step 3 of the Open Telemark relevant to the follow to be used, pages 31/32)"
+Waltz,Outside Change Ended in PP,Followed By,Gold,,,Left Whisk,,,
+Waltz,Reverse Corte,Preceded By,Bronze,,,Reverse Turn,1-3,,
+Waltz,Reverse Corte,Preceded By,Bronze,,,Natural Spin Turn,,,
+Waltz,Reverse Corte,Preceded By,Bronze,When turning 1/2 to end backing DW,,Natural Spin Turn,,,(underturned)
+Waltz,Reverse Corte,Preceded By,Bronze,When turning 1/2 to end backing DW,,Closed Impetus,,,(underturned)
+Waltz,Reverse Corte,Preceded By,Silver,,,Outside Spin,,,(underturned)
+Waltz,Reverse Corte,Followed By,Bronze,,,Natural Turn,4-6,,
+Waltz,Reverse Corte,Followed By,Bronze,,,Back Whisk,,,
+Waltz,Reverse Corte,Followed By,Bronze,When Reverse Corte ends backing DW,,Natural Turn,4-6,,
+Waltz,Reverse Corte,Followed By,Bronze,When Reverse Corte ends backing DW,,Closed Impetus,,,
+Waltz,Reverse Corte,Followed By,Bronze,When Reverse Corte ends backing DW,,Back Lock,,,
+Waltz,Reverse Corte,Followed By,Bronze,At corner,,Outside Change,,,
+Waltz,Reverse Corte,Followed By,Bronze,At corner,,Back Whisk,,,with turn
+Waltz,Reverse Corte,Followed By,Silver,When Reverse Corte ends backing DW,,Back Whisk,,,
+Waltz,Reverse Corte,Followed By,Silver,When Reverse Corte ends backing DW,,Open Impetus,,,
+Waltz,Reverse Corte,Followed By,Silver,When Reverse Corte ends backing DW,,Outside Spin,,,(underturned)
+Waltz,Reverse Corte,Followed By,Gold,,,Outside Change,,,into Closed Wing
+Waltz,Back Whisk,Preceded By,Bronze,,,Reverse Corte,,,
+Waltz,Back Whisk,Preceded By,Bronze,At corner,,Back Lock,,,
+Waltz,Back Whisk,Preceded By,Bronze,At corner,,Progressive Chasse to Right,,,
+Waltz,Back Whisk,Preceded By,Silver,,,Natural Turn,1-3,,(step 1 of Back Whisk taken in line)
+Waltz,Back Whisk,Preceded By,Silver,,,Cross Hesitation,,,
+Waltz,Back Whisk,Preceded By,Gold,,,Hover Corte,,,
+Waltz,Back Whisk,Followed By,,,,,,Whisk,
+Waltz,Basic Weave,Preceded By,Bronze,,,Reverse Turn,1-3,,commenced facing LOD
+Waltz,Basic Weave,Preceded By,Bronze,Near a corner,,Reverse Turn,1-3,,"to back LOD, then turn either 1/8, 1/8, 3/8 or 1/4, 1/8, 1/4 on Basic Weave to end DW of new LOD"
+Waltz,Basic Weave,Preceded By,Silver,Approaching a corner,,Natural Spin Turn,,,
+Waltz,Basic Weave,Preceded By,Silver,Approaching a corner,,Outside Spin,,,(underturned)
+Waltz,Basic Weave,Followed By,Bronze,,,,,,Any Natural figure
+Waltz,Basic Weave,Followed By,Gold,,,Closed Wing,,,
+Waltz,Double Reverse Spin,Preceded By,Bronze,If commenced DC,,Closed Change Natural to Reverse,,,
+Waltz,Double Reverse Spin,Preceded By,Bronze,If commenced DC,,Reverse Turn,4-6,,after underturned Natural Spin Turn or Closed Impetus
+Waltz,Double Reverse Spin,Preceded By,Bronze,If commenced DC,,Hesitation Change,,,
+Waltz,Double Reverse Spin,Preceded By,Bronze,If commenced DC,,Reverse Pivot,,,
+Waltz,Double Reverse Spin,Preceded By,Bronze,If commenced LOD,,Reverse Turn,4-6,,after Natural Spin Turn or Closed Impetus
+Waltz,Double Reverse Spin,Preceded By,Bronze,If commenced LOD,,Double Reverse Spin,,,
+Waltz,Double Reverse Spin,Preceded By,Bronze,If commenced LOD,,Reverse Pivot,,,
+Waltz,Double Reverse Spin,Preceded By,Bronze,If commenced DW,,Reverse Turn,,,
+Waltz,Double Reverse Spin,Preceded By,Bronze,If commenced DW,,Reverse Turn,4-6,,after Natural Spin Turn
+Waltz,Double Reverse Spin,Preceded By,Bronze,If commenced DW,,Reverse Pivot,,,
+Waltz,Double Reverse Spin,Preceded By,Silver,,,Wing,,,
+Waltz,Double Reverse Spin,Preceded By,Gold,,,Closed Wing,,,
+Waltz,Double Reverse Spin,Preceded By,Gold,,,Fallaway Reverse and Slip Pivot,,,
+Waltz,Double Reverse Spin,Followed By,Bronze,If ended DW,,Closed Change Reverse to Natural,,,
+Waltz,Double Reverse Spin,Followed By,Bronze,If ended DW,,Whisk,,,
+Waltz,Double Reverse Spin,Followed By,Bronze,If ended LOD,,Double Reverse Spin,,,
+Waltz,Double Reverse Spin,Followed By,Bronze,If ended LOD,,Reverse Turn,1-3,,into Basic Weave
+Waltz,Double Reverse Spin,Followed By,Bronze,If ended DC,,,,,Any Reverse figure
+Waltz,Double Reverse Spin,Followed By,Bronze,If ended DC,,Progressive Chasse to Right,,,
+Waltz,Double Reverse Spin,Followed By,Silver,,,Closed Telemark,,,
+Waltz,Double Reverse Spin,Followed By,Silver,,,Open Telemark,,,
+Waltz,Double Reverse Spin,Followed By,Gold,,,Contra Check,,,
+Waltz,Double Reverse Spin,Followed By,Gold,,,Fallaway Reverse and Slip Pivot,,,
+Waltz,Reverse Pivot,Preceded By,Bronze,,,Reverse Turn,1-3,,
+Waltz,Reverse Pivot,Preceded By,Bronze,,,Natural Spin Turn,,,
+Waltz,Reverse Pivot,Preceded By,Bronze,,,Closed Impetus,,,
+Waltz,Reverse Pivot,Preceded By,Silver,,,Outside Spin,,,(underturned)
+Waltz,Reverse Pivot,Followed By,Bronze,If ended DW,,Closed Change Reverse to Natural,,,
+Waltz,Reverse Pivot,Followed By,Bronze,If ended DW,,Whisk,,,
+Waltz,Reverse Pivot,Followed By,Bronze,If ended DW,,Double Reverse Spin,,,
+Waltz,Reverse Pivot,Followed By,Gold,If ended DW,,Contra Check,,,
+Waltz,Reverse Pivot,Followed By,,If ended LOD,,Double Reverse Spin,,,
+Waltz,Reverse Pivot,Followed By,,If ended LOD,,Reverse Turn,1-3,,into Basic Weave
+Waltz,Reverse Pivot,Followed By,,If ended LOD,,Progressive Chasse to Right,,,(3/8 turn)
+Waltz,Reverse Pivot,Followed By,Bronze,If ended DC,,Reverse Turn,,,
+Waltz,Reverse Pivot,Followed By,Bronze,If ended DC,,Double Reverse Spin,,,
+Waltz,Reverse Pivot,Followed By,Bronze,If ended DC,,Progressive Chasse to Right,,,
+Waltz,Reverse Pivot,Followed By,Silver,If ended DC,,Closed Telemark,,,
+Waltz,Reverse Pivot,Followed By,Silver,If ended DC,,Open Telemark,,,
+Waltz,Reverse Pivot,Followed By,Gold,If ended DC,,Fallaway Reverse and Slip Pivot,,,
+Waltz,Back Lock,Preceded By,Bronze,,,Reverse Corte,,,after underturned Natural Spin Turn or Closed Impetus at side of room and ended backing DW
+Waltz,Back Lock,Preceded By,Bronze,,,Progressive Chasse to Right,,,
+Waltz,Back Lock,Preceded By,Silver,,,Cross Hesitation,,,turned to L to back DW
+Waltz,Back Lock,Preceded By,Gold,,,Hover Corte,,,as alignment Reverse Corte above
+Waltz,Back Lock,Followed By,Bronze,,,Natural Turn,4-6,,
+Waltz,Back Lock,Followed By,Bronze,,,Closed Impetus,,,
+Waltz,Back Lock,Followed By,Bronze,At corner,,Back Whisk,,,with turn
+Waltz,Back Lock,Followed By,Silver,,,Back Whisk,,,
+Waltz,Back Lock,Followed By,Silver,,,Open Impetus,,,
+Waltz,Back Lock,Followed By,Silver,,,Outside Spin,,,(underturned)
+Waltz,Progressive Chasse to Right,Preceded By,Bronze,,,Closed Change Natural to Reverse,,,
+Waltz,Progressive Chasse to Right,Preceded By,Bronze,,,Reverse Turn,4-6,,after Natural Spin Turn or Closed Impetus
+Waltz,Progressive Chasse to Right,Preceded By,Bronze,,,Hesitation Change,,,
+Waltz,Progressive Chasse to Right,Preceded By,Bronze,,,Double Reverse Spin,,,
+Waltz,Progressive Chasse to Right,Preceded By,Bronze,,,Reverse Pivot,,,
+Waltz,Progressive Chasse to Right,Preceded By,Silver,,,Wing,,,
+Waltz,Progressive Chasse to Right,Preceded By,Gold,,,Closed Wing,,,
+Waltz,Progressive Chasse to Right,Followed By,Bronze,,,Natural Turn,4-6,,
+Waltz,Progressive Chasse to Right,Followed By,Bronze,,,Closed Impetus,,,
+Waltz,Progressive Chasse to Right,Followed By,Bronze,,,Back Lock,,,
+Waltz,Progressive Chasse to Right,Followed By,Bronze,At corner,,Back Whisk,,,with turn
+Waltz,Progressive Chasse to Right,Followed By,Silver,,,Back Whisk,,,
+Waltz,Progressive Chasse to Right,Followed By,Silver,,,Open Impetus,,,
+Waltz,Progressive Chasse to Right,Followed By,Silver,,,Outside Spin,,,(underturned)
+Waltz,Progressive Chasse to Right,Followed By,Silver,If ended DC,,Outside Change,,,
+Waltz,Weave from PP,Preceded By,Silver,,,Whisk,,,
+Waltz,Weave from PP,Preceded By,Silver,,,Outside Change Ended in PP,,,
+Waltz,Weave from PP,Preceded By,Silver,,,Back Whisk,,,
+Waltz,Weave from PP,Preceded By,Silver,,,Open Telemark,,,
+Waltz,Weave from PP,Preceded By,Silver,,,Open Impetus,,,
+Waltz,Weave from PP,Preceded By,Silver,,,Turning Lock,,,ended in PP
+Waltz,Weave from PP,Preceded By,Gold,,,Contra Check,,,
+Waltz,Weave from PP,Preceded By,Gold,,,Turning Lock to Right,,,
+Waltz,Weave from PP,Followed By,Silver,,,,,,Any Natural figure
+Waltz,Weave from PP,Followed By,Gold,,,Closed Wing,,,
+Waltz,Closed Telemark,Preceded By,Silver,,,Closed Change Natural to Reverse,,,
+Waltz,Closed Telemark,Preceded By,Silver,,,Reverse Turn,4-6,,after underturned Natural Spin Turn or Closed Impetus
+Waltz,Closed Telemark,Preceded By,Silver,,,Hesitation Change,,,
+Waltz,Closed Telemark,Preceded By,Silver,,,Double Reverse Spin,,,
+Waltz,Closed Telemark,Preceded By,Silver,,,Reverse Pivot,,,
+Waltz,Closed Telemark,Preceded By,Silver,,,Wing,,,
+Waltz,Closed Telemark,Preceded By,Gold,,,Closed Wing,,,
+Waltz,Closed Telemark,Preceded By,Gold,At corner,,Fallaway Reverse and Slip Pivot,,,
+Waltz,Closed Telemark,Followed By,Silver,,,,,,Any Natural figure
+Waltz,Closed Telemark,Followed By,Gold,,,Closed Wing,,,
+Waltz,Open Telemark and Cross Hesitation,Preceded By,Silver,,,,,Closed Telemark,
+Waltz,Open Telemark and Cross Hesitation,Preceded By,Silver,,4-6,Whisk,,,
+Waltz,Open Telemark and Cross Hesitation,Preceded By,Silver,,4-6,Outside Change Ended in PP,,,
+Waltz,Open Telemark and Cross Hesitation,Preceded By,Silver,,4-6,Back Whisk,,,
+Waltz,Open Telemark and Cross Hesitation,Preceded By,Silver,,4-6,Basic Weave,,,ended in PP
+Waltz,Open Telemark and Cross Hesitation,Preceded By,Silver,,4-6,Weave from PP,,,ended in PP
+Waltz,Open Telemark and Cross Hesitation,Preceded By,Silver,,4-6,Open Telemark,,,
+Waltz,Open Telemark and Cross Hesitation,Preceded By,Silver,,4-6,Open Impetus,,,
+Waltz,Open Telemark and Cross Hesitation,Preceded By,Silver,,4-6,Turning Lock,,,ended in PP
+Waltz,Open Telemark and Cross Hesitation,Preceded By,Gold,,4-6,Contra Check,,,
+Waltz,Open Telemark and Cross Hesitation,Preceded By,Gold,,4-6,Turning Lock to Right,,,
+Waltz,Open Telemark and Cross Hesitation,Followed By,Silver,,1-3,Chasse from PP,,,
+Waltz,Open Telemark and Cross Hesitation,Followed By,Silver,,1-3,Weave from PP,,,
+Waltz,Open Telemark and Cross Hesitation,Followed By,Silver,,1-3,Cross Hesitation,,,
+Waltz,Open Telemark and Cross Hesitation,Followed By,Silver,,1-3,Wing,,,
+Waltz,Open Telemark and Cross Hesitation,Followed By,Gold,,1-3,Left Whisk,,,
+Waltz,Open Telemark and Cross Hesitation,Followed By,Silver,,,Natural Turn,4-6,,
+Waltz,Open Telemark and Cross Hesitation,Followed By,Silver,,,Outside Change,,,
+Waltz,Open Telemark and Cross Hesitation,Followed By,Silver,,,Back Whisk,,,
+Waltz,Open Telemark and Cross Hesitation,Followed By,Silver,,,Back Lock,,,
+Waltz,Open Telemark and Cross Hesitation,Followed By,Silver,,,Outside Spin,,,
+Waltz,Open Telemark and Wing,Preceded By,Silver,,,,,Closed Telemark,
+Waltz,Open Telemark and Wing,Preceded By,Silver,,4-6,Whisk,,,
+Waltz,Open Telemark and Wing,Preceded By,Silver,,4-6,Outside Change Ended in PP,,,
+Waltz,Open Telemark and Wing,Preceded By,Silver,,4-6,Back Whisk,,,
+Waltz,Open Telemark and Wing,Preceded By,Silver,,4-6,Basic Weave,,,ended in PP
+Waltz,Open Telemark and Wing,Preceded By,Silver,,4-6,Weave from PP,,,ended in PP
+Waltz,Open Telemark and Wing,Preceded By,Silver,,4-6,Open Telemark,,,
+Waltz,Open Telemark and Wing,Preceded By,Silver,,4-6,Open Impetus,,,
+Waltz,Open Telemark and Wing,Preceded By,Silver,,4-6,Turning Lock,,,ended in PP
+Waltz,Open Telemark and Wing,Preceded By,Gold,,4-6,Contra Check,,,
+Waltz,Open Telemark and Wing,Preceded By,Gold,,4-6,Turning Lock to Right,,,
+Waltz,Open Telemark and Wing,Followed By,Silver,,1-3,Chasse from PP,,,
+Waltz,Open Telemark and Wing,Followed By,Silver,,1-3,Weave from PP,,,
+Waltz,Open Telemark and Wing,Followed By,Silver,,1-3,Cross Hesitation,,,
+Waltz,Open Telemark and Wing,Followed By,Silver,,1-3,Wing,,,
+Waltz,Open Telemark and Wing,Followed By,Gold,,1-3,Left Whisk,,,
+Waltz,Open Telemark and Wing,Followed By,Silver,,,,,,Any Reverse figure taking step 1 in CBMP OP on L side
+Waltz,Open Telemark and Wing,Followed By,Silver,At corner,,Whisk,,,
+Waltz,Open Impetus and Cross Hesitation,Preceded By,Silver,,,,,Closed Impetus,
+Waltz,Open Impetus and Cross Hesitation,Preceded By,Silver,,4-6,Whisk,,,
+Waltz,Open Impetus and Cross Hesitation,Preceded By,Silver,,4-6,Outside Change Ended in PP,,,
+Waltz,Open Impetus and Cross Hesitation,Preceded By,Silver,,4-6,Back Whisk,,,
+Waltz,Open Impetus and Cross Hesitation,Preceded By,Silver,,4-6,Basic Weave,,,ended in PP
+Waltz,Open Impetus and Cross Hesitation,Preceded By,Silver,,4-6,Weave from PP,,,ended in PP
+Waltz,Open Impetus and Cross Hesitation,Preceded By,Silver,,4-6,Open Telemark,,,
+Waltz,Open Impetus and Cross Hesitation,Preceded By,Silver,,4-6,Open Impetus,,,
+Waltz,Open Impetus and Cross Hesitation,Preceded By,Silver,,4-6,Turning Lock,,,ended in PP
+Waltz,Open Impetus and Cross Hesitation,Preceded By,Gold,,4-6,Contra Check,,,
+Waltz,Open Impetus and Cross Hesitation,Preceded By,Gold,,4-6,Turning Lock to Right,,,
+Waltz,Open Impetus and Cross Hesitation,Followed By,Silver,,1-3,Chasse from PP,,,
+Waltz,Open Impetus and Cross Hesitation,Followed By,Silver,,1-3,Weave from PP,,,
+Waltz,Open Impetus and Cross Hesitation,Followed By,Silver,,1-3,Cross Hesitation,,,
+Waltz,Open Impetus and Cross Hesitation,Followed By,Silver,,1-3,Wing,,,
+Waltz,Open Impetus and Cross Hesitation,Followed By,Gold,,1-3,Left Whisk,,,
+Waltz,Open Impetus and Cross Hesitation,Followed By,Silver,,,,,Open Telemark and Cross Hesitation,
+Waltz,Open Impetus and Wing,Preceded By,Silver,,,,,Closed Impetus,
+Waltz,Open Impetus and Wing,Preceded By,Silver,,4-6,Whisk,,,
+Waltz,Open Impetus and Wing,Preceded By,Silver,,4-6,Outside Change Ended in PP,,,
+Waltz,Open Impetus and Wing,Preceded By,Silver,,4-6,Back Whisk,,,
+Waltz,Open Impetus and Wing,Preceded By,Silver,,4-6,Basic Weave,,,ended in PP
+Waltz,Open Impetus and Wing,Preceded By,Silver,,4-6,Weave from PP,,,ended in PP
+Waltz,Open Impetus and Wing,Preceded By,Silver,,4-6,Open Telemark,,,
+Waltz,Open Impetus and Wing,Preceded By,Silver,,4-6,Open Impetus,,,
+Waltz,Open Impetus and Wing,Preceded By,Silver,,4-6,Turning Lock,,,ended in PP
+Waltz,Open Impetus and Wing,Preceded By,Gold,,4-6,Contra Check,,,
+Waltz,Open Impetus and Wing,Preceded By,Gold,,4-6,Turning Lock to Right,,,
+Waltz,Open Impetus and Wing,Followed By,Silver,,1-3,Chasse from PP,,,
+Waltz,Open Impetus and Wing,Followed By,Silver,,1-3,Weave from PP,,,
+Waltz,Open Impetus and Wing,Followed By,Silver,,1-3,Cross Hesitation,,,
+Waltz,Open Impetus and Wing,Followed By,Silver,,1-3,Wing,,,
+Waltz,Open Impetus and Wing,Followed By,Gold,,1-3,Left Whisk,,,
+Waltz,Open Impetus and Wing,Followed By,Silver,,,,,Open Telemark and Wing,
+Waltz,Outside Spin,Preceded By,Silver,,,Reverse Corte,,,
+Waltz,Outside Spin,Preceded By,Silver,,,Cross Hesitation,,,
+Waltz,Outside Spin,Preceded By,Gold,,,Hover Corte,,,
+Waltz,Outside Spin,Preceded By,Silver,,,Reverse Corte,,,turning 1/2 after underturned Natural Spin Turn or Closed Impetus at side of room
+Waltz,Outside Spin,Preceded By,Silver,,,Back Lock,,,
+Waltz,Outside Spin,Preceded By,Silver,,,Progressive Chasse to Right,,,
+Waltz,Outside Spin,Preceded By,Silver,,,Cross Hesitation,,,
+Waltz,Outside Spin,Followed By,Silver,,,,,,Any Natural figure
+Waltz,Outside Spin,Followed By,Silver,,,,,Natural Spin Turn,
+Waltz,Outside Spin,Followed By,Gold,If ended backing LOD,,Turning Lock to Right,,,
+Waltz,Turning Lock,Preceded By,Silver,,,Natural Spin Turn,,,
+Waltz,Turning Lock,Preceded By,Silver,,,Closed Impetus,,,
+Waltz,Turning Lock,Preceded By,Silver,,,Outside Spin,,,(underturned)
+Waltz,Turning Lock,Followed By,Silver,,,,,,Any Natural figure
+Waltz,Turning Lock,Followed By,Gold,,,Closed Wing,,,
+Waltz,Left Whisk,Preceded By,Gold,,,Whisk,,,
+Waltz,Left Whisk,Preceded By,Gold,,,Outside Change Ended in PP,,,
+Waltz,Left Whisk,Preceded By,Gold,,,Back Whisk,,,
+Waltz,Left Whisk,Preceded By,Gold,,,Basic Weave,,,ended in PP
+Waltz,Left Whisk,Preceded By,Gold,,,Weave from PP,,,ended in PP
+Waltz,Left Whisk,Preceded By,Gold,,,Open Telemark,,,
+Waltz,Left Whisk,Preceded By,Gold,,,Open Impetus,,,
+Waltz,Left Whisk,Preceded By,Gold,,,Turning Lock,,,ended in PP
+Waltz,Left Whisk,Preceded By,Gold,,,Contra Check,,,
+Waltz,Left Whisk,Preceded By,Gold,,,Turning Lock to Right,,,
+Waltz,Left Whisk,Preceded By,Gold,If commenced with RF back on step 1,,Reverse Turn,1-3,,
+Waltz,Left Whisk,Preceded By,Gold,If commenced with RF back on step 1,,Natural Spin Turn,,,
+Waltz,Left Whisk,Preceded By,Gold,If commenced with RF back on step 1,,Closed Impetus,,,
+Waltz,Left Whisk,Preceded By,Gold,If commenced with RF back on step 1,,Outside Spin,,,(underturned)
+Waltz,Left Whisk,Followed By,Gold,After an untwist on both feet of about 5/8 turn to R while the Follow runs round the Lead RLRL (12&3),,Back Whisk,,,
+Waltz,Left Whisk,Followed By,Gold,After an untwist on both feet of about 5/8 turn to R while the Follow runs round the Lead RLRL (12&3),,Outside Spin,,,(underturned)
+Waltz,Left Whisk,Followed By,Gold,After an untwist on both feet of about 5/8 turn to R while the Follow runs round the Lead RLRL (12&3),,Closed Impetus,,,
+Waltz,Left Whisk,Followed By,Gold,After an untwist on both feet of about 5/8 turn to R while the Follow runs round the Lead RLRL (12&3),,Open Impetus,,,
+Waltz,Left Whisk,Followed By,Gold,Releasing LF and stepping back LF,,Outside Change,,,
+Waltz,Left Whisk,Followed By,Gold,Releasing LF and stepping back LF,,Back Whisk,,,
+Waltz,Contra Check,Preceded By,Gold,,,Reverse Turn,,,
+Waltz,Contra Check,Preceded By,Gold,,,Hesitation Change,,,
+Waltz,Contra Check,Preceded By,Gold,,,Double Reverse Spin,,,
+Waltz,Contra Check,Preceded By,Gold,,,Reverse Pivot,,,
+Waltz,Contra Check,Preceded By,Gold,,,Turning Lock,,,"into Left Whisk, as the amalgamation in the Left Whisk notes"
+Waltz,Contra Check,Preceded By,Gold,,,Fallaway Reverse and Slip Pivot,,,
+Waltz,Contra Check,Followed By,Gold,,,Chasse from PP,,,
+Waltz,Contra Check,Followed By,Gold,,,Weave from PP,,,
+Waltz,Contra Check,Followed By,Gold,,,Cross Hesitation,,,
+Waltz,Contra Check,Followed By,Gold,,,Wing,,,
+Waltz,Contra Check,Followed By,Gold,,,Left Whisk,,,
+Waltz,Closed Wing,Preceded By,Gold,,,Chasse from PP,,,
+Waltz,Closed Wing,Preceded By,Gold,,,Outside Change,,,
+Waltz,Closed Wing,Preceded By,Gold,,,Basic Weave,,,
+Waltz,Closed Wing,Preceded By,Gold,,,Weave from PP,,,
+Waltz,Closed Wing,Preceded By,Gold,,,Closed Telemark,,,
+Waltz,Closed Wing,Preceded By,Gold,,,Turning Lock,,,
+Waltz,Closed Wing,Followed By,Gold,,,,,,"Any Reverse figure taking step 1 in CBMP, OP on L side"
+Waltz,Closed Wing,Followed By,Gold,If ended DW,,Whisk,,,
+Waltz,Turning Lock to Right,Preceded By,Gold,,,Natural Spin Turn,,,(overturned) ended backing LOD
+Waltz,Turning Lock to Right,Preceded By,Gold,,,Outside Spin,,,(underturned) ended backing LOD
+Waltz,Turning Lock to Right,Followed By,Gold,,,Chasse from PP,,,
+Waltz,Turning Lock to Right,Followed By,Gold,,,Weave from PP,,,
+Waltz,Turning Lock to Right,Followed By,Gold,,,Cross Hesitation,,,
+Waltz,Turning Lock to Right,Followed By,Gold,,,Wing,,,
+Waltz,Turning Lock to Right,Followed By,Gold,,,Left Whisk,,,
+Waltz,Fallaway Reverse and Slip Pivot,Preceded By,Gold,,,Reverse Turn,4-6,,
+Waltz,Fallaway Reverse and Slip Pivot,Preceded By,Gold,,,Hesitation Change,,,
+Waltz,Fallaway Reverse and Slip Pivot,Preceded By,Gold,,,Double Reverse Spin,,,
+Waltz,Fallaway Reverse and Slip Pivot,Preceded By,Gold,,,Reverse Pivot,,,
+Waltz,Fallaway Reverse and Slip Pivot,Preceded By,Gold,,,Wing,,,
+Waltz,Fallaway Reverse and Slip Pivot,Preceded By,Gold,,,Closed Wing,,,
+Waltz,Fallaway Reverse and Slip Pivot,Followed By,Gold,,,Whisk,,,
+Waltz,Fallaway Reverse and Slip Pivot,Followed By,Gold,,,Double Reverse Spin,,,
+Waltz,Fallaway Reverse and Slip Pivot,Followed By,Gold,,,Progressive Chasse to Right,,,
+Waltz,Fallaway Reverse and Slip Pivot,Followed By,Gold,,,Closed Telemark,,,
+Waltz,Fallaway Reverse and Slip Pivot,Followed By,Gold,,,Open Telemark,,,
+Waltz,Fallaway Reverse and Slip Pivot,Followed By,Gold,,,Contra Check,,,
+Waltz,Hover Corte,Preceded By,Gold,,,Reverse Turn,1-3,,
+Waltz,Hover Corte,Preceded By,Gold,,,Natural Spin Turn,,,
+Waltz,Hover Corte,Preceded By,Gold,,,Closed Impetus,,,
+Waltz,Hover Corte,Preceded By,Gold,,,Outside Spin,,,(underturned)
+Waltz,Hover Corte,Followed By,Gold,,,Outside Change,,,
+Waltz,Hover Corte,Followed By,Gold,,,Back Whisk,,,
+Waltz,Hover Corte,Followed By,Gold,,,Outside Spin,,,
+Waltz,Drag Hesitation,Preceded By,Silver,,,Closed Change Natural to Reverse,,,
+Waltz,Drag Hesitation,Preceded By,Silver,,,Reverse Turn,,,
+Waltz,Drag Hesitation,Preceded By,Silver,,,Reverse Turn,4-6,,after Natural Spin Turn or Closed Impetus
+Waltz,Drag Hesitation,Preceded By,Silver,,,Hesitation Change,,,
+Waltz,Drag Hesitation,Preceded By,Silver,,,Double Reverse Spin,,,
+Waltz,Drag Hesitation,Preceded By,Silver,,,Wing,,,
+Waltz,Drag Hesitation,Followed By,Silver,,,Natural Turn,4-6,,
+Waltz,Drag Hesitation,Followed By,Silver,,,Back Whisk,,,
+Waltz,Drag Hesitation,Followed By,Silver,,,Back Lock,,,
+Waltz,Drag Hesitation,Followed By,Silver,,,Closed Impetus,,,
+Waltz,Drag Hesitation,Followed By,Silver,,,Open Impetus,,,
+Waltz,Drag Hesitation,Followed By,Silver,,,Outside Spin,,,(underturned) turning 3/4
+Waltz,Fallaway Whisk,Preceded By,Gold,,,,,Back Whisk,
+Waltz,Fallaway Whisk,Followed By,Gold,,,,,Back Whisk,
+Foxtrot,Feather Step,Preceded By,Bronze,,,Natural Turn,,,
+Foxtrot,Feather Step,Preceded By,Bronze,,,Change of Direction,,,
+Foxtrot,Feather Step,Preceded By,Silver,,,Closed Telemark,,,
+Foxtrot,Feather Step,Preceded By,Silver,,,Hover Telemark,,,
+Foxtrot,Feather Step,Preceded By,Silver,,,Reverse Wave,,,
+Foxtrot,Feather Step,Followed By,Bronze,,,Three Step,,,
+Foxtrot,Feather Step,Followed By,Bronze,,,Reverse Turn (Incorporating Feather Finish),,,
+Foxtrot,Feather Step,Followed By,Bronze,,,Reverse Turn (Incorporating Feather Finish),1-4,,check and Basic Weave
+Foxtrot,Feather Step,Followed By,Bronze,,,Change of Direction,,,
+Foxtrot,Feather Step,Followed By,Silver,,,Closed Telemark,,,
+Foxtrot,Feather Step,Followed By,Silver,,,Open Telemark,,,
+Foxtrot,Feather Step,Followed By,Silver,,,Hover Telemark,,,
+Foxtrot,Feather Step,Followed By,Silver,,,Reverse Wave,,,
+Foxtrot,Feather Step,Followed By,Silver,,1-3,"Top Spin (At a Corner, After 1-6 Reverse Turn)",,,checking back
+Foxtrot,Feather Step,Followed By,Silver,,1-3,Outside Swivel,,,checking back
+Foxtrot,Feather Step,Followed By,Gold,,,Fallaway Reverse and Slip Pivot,,,
+Foxtrot,Feather Step,Followed By,Gold,,,Bounce Fallaway with Weave Ending,,,
+Foxtrot,Three Step,Preceded By,Bronze,,,Feather Step,,,
+Foxtrot,Three Step,Preceded By,Bronze,,,Reverse Turn (Incorporating Feather Finish),,,
+Foxtrot,Three Step,Preceded By,Bronze,,,Closed Impetus and Feather Finish,,,
+Foxtrot,Three Step,Preceded By,Bronze,,,Natural Weave,,,
+Foxtrot,Three Step,Preceded By,Bronze,,,Basic Weave,,,
+Foxtrot,Three Step,Preceded By,Silver,,,Feather Ending,,,
+Foxtrot,Three Step,Preceded By,Silver,,,"Top Spin (At a Corner, After 1-6 Reverse Turn)",,,
+Foxtrot,Three Step,Preceded By,Silver,,,Weave from PP,,,
+Foxtrot,Three Step,Preceded By,Silver,At corner,,Hover Feather (Taken After a Heel Pull),,,
+Foxtrot,Three Step,Preceded By,Silver,At corner,,Natural Telemark,,,
+Foxtrot,Three Step,Preceded By,Gold,,,Natural Zig-Zag from Promenade Position,,,
+Foxtrot,Three Step,Preceded By,Gold,,,Bounce Fallaway with Weave Ending,,,
+Foxtrot,Three Step,Preceded By,Gold,At corner,,Natural Twist Turn,,,
+Foxtrot,Three Step,Preceded By,Gold,At corner,,Natural Hover Telemark,,,
+Foxtrot,Three Step,Followed By,Bronze,,,Natural Turn,,,
+Foxtrot,Three Step,Followed By,Bronze,,,Natural Weave,,,
+Foxtrot,Three Step,Followed By,Silver,,,Natural Telemark,,,
+Foxtrot,Three Step,Followed By,Silver,,,Hover Cross,,,
+Foxtrot,Three Step,Followed By,Gold,,,Natural Twist Turn,,,
+Foxtrot,Three Step,Followed By,Gold,,,Curved Feather to Back Feather,,,
+Foxtrot,Three Step,Followed By,Gold,,,Natural Hover Telemark,,,
+Foxtrot,Natural Turn,Preceded By,Bronze,,,Three Step,,,
+Foxtrot,Natural Turn,Preceded By,Silver,,,Closed Telemark,,,
+Foxtrot,Natural Turn,Preceded By,Silver,At corner,,Hover Telemark,,,
+Foxtrot,Natural Turn,Followed By,Bronze,,,Feather Step,,,
+Foxtrot,Natural Turn,Followed By,Bronze,At corner,,Natural Weave,,,
+Foxtrot,Natural Turn,Followed By,Bronze,,1-3,Closed Impetus and Feather Finish,,,
+Foxtrot,Natural Turn,Followed By,Silver,,,Natural Weave,,,(side of room)
+Foxtrot,Natural Turn,Followed By,Silver,,1-3,Open Impetus,,,
+Foxtrot,Natural Turn,Followed By,Silver,,1-5,Hover Feather (Taken After a Heel Pull),,,
+Foxtrot,Natural Turn,Followed By,Gold,At corner,,Curved Feather to Back Feather,,,
+Foxtrot,Reverse Turn (Incorporating Feather Finish),Preceded By,Gold,,4-6,Curved Feather to Back Feather,,,
+Foxtrot,Reverse Turn (Incorporating Feather Finish),Preceded By,Bronze,,,Feather Step,,,
+Foxtrot,Reverse Turn (Incorporating Feather Finish),Preceded By,Bronze,,,Closed Impetus and Feather Finish,,,
+Foxtrot,Reverse Turn (Incorporating Feather Finish),Preceded By,Silver,,,Feather Ending,,,
+Foxtrot,Reverse Turn (Incorporating Feather Finish),Preceded By,Silver,,,"Top Spin (At a Corner, After 1-6 Reverse Turn)",,,
+Foxtrot,Reverse Turn (Incorporating Feather Finish),Preceded By,Silver,,,Hover Feather (Taken After a Heel Pull),,,
+Foxtrot,Reverse Turn (Incorporating Feather Finish),Preceded By,Silver,,,Natural Telemark,,,
+Foxtrot,Reverse Turn (Incorporating Feather Finish),Preceded By,Silver,,,Hover Cross,,,
+Foxtrot,Reverse Turn (Incorporating Feather Finish),Preceded By,Gold,,,Natural Twist Turn,,,
+Foxtrot,Reverse Turn (Incorporating Feather Finish),Preceded By,Gold,,,Natural Zig-Zag from Promenade Position,,,
+Foxtrot,Reverse Turn (Incorporating Feather Finish),Preceded By,Gold,,,Natural Hover Telemark,,,
+Foxtrot,Reverse Turn (Incorporating Feather Finish),Followed By,Bronze,,,Three Step,,,
+Foxtrot,Reverse Turn (Incorporating Feather Finish),Followed By,Bronze,,,Change of Direction,,,
+Foxtrot,Reverse Turn (Incorporating Feather Finish),Followed By,Bronze,,,Reverse Turn (Incorporating Feather Finish),1-4,,"(overturned), check and Basic Weave"
+Foxtrot,Reverse Turn (Incorporating Feather Finish),Followed By,Silver,,,Hover Telemark,,,
+Foxtrot,Reverse Turn (Incorporating Feather Finish),Followed By,Silver,,,Reverse Wave,,,
+Foxtrot,Reverse Turn (Incorporating Feather Finish),Followed By,Silver,,1-6,"Top Spin (At a Corner, After 1-6 Reverse Turn)",,,checking back
+Foxtrot,Reverse Turn (Incorporating Feather Finish),Followed By,Silver,,1-6,Outside Swivel,,,checking back
+Foxtrot,Reverse Turn (Incorporating Feather Finish),Followed By,Gold,At corner,,Fallaway Reverse and Slip Pivot,,,
+Foxtrot,Closed Impetus and Feather Finish,Preceded By,Bronze,,,Natural Turn,1-3,,
+Foxtrot,Closed Impetus and Feather Finish,Preceded By,Silver,,,Reverse Wave,1-6,,
+Foxtrot,Closed Impetus and Feather Finish,Preceded By,Gold,,,Curved Feather to Back Feather,1-3,,
+Foxtrot,Closed Impetus and Feather Finish,Preceded By,Gold,,3-7,Natural Twist Turn,,,
+Foxtrot,Closed Impetus and Feather Finish,Followed By,,,,,,Feather Step,
+Foxtrot,Natural Weave,Preceded By,Silver,If commenced in PP,,Open Telemark,,,
+Foxtrot,Natural Weave,Preceded By,Silver,If commenced in PP,,Hover Telemark to PP,,,
+Foxtrot,Natural Weave,Preceded By,Silver,If commenced in PP,,Outside Swivel,,,
+Foxtrot,Natural Weave,Preceded By,Silver,If commenced in PP,,Open Impetus,,,
+Foxtrot,Natural Weave,Preceded By,Bronze,,,Three Step,,,
+Foxtrot,Natural Weave,Preceded By,Bronze,At corner,,Natural Turn,,,
+Foxtrot,Natural Weave,Preceded By,Bronze,At corner,,Change of Direction,,,
+Foxtrot,Natural Weave,Preceded By,Silver,,,Natural Turn,,,(side of room)
+Foxtrot,Natural Weave,Preceded By,Silver,,,Change of Direction,,,(side of room)
+Foxtrot,Natural Weave,Preceded By,Silver,,,Closed Telemark,,,
+Foxtrot,Natural Weave,Preceded By,Silver,At corner,,Hover Telemark,,,
+Foxtrot,Natural Weave,Preceded By,Gold,,3-8,Natural Twist Turn,,,
+Foxtrot,Natural Weave,Followed By,,,,,,Reverse Turn (Incorporating Feather Finish),
+Foxtrot,Change of Direction,Preceded By,Bronze,,,Feather Step,,,
+Foxtrot,Change of Direction,Preceded By,Bronze,,,Reverse Turn (Incorporating Feather Finish),,,
+Foxtrot,Change of Direction,Preceded By,Bronze,,,Natural Weave,,,
+Foxtrot,Change of Direction,Preceded By,Bronze,,,Basic Weave,,,
+Foxtrot,Change of Direction,Preceded By,Bronze,At corner,,Closed Impetus and Feather Finish,,,
+Foxtrot,Change of Direction,Preceded By,Silver,,,Feather Ending,,,
+Foxtrot,Change of Direction,Preceded By,Silver,,,"Top Spin (At a Corner, After 1-6 Reverse Turn)",,,
+Foxtrot,Change of Direction,Preceded By,Silver,,,Weave from PP,,,
+Foxtrot,Change of Direction,Preceded By,Silver,At corner,,Hover Feather (Taken After a Heel Pull),,,
+Foxtrot,Change of Direction,Preceded By,Silver,At corner,,Natural Telemark,,,
+Foxtrot,Change of Direction,Preceded By,Gold,,,Natural Zig-Zag from Promenade Position,,,
+Foxtrot,Change of Direction,Preceded By,Gold,,,Fallaway Reverse and Slip Pivot,,,
+Foxtrot,Change of Direction,Preceded By,Gold,,,Bounce Fallaway with Weave Ending,,,
+Foxtrot,Change of Direction,Preceded By,Gold,At corner,,Natural Twist Turn,,,
+Foxtrot,Change of Direction,Preceded By,Gold,At corner,,Natural Hover Telemark,,,
+Foxtrot,Change of Direction,Followed By,Bronze,,,Feather Step,,,
+Foxtrot,Change of Direction,Followed By,Bronze,At corner,,Natural Weave,,,
+Foxtrot,Change of Direction,Followed By,Silver,,,Natural Weave,,,(side of room)
+Foxtrot,Basic Weave,Preceded By,Bronze,,,Reverse Turn (Incorporating Feather Finish),1-4,,"to end backing DW, check and Basic Weave"
+Foxtrot,Basic Weave,Preceded By,Bronze,Approaching a corner,,Reverse Turn (Incorporating Feather Finish),1-4,,"to end backing LOD, check and Basic Weave turning 1/8, 1/8, 3/8 or 1/4, 1/8, 1/4 to end DW of new LOD"
+Foxtrot,Basic Weave,Preceded By,Silver,,,Hover Telemark,,,then LF forward in line with partner on toe into overturned Basic Weave
+Foxtrot,Basic Weave,Preceded By,Silver,,,Reverse Wave,1-4,,
+Foxtrot,Basic Weave,Preceded By,Gold,At corner,,Curved Feather to Back Feather,,,
+Foxtrot,Basic Weave,Preceded By,Gold,At corner,,Fallaway Reverse and Slip Pivot,,,
+Foxtrot,Basic Weave,Followed By,,,,,,Reverse Turn (Incorporating Feather Finish),
+Foxtrot,Closed Telemark,Preceded By,Silver,,,,,Reverse Turn (Incorporating Feather Finish),
+Foxtrot,Closed Telemark,Followed By,Silver,,,Feather Step,,,"taking step 1 in CBMP, OP"
+Foxtrot,Closed Telemark,Followed By,Silver,,,Natural Turn,,,"taking step 1 in CBMP, OP"
+Foxtrot,Closed Telemark,Followed By,Silver,,,Natural Weave,,,"taking step 1 in CBMP, OP"
+Foxtrot,Closed Telemark,Followed By,Silver,,,Natural Telemark,,,"taking step 1 in CBMP, OP"
+Foxtrot,Closed Telemark,Followed By,Silver,At corner,,Hover Cross,,,
+Foxtrot,Closed Telemark,Followed By,Gold,,,Natural Twist Turn,,,
+Foxtrot,Closed Telemark,Followed By,Gold,,,Curved Feather to Back Feather,,,
+Foxtrot,Closed Telemark,Followed By,Gold,,,Natural Hover Telemark,,,
+Foxtrot,Open Telemark and Feather Ending,Preceded By,Silver,,,,,Reverse Turn (Incorporating Feather Finish),
+Foxtrot,Open Telemark and Feather Ending,Followed By,Silver,,,,,Reverse Turn (Incorporating Feather Finish),
+Foxtrot,"Top Spin (At a Corner, After 1-6 Reverse Turn)",Preceded By,Silver,,,Reverse Turn (Incorporating Feather Finish),1-6,,
+Foxtrot,"Top Spin (At a Corner, After 1-6 Reverse Turn)",Preceded By,Silver,,,Feather Step,1-3,,
+Foxtrot,"Top Spin (At a Corner, After 1-6 Reverse Turn)",Preceded By,Silver,,,Feather Finish,1-3,,
+Foxtrot,"Top Spin (At a Corner, After 1-6 Reverse Turn)",Preceded By,Silver,,,Feather Ending,1-3,,
+Foxtrot,"Top Spin (At a Corner, After 1-6 Reverse Turn)",Preceded By,Silver,,,Hover Feather (Taken After a Heel Pull),1-2,,
+Foxtrot,"Top Spin (At a Corner, After 1-6 Reverse Turn)",Followed By,Silver,If ended DC,,Reverse Turn (Incorporating Feather Finish),,,
+Foxtrot,"Top Spin (At a Corner, After 1-6 Reverse Turn)",Followed By,Silver,If ended DC,,Closed Telemark,,,
+Foxtrot,"Top Spin (At a Corner, After 1-6 Reverse Turn)",Followed By,Silver,If ended DC,,Open Telemark,,,
+Foxtrot,"Top Spin (At a Corner, After 1-6 Reverse Turn)",Followed By,Silver,At corner,,Reverse Wave,,,
+Foxtrot,"Top Spin (At a Corner, After 1-6 Reverse Turn)",Followed By,Silver,If ended LOD or DW,,Three Step,,,
+Foxtrot,"Top Spin (At a Corner, After 1-6 Reverse Turn)",Followed By,Silver,If ended LOD or DW,,Change of Direction,,,
+Foxtrot,"Top Spin (At a Corner, After 1-6 Reverse Turn)",Followed By,Silver,If ended LOD or DW,,Hover Telemark,,,
+Foxtrot,"Top Spin (At a Corner, After 1-6 Reverse Turn)",Followed By,Silver,If ended LOD or DW,,Reverse Wave,,,
+Foxtrot,"Top Spin (At a Corner, After 1-6 Reverse Turn)",Followed By,Gold,,,Fallaway Reverse and Slip Pivot,,,
+Foxtrot,"Top Spin (At a Corner, After 1-6 Reverse Turn)",Followed By,Gold,,,Bounce Fallaway with Weave Ending,,,
+Foxtrot,Hover Feather (Taken After a Heel Pull),Preceded By,Silver,,,Heel Pull,,,
+Foxtrot,Hover Feather (Taken After a Heel Pull),Preceded By,Silver,,,Hover Telemark,1-2,,counted SS
+Foxtrot,Hover Feather (Taken After a Heel Pull),Followed By,Silver,,,,,Feather Step,
+Foxtrot,Hover Telemark,Preceded By,Silver,,,,,Change of Direction,
+Foxtrot,Hover Telemark,Followed By,Silver,,,Feather Step,,,(step 1 in CBMP OP)
+Foxtrot,Hover Telemark,Followed By,Silver,,,Basic Weave,,,"(overturned), after LF fwd in line with partner on toe"
+Foxtrot,Hover Telemark,Followed By,Silver,,1-2,Hover Feather (Taken After a Heel Pull),,,with steps 1-2 of the Hover Telemark counted SS
+Foxtrot,Hover Telemark,Followed By,Silver,At corner,,,,,"Any Natural figure (step 1 in CBMP, OP)"
+Foxtrot,Hover Telemark,Followed By,Gold,At corner,,Curved Feather to Back Feather,,,
+Foxtrot,Hover Telemark to PP,Preceded By,Silver,,,,,Hover Telemark,
+Foxtrot,Hover Telemark to PP,Followed By,Silver,,,Natural Weave,,,(overturned) (commencing in PP)
+Foxtrot,Hover Telemark to PP,Followed By,Silver,,,Feather Ending,,,
+Foxtrot,Hover Telemark to PP,Followed By,Silver,,,Weave from PP,,,
+Foxtrot,Hover Telemark to PP,Followed By,Gold,,,Natural Zig-Zag from Promenade Position,,,
+Foxtrot,Hover Telemark to PP,Followed By,Gold,At corner,,Curved Feather to Back Feather,,,(commencing in PP)
+Foxtrot,Natural Telemark,Preceded By,Silver,,,,,Natural Turn,
+Foxtrot,Natural Telemark,Followed By,Silver,,,Reverse Turn (Incorporating Feather Finish),,,
+Foxtrot,Natural Telemark,Followed By,Silver,,,Closed Telemark,,,
+Foxtrot,Natural Telemark,Followed By,Silver,,,Open Telemark,,,
+Foxtrot,Natural Telemark,Followed By,Silver,At corner,,Three Step,,,
+Foxtrot,Natural Telemark,Followed By,Silver,At corner,,Change of Direction,,,
+Foxtrot,Natural Telemark,Followed By,Silver,At corner,,Hover Telemark,,,
+Foxtrot,Natural Telemark,Followed By,Silver,At corner,,Reverse Wave,,,
+Foxtrot,Natural Telemark,Followed By,Gold,,,Fallaway Reverse and Slip Pivot,,,
+Foxtrot,Natural Telemark,Followed By,Gold,,,Bounce Fallaway with Weave Ending,,,
+Foxtrot,Hover Cross,Preceded By,Silver,,,Three Step,,,
+Foxtrot,Hover Cross,Preceded By,Silver,,,Closed Telemark,,,
+Foxtrot,Hover Cross,Followed By,Silver,,,Reverse Turn (Incorporating Feather Finish),,,
+Foxtrot,Hover Cross,Followed By,Silver,,,Closed Telemark,,,
+Foxtrot,Hover Cross,Followed By,Silver,,,Open Telemark,,,
+Foxtrot,Hover Cross,Followed By,Gold,,,Fallaway Reverse and Slip Pivot,,,
+Foxtrot,Hover Cross,Followed By,Gold,,,Bounce Fallaway with Weave Ending,,,
+Foxtrot,"Open Telemark, Natural Turn to Outside Swivel and Feather Ending",Preceded By,Silver,,,Feather Step,,,
+Foxtrot,"Open Telemark, Natural Turn to Outside Swivel and Feather Ending",Preceded By,Silver,,,Feather Finish,,,
+Foxtrot,"Open Telemark, Natural Turn to Outside Swivel and Feather Ending",Preceded By,Silver,,,Feather Ending,,,
+Foxtrot,"Open Telemark, Natural Turn to Outside Swivel and Feather Ending",Preceded By,Silver,,,Hover Feather (Taken After a Heel Pull),,,
+Foxtrot,"Open Telemark, Natural Turn to Outside Swivel and Feather Ending",Preceded By,Silver,,,"Top Spin (At a Corner, After 1-6 Reverse Turn)",,,
+Foxtrot,"Open Telemark, Natural Turn to Outside Swivel and Feather Ending",Preceded By,Silver,,,Natural Telemark,,,
+Foxtrot,"Open Telemark, Natural Turn to Outside Swivel and Feather Ending",Preceded By,Silver,,,Hover Cross,,,
+Foxtrot,"Open Telemark, Natural Turn to Outside Swivel and Feather Ending",Preceded By,Gold,,,Natural Twist Turn,,,
+Foxtrot,"Open Telemark, Natural Turn to Outside Swivel and Feather Ending",Preceded By,Gold,,,Natural Zig-Zag from Promenade Position,,,
+Foxtrot,"Open Telemark, Natural Turn to Outside Swivel and Feather Ending",Preceded By,Gold,,,Natural Hover Telemark,,,
+Foxtrot,"Open Telemark, Natural Turn to Outside Swivel and Feather Ending",Followed By,Silver,,,Reverse Turn (Incorporating Feather Finish),,,
+Foxtrot,"Open Telemark, Natural Turn to Outside Swivel and Feather Ending",Followed By,Silver,,,Closed Telemark,,,
+Foxtrot,"Open Telemark, Natural Turn to Outside Swivel and Feather Ending",Followed By,Silver,,,Open Telemark,,,
+Foxtrot,"Open Telemark, Natural Turn to Outside Swivel and Feather Ending",Followed By,Silver,At corner,,Three Step,,,
+Foxtrot,"Open Telemark, Natural Turn to Outside Swivel and Feather Ending",Followed By,Silver,At corner,,Change of Direction,,,
+Foxtrot,"Open Telemark, Natural Turn to Outside Swivel and Feather Ending",Followed By,Silver,At corner,,Hover Telemark,,,
+Foxtrot,"Open Telemark, Natural Turn to Outside Swivel and Feather Ending",Followed By,Silver,At corner,,Reverse Wave,,,
+Foxtrot,"Open Telemark, Natural Turn to Outside Swivel and Feather Ending",Followed By,Silver,,1-7,Weave from PP,,,
+Foxtrot,"Open Telemark, Natural Turn to Outside Swivel and Feather Ending",Followed By,Gold,,,Fallaway Reverse and Slip Pivot,,,
+Foxtrot,"Open Telemark, Natural Turn to Outside Swivel and Feather Ending",Followed By,Gold,,,Bounce Fallaway with Weave Ending,,,
+Foxtrot,"Open Telemark, Natural Turn to Outside Swivel and Feather Ending",Followed By,Gold,,1-7,Natural Zig-Zag from Promenade Position,,,
+Foxtrot,Open Impetus,Preceded By,Silver,,,Natural Turn,1-3,,
+Foxtrot,Open Impetus,Preceded By,Silver,,,Reverse Wave,1-6,,
+Foxtrot,Open Impetus,Preceded By,Gold,At corner,,Curved Feather to Back Feather,1-3,,
+Foxtrot,Open Impetus,Followed By,Silver,,,Feather Ending,,,
+Foxtrot,Open Impetus,Followed By,Silver,,,Weave from PP,,,
+Foxtrot,Open Impetus,Followed By,Silver,,,Natural Weave,,,from PP
+Foxtrot,Open Impetus,Followed By,Gold,,,Natural Zig-Zag from Promenade Position,,,
+Foxtrot,Open Impetus,Followed By,Gold,At corner,,Curved Feather to Back Feather,,,(commencing in PP)
+Foxtrot,Weave from PP,Preceded By,Silver,,,Open Telemark,,,
+Foxtrot,Weave from PP,Preceded By,Silver,,,Hover Telemark,,,ended in PP
+Foxtrot,Weave from PP,Preceded By,Silver,,,Outside Swivel,,,
+Foxtrot,Weave from PP,Preceded By,Silver,,,Open Impetus,,,
+Foxtrot,Weave from PP,Followed By,Silver,,,Three Step,,,
+Foxtrot,Weave from PP,Followed By,Silver,,,Change of Direction,,,
+Foxtrot,Weave from PP,Followed By,Silver,,,Hover Telemark,,,
+Foxtrot,Weave from PP,Followed By,Silver,,,Reverse Wave,,,
+Foxtrot,Weave from PP,Followed By,Gold,At corner,,Fallaway Reverse and Slip Pivot,,,
+Foxtrot,Reverse Wave,Preceded By,Silver,,,Feather Step,,,
+Foxtrot,Reverse Wave,Preceded By,Silver,,,Feather Finish,,,
+Foxtrot,Reverse Wave,Preceded By,Silver,,,Feather Ending,,,
+Foxtrot,Reverse Wave,Preceded By,Silver,,,Hover Feather (Taken After a Heel Pull),,,
+Foxtrot,Reverse Wave,Preceded By,Silver,,,Reverse Turn (Incorporating Feather Finish),,,
+Foxtrot,Reverse Wave,Preceded By,Silver,,,Natural Weave,,,
+Foxtrot,Reverse Wave,Preceded By,Silver,,,Basic Weave,,,
+Foxtrot,Reverse Wave,Preceded By,Silver,,,"Top Spin (At a Corner, After 1-6 Reverse Turn)",,,
+Foxtrot,Reverse Wave,Preceded By,Silver,,,Hover Cross,,,
+Foxtrot,Reverse Wave,Preceded By,Silver,,,Weave from PP,,,
+Foxtrot,Reverse Wave,Preceded By,Silver,At corner,,Natural Telemark,,,
+Foxtrot,Reverse Wave,Preceded By,Gold,,,Natural Zig-Zag from Promenade Position,,,
+Foxtrot,Reverse Wave,Preceded By,Gold,,,Fallaway Reverse and Slip Pivot,,,
+Foxtrot,Reverse Wave,Preceded By,Gold,,,Bounce Fallaway with Weave Ending,,,
+Foxtrot,Reverse Wave,Preceded By,Gold,At corner,,Natural Twist Turn,,,
+Foxtrot,Reverse Wave,Preceded By,Gold,At corner,,Natural Hover Telemark,,,
+Foxtrot,Reverse Wave,Followed By,Silver,,,Feather Step,,,
+Foxtrot,Reverse Wave,Followed By,Silver,,1-4,Basic Weave,,,
+Foxtrot,Reverse Wave,Followed By,Silver,,1-6,Closed Impetus and Feather Finish,,,
+Foxtrot,Reverse Wave,Followed By,Silver,,1-6,Open Impetus,,,
+Foxtrot,Reverse Wave,Followed By,Silver,,1-8,Hover Feather (Taken After a Heel Pull),,,
+Foxtrot,Reverse Wave,Followed By,Gold,At corner,,Curved Feather to Back Feather,1-3,,
+Foxtrot,Natural Twist Turn,Preceded By,Gold,,,,,Natural Turn,
+Foxtrot,Natural Twist Turn,Followed By,Gold,,,,,Natural Telemark,
+Foxtrot,Natural Twist Turn,Followed By,Gold,,1-5,Natural Weave,3-8,,
+Foxtrot,Natural Twist Turn,Followed By,Gold,,1-5,Closed Impetus and Feather Finish,3-7,,
+Foxtrot,Natural Twist Turn,Followed By,Gold,,1-5,Open Impetus,3-4,,
+Foxtrot,Natural Twist Turn with Natural Weave Ending,Preceded By,Gold,,,,,Natural Twist Turn,
+Foxtrot,Natural Twist Turn with Natural Weave Ending,Followed By,Gold,,,,,Natural Weave,
+Foxtrot,Natural Twist Turn with Closed Impetus and Feather Finish Ending,Preceded By,Gold,,,,,Natural Twist Turn,
+Foxtrot,Natural Twist Turn with Closed Impetus and Feather Finish Ending,Followed By,Gold,,,,,Closed Impetus and Feather Finish,
+Foxtrot,Natural Twist Turn with Open Impetus Ending,Preceded By,Gold,,,,,Natural Twist Turn,
+Foxtrot,Natural Twist Turn with Open Impetus Ending,Followed By,Gold,,,,,Open Impetus,
+Foxtrot,Curved Feather to Back Feather,Preceded By,Gold,,,Three Step,,,
+Foxtrot,Curved Feather to Back Feather,Preceded By,Gold,,,Closed Telemark,,,
+Foxtrot,Curved Feather to Back Feather,Preceded By,Gold,At corner,,Natural Turn,,,
+Foxtrot,Curved Feather to Back Feather,Preceded By,Gold,At corner,,Change of Direction,,,
+Foxtrot,Curved Feather to Back Feather,Preceded By,Gold,At corner,,Hover Telemark,,,
+Foxtrot,Curved Feather to Back Feather,Preceded By,Gold,Commencing the Curved Feather in PP at corner,,Hover Telemark to PP,,,
+Foxtrot,Curved Feather to Back Feather,Preceded By,Gold,Commencing the Curved Feather in PP at corner,,Outside Swivel,,,
+Foxtrot,Curved Feather to Back Feather,Preceded By,Gold,Commencing the Curved Feather in PP at corner,,Open Impetus,,,
+Foxtrot,Curved Feather to Back Feather,Followed By,Gold,,,Feather Finish,,,
+Foxtrot,Curved Feather to Back Feather,Followed By,Gold,At corner,,Basic Weave,,,
+Foxtrot,Natural Zig-Zag from Promenade Position,Preceded By,Gold,,,Open Telemark,,,
+Foxtrot,Natural Zig-Zag from Promenade Position,Preceded By,Gold,,,Hover Telemark,,,ended in PP
+Foxtrot,Natural Zig-Zag from Promenade Position,Preceded By,Gold,,,Outside Swivel,,,
+Foxtrot,Natural Zig-Zag from Promenade Position,Preceded By,Gold,,,Open Impetus,,,
+Foxtrot,Natural Zig-Zag from Promenade Position,Followed By,Gold,,,Three Step,,,
+Foxtrot,Natural Zig-Zag from Promenade Position,Followed By,Gold,,,Change of Direction,,,
+Foxtrot,Natural Zig-Zag from Promenade Position,Followed By,Gold,,,Hover Telemark,,,
+Foxtrot,Natural Zig-Zag from Promenade Position,Followed By,Gold,,,Reverse Wave,,,
+Foxtrot,Natural Zig-Zag from Promenade Position,Followed By,Gold,If ended DC,,Reverse Turn (Incorporating Feather Finish),,,
+Foxtrot,Natural Zig-Zag from Promenade Position,Followed By,Gold,If ended DC,,Closed Telemark,,,
+Foxtrot,Natural Zig-Zag from Promenade Position,Followed By,Gold,If ended DC,,Open Telemark,,,
+Foxtrot,Natural Zig-Zag from Promenade Position,Followed By,Gold,If ended DC,,Fallaway Reverse and Slip Pivot,,,
+Foxtrot,Natural Zig-Zag from Promenade Position,Followed By,Gold,If ended DC,,Bounce Fallaway with Weave Ending,,,
+Foxtrot,Natural Zig-Zag from Promenade Position,Followed By,Gold,At corner,,Reverse Wave,,,
+Foxtrot,Fallaway Reverse and Slip Pivot,Preceded By,Gold,,,Feather Step,,,
+Foxtrot,Fallaway Reverse and Slip Pivot,Preceded By,Gold,,,Feather Finish,,,
+Foxtrot,Fallaway Reverse and Slip Pivot,Preceded By,Gold,,,Feather Ending,,,
+Foxtrot,Fallaway Reverse and Slip Pivot,Preceded By,Gold,,,Hover Feather (Taken After a Heel Pull),,,
+Foxtrot,Fallaway Reverse and Slip Pivot,Preceded By,Gold,,,"Top Spin (At a Corner, After 1-6 Reverse Turn)",,,
+Foxtrot,Fallaway Reverse and Slip Pivot,Preceded By,Gold,,,Natural Telemark,,,
+Foxtrot,Fallaway Reverse and Slip Pivot,Preceded By,Gold,,,Hover Cross,,,
+Foxtrot,Fallaway Reverse and Slip Pivot,Preceded By,Gold,,,Natural Twist Turn,,,
+Foxtrot,Fallaway Reverse and Slip Pivot,Preceded By,Gold,,,Natural Zig-Zag from Promenade Position,,,
+Foxtrot,Fallaway Reverse and Slip Pivot,Preceded By,Gold,,,Fallaway Reverse and Slip Pivot,,,
+Foxtrot,Fallaway Reverse and Slip Pivot,Preceded By,Gold,,,Natural Hover Telemark,,,
+Foxtrot,Fallaway Reverse and Slip Pivot,Preceded By,Gold,At corner,,Reverse Turn (Incorporating Feather Finish),,,
+Foxtrot,Fallaway Reverse and Slip Pivot,Preceded By,Gold,At corner,,Natural Weave,,,
+Foxtrot,Fallaway Reverse and Slip Pivot,Preceded By,Gold,At corner,,Basic Weave,,,
+Foxtrot,Fallaway Reverse and Slip Pivot,Preceded By,Gold,At corner,,Weave from PP,,,
+Foxtrot,Fallaway Reverse and Slip Pivot,Followed By,Gold,,,Change of Direction,,,
+Foxtrot,Fallaway Reverse and Slip Pivot,Followed By,Gold,,,Hover Telemark,,,
+Foxtrot,Fallaway Reverse and Slip Pivot,Followed By,Gold,,,Reverse Wave,,,
+Foxtrot,Fallaway Reverse and Slip Pivot,Followed By,Gold,,,Fallaway Reverse and Slip Pivot,,,
+Foxtrot,Fallaway Reverse and Slip Pivot,Followed By,Gold,At corner,,Basic Weave,,,
+Foxtrot,Fallaway Reverse and Slip Pivot,Followed By,Gold,At corner,,Open Telemark,,,
+Foxtrot,Natural Hover Telemark,Preceded By,Gold,,,,,Natural Telemark,
+Foxtrot,Natural Hover Telemark,Followed By,Gold,,,,,Natural Telemark,
+Foxtrot,Bounce Fallaway with Weave Ending,Preceded By,Gold,,,,,Fallaway Reverse and Slip Pivot,
+Foxtrot,Bounce Fallaway with Weave Ending,Followed By,Gold,,,,,Reverse Turn (Incorporating Feather Finish),
+Quickstep,Quarter Turn to Right,Preceded By,,,,,,,Any figure which leaves the RF free to move forward
+Quickstep,Quarter Turn to Right,Followed By,Bronze,,,Progressive Chasse,,,
+Quickstep,Quarter Turn to Right,Followed By,Bronze,,,Reverse Pivot,,,
+Quickstep,Quarter Turn to Right,Followed By,Silver,,,Four Quick Run,,,
+Quickstep,Quarter Turn to Right,Followed By,Silver,,,V6,2-12,,
+Quickstep,Quarter Turn to Right,Followed By,Gold,,,Six Quick Run,,,
+Quickstep,Quarter Turn to Right,Followed By,Gold,,,Hover Corte,,,
+Quickstep,Natural Turn,Preceded By,,,,,,Quarter Turn to Right,
+Quickstep,Natural Turn,Followed By,Bronze,,,,,,Any Natural figure
+Quickstep,Natural Turn,Followed By,Silver,If ended DC,1-5,Forward Lock,2-5,,then Quick Open Reverse
+Quickstep,Natural Turn,Followed By,Silver,If ended DW of new LOD,1-5,Forward Lock,2-5,,then any Natural figure
+Quickstep,Natural Turn,Followed By,Gold,,,Rumba Cross,,,
+Quickstep,Natural Turn with Hesitation,Preceded By,,,,,,Natural Turn,
+Quickstep,Natural Turn with Hesitation,Followed By,,,,Chasse Reverse Turn,,,
+Quickstep,Natural Turn with Hesitation,Followed By,,,,Progressive Chasse to Right,,,
+Quickstep,Natural Turn with Hesitation,Followed By,,,,Double Reverse Spin,,,
+Quickstep,Natural Pivot Turn,Preceded By,,,,,,Natural Turn,
+Quickstep,Natural Pivot Turn,Followed By,Bronze,,,,,,Any Natural figure
+Quickstep,Natural Pivot Turn,Followed By,Gold,,,Rumba Cross,,,
+Quickstep,Natural Spin Turn,Preceded By,,,,,,Natural Turn,
+Quickstep,Natural Spin Turn,Followed By,Bronze,,,Progressive Chasse,,,
+Quickstep,Natural Spin Turn,Followed By,Bronze,,,Reverse Pivot,,,
+Quickstep,Natural Spin Turn,Followed By,Silver,,,Four Quick Run,,,
+Quickstep,Natural Spin Turn,Followed By,Silver,,,V6,2-12,,
+Quickstep,Natural Spin Turn,Followed By,Gold,,,Six Quick Run,,,
+Quickstep,Natural Spin Turn,Followed By,Gold,,,Hover Corte,,,
+Quickstep,Progressive Chasse,Preceded By,Bronze,,,Quarter Turn to Right,,,
+Quickstep,Progressive Chasse,Preceded By,Bronze,,,Natural Spin Turn,,,
+Quickstep,Progressive Chasse,Preceded By,Bronze,,,Chasse Reverse Turn,,,
+Quickstep,Progressive Chasse,Preceded By,Bronze,,,Closed Impetus,,,
+Quickstep,Progressive Chasse,Preceded By,Silver,,,Quick Open Reverse,,,
+Quickstep,Progressive Chasse,Followed By,Bronze,,,Forward Lock,,,
+Quickstep,Progressive Chasse,Followed By,Bronze,,,,,,Any figure commencing with RF fwd
+Quickstep,Progressive Chasse,Followed By,Silver,,,Quick Open Reverse,,,
+Quickstep,Progressive Chasse,Followed By,Silver,,,Fishtail,,,
+Quickstep,Progressive Chasse,Followed By,Silver,At corner,,Four Quick Run,,,"after LF back with Follow OP, TH, S"
+Quickstep,Progressive Chasse,Followed By,Silver,At corner,,V6,2-12,,"after LF back with Follow OP, TH, S"
+Quickstep,Progressive Chasse,Followed By,Gold,,,Tipsy to Left,,,into 2-12 V6 DC or 2-5 Back Lock down LOD
+Quickstep,Progressive Chasse,Followed By,Gold,At corner,,Six Quick Run,,,"after LF back with Follow OP, TH, S"
+Quickstep,Chasse Reverse Turn,Preceded By,,,,Natural Turn with Hesitation,,,
+Quickstep,Chasse Reverse Turn,Preceded By,,,,Reverse Pivot,,,
+Quickstep,Chasse Reverse Turn,Preceded By,,,,Double Reverse Spin,,,
+Quickstep,Chasse Reverse Turn,Followed By,Bronze,,,Progressive Chasse,,,
+Quickstep,Chasse Reverse Turn,Followed By,Bronze,,,Reverse Pivot,,,
+Quickstep,Chasse Reverse Turn,Followed By,Silver,,,Four Quick Run,,,
+Quickstep,Chasse Reverse Turn,Followed By,Gold,,,Hover Corte,,,
+Quickstep,Forward Lock,Preceded By,,,,,,,Any figure ending with the RF forward OP
+Quickstep,Forward Lock,Followed By,Bronze,,,,,,Any Natural figure
+Quickstep,Forward Lock,Followed By,Silver,,,Quick Open Reverse,,,
+Quickstep,Forward Lock,Followed By,Silver,,,Fishtail,,,
+Quickstep,Forward Lock,Followed By,Silver,At corner,,Four Quick Run,,,"after LF back with Follow OP, TH, S"
+Quickstep,Forward Lock,Followed By,Silver,At corner,,V6,2-12,,"after LF back with Follow OP, TH, S"
+Quickstep,Forward Lock,Followed By,Gold,,,Tipsy to Left,,,into 2-12 V6 DC or 2-5 Back Lock down LOD
+Quickstep,Forward Lock,Followed By,Gold,At corner,,Six Quick Run,,,"after LF back with Follow OP, TH, S"
+Quickstep,Closed Impetus,Preceded By,,,,Natural Turn,1-3,,
+Quickstep,Closed Impetus,Preceded By,,,,Back Lock,,,
+Quickstep,Closed Impetus,Preceded By,,,,Progressive Chasse to Right,,,
+Quickstep,Closed Impetus,Preceded By,,,,Natural Turn and Back Lock,,,
+Quickstep,Closed Impetus,Followed By,Bronze,,1-3,Reverse Pivot,,,
+Quickstep,Closed Impetus,Followed By,Bronze,At corner,,Progressive Chasse,,,
+Quickstep,Closed Impetus,Followed By,Silver,,,Progressive Chasse,,,
+Quickstep,Closed Impetus,Followed By,Silver,,,Four Quick Run,,,
+Quickstep,Closed Impetus,Followed By,Silver,At corner,1-3,V6,2-12,,
+Quickstep,Closed Impetus,Followed By,Gold,,1-3,Six Quick Run,,,
+Quickstep,Closed Impetus,Followed By,Gold,,,Hover Corte,,,
+Quickstep,Back Lock,Preceded By,,,,Progressive Chasse to Right,,,
+Quickstep,Back Lock,Followed By,Bronze,,,Closed Impetus,,,
+Quickstep,Back Lock,Followed By,Bronze,,,Tipple Chasse to Right (At Corner),,,
+Quickstep,Back Lock,Followed By,Bronze,,,Tipple Chasse to Right (Along Side of Room),,,
+Quickstep,Back Lock,Followed By,Bronze,,,Running Finish,,,
+Quickstep,Back Lock,Followed By,Gold,,,Tipsy to Right,,,
+Quickstep,Reverse Pivot,Preceded By,Bronze,,,Quarter Turn to Right,,,
+Quickstep,Reverse Pivot,Preceded By,Bronze,,,Natural Spin Turn,,,
+Quickstep,Reverse Pivot,Preceded By,Bronze,,,Chasse Reverse Turn,,,
+Quickstep,Reverse Pivot,Preceded By,Bronze,,,Closed Impetus,1-3,,
+Quickstep,Reverse Pivot,Preceded By,Silver,,,Quick Open Reverse,1-3,,
+Quickstep,Reverse Pivot,Followed By,Bronze,,,Chasse Reverse Turn,,,
+Quickstep,Reverse Pivot,Followed By,Bronze,,,Progressive Chasse to Right,,,
+Quickstep,Reverse Pivot,Followed By,Bronze,,,Double Reverse Spin,,,
+Quickstep,Reverse Pivot,Followed By,Silver,,,Quick Open Reverse,,,
+Quickstep,Reverse Pivot,Followed By,Silver,,,Closed Telemark,,,
+Quickstep,Reverse Pivot,Followed By,Gold,,,Cross Swivel,,,
+Quickstep,Reverse Pivot,Followed By,Gold,,,Tipsy to Right,,,(after a step fwd on LF)
+Quickstep,Progressive Chasse to Right,Preceded By,,,,Natural Turn with Hesitation,,,
+Quickstep,Progressive Chasse to Right,Preceded By,,,,Reverse Pivot,,,
+Quickstep,Progressive Chasse to Right,Preceded By,,,,Double Reverse Spin,,,
+Quickstep,Progressive Chasse to Right,Followed By,Bronze,,,Closed Impetus,,,
+Quickstep,Progressive Chasse to Right,Followed By,Bronze,,,Back Lock,,,
+Quickstep,Progressive Chasse to Right,Followed By,Bronze,,,Tipple Chasse to Right (At Corner),,,
+Quickstep,Progressive Chasse to Right,Followed By,Bronze,,,Tipple Chasse to Right (Along Side of Room),,,
+Quickstep,Progressive Chasse to Right,Followed By,Bronze,,,Running Finish,,,
+Quickstep,Progressive Chasse to Right,Followed By,Silver,When ended DC or LOD,,Four Quick Run,,,
+Quickstep,Progressive Chasse to Right,Followed By,Silver,When ended DC or LOD,,V6,6-12,,
+Quickstep,Progressive Chasse to Right,Followed By,Gold,,,Tipsy to Right,,,
+Quickstep,Progressive Chasse to Right,Followed By,Gold,When ended DC,,Six Quick Run,,,
+Quickstep,Tipple Chasse to Right (At Corner),Preceded By,Bronze,,,Natural Turn,1-3,,
+Quickstep,Tipple Chasse to Right (At Corner),Preceded By,Bronze,,,Back Lock,,,
+Quickstep,Tipple Chasse to Right (At Corner),Preceded By,Bronze,,,Natural Turn and Back Lock,,,
+Quickstep,Tipple Chasse to Right (At Corner),Preceded By,Gold,At corner,2-8,Tipsy to Left,,,
+Quickstep,Tipple Chasse to Right (At Corner),Followed By,Bronze,,,,,Forward Lock,
+Quickstep,Tipple Chasse to Right (At Corner),Followed By,Silver,When ended DC (see the note above),,Quick Open Reverse,,,
+Quickstep,Tipple Chasse to Right (At Corner),Followed By,Silver,When ended DC (see the note above),,Fishtail,,,
+Quickstep,Tipple Chasse to Right (At Corner),Followed By,Gold,,1-4,Tipsy to Left,,,
+Quickstep,Tipple Chasse to Right (Along Side of Room),Preceded By,Bronze,,,Back Lock,,,
+Quickstep,Tipple Chasse to Right (Along Side of Room),Preceded By,Bronze,,,Progressive Chasse to Right,,,
+Quickstep,Tipple Chasse to Right (Along Side of Room),Preceded By,Bronze,,,Natural Turn and Back Lock,,,
+Quickstep,Tipple Chasse to Right (Along Side of Room),Preceded By,Gold,,,Cross Swivel,,,
+Quickstep,Tipple Chasse to Right (Along Side of Room),Preceded By,Gold,,,Hover Corte,,,
+Quickstep,Tipple Chasse to Right (Along Side of Room),Followed By,Bronze,,,,,Forward Lock,
+Quickstep,Tipple Chasse to Right (Along Side of Room),Followed By,Silver,At corner,,Four Quick Run,,,"after LF back with Follow OP, TH, S"
+Quickstep,Tipple Chasse to Right (Along Side of Room),Followed By,Silver,At corner,,V6,2-12,,"after LF back with Follow OP, TH, S"
+Quickstep,Tipple Chasse to Right (Along Side of Room),Followed By,Gold,,,Tipsy to Left,,,into 2-12 V6 DC or 2-5 Back Lock down LOD
+Quickstep,Tipple Chasse to Right (Along Side of Room),Followed By,Gold,At corner,,Six Quick Run,,,"after LF back with Follow OP, TH, S"
+Quickstep,Running Finish,Preceded By,Bronze,,,Back Lock,,,
+Quickstep,Running Finish,Preceded By,Bronze,,,Progressive Chasse to Right,,,
+Quickstep,Running Finish,Preceded By,Bronze,,,Natural Turn and Back Lock,,,
+Quickstep,Running Finish,Preceded By,Gold,,,Cross Swivel,,,
+Quickstep,Running Finish,Preceded By,Gold,,,Hover Corte,,,
+Quickstep,Running Finish,Followed By,Bronze,,,,,Forward Lock,
+Quickstep,Running Finish,Followed By,Silver,,,Quick Open Reverse,,,
+Quickstep,Running Finish,Followed By,Silver,,,Fishtail,,,
+Quickstep,Running Finish,Followed By,Silver,At corner,,Four Quick Run,,,"after LF back with Follow OP, TH, S"
+Quickstep,Running Finish,Followed By,Silver,At corner,,V6,2-12,,"after LF back with Follow OP, TH, S"
+Quickstep,Running Finish,Followed By,Gold,,,Tipsy to Left,,,into 2-12 V6 DC or 2-5 Back Lock down LOD
+Quickstep,Running Finish,Followed By,Gold,At corner,,Six Quick Run,,,"after LF back with Follow OP, TH, S"
+Quickstep,Natural Turn and Back Lock,Preceded By,,,,,,,Any figure which leaves the RF free to move forward
+Quickstep,Natural Turn and Back Lock,Followed By,Bronze,,,Closed Impetus,,,
+Quickstep,Natural Turn and Back Lock,Followed By,Bronze,,,Tipple Chasse to Right (At Corner),,,
+Quickstep,Natural Turn and Back Lock,Followed By,Bronze,,,Tipple Chasse to Right (Along Side of Room),,,
+Quickstep,Natural Turn and Back Lock,Followed By,Bronze,,,Running Finish,,,
+Quickstep,Natural Turn and Back Lock,Followed By,Gold,,,Tipsy to Right,,,
+Quickstep,Double Reverse Spin,Preceded By,,,,Natural Turn with Hesitation,,,
+Quickstep,Double Reverse Spin,Preceded By,,,,Reverse Pivot,,,
+Quickstep,Double Reverse Spin,Preceded By,,,,Double Reverse Spin,,,
+Quickstep,Double Reverse Spin,Followed By,Bronze,,,Chasse Reverse Turn,,,
+Quickstep,Double Reverse Spin,Followed By,Bronze,,,Progressive Chasse to Right,,,
+Quickstep,Double Reverse Spin,Followed By,Bronze,,,Double Reverse Spin,,,
+Quickstep,Double Reverse Spin,Followed By,Silver,,,Quick Open Reverse,,,
+Quickstep,Double Reverse Spin,Followed By,Silver,,,Closed Telemark,,,
+Quickstep,Double Reverse Spin,Followed By,Gold,,,Cross Swivel,,,
+Quickstep,Double Reverse Spin,Followed By,Gold,,,Tipsy to Right,,,"after LF fwd, H, S"
+Quickstep,Quick Open Reverse,Preceded By,Silver,,,Progressive Chasse,,,
+Quickstep,Quick Open Reverse,Preceded By,Silver,,,Reverse Pivot,,,
+Quickstep,Quick Open Reverse,Preceded By,Silver,,,Tipple Chasse to Right (At Corner),,,(underturned)
+Quickstep,Quick Open Reverse,Preceded By,Silver,,,Tipple Chasse to Right (Along Side of Room),,,(underturned)
+Quickstep,Quick Open Reverse,Preceded By,Silver,,,Double Reverse Spin,,,
+Quickstep,Quick Open Reverse,Preceded By,Silver,,,V6,,,(overturned)
+Quickstep,Quick Open Reverse,Preceded By,Silver,,,Natural Turn,1-5,,at side of room into 2-5 Forward Lock
+Quickstep,Quick Open Reverse,Preceded By,Gold,,,Tipsy to Right,,,into 2-5 Forward Lock
+Quickstep,Quick Open Reverse,Followed By,Silver,,,Progressive Chasse,,,
+Quickstep,Quick Open Reverse,Followed By,Silver,,1-3,Reverse Pivot,,,
+Quickstep,Quick Open Reverse,Followed By,Silver,,,Four Quick Run,,,
+Quickstep,Quick Open Reverse,Followed By,Gold,,,Hover Corte,,,
+Quickstep,Fishtail,Preceded By,Silver,,,Progressive Chasse,,,
+Quickstep,Fishtail,Preceded By,Silver,,,Forward Lock,,,
+Quickstep,Fishtail,Preceded By,Silver,,,Tipple Chasse to Right (At Corner),,,
+Quickstep,Fishtail,Preceded By,Silver,,,Tipple Chasse to Right (Along Side of Room),,,
+Quickstep,Fishtail,Preceded By,Silver,,,Running Finish,,,
+Quickstep,Fishtail,Preceded By,Silver,,,Running Right Turn,,,
+Quickstep,Fishtail,Preceded By,Silver,,,Four Quick Run,,,
+Quickstep,Fishtail,Preceded By,Silver,,,V6,,,
+Quickstep,Fishtail,Preceded By,Silver,,,Closed Telemark,,,
+Quickstep,Fishtail,Preceded By,Gold,,,Cross Swivel,,,
+Quickstep,Fishtail,Preceded By,Gold,,,Six Quick Run,,,
+Quickstep,Fishtail,Followed By,Silver,,,,,,Any figure commencing with RF fwd
+Quickstep,Fishtail,Followed By,Silver,At corner,,Four Quick Run,,,"after LF back with Follow OP, TH, S"
+Quickstep,Fishtail,Followed By,Silver,At corner,,V6,2-12,,"after LF back with Follow OP, TH, S"
+Quickstep,Fishtail,Followed By,Gold,,,Tipsy to Left,,,into 2-12 V6 DC or 2-5 Back Lock down LOD
+Quickstep,Fishtail,Followed By,Gold,At corner,,Six Quick Run,,,"after LF back with Follow OP, TH, S"
+Quickstep,Running Right Turn,Preceded By,Silver,,,,,,Any figure which leaves the RF free to move forward
+Quickstep,Running Right Turn,Preceded By,Gold,,5-11,Rumba Cross,,,
+Quickstep,Running Right Turn,Followed By,Silver,,,,,,Any figure commencing with RF fwd
+Quickstep,Running Right Turn,Followed By,Silver,When ended DC,,Quick Open Reverse,,,
+Quickstep,Running Right Turn,Followed By,Silver,When ended DC,,Fishtail,,,
+Quickstep,Running Right Turn,Followed By,Gold,,,Tipsy to Left,,,into 2-12 V6 DC or 2-5 Back Lock down LOD
+Quickstep,Four Quick Run,Preceded By,Silver,,,Quarter Turn to Right,,,
+Quickstep,Four Quick Run,Preceded By,Silver,,,Natural Spin Turn,,,
+Quickstep,Four Quick Run,Preceded By,Silver,,,Chasse Reverse Turn,,,
+Quickstep,Four Quick Run,Preceded By,Silver,,,Progressive Chasse to Right,,,ended LOD or DC
+Quickstep,Four Quick Run,Preceded By,Silver,,,Quick Open Reverse,,,
+Quickstep,Four Quick Run,Preceded By,Silver,At corner,,Closed Impetus,,,
+Quickstep,Four Quick Run,Preceded By,Silver,At corner,,,,,"Any figure ending with RF fwd OP then LF back with Follow OP, TH, S"
+Quickstep,Four Quick Run,Followed By,Silver,,,,,,Any figure commencing with RF fwd
+Quickstep,Four Quick Run,Followed By,Silver,At corner,,V6,2-12,,"after LF back with Follow OP, TH, S"
+Quickstep,Four Quick Run,Followed By,Gold,,,Tipsy to Left,,,into 2-12 V6 DC or 2-5 Back Lock down LOD
+Quickstep,Four Quick Run,Followed By,Gold,At corner,,Six Quick Run,,,"after LF back with Follow OP, TH, S"
+Quickstep,V6,Preceded By,Silver,,,Natural Turn,1-3,,ended backing DC
+Quickstep,V6,Preceded By,Silver,,2-12,Quarter Turn to Right,,,
+Quickstep,V6,Preceded By,Silver,,2-12,Natural Spin Turn,,,
+Quickstep,V6,Preceded By,Silver,At corner,2-12,Closed Impetus,,,
+Quickstep,V6,Preceded By,Gold,,2-12,Tipsy to Left,,,
+Quickstep,V6,Preceded By,Gold,At corner,2-12,Hover Corte,,,
+Quickstep,V6,Followed By,Silver,,,,,,Any figure commencing with RF fwd
+Quickstep,V6,Followed By,Silver,If steps 6-8 are overturned to LOD,1-8,Quick Open Reverse,,,
+Quickstep,V6,Followed By,Silver,At corner,,Four Quick Run,,,"after LF back with Follow OP, TH, S"
+Quickstep,V6,Followed By,Gold,,,Tipsy to Left,,,into 2-5 Back Lock down LOD
+Quickstep,V6,Followed By,Gold,At corner,,Six Quick Run,,,"after LF back with Follow OP, TH, S"
+Quickstep,Closed Telemark,Preceded By,,,,Reverse Pivot,,,
+Quickstep,Closed Telemark,Preceded By,,,,Double Reverse Spin,,,
+Quickstep,Closed Telemark,Followed By,Silver,,,,,,Any figure commencing with RF fwd
+Quickstep,Closed Telemark,Followed By,Silver,At corner,,Four Quick Run,,,"after LF back with Follow OP, TH, S"
+Quickstep,Closed Telemark,Followed By,Silver,At corner,,V6,2-12,,"after LF back with Follow OP, TH, S"
+Quickstep,Closed Telemark,Followed By,Gold,At corner,,Six Quick Run,,,"after LF back with Follow OP, TH, S"
+Quickstep,Cross Swivel,Preceded By,Gold,,,Reverse Pivot,,,
+Quickstep,Cross Swivel,Preceded By,Gold,,,Double Reverse Spin,,,
+Quickstep,Cross Swivel,Followed By,Gold,,,Tipple Chasse to Right (At Corner),,,
+Quickstep,Cross Swivel,Followed By,Gold,,,Tipple Chasse to Right (Along Side of Room),,,
+Quickstep,Cross Swivel,Followed By,Gold,,,Running Finish,,,
+Quickstep,Cross Swivel,Followed By,Gold,,,Fishtail,,,
+Quickstep,Cross Swivel,Followed By,Gold,,,Tipsy to Right,,,"after LF back with Follow OP, TH, S"
+Quickstep,Six Quick Run,Preceded By,Gold,,,Progressive Chasse to Right,,,(1/2 turn)
+Quickstep,Six Quick Run,Preceded By,Gold,,,V6,1-5,,
+Quickstep,Six Quick Run,Preceded By,Gold,At corner,,,,,"Any figure ending with RF fwd OP then LF back with Follow OP, TH, S"
+Quickstep,Six Quick Run,Followed By,Gold,,,,,,Any figure commencing with RF fwd OP
+Quickstep,Six Quick Run,Followed By,Gold,,,Tipsy to Left,,,into 2-12 V6 DC or 2-5 Back Lock down LOD
+Quickstep,Six Quick Run,Followed By,Gold,At corner,,Four Quick Run,,,"after LF back with Follow OP, TH, S"
+Quickstep,Six Quick Run,Followed By,Gold,At corner,,V6,2-12,,"after LF back with Follow OP, TH, S"
+Quickstep,Rumba Cross,Preceded By,Gold,,,Natural Pivot Turn,,,"then RF fwd down LOD, S"
+Quickstep,Rumba Cross,Preceded By,Gold,,,Rumba Cross,,,"then RF fwd down LOD, S"
+Quickstep,Rumba Cross,Preceded By,Gold,At corner,,Natural Turn,1-5,,to face new LOD
+Quickstep,Rumba Cross,Followed By,Gold,,,Running Right Turn,5-11,,
+Quickstep,Rumba Cross,Followed By,Gold,,,Tipsy to Left,,,"after RF fwd, S"
+Quickstep,Rumba Cross,Followed By,Gold,,,Rumba Cross,,,
+Quickstep,Tipsy to Right,Preceded By,Gold,,,Natural Turn,1-4,,
+Quickstep,Tipsy to Right,Preceded By,Gold,,,Back Lock,,,
+Quickstep,Tipsy to Right,Preceded By,Gold,,,Progressive Chasse to Right,,,
+Quickstep,Tipsy to Right,Preceded By,Gold,,,Reverse Pivot,,,"then a step forward on LF, S"
+Quickstep,Tipsy to Right,Preceded By,Gold,,,Double Reverse Spin,,,"then a step forward on LF, S"
+Quickstep,Tipsy to Right,Preceded By,Gold,,,Cross Swivel,,,"then a step back on LF, S"
+Quickstep,Tipsy to Right,Preceded By,Gold,,,Tipsy to Left,,,
+Quickstep,Tipsy to Right,Preceded By,Gold,,,Hover Corte,,,
+Quickstep,Tipsy to Right,Followed By,Gold,,,Forward Lock,2-5,,
+Quickstep,Tipsy to Right,Followed By,Gold,,,Tipsy to Left,,,
+Quickstep,Tipsy to Left,Preceded By,Gold,,,,,,Any figure which leaves the RF free to move forward
+Quickstep,Tipsy to Left,Preceded By,Gold,,,Tipple Chasse to Right (At Corner),1-4,,
+Quickstep,Tipsy to Left,Preceded By,Gold,,,Tipple Chasse to Right (Along Side of Room),1-4,,
+Quickstep,Tipsy to Left,Preceded By,Gold,,,Tipsy to Right,,,
+Quickstep,Tipsy to Left,Followed By,Gold,,,Back Lock,2-5,,
+Quickstep,Tipsy to Left,Followed By,Gold,,,Tipple Chasse to Right (At Corner),2-8,,
+Quickstep,Tipsy to Left,Followed By,Gold,,,Tipple Chasse to Right (Along Side of Room),2-8,,
+Quickstep,Tipsy to Left,Followed By,Gold,,,V6,2-12,,
+Quickstep,Tipsy to Left,Followed By,Gold,,,Tipsy to Right,,,
+Quickstep,Hover Corte,Preceded By,Gold,,,Quarter Turn to Right,,,
+Quickstep,Hover Corte,Preceded By,Gold,,,Natural Spin Turn,,,
+Quickstep,Hover Corte,Preceded By,Gold,,,Chasse Reverse Turn,,,
+Quickstep,Hover Corte,Preceded By,Gold,,,Closed Impetus,,,
+Quickstep,Hover Corte,Preceded By,Gold,,,Quick Open Reverse,,,
+Quickstep,Hover Corte,Followed By,Gold,,,Tipple Chasse to Right (At Corner),,,
+Quickstep,Hover Corte,Followed By,Gold,,,Tipple Chasse to Right (Along Side of Room),,,
+Quickstep,Hover Corte,Followed By,Gold,,,Running Finish,,,
+Quickstep,Hover Corte,Followed By,Gold,,,Tipsy to Right,,,
+Quickstep,Hover Corte,Followed By,Gold,,,Tipsy to Left,,,
+Quickstep,Hover Corte,Followed By,Gold,At corner,,Four Quick Run,,,
+Quickstep,Hover Corte,Followed By,Gold,At corner,,V6,2-12,,
+Quickstep,Hover Corte,Followed By,Gold,At corner,,Six Quick Run,,,
+Quickstep,Heel Pivot (Quarter Turn to Left),Preceded By,Bronze,,,Quarter Turn to Right,,,
+Quickstep,Heel Pivot (Quarter Turn to Left),Preceded By,Bronze,,,Natural Spin Turn,,,
+Quickstep,Heel Pivot (Quarter Turn to Left),Preceded By,Bronze,,,Chasse Reverse Turn,,,
+Quickstep,Heel Pivot (Quarter Turn to Left),Preceded By,Bronze,,,Closed Impetus,,,
+Quickstep,Heel Pivot (Quarter Turn to Left),Preceded By,Silver,,,Quick Open Reverse,1-3,,
+Quickstep,Heel Pivot (Quarter Turn to Left),Followed By,Bronze,,,,,,Any Natural figure
+Quickstep,Heel Pivot (Quarter Turn to Left),Followed By,Bronze,,,Cross Chasse,,,
+Quickstep,Heel Pivot (Quarter Turn to Left),Followed By,Bronze,,,Change of Direction,,,
+Quickstep,Heel Pivot (Quarter Turn to Left),Followed By,Bronze,If ended DC after underturned Natural Spin Turn or Closed Impetus,,Chasse Reverse Turn,,,
+Quickstep,Heel Pivot (Quarter Turn to Left),Followed By,Bronze,If ended DC after underturned Natural Spin Turn or Closed Impetus,,Progressive Chasse to Right,,,
+Quickstep,Heel Pivot (Quarter Turn to Left),Followed By,Bronze,If ended DC after underturned Natural Spin Turn or Closed Impetus,,Double Reverse Spin,,,
+Quickstep,Heel Pivot (Quarter Turn to Left),Followed By,Silver,If ended DC after underturned Natural Spin Turn or Closed Impetus,,Quick Open Reverse,,,
+Quickstep,Heel Pivot (Quarter Turn to Left),Followed By,Silver,If ended DC after underturned Natural Spin Turn or Closed Impetus,,Closed Telemark,,,
+Quickstep,Heel Pivot (Quarter Turn to Left),Followed By,Gold,,,Cross Swivel,,,
+Quickstep,Heel Pivot (Quarter Turn to Left),Followed By,Gold,,,Tipsy to Right,,,
+Quickstep,"Zig-Zag, Back Lock and Running Finish",Preceded By,,,,Heel Pivot (Quarter Turn to Left),,,
+Quickstep,"Zig-Zag, Back Lock and Running Finish",Preceded By,,,,Reverse Pivot,,,
+Quickstep,"Zig-Zag, Back Lock and Running Finish",Preceded By,,,,Double Reverse Spin,,,
+Quickstep,"Zig-Zag, Back Lock and Running Finish",Preceded By,,,,Natural Turn,6,,(the last step only)
+Quickstep,"Zig-Zag, Back Lock and Running Finish",Preceded By,,,,Change of Direction,4,,(the last step only)
+Quickstep,"Zig-Zag, Back Lock and Running Finish",Followed By,Bronze,,,,,,Any Natural figure
+Quickstep,"Zig-Zag, Back Lock and Running Finish",Followed By,Bronze,,,Forward Lock,,,
+Quickstep,"Zig-Zag, Back Lock and Running Finish",Followed By,Silver,,,Quick Open Reverse,,,
+Quickstep,Cross Chasse,Preceded By,,,,Heel Pivot (Quarter Turn to Left),,,
+Quickstep,Cross Chasse,Preceded By,,,,Reverse Pivot,,,
+Quickstep,Cross Chasse,Preceded By,,,,Double Reverse Spin,,,
+Quickstep,Cross Chasse,Preceded By,,,,Natural Turn,6,,as an entry
+Quickstep,Cross Chasse,Followed By,Bronze,,,,,,Any Natural figure
+Quickstep,Cross Chasse,Followed By,Bronze,,,Forward Lock,,,
+Quickstep,Cross Chasse,Followed By,Silver,,,Fishtail,,,
+Quickstep,Change of Direction,Preceded By,,,,Heel Pivot (Quarter Turn to Left),,,
+Quickstep,Change of Direction,Preceded By,,,,Reverse Pivot,,,
+Quickstep,Change of Direction,Preceded By,,,,Double Reverse Spin,,,
+Quickstep,Change of Direction,Followed By,,,,Chasse Reverse Turn,,,
+Quickstep,Change of Direction,Followed By,,,,Progressive Chasse to Right,,,
+Quickstep,Change of Direction,Followed By,,At corner,,Cross Chasse,,,
+Tango,Open Finish,Followed By,Bronze,Moving forward,,Walk on LF,,,
+Tango,Open Finish,Followed By,Bronze,Moving forward,,Progressive Side Step,,,
+Tango,Open Finish,Followed By,Bronze,Moving forward,,Progressive Link,,,
+Tango,Open Finish,Followed By,Bronze,"Moving forward, when ended DC",,,,,Any Reverse Turn
+Tango,Open Finish,Followed By,Silver,Moving forward,,Four Step,,,
+Tango,Open Finish,Followed By,Silver,Moving forward,,Reverse Outside Swivel Method 3,,,
+Tango,Open Finish,Followed By,Silver,Moving forward,,Four Step Change,,,
+Tango,Open Finish,Followed By,Silver,Moving forward,,Brush Tap,,,
+Tango,Open Finish,Followed By,Gold,Moving forward,,Fallaway Four Step,,,
+Tango,Open Finish,Followed By,Gold,Moving forward,,Oversway,,,
+Tango,Open Finish,Followed By,Gold,Moving forward,,Fallaway Reverse and Slip Pivot,,,
+Tango,Open Finish,Followed By,Gold,Moving forward,,Five Step,,,
+Tango,Open Finish,Followed By,Bronze,Moving back,,Back Corte,,,(step 1 in CBMP with Follow OP)
+Tango,Open Finish,Followed By,Bronze,Moving back,,Rock Back on LF,,,"in CBMP with Follow OP, no turn or up to 1/4 to R"
+Tango,Open Finish,Followed By,Silver,Moving back,,Outside Swivel Method 1,,,
+Tango,Open Finish,Followed By,Silver,Moving back,,Outside Swivel Method 2,,,
+Tango,Open Finish,Followed By,,Moving to side,,,,,"Any Promenade figure, having placed LF to side without weight, leading Follow to turn to PP count &"
+Tango,Progressive Side Step,Preceded By,Bronze,,,Walk on RF,,,
+Tango,Progressive Side Step,Preceded By,Bronze,,,Closed Promenade,,,
+Tango,Progressive Side Step,Preceded By,Bronze,,,,,,Any Closed Finish
+Tango,Progressive Side Step,Preceded By,Bronze,,,Open Promenade,,,
+Tango,Progressive Side Step,Preceded By,Bronze,,,,,,Any Open Finish
+Tango,Progressive Side Step,Preceded By,Silver,,,Promenade Link,,,
+Tango,Progressive Side Step,Preceded By,Silver,,,Outside Swivel Method 1,,,
+Tango,Progressive Side Step,Preceded By,Silver,,,Outside Swivel Method 2,,,
+Tango,Progressive Side Step,Preceded By,Silver,,,Brush Tap,,,
+Tango,Progressive Side Step,Preceded By,Gold,,,Fallaway Reverse and Slip Pivot,,,
+Tango,Progressive Side Step,Followed By,,,,Walk on RF,,,
+Tango,Progressive Side Step,Followed By,,,,Rock Turn,,,
+Tango,Progressive Link,Preceded By,,,,,,Progressive Side Step,
+Tango,Progressive Link,Followed By,Bronze,,,Closed Promenade,,,
+Tango,Progressive Link,Followed By,Bronze,,,Open Promenade,,,
+Tango,Progressive Link,Followed By,Bronze,,,Natural Twist Turn,,,
+Tango,Progressive Link,Followed By,Bronze,,,Natural Promenade Turn,,,
+Tango,Progressive Link,Followed By,Silver,,,Promenade Link,,,
+Tango,Progressive Link,Followed By,Silver,,,Back Open Promenade,,,
+Tango,Progressive Link,Followed By,Silver,,,Fallaway Promenade,,,
+Tango,Progressive Link,Followed By,Gold,,,The Chase,,,
+Tango,Closed Promenade,Preceded By,Bronze,,,Progressive Link,,,
+Tango,Closed Promenade,Preceded By,Bronze,Turning to PP,,Walk on RF,,,"(see ""Methods of preceding any Promenade figure"", page 99)"
+Tango,Closed Promenade,Preceded By,Bronze,Turning to PP,,Closed Promenade,,,
+Tango,Closed Promenade,Preceded By,Bronze,Turning to PP,,Open Promenade,,,
+Tango,Closed Promenade,Preceded By,Bronze,Turning to PP,,,,,Any Closed or Open Finish
+Tango,Closed Promenade,Preceded By,Bronze,,,Natural Twist Turn,,,
+Tango,Closed Promenade,Preceded By,Bronze,,,Natural Promenade Turn,,,
+Tango,Closed Promenade,Preceded By,Silver,,,Four Step,,,
+Tango,Closed Promenade,Preceded By,Silver,,,Fallaway Promenade,,,
+Tango,Closed Promenade,Preceded By,Gold,,,Fallaway Four Step,,,
+Tango,Closed Promenade,Preceded By,Gold,,,Oversway,,,"endings 1, 2, 3, 5, 6 and 7"
+Tango,Closed Promenade,Preceded By,Gold,,,The Chase,,,"and endings 1, 3 and 4"
+Tango,Closed Promenade,Preceded By,Gold,,,Five Step,,,
+Tango,Closed Promenade,Preceded By,Gold,,,Contra Check,,,
+Tango,Closed Promenade,Followed By,Bronze,,,Walk on LF,,,
+Tango,Closed Promenade,Followed By,Bronze,,,Progressive Side Step,,,
+Tango,Closed Promenade,Followed By,Bronze,,,Progressive Link,,,
+Tango,Closed Promenade,Followed By,Bronze,,,Back Corte,,,
+Tango,Closed Promenade,Followed By,Bronze,,,Rock Back on LF,,,
+Tango,Closed Promenade,Followed By,Bronze,If ended DC,,,,,Any Reverse Turn
+Tango,Closed Promenade,Followed By,Silver,,,Four Step,,,
+Tango,Closed Promenade,Followed By,Silver,,,Outside Swivel Method 1,,,
+Tango,Closed Promenade,Followed By,Silver,,,Outside Swivel Method 2,,,
+Tango,Closed Promenade,Followed By,Silver,,,Four Step Change,,,
+Tango,Closed Promenade,Followed By,Silver,,,Brush Tap,,,
+Tango,Closed Promenade,Followed By,Gold,,,Fallaway Four Step,,,
+Tango,Closed Promenade,Followed By,Gold,,,Oversway,,,
+Tango,Closed Promenade,Followed By,Gold,,,Fallaway Reverse and Slip Pivot,,,
+Tango,Closed Promenade,Followed By,Gold,,,Five Step,,,
+Tango,Closed Promenade,Followed By,Gold,,,Contra Check,,,
+Tango,Rock Turn,Preceded By,,,,Walk on LF,,,
+Tango,Rock Turn,Preceded By,,,,Progressive Side Step,,,
+Tango,Rock Turn,Preceded By,,,2-7,Natural Promenade Turn,,,omitting the placing of LF to side without weight and not turning Follow to PP
+Tango,Rock Turn,Followed By,,,,,,Closed Promenade,
+Tango,"Open Reverse Turn, Follow Outside",Preceded By,Bronze,,,Walk on RF,,,
+Tango,"Open Reverse Turn, Follow Outside",Preceded By,Bronze,,,Closed Promenade,,,ended DC
+Tango,"Open Reverse Turn, Follow Outside",Preceded By,Bronze,,,Open Promenade,,,ended DC
+Tango,"Open Reverse Turn, Follow Outside",Preceded By,Bronze,,,,,,Any Closed or Open Finish ended DC
+Tango,"Open Reverse Turn, Follow Outside",Preceded By,Silver,,,Reverse Promenade Link,,,
+Tango,"Open Reverse Turn, Follow Outside",Preceded By,Silver,,,Outside Swivel Method 1,,,ended DC
+Tango,"Open Reverse Turn, Follow Outside",Preceded By,Silver,,,Outside Swivel Method 2,,,ended DC
+Tango,"Open Reverse Turn, Follow Outside",Preceded By,Silver,,,Four Step Change,,,
+Tango,"Open Reverse Turn, Follow Outside",Preceded By,Silver,,,Brush Tap,,,ended DC
+Tango,"Open Reverse Turn, Follow Outside",Preceded By,Gold,,,Fallaway Reverse and Slip Pivot,,,
+Tango,"Open Reverse Turn, Follow Outside",Followed By,Bronze,,,Walk on LF,,,
+Tango,"Open Reverse Turn, Follow Outside",Followed By,Bronze,,,Progressive Side Step,,,
+Tango,"Open Reverse Turn, Follow Outside",Followed By,Bronze,,,Progressive Link,,,
+Tango,"Open Reverse Turn, Follow Outside",Followed By,Bronze,,,Back Corte,,,
+Tango,"Open Reverse Turn, Follow Outside",Followed By,Bronze,,,Rock Back on LF,,,
+Tango,"Open Reverse Turn, Follow Outside",Followed By,Bronze,,,,,,"Any Promenade figure (see ""Methods of preceding any Promenade figure"", page 99, and the description of Open Finish, page 100)"
+Tango,"Open Reverse Turn, Follow Outside",Followed By,Silver,,,Four Step,,,
+Tango,"Open Reverse Turn, Follow Outside",Followed By,Silver,,,Outside Swivel Method 1,,,
+Tango,"Open Reverse Turn, Follow Outside",Followed By,Silver,,,Outside Swivel Method 2,,,
+Tango,"Open Reverse Turn, Follow Outside",Followed By,Silver,,,Four Step Change,,,
+Tango,"Open Reverse Turn, Follow Outside",Followed By,Silver,,,Brush Tap,,,
+Tango,"Open Reverse Turn, Follow Outside",Followed By,Gold,,,Fallaway Four Step,,,
+Tango,"Open Reverse Turn, Follow Outside",Followed By,Gold,,,Five Step,,,
+Tango,"Open Reverse Turn, Follow Outside",Followed By,Gold,,,Contra Check,,,
+Tango,Back Corte,Preceded By,Bronze,,,Closed Promenade,,,
+Tango,Back Corte,Preceded By,Bronze,,,Open Promenade,,,
+Tango,Back Corte,Preceded By,Bronze,,,,,,Any Closed or Open Finish
+Tango,Back Corte,Preceded By,Bronze,,,Progressive Side Step Reverse Turn,1-4,,
+Tango,Back Corte,Preceded By,Bronze,,,Rock Back on RF,,,
+Tango,Back Corte,Preceded By,Bronze,,,Natural Twist Turn,,,overturned
+Tango,Back Corte,Preceded By,Silver,,,Promenade Link,,,
+Tango,Back Corte,Preceded By,Silver,,,Brush Tap,,,
+Tango,Back Corte,Followed By,,,,,,Closed Promenade,
+Tango,"Open Reverse Turn, Follow in Line",Preceded By,,,,,,"Open Reverse Turn, Follow Outside",
+Tango,"Open Reverse Turn, Follow in Line",Followed By,,,,,,"Open Reverse Turn, Follow Outside",
+Tango,Progressive Side Step Reverse Turn,Preceded By,,,,,,"Open Reverse Turn, Follow Outside",
+Tango,Progressive Side Step Reverse Turn,Followed By,,,,,,"Open Reverse Turn, Follow Outside",
+Tango,Open Promenade,Preceded By,,,,,,Closed Promenade,
+Tango,Open Promenade,Followed By,Bronze,Moving forward,,Walk on LF,,,
+Tango,Open Promenade,Followed By,Bronze,Moving forward,,Progressive Side Step,,,
+Tango,Open Promenade,Followed By,Bronze,Moving forward,,Progressive Link,,,
+Tango,Open Promenade,Followed By,Bronze,"Moving forward, when ended DC",,,,,Any Reverse Turn
+Tango,Open Promenade,Followed By,Silver,Moving forward,,Four Step,,,
+Tango,Open Promenade,Followed By,Silver,Moving forward,,Reverse Outside Swivel Method 3,,,
+Tango,Open Promenade,Followed By,Silver,Moving forward,,Four Step Change,,,
+Tango,Open Promenade,Followed By,Silver,Moving forward,,Brush Tap,,,
+Tango,Open Promenade,Followed By,Gold,Moving forward,,Fallaway Four Step,,,
+Tango,Open Promenade,Followed By,Gold,Moving forward,,Oversway,,,
+Tango,Open Promenade,Followed By,Gold,Moving forward,,Fallaway Reverse and Slip Pivot,,,
+Tango,Open Promenade,Followed By,Gold,Moving forward,,Five Step,,,
+Tango,Open Promenade,Followed By,Bronze,Moving back,,Back Corte,,,"(step 1 in CBMP with Follow OP, using CBM on 1 and 2)"
+Tango,Open Promenade,Followed By,Bronze,Moving back,,Rock Back on LF,,,"in CBMP with Follow OP, no turn or up to 1/4 to R"
+Tango,Open Promenade,Followed By,Silver,Moving back,,Outside Swivel Method 1,,,
+Tango,Open Promenade,Followed By,Silver,Moving back,,Outside Swivel Method 2,,,
+Tango,Open Promenade,Followed By,,Moving to side,,,,,"Any Promenade figure, having placed LF to side without weight, leading Follow to turn to PP count &"
+Tango,Rock Back on RF,Preceded By,,,,Walk back on LF,,,
+Tango,Rock Back on RF,Preceded By,,,,Rock Back on LF,,,
+Tango,Rock Back on RF,Followed By,,,,Back Corte,,,
+Tango,Rock Back on RF,Followed By,,,,Rock Back on LF,,,
+Tango,Rock Back on LF,Preceded By,,,,,,Back Corte,
+Tango,Rock Back on LF,Followed By,,,,Closed Finish,,,
+Tango,Rock Back on LF,Followed By,,,,Open Finish,,,
+Tango,Rock Back on LF,Followed By,,,,Rock Back on RF,,,
+Tango,Natural Twist Turn,Preceded By,,,,,,Closed Promenade,
+Tango,Natural Twist Turn,Followed By,,,,,,,Any Promenade figure
+Tango,Natural Twist Turn,Followed By,,,,Back Corte,,,
+Tango,Natural Twist Turn,Followed By,,,,Rock Back on LF,,,
+Tango,Natural Promenade Turn,Preceded By,,,,,,Closed Promenade,
+Tango,Natural Promenade Turn,Followed By,,,,,,,Any Promenade figure
+Tango,Natural Promenade Turn,Followed By,,,,Rock Turn,2-7,,
+Tango,Promenade Link,Preceded By,Silver,,,,,Closed Promenade,
+Tango,Promenade Link,Followed By,Silver,,,,,Closed Promenade,
+Tango,Four Step,Preceded By,Silver,,,,,Progressive Side Step,
+Tango,Four Step,Followed By,Silver,,,,,,Any Promenade figure
+Tango,Back Open Promenade,Preceded By,Silver,,,,,Closed Promenade,
+Tango,Back Open Promenade,Followed By,Silver,,,Four Step,,,
+Tango,Back Open Promenade,Followed By,Silver,,,Reverse Outside Swivel Method 3,,,
+Tango,Back Open Promenade,Followed By,Silver,,,Four Step Change,,,
+Tango,Back Open Promenade,Followed By,Silver,,,Brush Tap,,,
+Tango,Back Open Promenade,Followed By,Gold,,,Fallaway Four Step,,,
+Tango,Back Open Promenade,Followed By,Gold,,,Five Step,,,
+Tango,Outside Swivel Method 1,Preceded By,Silver,,,Open Promenade,,,
+Tango,Outside Swivel Method 1,Preceded By,Silver,,,,,,Any Open Finish
+Tango,Outside Swivel Method 1,Preceded By,Silver,,,Closed Promenade,,,
+Tango,Outside Swivel Method 1,Preceded By,Silver,,,,,,Any Closed Finish
+Tango,Outside Swivel Method 1,Preceded By,Silver,,,Four Step,1-2,,
+Tango,Outside Swivel Method 1,Followed By,Silver,If ended DW,,,,Closed Promenade,
+Tango,Outside Swivel Method 1,Followed By,Silver,If ended DC,,,,,Any Reverse Turn
+Tango,Outside Swivel Method 1,Followed By,Silver,If ended DC,,Four Step,,,(overturned)
+Tango,Outside Swivel Method 1,Followed By,Gold,,,Oversway,,,
+Tango,Outside Swivel Method 1,Followed By,Gold,,,Fallaway Reverse and Slip Pivot,,,
+Tango,Outside Swivel Method 1,Followed By,Gold,,,Five Step,,,
+Tango,Outside Swivel Method 2,Preceded By,Silver,,,Open Promenade,,,
+Tango,Outside Swivel Method 2,Preceded By,Silver,,,,,,Any Open Finish
+Tango,Outside Swivel Method 2,Preceded By,Silver,,,Closed Promenade,,,
+Tango,Outside Swivel Method 2,Preceded By,Silver,,,,,,Any Closed Finish
+Tango,Outside Swivel Method 2,Preceded By,Silver,,,Four Step,1-2,,
+Tango,Outside Swivel Method 2,Followed By,Silver,If ended DW,,,,Closed Promenade,
+Tango,Outside Swivel Method 2,Followed By,Silver,If ended DC,,,,,Any Reverse Turn
+Tango,Outside Swivel Method 2,Followed By,Silver,If ended DC,,Four Step,,,(overturned)
+Tango,Outside Swivel Method 2,Followed By,Gold,,,Oversway,,,
+Tango,Outside Swivel Method 2,Followed By,Gold,,,Fallaway Reverse and Slip Pivot,,,
+Tango,Outside Swivel Method 2,Followed By,Gold,,,Five Step,,,
+Tango,Reverse Outside Swivel Method 3,Preceded By,Silver,,,,,"Open Reverse Turn, Follow Outside",
+Tango,Reverse Outside Swivel Method 3,Followed By,Silver,,,,,Closed Promenade,
+Tango,Fallaway Promenade,Preceded By,Silver,,,,,Closed Promenade,
+Tango,Fallaway Promenade,Followed By,Silver,,,Closed Promenade,,,
+Tango,Fallaway Promenade,Followed By,Silver,,,Open Promenade,,,
+Tango,Fallaway Promenade,Followed By,Silver,,,Natural Twist Turn,,,
+Tango,Fallaway Promenade,Followed By,Silver,,,Natural Promenade Turn,,,
+Tango,Fallaway Promenade,Followed By,Silver,,,Reverse Promenade Link,,,
+Tango,Fallaway Promenade,Followed By,Gold,,,The Chase,,,
+Tango,Four Step Change,Preceded By,Silver,,,,,Progressive Side Step,
+Tango,Four Step Change,Preceded By,Silver,,,Back Open Promenade,,,
+Tango,Four Step Change,Followed By,Silver,,,Walk on LF,,,
+Tango,Four Step Change,Followed By,Silver,,,,,,Any Reverse Turn
+Tango,Four Step Change,Followed By,Silver,,,Four Step,,,
+Tango,Four Step Change,Followed By,Silver,,,Reverse Outside Swivel Method 3,,,
+Tango,Four Step Change,Followed By,Silver,At corner,,Progressive Link,,,
+Tango,Four Step Change,Followed By,Gold,,,Oversway,,,
+Tango,Four Step Change,Followed By,Gold,,,Fallaway Reverse and Slip Pivot,,,
+Tango,Four Step Change,Followed By,Gold,,,Five Step,,,
+Tango,Brush Tap,Preceded By,Silver,,,,,Progressive Side Step,
+Tango,Brush Tap,Preceded By,Silver,,,Back Open Promenade,,,
+Tango,Brush Tap,Followed By,Silver,,,Walk on LF,,,
+Tango,Brush Tap,Followed By,Silver,,,Progressive Link,,,
+Tango,Brush Tap,Followed By,Silver,,,Back Corte,,,
+Tango,Brush Tap,Followed By,Silver,,,Rock Back on LF,,,
+Tango,Brush Tap,Followed By,Silver,,,Four Step,,,
+Tango,Brush Tap,Followed By,Silver,,,Four Step Change,,,
+Tango,Brush Tap,Followed By,Silver,If ended DC,,Walk on LF,,,
+Tango,Brush Tap,Followed By,Silver,If ended DC,,,,,Any Reverse Turn
+Tango,Brush Tap,Followed By,Silver,If ended DC,,Reverse Outside Swivel Method 3,,,
+Tango,Brush Tap,Followed By,Gold,,,Fallaway Four Step,,,
+Tango,Brush Tap,Followed By,Gold,,,Oversway,,,
+Tango,Brush Tap,Followed By,Gold,,,Fallaway Reverse and Slip Pivot,,,
+Tango,Brush Tap,Followed By,Gold,,,Contra Check,,,
+Tango,Fallaway Four Step,Preceded By,Gold,,,,,Progressive Side Step,
+Tango,Fallaway Four Step,Preceded By,Gold,,,Back Open Promenade,,,
+Tango,Fallaway Four Step,Followed By,Gold,,,,,,Any Promenade figure
+Tango,Oversway,Preceded By,Gold,,,,,"Open Reverse Turn, Follow Outside",
+Tango,Basic Reverse Turn,Preceded By,Gold,,,,,"Open Reverse Turn, Follow Outside",
+Tango,Basic Reverse Turn,Followed By,Gold,,,,,"Open Reverse Turn, Follow Outside",
+Tango,The Chase,Preceded By,Gold,,,,,Closed Promenade,
+Tango,The Chase,Followed By,Gold,,,,,,Any Promenade figure
+Tango,The Chase,Followed By,Gold,If ended in Line,,Progressive Link,,,
+Tango,Fallaway Reverse and Slip Pivot,Preceded By,Gold,,,,,"Open Reverse Turn, Follow Outside",
+Tango,Fallaway Reverse and Slip Pivot,Followed By,Gold,If ended LOD,,,,,Any Reverse Turn
+Tango,Fallaway Reverse and Slip Pivot,Followed By,Gold,If ended LOD,,Four Step,,,(overturned)
+Tango,Fallaway Reverse and Slip Pivot,Followed By,Gold,If ended LOD,,Reverse Outside Swivel Method 3,,,
+Tango,Fallaway Reverse and Slip Pivot,Followed By,Gold,If ended LOD,,Fallaway Four Step,,,
+Tango,Fallaway Reverse and Slip Pivot,Followed By,Gold,If ended LOD,,Oversway,,,
+Tango,Fallaway Reverse and Slip Pivot,Followed By,Gold,If ended LOD,,Fallaway Reverse and Slip Pivot,,,
+Tango,Fallaway Reverse and Slip Pivot,Followed By,Gold,If ended LOD,,Five Step,,,(overturned)
+Tango,Fallaway Reverse and Slip Pivot,Followed By,Gold,If ended DW,,Progressive Link,,,
+Tango,Fallaway Reverse and Slip Pivot,Followed By,Gold,If ended DW,,Four Step,,,
+Tango,Fallaway Reverse and Slip Pivot,Followed By,Gold,If ended DW,,Four Step Change,,,
+Tango,Fallaway Reverse and Slip Pivot,Followed By,Gold,If ended DW,,Brush Tap,,,
+Tango,Fallaway Reverse and Slip Pivot,Followed By,Gold,If ended DW,,Five Step,,,
+Tango,Fallaway Reverse and Slip Pivot,Followed By,Gold,If ended DW,,Contra Check,,,
+Tango,Five Step,Preceded By,Gold,,,,,Four Step,
+Tango,Five Step,Followed By,Gold,,,,,Four Step,
+Tango,Contra Check,Preceded By,Gold,,,Closed Promenade,,,
+Tango,Contra Check,Preceded By,Gold,,,Closed Finish,,,
+Tango,Contra Check,Preceded By,Gold,,,Promenade Link,,,
+Tango,Contra Check,Preceded By,Gold,,,Outside Swivel Method 1,,,ended DW
+Tango,Contra Check,Preceded By,Gold,,,Outside Swivel Method 2,,,ended DW
+Tango,Contra Check,Preceded By,Gold,,,Brush Tap,,,
+Tango,Contra Check,Preceded By,Gold,,,Fallaway Reverse and Slip Pivot,,,
+Tango,Contra Check,Followed By,Gold,,,,,,Any Promenade figure

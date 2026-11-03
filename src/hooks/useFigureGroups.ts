@@ -2,16 +2,18 @@ import { useMemo } from 'react';
 import type { FigureGroup } from '../types';
 import type { DanceDataset } from './useDanceData';
 
+const figureKey = (dance: string, name: string) => `${dance} - ${name}`;
+
 // Groups raw CSV rows (one per step) into one entry per Dance+Figure, in
-// alphabetical order by figure name.
+// alphabetical order by figure name, each with its Precede and Follow links.
 export const useFigureGroups = (datasets: DanceDataset[]): FigureGroup[] => {
   return useMemo(() => {
     const groups: FigureGroup[] = [];
     const seen = new Map<string, FigureGroup>();
 
-    datasets.forEach(({ style, rows }) => {
+    datasets.forEach(({ style, rows, transitions }) => {
       rows.forEach((item) => {
-        const key = `${item.Dance} - ${item['Figure Name']}`;
+        const key = figureKey(item.Dance, item['Figure Name']);
         let group = seen.get(key);
         if (!group) {
           group = {
@@ -23,6 +25,7 @@ export const useFigureGroups = (datasets: DanceDataset[]): FigureGroup[] => {
             generalNotes: '',
             startingPosition: '',
             endingPosition: '',
+            links: [],
           };
           seen.set(key, group);
           groups.push(group);
@@ -32,6 +35,10 @@ export const useFigureGroups = (datasets: DanceDataset[]): FigureGroup[] => {
         if (item['General Notes'] && !group.generalNotes) group.generalNotes = item['General Notes'];
         if (item['Starting Position'] && !group.startingPosition) group.startingPosition = item['Starting Position'];
         if (item['Ending Position'] && !group.endingPosition) group.endingPosition = item['Ending Position'];
+      });
+      // In CSV order, which is the book's order.
+      transitions.forEach(({ dance, figure, link }) => {
+        seen.get(figureKey(dance, figure))?.links.push(link);
       });
     });
 

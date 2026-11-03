@@ -5,6 +5,8 @@ import type { useDanceFilters } from '../../hooks/useDanceFilters';
 import { useHomeScroll } from '../../hooks/useHomeScroll';
 import { describeSelection } from '../../utils/danceStyles';
 import { buildSections, normalizeQuery } from '../../utils/search';
+import { searchableNotes } from '../../utils/transitions';
+import { useTransitionBook } from '../../state/useTransitions';
 import MenuButton from '../ui/MenuButton';
 import DevFlag from '../ui/DevFlag';
 import SearchField from './SearchField';
@@ -34,9 +36,17 @@ export default function HomeScreen({ figures, filters, onOpenFigure, scrollTopRe
     levels,
   } = filters;
 
+  const transitions = useTransitionBook();
   const { sections, total, scope, grouped } = useMemo(
-    () => buildSections({ figures, dances: selectedDances, levels: selectedLevels, query: searchTerm }),
-    [figures, selectedDances, selectedLevels, searchTerm],
+    () =>
+      buildSections({
+        figures,
+        dances: selectedDances,
+        levels: selectedLevels,
+        query: searchTerm,
+        notesOf: (figure) => searchableNotes(figure, transitions),
+      }),
+    [figures, selectedDances, selectedLevels, searchTerm, transitions],
   );
 
   const needle = normalizeQuery(searchTerm);

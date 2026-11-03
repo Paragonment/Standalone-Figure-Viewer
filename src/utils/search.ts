@@ -68,11 +68,14 @@ export function buildSections({
   dances,
   levels,
   query,
+  notesOf = (figure) => figure.generalNotes,
 }: {
   figures: FigureGroup[];
   dances: string[];
   levels: string[];
   query: string;
+  // The text a figure's notes match against.
+  notesOf?: (figure: FigureGroup) => string;
 }): BuiltSections {
   const inScope = figures.filter(
     (f) => (dances.length === 0 || dances.includes(f.dance)) && (levels.length === 0 || levels.includes(f.level)),
@@ -93,7 +96,7 @@ export function buildSections({
 
     const mentioned: FigureRow[] = [];
     for (const figure of rest) {
-      const notes = collapse(figure.generalNotes);
+      const notes = collapse(notesOf(figure));
       const at = notes.toLowerCase().indexOf(needle);
       if (at !== -1) mentioned.push({ figure, snippet: buildSnippet(notes, at, needle.length) });
     }
